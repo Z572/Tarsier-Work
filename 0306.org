@@ -1,0 +1,12 @@
+* patch
+
+https://issues.guix.gnu.org/61995
+https://issues.guix.gnu.org/61994
+
+* pr
+https://gitee.com/openeuler/mugen/pulls/1092
+
+* blog
+
+https://z572.online/%E8%AE%B0%E5%BD%95%E7%BC%96%E8%AF%91-risc-v-opensbi.html
+https://z572.online/learn-mugen.html
