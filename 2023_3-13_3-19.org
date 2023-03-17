@@ -1,0 +1,10 @@
+* issues
+https://gitee.com/openeuler/RISC-V/issues/I6O33R
+https://gitee.com/openeuler/RISC-V/issues/I6O31D
+https://gitee.com/openeuler/RISC-V/issues/I6NXSV
+
+* repo
+https://github.com/Z572/RISCV-testcase/tree/ukui
+
+https://gitee.com/Z572/os-autoinst-distri-openeuler
+https://gitee.com/Z572/os-autoinst-needles-openeuler
