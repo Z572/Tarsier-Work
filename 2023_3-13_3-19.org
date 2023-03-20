@@ -1,10 +1,19 @@
-* issues
-https://gitee.com/openeuler/RISC-V/issues/I6O33R
-https://gitee.com/openeuler/RISC-V/issues/I6O31D
-https://gitee.com/openeuler/RISC-V/issues/I6NXSV
+* oerv
+** issues
+- https://gitee.com/openeuler/RISC-V/issues/I6O33R
+- https://gitee.com/openeuler/RISC-V/issues/I6O31D
+- https://gitee.com/openeuler/RISC-V/issues/I6NXSV
+** pr
 
-* repo
-https://github.com/Z572/RISCV-testcase/tree/ukui
+- https://github.com/ArielHeleneto/RISCV-testcase/pull/56
+** repo
 
-https://gitee.com/Z572/os-autoinst-distri-openeuler
-https://gitee.com/Z572/os-autoinst-needles-openeuler
+- https://github.com/Z572/RISCV-testcase/tree/ukui
+- https://gitee.com/Z572/os-autoinst-distri-openeuler
+- https://gitee.com/Z572/os-autoinst-needles-openeuler
+
+* guix
+** patch
+- https://issues.guix.gnu.org/61994
+- https://issues.guix.gnu.org/61995
+- https://issues.guix.gnu.org/62094
