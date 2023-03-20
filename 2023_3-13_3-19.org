@@ -10,9 +10,11 @@
 
 ** guix
 *** fix cross-build patch
-以下已合并
 - https://issues.guix.gnu.org/61994
 - https://issues.guix.gnu.org/61995
 - https://issues.guix.gnu.org/62094
+
 * 下周计划
 
+- 编写 ukui 基本功能 openqa 脚本
+- 测试 gcc/jdk
