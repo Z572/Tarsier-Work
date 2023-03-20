@@ -1,19 +1,18 @@
-* oerv
-** issues
+* 本周工作
+** oerv
+*** 缺陷用例
 - https://gitee.com/openeuler/RISC-V/issues/I6O33R
 - https://gitee.com/openeuler/RISC-V/issues/I6O31D
 - https://gitee.com/openeuler/RISC-V/issues/I6NXSV
-** pr
-
+- https://gitee.com/openeuler/RISC-V/issues/I6OEEV
+*** ukui桌面测试用例
 - https://github.com/ArielHeleneto/RISCV-testcase/pull/56
-** repo
 
-- https://github.com/Z572/RISCV-testcase/tree/ukui
-- https://gitee.com/Z572/os-autoinst-distri-openeuler
-- https://gitee.com/Z572/os-autoinst-needles-openeuler
-
-* guix
-** patch
+** guix
+*** fix cross-build patch
+以下已合并
 - https://issues.guix.gnu.org/61994
 - https://issues.guix.gnu.org/61995
 - https://issues.guix.gnu.org/62094
+* 下周计划
+
