@@ -1,0 +1,32 @@
+        -:    0:Source:/home/openeuler/rpmbuild/BUILD/gcc-10.3.0/gcc/testsuite/gcc.misc-tests/gcov-14.c
+        -:    0:Graph:gcov-14.gcno
+        -:    0:Data:gcov-14.gcda
+        -:    0:Runs:1
+        -:    1:/* Test gcov extern inline.  */
+        -:    2:
+        -:    3:/* { dg-do run { target native } } */
+        -:    4:/* { dg-options "-O2 -fprofile-arcs -ftest-coverage -fgnu89-inline" } */
+        -:    5:/* The following line arranges that Darwin has behavior like elf weak import.  */
+        -:    6:/* { dg-additional-options "-flat_namespace -undefined suppress" { target *-*-darwin* }  } */
+        -:    7:/* { dg-require-weak "" } */
+        -:    8:/* { dg-skip-if "undefined weak not supported" { { hppa*-*-hpux* } && { ! lp64 } } } */
+        -:    9:/* { dg-skip-if "undefined weak not supported" { powerpc-ibm-aix* } } */
+        -:   10:
+        -:   11:extern int __attribute__ ((weak)) Foo ();
+        -:   12:
+        -:   13:extern __inline int Foo ()
+        -:   14:{
+        -:   15:  return 0; /* count(-) */
+        -:   16:}
+        -:   17:
+        1:   18:int (* __attribute__ ((noinline)) Bar ()) ()
+        -:   19:{
+        1:   20:  return Foo; /* count(1) */
+        -:   21:}
+        -:   22:
+        1:   23:int main ()
+        -:   24:{
+        1:   25:  return Bar () != 0; /* count(1) */
+        -:   26:}
+        -:   27:
+        -:   28:/* { dg-final { run-gcov { -a gcov-14.c } } } */

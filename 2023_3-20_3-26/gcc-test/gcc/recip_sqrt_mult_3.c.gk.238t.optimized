@@ -1,0 +1,17 @@
+
+;; Function foo (foo, funcdef_no=0, decl_uid=1484, cgraph_uid=1, symbol_order=0)
+
+foo (double a)
+{
+  double recip_sqrt_sqr_6;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  recip_sqrt_sqr_6 = 1.0e+0 / a_2(D);
+  # DEBUG tmp => NULL
+  # DEBUG BEGIN_STMT
+  return recip_sqrt_sqr_6;
+
+}
+
+

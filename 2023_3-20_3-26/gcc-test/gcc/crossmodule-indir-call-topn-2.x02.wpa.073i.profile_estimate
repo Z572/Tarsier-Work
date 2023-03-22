@@ -1,0 +1,37 @@
+Histogram:
+  350000001: time:2 (8.70) size:2 (9.52)
+  350000000: time:19 (91.30) size:7 (42.86)
+  175000001: time:2 (95.65) size:1 (47.62)
+  175000000: time:2 (100.00) size:1 (52.38)
+  1: time:39 (100.00) size:10 (100.00)
+Determined min count: 175000000 Time:100.00% Size:52.38%
+Setting hotness threshold in LTO mode.
+
+========== IPA-profile speculative targets: ==========
+
+Summary for node two/19:
+
+Summary for node one/18:
+
+Summary for node main/13:
+
+Summary for node foo/12:
+  Summary for foo/12 of indirect edge 2:
+    The 0 speculative target is one/18 with prob 0.50
+    The 1 speculative target is two/19 with prob 0.50
+
+
+Updating hotness threshold in LTO mode.
+Updated min count: 87500000
+Indirect call -> direct call from other module foo/12 => one/18, prob 0.50
+Indirect call -> speculative call foo/12 => one/18
+Indirect call -> direct call from other module foo/12 => two/19, prob 0.50
+Indirect call -> speculative call foo/12 => two/19
+Time mismatch in call summary 5950000024.000000!=5950000016.000000
+1 indirect calls trained.
+1 (100.00%) have common target.
+0 (0.00%) targets was not found.
+0 (0.00%) targets had parameter count mismatch.
+0 (0.00%) targets was not in polymorphic call target list.
+0 (0.00%) speculations seems useless.
+2 (200.00%) speculations produced.

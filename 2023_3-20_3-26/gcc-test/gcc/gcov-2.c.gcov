@@ -1,0 +1,26 @@
+        -:    0:Source:/home/openeuler/rpmbuild/BUILD/gcc-10.3.0/gcc/testsuite/gcc.misc-tests/gcov-2.c
+        -:    0:Graph:gcov-2.gcno
+        -:    0:Data:gcov-2.gcda
+        -:    0:Runs:1
+        -:    1:/* Test Gcov basics.  */
+        -:    2:
+        -:    3:/* { dg-options "-fprofile-arcs -ftest-coverage -g" } */
+        -:    4:/* { dg-do run { target native } } */
+        -:    5:
+       10:    6:void noop ()
+        -:    7:{
+       10:    8:}
+        -:    9:
+        1:   10:int main ()
+        -:   11:{
+        -:   12:  int i;
+        -:   13:
+       11:   14:  for (i = 0; i < 10; i++)	/* count(11) */
+       10:   15:    noop ();			/* count(10) */
+        -:   16:
+        1:   17:  return 0;			/* count(1) */
+        -:   18:}
+        -:   19:
+        -:   20:int a_variable = 0;
+        -:   21:
+        -:   22:/* { dg-final { run-gcov gcov-2.c } } */

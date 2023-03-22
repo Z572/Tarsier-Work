@@ -1,0 +1,35 @@
+        -:    0:Source:/home/openeuler/rpmbuild/BUILD/gcc-10.3.0/gcc/testsuite/gcc.misc-tests/gcov-11.c
+        -:    0:Graph:gcov-11.gcno
+        -:    0:Data:gcov-11.gcda
+        -:    0:Runs:1
+        -:    1:/* Test gcov block mode.  */
+        -:    2:
+        -:    3:/* { dg-options "-fprofile-arcs -ftest-coverage" } */
+        -:    4:/* { dg-do run { target native } } */
+        -:    5:
+        -:    6:int one = 1; /* subvert constant folder. */
+        -:    7:int zero = 0;
+        -:    8:
+       10:    9:int foo (int ix)
+        -:   10:{
+       10:   11:  return ix & 1 ? one : zero; /* count(10) */
+       10:   11-block  0
+        5:   11-block  1
+        5:   11-block  2
+       10:   11-block  3
+        -:   12:}
+        -:   13:
+        1:   14:int main ()
+        -:   15:{
+        1:   16:  unsigned ix, jx = 0;
+        -:   17:  
+       11:   18:  for (ix = 10; ix--;) jx += foo (ix); /* count(11) */
+        1:   18-block  0
+       10:   18-block  1
+       11:   18-block  2
+        -:   19:
+        1:   20:  return jx != 5;
+        1:   20-block  0
+        -:   21:}
+        -:   22:
+        -:   23:/* { dg-final { run-gcov { -a gcov-11.c } } } */

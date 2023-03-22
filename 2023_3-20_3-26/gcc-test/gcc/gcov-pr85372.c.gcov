@@ -1,0 +1,32 @@
+        -:    0:Source:/home/openeuler/rpmbuild/BUILD/gcc-10.3.0/gcc/testsuite/gcc.misc-tests/gcov-pr85372.c
+        -:    0:Graph:gcov-pr85372.gcno
+        -:    0:Data:gcov-pr85372.gcda
+        -:    0:Runs:1
+        -:    1:/* { dg-options "-fprofile-arcs -ftest-coverage" } */
+        -:    2:/* { dg-do run { target native } } */
+        -:    3:/* { dg-require-effective-target indirect_jumps } */
+        -:    4:
+        -:    5:void *buf[5];
+        -:    6:
+        1:    7:void fjmp (void) {
+        1:    8:  __builtin_longjmp (buf, 1);
+        -:    9:}
+        -:   10:
+        1:   11:int main(void)
+        -:   12:{
+        1:   13:  int last = 0;
+        -:   14:
+        2:   15:  if (__builtin_setjmp (buf) == 0) {	/* count(2) */
+        1:   16:    __builtin_printf("True  branch\n");
+        -:   17:    while (1) {
+        1:   18:      last = 1;	/* count(1) */
+        1:   19:      fjmp ();	/* count(1) */
+        -:   20:    }
+        -:   21:  } else {
+        1:   22:    __builtin_printf("False branch\n");
+        -:   23:  }
+        -:   24:
+        1:   25:  return 0;
+        -:   26:}
+        -:   27:
+        -:   28:/* { dg-final { run-gcov gcov-pr85372.c } } */

@@ -1,0 +1,19 @@
+        -:    0:Source:/home/openeuler/rpmbuild/BUILD/gcc-10.3.0/gcc/testsuite/gcc.misc-tests/gcov-pr90574-2.c
+        -:    0:Graph:gcov-pr90574-2.gcno
+        -:    0:Data:gcov-pr90574-2.gcda
+        -:    0:Runs:1
+        -:    1:/* { dg-options "-fprofile-arcs -ftest-coverage" } */
+        -:    2:/* { dg-do run { target native } } */
+        -:    3:
+        1:    4:int main(int argc, char **argv)
+        -:    5:{
+        1:    6:  switch (argc)
+        -:    7:    {
+        -:    8:    case 0:
+    #####:    9:      foo: /* count(#####) */
+        1:   10:    case 1:;
+        -:   11:    }
+        1:   12:  return 0;
+        -:   13:}
+        -:   14:
+        -:   15:/* { dg-final { run-gcov gcov-pr90574-2.c } } */

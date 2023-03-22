@@ -1,0 +1,73 @@
+        -:    0:Source:/home/openeuler/rpmbuild/BUILD/gcc-10.3.0/gcc/testsuite/gcc.misc-tests/gcov-8.c
+        -:    0:Graph:gcov-8.gcno
+        -:    0:Data:gcov-8.gcda
+        -:    0:Runs:1
+        -:    1:/* Check that gcov correctly rounds nearly zero to nonzero and nearly
+        -:    2:   100 to not-100.
+        -:    3:
+        -:    4:   Copyright (C) 2002 Free Software Foundation, Inc.
+        -:    5:   Contributed by Nathan Sidwell <nathan@codesourcery.com>
+        -:    6:*/
+        -:    7:
+        -:    8:/* { dg-options "-fprofile-arcs -ftest-coverage" } */
+        -:    9:/* { dg-do run { target native } } */
+        -:   10:
+function proxy called 2000 returned 100% blocks executed 100%
+     2000:   11:int proxy (int i)
+        -:   12:{
+     2000:   13:  return i;
+        -:   14:}
+        -:   15:
+function foo called 1000 returned 100% blocks executed 78%
+     1000:   16:int foo (int i)
+        -:   17:{
+     1000:   18:  if (i > 0) /* branch(1) */
+branch  0 taken 100% (fallthrough)
+branch  1 taken 1%
+      999:   19:    return proxy (1);
+call    0 returned 100%
+        1:   20:  else if (i < 0) /* branch(100) */
+branch  0 taken 0% (fallthrough)
+branch  1 taken 100%
+    #####:   21:    return proxy (-1);
+call    0 never executed
+        -:   22:  else
+        1:   23:    return proxy (0);
+call    0 returned 100%
+        -:   24:}
+        -:   25:
+function baz called 1000 returned 100% blocks executed 78%
+     1000:   26:int baz (int i)
+        -:   27:{
+     1000:   28:  if (i == 0) /* branch(99) */
+branch  0 taken 1% (fallthrough)
+branch  1 taken 100%
+        1:   29:    return proxy (0);
+call    0 returned 100%
+      999:   30:  else if (i > 0) /* branch(0)*/
+branch  0 taken 100% (fallthrough)
+branch  1 taken 0%
+      999:   31:    return proxy (1);
+call    0 returned 100%
+        -:   32:  else
+    #####:   33:    return proxy (-1);
+call    0 never executed
+        -:   34:}
+        -:   35:
+function main called 1 returned 100% blocks executed 100%
+        1:   36:int main ()
+        -:   37:{
+        1:   38:  int t = 0;
+        -:   39:  int ix;
+        -:   40:
+     1001:   41:  for (ix = 0; ix != 1000; ix++)
+branch  0 taken 100%
+branch  1 taken 1% (fallthrough)
+     1000:   42:    t += foo (ix) + baz (ix);
+call    0 returned 100%
+call    1 returned 100%
+        -:   43:  
+        1:   44:  return t == 0;
+        -:   45:}
+        -:   46:
+        -:   47:/* { dg-final { run-gcov branches {-b gcov-8.c } } } */

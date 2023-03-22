@@ -1,0 +1,27 @@
+Histogram:
+
+========== IPA-profile speculative targets: ==========
+
+Summary for node _sub_D_00100_1/48:
+
+Summary for node _sub_I_00100_0/47:
+
+Summary for node one/38:
+
+Summary for node two/39:
+
+Summary for node _sub_D_00100_1/23:
+
+Summary for node _sub_I_00100_0/22:
+
+Summary for node main/12:
+  Summary for main/12 of indirect edge 20:
+
+
+1 indirect calls trained.
+0 (0.00%) have common target.
+0 (0.00%) targets was not found.
+0 (0.00%) targets had parameter count mismatch.
+0 (0.00%) targets was not in polymorphic call target list.
+0 (0.00%) speculations seems useless.
+0 (0.00%) speculations produced.

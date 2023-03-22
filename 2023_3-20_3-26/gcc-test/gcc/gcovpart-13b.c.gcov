@@ -1,0 +1,9 @@
+        -:    0:Source:/home/openeuler/rpmbuild/BUILD/gcc-10.3.0/gcc/testsuite/gcc.misc-tests/gcovpart-13b.c
+        -:    0:Graph:gcovpart-13b.gcno
+        -:    0:Data:gcovpart-13b.gcda
+        -:    0:Runs:1
+        1:    1:int weak ()
+        -:    2:{
+        1:    3:  return 0;  /* count(1) */
+        1:    3-block  0
+        -:    4:}

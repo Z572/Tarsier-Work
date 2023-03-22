@@ -1,0 +1,44 @@
+Dump after hash based groups
+Congruence classes: 2 with total: 3 items (in a non-singular class: 2)
+Class size histogram [number of members]: number of classes
+     1:      1
+     2:      1
+Dump after WPA based types groups
+Congruence classes: 2 with total: 3 items (in a non-singular class: 2)
+Class size histogram [number of members]: number of classes
+     1:      1
+     2:      1
+Worklist has been filled with: 1
+Address reference subdivision created: 0 new classes.
+Dump after callgraph-based congruence reduction
+Congruence classes: 2 with total: 3 items (in a non-singular class: 2)
+Class size histogram [number of members]: number of classes
+     1:      1
+     2:      1
+Init called for 2 items (66.67%).
+Dump after full equality comparison of groups
+Congruence classes: 2 with total: 3 items (in a non-singular class: 2)
+Class size histogram [number of members]: number of classes
+     1:      1
+     2:      1
+Worklist has been filled with: 1
+Address reference subdivision created: 0 new classes.
+Congruence classes: 2 with total: 3 items (in a non-singular class: 2)
+Class size histogram [number of members]: number of classes
+     1:      1
+     2:      1
+
+Item count: 3
+Congruent classes before: 2, after: 2
+Average class size before: 1.50, after: 1.50
+Average non-singular class size: 2.00, count: 1
+Equal symbols: 1
+Totally needed symbols: 2, fraction of loaded symbols: 100.00%
+
+/home/openeuler/rpmbuild/BUILD/gcc-10.3.0/gcc/testsuite/gcc.dg/ipa/ipa-icf-38.c:11:5: optimized: Semantic equality hit:foo/0->bar/3
+/home/openeuler/rpmbuild/BUILD/gcc-10.3.0/gcc/testsuite/gcc.dg/ipa/ipa-icf-38.c:11:5: optimized: Assembler symbol names:foo/0->bar/3
+Unified; Function alias has been created.
+
+Reclaiming functions:
+Reclaiming variables:
+Clearing address taken flags:

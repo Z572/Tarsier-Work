@@ -1,0 +1,277 @@
+        -:    0:Source:/home/openeuler/rpmbuild/BUILD/gcc-10.3.0/gcc/testsuite/gcc.misc-tests/gcov-4.c
+        -:    0:Graph:gcov-4.gcno
+        -:    0:Data:gcov-4.gcda
+        -:    0:Runs:1
+        -:    1:/* Check that execution counts for various C constructs are reported
+        -:    2:   correctly by gcov. */
+        -:    3:
+        -:    4:/* { dg-options "-fprofile-arcs -ftest-coverage" } */
+        -:    5:/* { dg-do run { target native } } */
+        -:    6:
+        -:    7:extern void abort (void);
+        -:    8:
+       23:    9:int do_something (int i)
+        -:   10:{
+       23:   11:  return i;
+        -:   12:}
+        -:   13:
+        -:   14:/* Check static inline functions. */
+        -:   15:
+        -:   16:int unref_val;
+        -:   17:
+        -:   18:static inline int
+        -:   19:unreferenced (int i, int j)
+        -:   20:{
+        -:   21:  return i - j;
+        -:   22:}
+        -:   23:
+        -:   24:static inline int
+    #####:   25:uncalled (int i, int j)
+        -:   26:{
+    #####:   27:  return i * j;
+        -:   28:}
+        -:   29:
+        -:   30:static inline int
+        1:   31:called (int i, int j)
+        -:   32:{
+        1:   33:    return i + j;			/* count(1) */
+        -:   34:}
+        -:   35:
+        -:   36:void
+        1:   37:call_unref ()
+        -:   38:{
+        1:   39:  if (unref_val)			/* count(1) */
+    #####:   40:    unref_val = uncalled (1, 2);
+        1:   41:  unref_val = called (unref_val, 4);	/* count(1) */
+        1:   42:}
+        -:   43:
+        -:   44:
+        -:   45:/* Check for loops. */
+        -:   46:
+        -:   47:int for_val1;
+        -:   48:int for_val2;
+        -:   49:int for_temp;
+        -:   50:
+        -:   51:int
+        3:   52:test_for1 (int n)
+        -:   53:{
+        -:   54:  int i;
+        3:   55:  for_temp = 1;				/* count(3) */
+       12:   56:  for (i = 0; i < n; i++)
+        9:   57:    for_temp++;				/* count(9) */
+        3:   58:  return for_temp;			/* count(3) */
+        -:   59:}
+        -:   60:
+        -:   61:int
+        6:   62:test_for2 (int m, int n, int o)
+        -:   63:{
+        -:   64:  int i, j, k;
+        6:   65:  for_temp = 1;				/* count(6) */
+       20:   66:  for (i = 0; i < n; i++)
+       44:   67:    for (j = 0; j < m; j++)
+      111:   68:      for (k = 0; k < o; k++)
+       81:   69:	for_temp++;			/* count(81) */
+        6:   70:  return for_temp;			/* count(6) */
+        -:   71:}
+        -:   72:
+        -:   73:void
+        1:   74:call_for ()
+        -:   75:{
+        1:   76:  for_val1 += test_for1 (0);
+        1:   77:  for_val1 += test_for1 (2);
+        1:   78:  for_val1 += test_for1 (7);
+        -:   79:
+        1:   80:  for_val2 += test_for2 (0, 0, 0);
+        1:   81:  for_val2 += test_for2 (1, 0, 0);
+        1:   82:  for_val2 += test_for2 (1, 3, 0);
+        1:   83:  for_val2 += test_for2 (1, 3, 1);
+        1:   84:  for_val2 += test_for2 (3, 1, 5);
+        1:   85:  for_val2 += test_for2 (3, 7, 3);
+        1:   86:}
+        -:   87:
+        -:   88:/* Check the use of goto. */
+        -:   89:
+        -:   90:int goto_val;
+        -:   91:
+        -:   92:int
+        2:   93:test_goto1 (int f)
+        -:   94:{
+        2:   95:  if (f)				/* count(2) */
+        1:   96:    goto lab1;				/* count(1) */
+        1:   97:  return 1;				/* count(1) */
+        1:   98:lab1:
+        1:   99:  return 2;				/* count(1) */
+        -:  100:}
+        -:  101:
+        -:  102:int
+        2:  103:test_goto2 (int f)
+        -:  104:{
+        -:  105:  int i;
+       15:  106:  for (i = 0; i < 10; i++)		/* count(15) */
+       14:  107:    if (i == f) goto lab2;		/* count(14) */
+        1:  108:  return 4;				/* count(1) */
+        1:  109:lab2:
+        1:  110:  return 8;				/* count(1) */
+        -:  111:}
+        -:  112:
+        -:  113:void
+        1:  114:call_goto ()
+        -:  115:{
+        1:  116:  goto_val += test_goto1 (0);
+        1:  117:  goto_val += test_goto1 (1);
+        1:  118:  goto_val += test_goto2 (3);
+        1:  119:  goto_val += test_goto2 (30);
+        1:  120:}
+        -:  121:
+        -:  122:/* Check nested if-then-else statements. */
+        -:  123:
+        -:  124:int ifelse_val1;
+        -:  125:int ifelse_val2;
+        -:  126:int ifelse_val3;
+        -:  127:
+        -:  128:int
+        5:  129:test_ifelse1 (int i, int j)
+        -:  130:{
+        5:  131:  int result = 0;
+        5:  132:  if (i)				/* count(5) */
+        3:  133:    if (j)				/* count(3) */
+        3:  134:      result = do_something (4);	/* count(3) */
+        -:  135:    else
+    #####:  136:      result = do_something (1024);
+        -:  137:  else
+        2:  138:    if (j)				/* count(2) */
+        1:  139:      result = do_something (1);	/* count(1) */
+        -:  140:    else
+        1:  141:      result = do_something (2);	/* count(1) */
+        5:  142:  if (i > j)				/* count(5) */
+        1:  143:    result = do_something (result*2);	/* count(1) */
+        5:  144:  if (i > 10)				/* count(5) */
+        1:  145:    if (j > 10)				/* count(1) */
+        1:  146:      result = do_something (result*4);	/* count(1) */
+        5:  147:  return result;			/* count(5) */
+        -:  148:}
+        -:  149:
+        -:  150:int
+        6:  151:test_ifelse2 (int i)
+        -:  152:{
+        6:  153:  int result = 0;
+        6:  154:  if (!i)				/* count(6) */
+        1:  155:    result = do_something (1);		/* count(1) */
+        6:  156:  if (i == 1)				/* count(6) */
+    #####:  157:    result = do_something (1024);
+        6:  158:  if (i == 2)				/* count(6) */
+        3:  159:    result = do_something (2);		/* count(3) */
+        6:  160:  if (i == 3)				/* count(6) */
+        2:  161:    return do_something (8);		/* count(2) */
+        4:  162:  if (i == 4)				/* count(4) */
+    #####:  163:    return do_something (2048);
+        4:  164:  return result;			/* count(4) */
+        -:  165:}
+        -:  166:
+        -:  167:int
+       11:  168:test_ifelse3 (int i, int j)
+        -:  169:{
+       11:  170:  int result = 1;
+       11:  171:  if (i > 10 && j > i && j < 20)	/* count(11) */
+        1:  172:    result = do_something (16);		/* count(1) */
+       11:  173:  if (i > 20)				/* count(11) */
+        5:  174:    if (j > i)				/* count(5) */
+        2:  175:      if (j < 30)			/* count(2) */
+        1:  176:	result = do_something (32);	/* count(1) */
+       11:  177:  if (i == 3 || j == 47 || i == j)	/* count(11) */
+        3:  178:    result = do_something (64);		/* count(3) */
+       11:  179:  return result;			/* count(11) */
+        -:  180:}
+        -:  181:
+        -:  182:void
+        1:  183:call_ifelse ()
+        -:  184:{
+        1:  185:  ifelse_val1 += test_ifelse1 (0, 2);
+        1:  186:  ifelse_val1 += test_ifelse1 (0, 0);
+        1:  187:  ifelse_val1 += test_ifelse1 (1, 2);
+        1:  188:  ifelse_val1 += test_ifelse1 (10, 2);
+        1:  189:  ifelse_val1 += test_ifelse1 (11, 11);
+        -:  190:
+        1:  191:  ifelse_val2 += test_ifelse2 (0);
+        1:  192:  ifelse_val2 += test_ifelse2 (2);
+        1:  193:  ifelse_val2 += test_ifelse2 (2);
+        1:  194:  ifelse_val2 += test_ifelse2 (2);
+        1:  195:  ifelse_val2 += test_ifelse2 (3);
+        1:  196:  ifelse_val2 += test_ifelse2 (3);
+        -:  197:
+        1:  198:  ifelse_val3 += test_ifelse3 (11, 19);
+        1:  199:  ifelse_val3 += test_ifelse3 (25, 27);
+        1:  200:  ifelse_val3 += test_ifelse3 (11, 22);
+        1:  201:  ifelse_val3 += test_ifelse3 (11, 10);
+        1:  202:  ifelse_val3 += test_ifelse3 (21, 32);
+        1:  203:  ifelse_val3 += test_ifelse3 (21, 20);
+        1:  204:  ifelse_val3 += test_ifelse3 (1, 2);
+        1:  205:  ifelse_val3 += test_ifelse3 (32, 31);
+        1:  206:  ifelse_val3 += test_ifelse3 (3, 0);
+        1:  207:  ifelse_val3 += test_ifelse3 (0, 47);
+        1:  208:  ifelse_val3 += test_ifelse3 (65, 65);
+        1:  209:}
+        -:  210:
+        -:  211:/* Check switch statements. */
+        -:  212:
+        -:  213:int switch_val, switch_m;
+        -:  214:
+        -:  215:int
+        5:  216:test_switch (int i, int j)
+        -:  217:{
+        5:  218:  int result = 0;			/* count(5) */
+        -:  219:
+        5:  220:  switch (i)				/* count(5) */
+        -:  221:    {
+        1:  222:      case 1:
+        1:  223:        result = do_something (2);	/* count(1) */
+        1:  224:        break;
+    #####:  225:      case 2:
+    #####:  226:        result = do_something (1024);
+    #####:  227:        break;
+        3:  228:      case 3:
+        -:  229:      case 4:
+        3:  230:        if (j == 2)			/* count(3) */
+        1:  231:          return do_something (4);	/* count(1) */
+        2:  232:        result = do_something (8);	/* count(2) */
+        2:  233:        break;
+        1:  234:      default:
+        1:  235:	result = do_something (32);	/* count(1) */
+        1:  236:	switch_m++;			/* count(1) */
+        1:  237:        break;
+        -:  238:    }
+        4:  239:  return result;			/* count(4) */
+        -:  240:}
+        -:  241:
+        -:  242:void
+        1:  243:call_switch ()
+        -:  244:{
+        1:  245:  switch_val += test_switch (1, 0);
+        1:  246:  switch_val += test_switch (3, 0);
+        1:  247:  switch_val += test_switch (3, 2);
+        1:  248:  switch_val += test_switch (4, 0);
+        1:  249:  switch_val += test_switch (16, 0);	
+        1:  250:  switch_val += switch_m;
+        1:  251:}
+        -:  252:
+        -:  253:int
+        1:  254:main()
+        -:  255:{
+        1:  256:  call_for ();
+        1:  257:  call_goto ();
+        1:  258:  call_ifelse ();
+        1:  259:  call_switch ();
+        1:  260:  call_unref ();
+        1:  261:  if ((for_val1 != 12)
+        1:  262:      || (for_val2 != 87)
+        1:  263:      || (goto_val != 15)
+        1:  264:      || (ifelse_val1 != 31)
+        1:  265:      || (ifelse_val2 != 23)
+        1:  266:      || (ifelse_val3 != 246)
+        1:  267:      || (switch_val != 55)
+        1:  268:      || (unref_val != 4))
+    #####:  269:    abort ();
+        1:  270:  return 0;
+        -:  271:}
+        -:  272:
+        -:  273:/* { dg-final { run-gcov gcov-4.c } } */

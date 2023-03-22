@@ -1,0 +1,52 @@
+        -:    0:Source:/home/openeuler/rpmbuild/BUILD/gcc-10.3.0/gcc/testsuite/gcc.misc-tests/gcov-6.c
+        -:    0:Graph:gcov-6.gcno
+        -:    0:Data:gcov-6.gcda
+        -:    0:Runs:1
+        -:    1:/* Check that call return percentages are reported correctly by gcov,
+        -:    2:   along with line counts and branch percentages.  This test case is
+        -:    3:   meant to be simple, as it was added at the same time that checking
+        -:    4:   for call return percentages was added.  */
+        -:    5:
+        -:    6:/* { dg-options "-fprofile-arcs -ftest-coverage" } */
+        -:    7:/* { dg-do run { target native } } */
+        -:    8:
+        -:    9:extern void exit (int);
+        -:   10:
+        -:   11:int val;
+        -:   12:
+        -:   13:void
+function foo called 5 returned 80% blocks executed 100%
+        5:   14:foo (int i)
+        -:   15:{
+        -:   16:  					/* branch(80) */
+        5:   17:  if (i < 0)				/* count(5) */
+branch  0 taken 20% (fallthrough)
+branch  1 taken 80%
+        -:   18:    					/* branch(end) */
+        -:   19:    					/* returns(0) */
+        1:   20:    exit (0);				/* count(1) */
+call    0 returned 0%
+        -:   21:  					/* returns(end) */
+        4:   22:  val += i;				/* count(4) */
+        4:   23:}
+        -:   24:
+        -:   25:int
+function main called 1 returned 0% blocks executed 86%
+        1:   26:main()
+        -:   27:{
+        -:   28:  int i;
+        -:   29:
+        -:   30:  					/* returns(100) */
+        1:   31:  foo (100);				/* count(1) */
+call    0 returned 100%
+        -:   32:  					/* returns(end) */
+        4:   33:  for (i = 2; i > -10; i--)
+branch  0 taken 100%
+branch  1 taken 0% (fallthrough)
+        -:   34:    					/* returns(75) */
+        4:   35:    foo (i);				/* count(4) */
+call    0 returned 75%
+        -:   36:  					/* returns(end) */
+        -:   37:}
+        -:   38:
+        -:   39:/* { dg-final { run-gcov branches calls { -b gcov-6.c } } } */

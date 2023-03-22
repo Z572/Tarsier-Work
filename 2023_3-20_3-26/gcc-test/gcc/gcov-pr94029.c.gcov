@@ -1,0 +1,18 @@
+        -:    0:Source:/home/openeuler/rpmbuild/BUILD/gcc-10.3.0/gcc/testsuite/gcc.misc-tests/gcov-pr94029.c
+        -:    0:Graph:gcov-pr94029.gcno
+        -:    0:Data:-
+        -:    0:Runs:0
+        -:    1:/* PR gcov-profile/94029 */
+        -:    2:/* { dg-options "-ftest-coverage" } */
+        -:    3:/* { dg-do compile } */
+        -:    4:
+        -:    5:#define impl_test(name) void test_##name() { }
+    #####:    6:impl_test(t1
+    #####:    7:) impl_test(t2)
+        -:    8:
+    #####:    9:int main()
+        -:   10:{
+    #####:   11:  return 0;
+        -:   12:}
+        -:   13:
+        -:   14:/* { dg-final { run-gcov remove-gcda gcov-pr94029.c } } */

@@ -1,0 +1,26 @@
+        -:    0:Source:/home/openeuler/rpmbuild/BUILD/gcc-10.3.0/gcc/testsuite/gcc.misc-tests/gcov-13.c
+        -:    0:Graph:gcov-13.gcno
+        -:    0:Data:gcov-13.gcda
+        -:    0:Runs:1
+        -:    1:/* Test gcov weak ellision.  */
+        -:    2:
+        -:    3:/* { dg-do run { target native } } */
+        -:    4:/* { dg-options "-fprofile-arcs -ftest-coverage" } */
+        -:    5:/* { dg-require-weak "" } */
+        -:    6:/* { dg-additional-sources "gcovpart-13b.c" } */
+        -:    7:/* { dg-skip-if "weak ellision not supported" { { hppa*-*-hpux* } && { ! lp64 } } } */
+        -:    8:
+    #####:    9:int __attribute__ ((weak)) weak ()
+        -:   10:{
+    #####:   11:  return 1;  /* count(-) { xfail *-*-* } */
+    %%%%%:   11-block  0
+        -:   12:}
+        -:   13:
+        1:   14:int main ()
+        -:   15:{
+        1:   16:  return weak (); /* count(1) */
+        1:   16-block  0
+        -:   17:}
+        -:   18:
+        -:   19:/* { dg-final { run-gcov { -a gcov-13.c } { xfail *-*-* } } } */
+        -:   20:/* { dg-final { run-gcov { -a gcovpart-13b.c } } } */

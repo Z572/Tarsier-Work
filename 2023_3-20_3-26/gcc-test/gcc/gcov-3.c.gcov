@@ -1,0 +1,52 @@
+        -:    0:Source:/home/openeuler/rpmbuild/BUILD/gcc-10.3.0/gcc/testsuite/gcc.misc-tests/gcov-3.c
+        -:    0:Graph:gcov-3.gcno
+        -:    0:Data:gcov-3.gcda
+        -:    0:Runs:1
+        -:    1:/* { dg-do run { target native } } */
+        -:    2:/* { dg-require-effective-target label_values } */
+        -:    3:
+        -:    4:/* Test Gcov with computed gotos.
+        -:    5:   This is the same as test gcc.c-torture/execute/980526-1.c */
+        -:    6:
+        -:    7:/* { dg-options "-fprofile-arcs -ftest-coverage" } */
+        -:    8:
+        -:    9:extern void abort (void);
+        -:   10:extern void exit (int);
+        -:   11:
+        -:   12:int expect_do1 = 1, expect_do2 = 2;
+        -:   13: 
+        2:   14:static int doit(int x){
+        -:   15:  __label__ lbl1;
+        -:   16:  __label__ lbl2;
+        -:   17:  static int jtab_init = 0;
+        -:   18:  static void *jtab[2];
+        -:   19: 
+        2:   20:  if(!jtab_init) {
+        1:   21:    jtab[0] = &&lbl1;
+        1:   22:    jtab[1] = &&lbl2;
+        1:   23:    jtab_init = 1;
+        -:   24:  }
+        2:   25:  goto *jtab[x];
+        1:   26:lbl1:
+        1:   27:  return 1;
+        1:   28:lbl2:
+        1:   29:  return 2;
+        -:   30:}
+        -:   31: 
+        1:   32:static void do1(void) {
+        1:   33:  if (doit(0) != expect_do1)
+    #####:   34:    abort ();
+        1:   35:}
+        -:   36: 
+        1:   37:static void do2(void){
+        1:   38:  if (doit(1) != expect_do2)
+    #####:   39:    abort ();
+        1:   40:}
+        -:   41: 
+        1:   42:int main(void){			/* count(1) */
+        1:   43:  do1();
+        1:   44:  do2();
+        1:   45:  exit(0);			/* count(1) */
+        -:   46:}
+        -:   47:
+        -:   48:/* { dg-final { run-gcov gcov-3.c } } */

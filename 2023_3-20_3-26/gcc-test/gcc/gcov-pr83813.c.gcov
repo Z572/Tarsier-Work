@@ -1,0 +1,27 @@
+        -:    0:Source:/home/openeuler/rpmbuild/BUILD/gcc-10.3.0/gcc/testsuite/gcc.misc-tests/gcov-pr83813.c
+        -:    0:Graph:gcov-pr83813.gcno
+        -:    0:Data:gcov-pr83813.gcda
+        -:    0:Runs:1
+        -:    1:/* { dg-options "-fprofile-arcs -ftest-coverage" } */
+        -:    2:/* { dg-do run { target native } } */
+        -:    3:
+        -:    4:union U
+        -:    5:{
+        -:    6:    int f0;
+        -:    7:    unsigned char f1;
+        -:    8:};
+        -:    9:
+        1:   10:int main()
+        -:   11:{
+        1:   12:    int i = 0;
+        1:   13:    union U u = {0};  /* count(1) */
+       1*:   14:    for (u.f1 = 0; u.f1 != -2; ++u.f1) {
+        1:   15:        i ^= u.f1;  /* count(1) */
+        1:   16:        if (i < 1)  /* count(1) */
+        1:   17:            return 0;  /* count(1) */
+        -:   18:    }
+        -:   19:
+        -:   20:    return 1;
+        -:   21:}
+        -:   22:
+        -:   23:/* { dg-final { run-gcov gcov-pr83813.c } } */

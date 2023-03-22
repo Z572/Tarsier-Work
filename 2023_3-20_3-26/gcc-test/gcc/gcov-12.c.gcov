@@ -1,0 +1,23 @@
+        -:    0:Source:/home/openeuler/rpmbuild/BUILD/gcc-10.3.0/gcc/testsuite/gcc.misc-tests/gcov-12.c
+        -:    0:Graph:gcov-12.gcno
+        -:    0:Data:gcov-12.gcda
+        -:    0:Runs:1
+        -:    1:/* Test gcov weak ellision.  */
+        -:    2:
+        -:    3:/* { dg-do run { target native } } */
+        -:    4:/* { dg-require-weak "" } */
+        -:    5:/* { dg-options "-fprofile-arcs -ftest-coverage" } */
+        -:    6:
+        1:    7:int __attribute__ ((weak)) weak ()
+        -:    8:{
+        1:    9:  return 0;  /* count(1) */
+        1:    9-block  0
+        -:   10:}
+        -:   11:
+        1:   12:int main ()
+        -:   13:{
+        1:   14:  return weak (); /* count(1) */
+        1:   14-block  0
+        -:   15:}
+        -:   16:
+        -:   17:/* { dg-final { run-gcov { -a gcov-12.c } } } */

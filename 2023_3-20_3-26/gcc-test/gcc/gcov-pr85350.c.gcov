@@ -1,0 +1,25 @@
+        -:    0:Source:/home/openeuler/rpmbuild/BUILD/gcc-10.3.0/gcc/testsuite/gcc.misc-tests/gcov-pr85350.c
+        -:    0:Graph:gcov-pr85350.gcno
+        -:    0:Data:gcov-pr85350.gcda
+        -:    0:Runs:1
+        -:    1:/* { dg-options "-fprofile-arcs -ftest-coverage" } */
+        -:    2:/* { dg-do run { target native } } */
+        -:    3:
+        1:    4:int main (void)
+        -:    5:{
+        1:    6:  const int t = 2; /* count(1) */
+        1:    7:  struct s1 {	/* count(1) */
+        -:    8:    int x;
+        1:    9:    int g[t];
+        -:   10:  };
+        -:   11:
+        -:   12:  struct s2 {
+        -:   13:    int x;
+        -:   14:    int g[2];
+        -:   15:  };
+        -:   16:
+        1:   17:  __builtin_printf("Sucess!\n");
+        1:   18:  return 0;
+        -:   19:}
+        -:   20:
+        -:   21:/* { dg-final { run-gcov gcov-pr85350.c } } */

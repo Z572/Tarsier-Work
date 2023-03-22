@@ -1,0 +1,31 @@
+        -:    0:Source:/home/openeuler/rpmbuild/BUILD/gcc-10.3.0/gcc/testsuite/gcc.misc-tests/gcov-pr86536.c
+        -:    0:Graph:gcov-pr86536.gcno
+        -:    0:Data:gcov-pr86536.gcda
+        -:    0:Runs:1
+        -:    1:// PR gcov-profile/86536
+        -:    2:// { dg-options "-fprofile-arcs -ftest-coverage" }
+        -:    3:// { dg-do run { target native } }
+        -:    4:// { dg-require-fork "" }
+        -:    5:
+        -:    6:#include <stdlib.h>
+        -:    7:#include <unistd.h>
+        -:    8:#include <sys/types.h>
+        -:    9:#include <sys/wait.h>
+        -:   10:
+        -:   11:int
+function main called 1 returned 200% blocks executed 100%
+        1:   12:main (void)
+        -:   13:{
+        -:   14:
+        1:   15:  int j = 22;		  /* count(1) */
+        -:   16:
+        -:   17:			  /* returns(200) */
+        1:   18:  fork ();		  /* count(1)  */
+call    0 returned 200%
+        -:   19:			  /* returns(end) */
+        -:   20:
+        2:   21:  int i = 7;		  /* count(2) */
+        2:   22:  return 0;		  /* count(2) */
+        -:   23:}
+        -:   24:
+        -:   25:// { dg-final { run-gcov branches calls { -b gcov-pr86536.c } } }
