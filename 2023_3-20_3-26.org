@@ -1,12 +1,12 @@
 * 本周工作
 ** 23.03 缺陷
-*** ukui 登录界面间歇性卡住
-*** ukui peony 及桌面 trash 相关无法使用
-*** swapon 失败 kernel 没开启 CONFIG_SWAP 选项 
-*** ukui panel 图标显示默认可见性有问题
-*** ukui 设置 无法修改用户相关选项
+*** ukui 登录界面间歇性卡住 https://gitee.com/openeuler/RISC-V/issues/I6Q24G?from=project-issue
+*** ukui peony 及桌面 trash 相关无法使用 
+*** ukui panel 图标显示默认可见性有问题 https://gitee.com/openeuler/RISC-V/issues/I6Q27C
+*** ukui 设置 无法修改用户相关选项 https://gitee.com/openeuler/RISC-V/issues/I6O31D
+*** LicheePI RV Dock swapon 失败 kernel 没开启 CONFIG_SWAP 选项 https://gitee.com/openeuler/RISC-V/issues/I6Q24W
 *** LicheePI RV Dock xfce 没有声音
-*** LicheePI RV Dock 关机无效
+*** LicheePI RV Dock 关机无效 https://gitee.com/openeuler/RISC-V/issues/I6Q2UP
 *** LicheePI RV Dock 没有网络
 ** openEuler RISC-V gcc 测试
 
