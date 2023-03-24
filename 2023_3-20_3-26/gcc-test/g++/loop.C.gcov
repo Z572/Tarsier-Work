@@ -1,0 +1,47 @@
+        -:    0:Source:/home/openeuler/rpmbuild/BUILD/gcc-10.3.0/gcc/testsuite/g++.dg/gcov/loop.C
+        -:    0:Graph:loop.gcno
+        -:    0:Data:loop.gcda
+        -:    0:Runs:1
+        -:    1:/* { dg-options "-fprofile-arcs -ftest-coverage" } */
+        -:    2:/* { dg-do run { target native } } */
+        -:    3:
+        -:    4:unsigned
+function _Z4loopji called 14.0k returned 100% blocks executed 100%
+    14.0k:    5:loop (unsigned n, int value)		  /* count(14.0k) */
+        -:    6:{
+    21.0M:    7:  for (unsigned i = 0; i < n - 1; i++)
+    14.0k:    7-block  0
+    21.0M:    7-block  1
+branch  0 taken 100% (fallthrough)
+branch  1 taken 1%
+        -:    8:  {
+    21.0M:    9:    value += i;				  /* count(21.0M) */
+    21.0M:    9-block  0
+        -:   10:  }
+        -:   11:
+    14.0k:   12:  return value;
+    14.0k:   12-block  0
+        -:   13:}
+        -:   14:
+function main called 1 returned 100% blocks executed 100%
+        1:   15:int main(int argc, char **argv)
+        -:   16:{
+        1:   17:  unsigned sum = 0;
+     7.0k:   18:  for (unsigned i = 0; i < 7 * 1000; i++)
+        1:   18-block  0
+     7.0k:   18-block  1
+branch  0 taken 100% (fallthrough)
+branch  1 taken 1%
+        -:   19:  {
+     7.0k:   20:    sum += loop (1000, sum);
+     7.0k:   20-block  0
+call    0 returned 100%
+     7.0k:   21:    sum += loop (2000, sum);		  /* count(7.0k) */
+call    0 returned 100%
+        -:   22:  }
+        -:   23:
+        1:   24:  return 0;				  /* count(1) */
+        1:   24-block  0
+        -:   25:}
+        -:   26:
+        -:   27:/* { dg-final { run-gcov branches { -abj loop.C } } } */

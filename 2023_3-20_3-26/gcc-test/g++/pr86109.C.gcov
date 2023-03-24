@@ -1,0 +1,20 @@
+        -:    0:Source:/home/openeuler/rpmbuild/BUILD/gcc-10.3.0/gcc/testsuite/g++.dg/gcov/pr86109.C
+        -:    0:Graph:pr86109.gcno
+        -:    0:Data:pr86109.gcda
+        -:    0:Runs:1
+        -:    1:
+        -:    2:/* { dg-options "-fprofile-arcs -ftest-coverage -std=c++11" } */
+        -:    3:/* { dg-do run { target native } } */
+        -:    4:
+        1:    5:int main()
+        -:    6:{
+        1:    7:    auto partially_uncovered_lambda = [](int i) { /* count(1) */
+        1:    8:        if (i > 10) /* count(1) */
+        1:    9:            return 0; /* count(1) */
+    #####:   10:        return 1; /* count(#####) */
+        -:   11:    };
+        -:   12:
+        1:   13:    return partially_uncovered_lambda(20); /* count(1) */
+        -:   14:}
+        -:   15:
+        -:   16:/* { dg-final { run-gcov pr86109.C } } */

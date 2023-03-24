@@ -1,0 +1,170 @@
+
+;; Function main (main, funcdef_no=6, decl_uid=1389, cgraph_uid=1, symbol_order=5) (executed once)
+
+replacing stmt:_3 = ret2 (&b);
+with stmt:_3 = ret2.constprop ();
+
+replacing stmt:_1 = ret1 (&a);
+with stmt:_1 = ret1.constprop ();
+
+replacing stmt:_7 = key (&a);
+with stmt:_7 = key.constprop ();
+
+/home/openeuler/rpmbuild/BUILD/gcc-10.3.0/gcc/testsuite/g++.dg/lto/inline-crossmodule-1_1.C:7:39: note: Inlining ret2.constprop/7 to main/5 with frequency 1.00
+_ZN1b4ret2Ev.constprop.0/7 (ret2.constprop) @0x3fe68662d0
+  Type: function definition analyzed
+  Visibility: artificial
+  References: 
+  Referring: 
+  Read from file: /tmp/g++-dg-lto-inline-crossmodule-1-01.exe.JTC4qI.ltrans0.o
+  Function ret2.constprop/7 is inline copy in main/5
+  Availability: local
+  Unit id: 3
+  Function flags: count:1073741824 (estimated locally) body local nonfreeing_fn executed_once
+  Called by: main/5 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+main/5 (main) @0x3fe6866000
+  Type: function definition analyzed
+  Visibility: externally_visible prevailing_def public
+  References: 
+  Referring: 
+  Availability: available
+  Unit id: 3
+  Function flags: count:1073741824 (estimated locally) body only_called_at_startup nonfreeing_fn executed_once
+  Called by: 
+  Calls: _ZN1b4ret2Ev.constprop.0/7 (inlined) (1073741824 (estimated locally),1.00 per call) _ZN1a4ret1Ev.constprop.0/8 (inlined) (1073741824 (estimated locally),1.00 per call) _ZN1a3keyEv.constprop.0/9 (inlined) (1073741824 (estimated locally),1.00 per call) 
+/home/openeuler/rpmbuild/BUILD/gcc-10.3.0/gcc/testsuite/g++.dg/lto/inline-crossmodule-1_1.C:7:28: note: Inlining ret1.constprop/8 to main/5 with frequency 1.00
+_ZN1a4ret1Ev.constprop.0/8 (ret1.constprop) @0x3fe68665a0
+  Type: function definition analyzed
+  Visibility: artificial
+  References: 
+  Referring: 
+  Read from file: /tmp/g++-dg-lto-inline-crossmodule-1-01.exe.JTC4qI.ltrans0.o
+  Function ret1.constprop/8 is inline copy in main/5
+  Availability: local
+  Unit id: 3
+  Function flags: count:1073741824 (estimated locally) body local nonfreeing_fn executed_once
+  Called by: main/5 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+main/5 (main) @0x3fe6866000
+  Type: function definition analyzed
+  Visibility: externally_visible prevailing_def public
+  References: 
+  Referring: 
+  Availability: available
+  Unit id: 3
+  Function flags: count:1073741824 (estimated locally) body only_called_at_startup nonfreeing_fn executed_once
+  Called by: 
+  Calls: _ZN1a4ret1Ev.constprop.0/8 (inlined) (1073741824 (estimated locally),1.00 per call) _ZN1a3keyEv.constprop.0/9 (inlined) (1073741824 (estimated locally),1.00 per call) 
+/home/openeuler/rpmbuild/BUILD/gcc-10.3.0/gcc/testsuite/g++.dg/lto/inline-crossmodule-1_1.C:7:16: note: Inlining key.constprop/9 to main/5 with frequency 1.00
+_ZN1a3keyEv.constprop.0/9 (key.constprop) @0x3fe6866870
+  Type: function definition analyzed
+  Visibility: artificial
+  References: 
+  Referring: 
+  Read from file: /tmp/g++-dg-lto-inline-crossmodule-1-01.exe.JTC4qI.ltrans0.o
+  Function key.constprop/9 is inline copy in main/5
+  Availability: local
+  Unit id: 2
+  Function flags: count:1073741824 (estimated locally) body local nonfreeing_fn executed_once
+  Called by: main/5 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+main/5 (main) @0x3fe6866000
+  Type: function definition analyzed
+  Visibility: externally_visible prevailing_def public
+  References: 
+  Referring: 
+  Availability: available
+  Unit id: 3
+  Function flags: count:1073741824 (estimated locally) body only_called_at_startup nonfreeing_fn executed_once
+  Called by: 
+  Calls: _ZN1a3keyEv.constprop.0/9 (inlined) (1073741824 (estimated locally),1.00 per call) 
+
+Updating SSA:
+Registering new PHI nodes in block #0
+Registering new PHI nodes in block #2
+Registering new PHI nodes in block #10
+Registering new PHI nodes in block #11
+Updating SSA information for statement D.1426 = 0;
+Registering new PHI nodes in block #9
+Updating SSA information for statement _7 = D.1426;
+Registering new PHI nodes in block #7
+Registering new PHI nodes in block #8
+Updating SSA information for statement D.1424 = 1;
+Registering new PHI nodes in block #6
+Updating SSA information for statement _1 = D.1424;
+Registering new PHI nodes in block #4
+Registering new PHI nodes in block #5
+Updating SSA information for statement D.1422 = 2;
+Registering new PHI nodes in block #3
+Updating SSA information for statement _3 = D.1422;
+
+Symbols to be put in SSA form
+{ D.1422 D.1424 D.1426 }
+Incremental SSA update started at block: 0
+Number of blocks in CFG: 12
+Number of blocks to update: 11 ( 92%)
+Affected blocks: 0 2 3 4 5 6 7 8 9 10 11
+
+
+Merging blocks 2 and 10
+Removing basic block 4
+;; basic block 4, loop depth 0
+;;  pred:      
+;;  succ:       5
+
+
+Removing basic block 7
+;; basic block 7, loop depth 0
+;;  pred:      
+;;  succ:       8
+
+
+Merging blocks 2 and 11
+Merging blocks 2 and 9
+Merging blocks 2 and 8
+Merging blocks 2 and 6
+Merging blocks 2 and 5
+Merging blocks 2 and 3
+fix_loop_structure: fixing up loops for function
+No longer having address taken: a
+No longer having address taken: b
+Scope blocks after cleanups:
+
+{ Scope block #0 
+
+}
+;; 1 loops found
+;;
+;; Loop 0
+;;  header 0, latch 1
+;;  depth 0, outer -1
+;;  nodes: 0 1 2
+;; 2 succs { 1 }
+main ()
+{
+  int D.1426;
+  int D.1424;
+  int D.1422;
+  int _1;
+  int _2;
+  int _3;
+  int _4;
+  int _7;
+  int _8;
+
+  <bb 2> [local count: 1073741824]:
+  _12 = 0;
+  _7 = _12;
+  _13 = 1;
+  _1 = _13;
+  _2 = _1 + _7;
+  _14 = 2;
+  _3 = _14;
+  _4 = _2 + _3;
+  _8 = _4 + -3;
+  return _8;
+
+}
+
+

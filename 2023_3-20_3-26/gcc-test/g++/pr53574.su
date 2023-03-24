@@ -1,0 +1,6 @@
+/home/openeuler/rpmbuild/BUILD/gcc-10.3.0/gcc/testsuite/g++.dg/other/pr53574.C:24:8:void D::fn(int, int)	48	static
+/home/openeuler/rpmbuild/BUILD/gcc-10.3.0/gcc/testsuite/g++.dg/other/pr53574.C:48:3:G fn1()	48	static
+/home/openeuler/rpmbuild/BUILD/gcc-10.3.0/gcc/testsuite/g++.dg/other/pr53574.C:16:14:static int C<_Alloc>::baz(_Alloc) [with _Alloc = I<allocator<int> >]	32	static
+/home/openeuler/rpmbuild/BUILD/gcc-10.3.0/gcc/testsuite/g++.dg/other/pr53574.C:40:44:F<Ch, <template-parameter-1-2>, <template-parameter-1-3> >::F(const Ch*) [with Ch = char; <template-parameter-1-2> = int; <template-parameter-1-3> = int]	32	static
+/home/openeuler/rpmbuild/BUILD/gcc-10.3.0/gcc/testsuite/g++.dg/other/pr53574.C:15:30:static typename A<decltype (C<_Alloc>::foo((_Alloc*)(0)))>::type C<_Alloc>::bar(U) [with U = I<allocator<int> >; _Alloc = I<allocator<int> >]	32	static
+/home/openeuler/rpmbuild/BUILD/gcc-10.3.0/gcc/testsuite/g++.dg/other/pr53574.C:44:18:F<Ch, Tr, Alloc> F<Ch, <template-parameter-1-2>, <template-parameter-1-3> >::test() [with Ch = char; <template-parameter-1-2> = int; <template-parameter-1-3> = int]	64	static

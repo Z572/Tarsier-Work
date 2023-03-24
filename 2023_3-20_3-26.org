@@ -1,0 +1,90 @@
+* openEuler RISC-V gcc 测试
+
+** 测试方法
+
+下载相应 spec 及源码到 ~/rpmbuild/
+#+begin_src bash
+sudo dnf install gmp-devel mpfr-devel libmpc-devel bison flex -y
+sudo dnf install dejagnu expect tcl
+
+cd ~/rpmbuild/
+
+git clone https://gitee.com/src-openeuler/gcc.git --depth=1 --branch openEuler-22.03-LTS SOURCE
+
+rpmbuild -bb SOURCE/gcc.spec
+rpmbuild -bp SOURCE/gcc.spec
+
+cd ~/rpmbuild/BUILD/gcc-10.3.0
+
+cd obj-riscv64-linux-gnu && make -k check
+
+#+end_src
+
+#+begin_example 
+# of expected passes		121087
+# of unexpected failures	153
+# of unexpected successes	40
+# of expected failures		709
+# of unsupported tests		2510
+#+end_example
+
+* openeuler riscv 安装到 LicheePI RV Dock
+
+- 使用镜像 https://mirror.iscas.ac.cn/openeuler-sig-riscv/openEuler-RISC-V/testing/20230322/v0.1/D1/openEuler-23.02-V1-base-d1-testing.img.zst
+
+目前缺陷: 无法使用 wifi
+
+** 解压
+#+begin_src bash
+unzstd openEuler-23.02-V1-base-d1-testing.img.zst
+#+end_src
+
+** 写入 sd 卡
+
+#+begin_src bash
+  dd if=openEuler-23.02-V1-xfce-d1-testing.img \
+     bs=1M iflag=fullblock \
+     oflag=direct conv=fsync status=progress of=/dev/sda
+#+end_src
+
+** 插入并启动
+
+** 安装 ukui [可选]
+
+因为目前镜像在 LicheePI RV Dock 上无法找到 wifi 模块, 所以我们使用 qemu 镜像并下载导出 ukui 相关包
+
+使用 ~dnf download 包名 --resolve~ 可以下载包与当前系统上缺少的依赖到当前目录
+#+begin_src bash
+  mkdir ~/rpms
+  cd ~/rpms
+  dnf download ukui --resolve
+#+end_src
+应有 747 个 rpm 包被下载到 ~/rpms 目录下面, 将其导出虚拟机
+
+
+*** 将 sd 卡挂载并复制 rpms 到其中
+#+begin_src bash
+mount /dev/sda4 /path/to/mount
+cp -r /path/to/rpms /path/to/mount/home/openeuler/rpms
+#+end_src
+
+*** 卸载
+#+begin_src bash
+umount /dev/sda4
+#+end_src
+
+把卡插入开发板, 开机并登录
+
+#+begin_src bash
+sudo dns install ~/rpms/*.rpm --disablerepo=* -y
+#+end_src
+
+#+begin_src bash
+  systemctl set-default graphical.target
+  systemctl enable --now graphical.target
+#+end_src
+
+ukui 就被启动了
+
+但因为 *性能不够* ，所以可能登录之后会卡住死机
+

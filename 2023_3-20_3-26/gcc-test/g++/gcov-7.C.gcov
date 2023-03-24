@@ -1,0 +1,35 @@
+        -:    0:Source:/home/openeuler/rpmbuild/BUILD/gcc-10.3.0/gcc/testsuite/g++.dg/gcov/gcov-7.C
+        -:    0:Graph:gcov-7.gcno
+        -:    0:Data:gcov-7.gcda
+        -:    0:Runs:1
+        -:    1:/* Check that Exception handler specification is not
+        -:    2:   mapped to the curly braces below the function
+        -:    3:   declaration.  */
+        -:    4:
+        -:    5:/* { dg-options "-fprofile-arcs -ftest-coverage" } */
+        -:    6:/* { dg-do run { target native } } */
+        -:    7:
+        -:    8:struct foo
+        -:    9:{
+        1:   10:  foo ()
+        -:   11:#if __cplusplus <= 201402L
+        -:   12:    throw (int)			// { dg-warning "deprecated" "" { target { c++11 && { ! c++17 } } } }
+        -:   13:#endif
+        -:   14:    {			/* count (-) */
+        1:   15:      throw (1);
+        -:   16:    }
+        -:   17:};
+        -:   18:
+        1:   19:int main ()
+        -:   20:{
+        -:   21:  try
+        -:   22:    {
+        1:   23:      foo f;
+        -:   24:    }
+        1:   25:  catch ( ...)
+        -:   26:    {
+        1:   27:      return 0;
+        -:   28:    }
+    #####:   29:}
+        -:   30:
+        -:   31:/* { dg-final { run-gcov gcov-7.C } } */

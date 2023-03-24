@@ -1,0 +1,155 @@
+
+
+Type inheritance graph:
+ type 0: struct A
+ mangled name: 1A
+ derived types:
+   type 1: struct B
+   mangled name: 1B
+   base odr type ids:  0
+
+
+ type 2: char
+ mangled name: c
+
+ type 3: struct __class_type_info
+ mangled name: N10__cxxabiv117__class_type_infoE
+
+ type 4: struct 
+ mangled name: St9type_info
+
+ type 5: struct __si_class_type_info
+ mangled name: N10__cxxabiv120__si_class_type_infoE
+
+Out of 6 types there are 0 types with duplicates; 0 duplicates overall
+
+
+Procesing function t/10
+  Targets of polymorphic call of type 0:struct A token 0
+    Outer type (dynamic):struct A (or a derived type) offset 0 Speculative outer type:struct B (or a derived type) at offset 0
+    This is partial list; extra targets may be defined in other units. (derived types included) (speculative derived types included)
+       A::t B::t
+  Speculative targets: B::t
+
+Indirect call -> speculative call t/10 => t/1
+1 polymorphic calls, 0 devirtualized, 1 speculatively devirtualized, 0 cold
+0 have multiple targets, 0 overwritable, 0 already speculated (0 agree, 0 disagree), 0 external, 0 not defined, 0 artificial, 0 infos dropped
+Symbol table:
+
+aa/5 (aa) @0x3fc9da3480
+  Type: variable definition analyzed
+  Visibility: externally_visible prevailing_def_ironly_exp public
+  References: _ZTV1A/12 (addr) 
+  Referring: 
+  Read from file: cp_lto_devirt-34_0.o
+  Availability: available
+  Varpool flags: initialized
+bb/9 (bb) @0x3fc9da3400
+  Type: variable definition analyzed
+  Visibility: externally_visible prevailing_def_ironly_exp public
+  References: _ZTV1B/11 (addr) 
+  Referring: 
+  Read from file: cp_lto_devirt-34_0.o
+  Availability: available
+  Varpool flags: initialized
+_ZTV1B/11 (_ZTV1B) @0x3fc9da3380
+  Type: variable definition analyzed
+  Visibility: externally_visible prevailing_def_ironly_exp public weak comdat comdat_group:_ZTV1B one_only virtual artificial
+  References: _ZTI1B/13 (addr) _ZN1B1tEv/1 (addr) 
+  Referring: bb/9 (addr) 
+  Availability: available
+  Varpool flags: initialized read-only const-value-known
+_ZTV1A/12 (_ZTV1A) @0x3fc9da3300
+  Type: variable definition analyzed
+  Visibility: externally_visible prevailing_def_ironly_exp public weak comdat comdat_group:_ZTV1A one_only virtual artificial
+  References: _ZTI1A/15 (addr) _ZN1A1tEv/0 (addr) 
+  Referring: aa/5 (addr) 
+  Availability: available
+  Varpool flags: initialized read-only const-value-known
+_ZTVN10__cxxabiv120__si_class_type_infoE/18 (_ZTVN10__cxxabiv120__si_class_type_infoE) @0x3fc9da3280
+  Type: variable
+  Body removed by symtab_remove_unreachable_nodes
+  Visibility: external public visibility_specified virtual artificial
+  References: 
+  Referring: _ZTI1B/13 (addr) 
+  Read from file: cp_lto_devirt-34_0.o
+  Availability: not_available
+  Varpool flags: read-only
+_ZTI1B/13 (_ZTI1B) @0x3fc9da3200
+  Type: variable definition analyzed
+  Visibility: externally_visible prevailing_def_ironly_exp public weak comdat comdat_group:_ZTI1B one_only artificial
+  References: _ZTVN10__cxxabiv120__si_class_type_infoE/18 (addr) _ZTS1B/14 (addr) _ZTI1A/15 (addr) 
+  Referring: _ZTV1B/11 (addr) 
+  Read from file: cp_lto_devirt-34_0.o
+  Availability: available
+  Varpool flags: initialized read-only const-value-known
+_ZTS1B/14 (_ZTS1B) @0x3fc9da3180
+  Type: variable definition analyzed
+  Visibility: externally_visible prevailing_def_ironly_exp public weak comdat comdat_group:_ZTS1B one_only artificial
+  References: 
+  Referring: _ZTI1B/13 (addr) 
+  Read from file: cp_lto_devirt-34_0.o
+  Availability: available
+  Varpool flags: initialized read-only const-value-known
+_ZTVN10__cxxabiv117__class_type_infoE/17 (_ZTVN10__cxxabiv117__class_type_infoE) @0x3fc9da3100
+  Type: variable
+  Body removed by symtab_remove_unreachable_nodes
+  Visibility: external public visibility_specified virtual artificial
+  References: 
+  Referring: _ZTI1A/15 (addr) 
+  Read from file: cp_lto_devirt-34_0.o
+  Availability: not_available
+  Varpool flags: read-only
+_ZTI1A/15 (_ZTI1A) @0x3fc9da3080
+  Type: variable definition analyzed
+  Visibility: externally_visible prevailing_def_ironly_exp public weak comdat comdat_group:_ZTI1A one_only artificial
+  References: _ZTVN10__cxxabiv117__class_type_infoE/17 (addr) _ZTS1A/16 (addr) 
+  Referring: _ZTI1B/13 (addr) _ZTV1A/12 (addr) 
+  Read from file: cp_lto_devirt-34_0.o
+  Availability: available
+  Varpool flags: initialized read-only const-value-known
+_ZTS1A/16 (_ZTS1A) @0x3fc9da3000
+  Type: variable definition analyzed
+  Visibility: externally_visible prevailing_def_ironly_exp public weak comdat comdat_group:_ZTS1A one_only artificial
+  References: 
+  Referring: _ZTI1A/15 (addr) 
+  Read from file: cp_lto_devirt-34_0.o
+  Availability: available
+  Varpool flags: initialized read-only const-value-known
+_Z1tP1B/10 (t) @0x3fc9da22d0
+  Type: function definition analyzed
+  Visibility: externally_visible prevailing_def_ironly_exp public
+  References: _ZN1B1tEv/1 (addr) (speculative) 
+  Referring: 
+  Read from file: cp_lto_devirt-34_0.o
+  Availability: available
+  Unit id: 1
+  Function flags: count:1073741824 (estimated locally)
+  Called by: 
+  Calls: _ZN1B1tEv/1 (speculative) (858993459 (estimated locally),0.80 per call) 
+   Polymorphic indirect call of type struct A token:0(speculative) (214748365 (estimated locally),0.20 per call) (can throw external)  of param:0 Num speculative call targets: 1
+    Outer type (dynamic):struct A (or a derived type) offset 0 Speculative outer type:struct B (or a derived type) at offset 0
+_ZN1B1tEv/1 (t) @0x3fc9da2168
+  Type: function definition analyzed
+  Visibility: externally_visible prevailing_def_ironly_exp public weak comdat comdat_group:_ZN1B1tEv one_only virtual
+  Address is taken.
+  References: 
+  Referring: _ZTV1B/11 (addr) _Z1tP1B/10 (addr) (speculative) 
+  Read from file: cp_lto_devirt-34_0.o
+  Availability: available
+  Unit id: 1
+  Function flags: count:1073741824 (estimated locally) indirect_call_target
+  Called by: _Z1tP1B/10 (speculative) (858993459 (estimated locally),0.80 per call) 
+  Calls: 
+_ZN1A1tEv/0 (t) @0x3fc9da2000
+  Type: function definition analyzed
+  Visibility: externally_visible prevailing_def_ironly_exp public weak comdat comdat_group:_ZN1A1tEv one_only virtual
+  Address is taken.
+  References: 
+  Referring: _ZTV1A/12 (addr) 
+  Read from file: cp_lto_devirt-34_0.o
+  Availability: available
+  Unit id: 1
+  Function flags: count:1073741824 (estimated locally) indirect_call_target
+  Called by: 
+  Calls: 

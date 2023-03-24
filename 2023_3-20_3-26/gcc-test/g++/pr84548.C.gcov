@@ -1,0 +1,32 @@
+        -:    0:Source:/home/openeuler/rpmbuild/BUILD/gcc-10.3.0/gcc/testsuite/g++.dg/gcov/pr84548.C
+        -:    0:Graph:pr84548.gcno
+        -:    0:Data:pr84548.gcda
+        -:    0:Runs:1
+        -:    1:// PR gcov-profile/84548
+        -:    2:// { dg-options "-fprofile-arcs -ftest-coverage" }
+        -:    3:// { dg-do run { target native } }
+        -:    4:// TODO: add support for groups to gcov.exp script
+        -:    5:
+        2:    6:struct A { static int foo () { return 1; }; static int bar () {
+        -:    7:  int x;
+        1:    8:  return 2; } };
+------------------
+_ZN1A3fooEv:
+        1:    6:struct A { static int foo () { return 1; }; static int bar () {
+------------------
+_ZN1A3barEv:
+        1:    6:struct A { static int foo () { return 1; }; static int bar () {
+        -:    7:  int x;
+        1:    8:  return 2; } };
+------------------
+        -:    9:
+        1:   10:int main()
+        -:   11:{
+        1:   12:  int a = A::foo () + A::bar ();
+        1:   13:  if (a != 3)
+    #####:   14:    return 1;
+        -:   15:
+        1:   16:  return 0;
+        -:   17:}
+        -:   18:
+        -:   19:// { dg-final { run-gcov pr84548.C } }

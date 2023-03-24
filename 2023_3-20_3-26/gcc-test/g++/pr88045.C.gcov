@@ -1,0 +1,146 @@
+        -:    0:Source:/home/openeuler/rpmbuild/BUILD/gcc-10.3.0/gcc/testsuite/g++.dg/gcov/pr88045.C
+        -:    0:Graph:pr88045.gcno
+        -:    0:Data:pr88045.gcda
+        -:    0:Runs:1
+        -:    1:// PR gcov-profile/88045
+        -:    2:// { dg-options "-fprofile-arcs -ftest-coverage -std=c++11" }
+        -:    3:// { dg-do run { target native } }
+        -:    4:
+        -:    5:#include <numeric>
+        -:    6:#include <vector>
+        -:    7:#include <stdlib.h>
+        -:    8:
+        -:    9:struct Foo {
+       15:   10:    size_t size() const { return n; };
+        -:   11:    const size_t n;
+       20:   12:    explicit Foo(size_t a_n) : n{a_n} {};
+        -:   13:};
+        -:   14:
+        -:   15:template<template<typename...> class C, typename Head, typename... Tail>
+        -:   16:struct make_with_tail {
+        -:   17:    using type = C<Tail...>;
+        -:   18:};
+        -:   19:
+        -:   20:template<template<typename...> class C, typename T, typename Head, typename... Tail>
+        -:   21:struct make_with_tail_1 {
+        -:   22:using type = C<T, Tail...>;
+        -:   23:};
+        -:   24:
+        -:   25:template<typename Head, typename... Tail>
+        -:   26:struct head {
+        -:   27:    using type = Head;
+        -:   28:};
+        -:   29:template<typename... Ts>
+        -:   30:struct Tree {
+        -:   31:    using root_type = typename head<Ts...>::type;
+        -:   32:    using branch_type = typename make_with_tail<Tree, Ts...>::type;
+        5:   33:    Tree(root_type a_root, std::vector<branch_type> a_branches) :
+        5:   34:        root{std::move(a_root)},
+        5:   35:        branches{std::move(a_branches)}
+        -:   36:    {
+        5:   37:    }
+------------------
+_ZN4TreeIJ3FooS0_S0_EEC2ES0_St6vectorIS_IJS0_S0_EESaIS3_EE:
+        1:   33:    Tree(root_type a_root, std::vector<branch_type> a_branches) :
+        1:   34:        root{std::move(a_root)},
+        1:   35:        branches{std::move(a_branches)}
+        -:   36:    {
+        1:   37:    }
+------------------
+_ZN4TreeIJ3FooS0_EEC2ES0_St6vectorIS_IJS0_EESaIS3_EE:
+        4:   33:    Tree(root_type a_root, std::vector<branch_type> a_branches) :
+        4:   34:        root{std::move(a_root)},
+        4:   35:        branches{std::move(a_branches)}
+        -:   36:    {
+        4:   37:    }
+------------------
+        -:   38:
+       15:   39:    explicit Tree(root_type a_root) : root{std::move(a_root)}, branches{root.size()}
+        -:   40:    {
+       15:   41:    }
+        -:   42:
+        -:   43:    root_type                root;
+        -:   44:    std::vector<branch_type> branches;
+        -:   45:};
+        -:   46:
+        -:   47:template<>
+        -:   48:struct Tree<> {
+        -:   49:};
+        -:   50:
+        -:   51:template<typename... Axes>
+       20:   52:size_t size(const Tree<Axes...>& tree)
+        -:   53:{
+       20:   54:    return std::accumulate(
+        -:   55:        tree.branches.begin(),
+        -:   56:        tree.branches.end(),
+        -:   57:        0,
+     7521:   58:        [](const size_t& count, const typename make_with_tail<Tree, Axes...>::type& branch) {
+     7521:   59:            return count + size(branch);
+       20:   60:        });
+        -:   61:}
+------------------
+_Z4sizeIJ3FooEEmRK4TreeIJDpT_EE:
+       15:   52:size_t size(const Tree<Axes...>& tree)
+        -:   53:{
+       15:   54:    return std::accumulate(
+        -:   55:        tree.branches.begin(),
+        -:   56:        tree.branches.end(),
+        -:   57:        0,
+        -:   58:        [](const size_t& count, const typename make_with_tail<Tree, Axes...>::type& branch) {
+        -:   59:            return count + size(branch);
+       15:   60:        });
+        -:   61:}
+------------------
+_Z4sizeIJ3FooS0_EEmRK4TreeIJDpT_EE:
+        4:   52:size_t size(const Tree<Axes...>& tree)
+        -:   53:{
+        4:   54:    return std::accumulate(
+        -:   55:        tree.branches.begin(),
+        -:   56:        tree.branches.end(),
+        -:   57:        0,
+        -:   58:        [](const size_t& count, const typename make_with_tail<Tree, Axes...>::type& branch) {
+        -:   59:            return count + size(branch);
+        4:   60:        });
+        -:   61:}
+------------------
+_Z4sizeIJ3FooS0_S0_EEmRK4TreeIJDpT_EE:
+        1:   52:size_t size(const Tree<Axes...>& tree)
+        -:   53:{
+        1:   54:    return std::accumulate(
+        -:   55:        tree.branches.begin(),
+        -:   56:        tree.branches.end(),
+        -:   57:        0,
+        -:   58:        [](const size_t& count, const typename make_with_tail<Tree, Axes...>::type& branch) {
+        -:   59:            return count + size(branch);
+        1:   60:        });
+        -:   61:}
+------------------
+        -:   62:
+        -:   63:template<>
+     7502:   64:inline size_t size(const Tree<>& /* empty tree */)
+        -:   65:{
+     7502:   66:    return 1;
+        -:   67:}
+        -:   68:
+        1:   69:int main(int argc, char *argv[])
+        -:   70:{
+       25:   71:    size(Tree<Foo, Foo, Foo>{Foo{4}, {Tree<Foo, Foo>{Foo{2}, {Tree<Foo>{Foo{205}},
+        3:   72:                                                              Tree<Foo>{Foo{261}}}},
+        -:   73:                                      Tree<Foo, Foo>{Foo{4}, {Tree<Foo>{Foo{875}},
+        -:   74:                                                              Tree<Foo>{Foo{492}},
+        -:   75:                                                              Tree<Foo>{Foo{398}},
+        5:   76:                                                              Tree<Foo>{Foo{302}}}},
+        -:   77:                                      Tree<Foo, Foo>{Foo{6}, {Tree<Foo>{Foo{111}},
+        -:   78:                                                              Tree<Foo>{Foo{436}},
+        -:   79:                                                              Tree<Foo>{Foo{388}},
+        -:   80:                                                              Tree<Foo>{Foo{879}},
+        -:   81:                                                              Tree<Foo>{Foo{783}},
+        7:   82:                                                              Tree<Foo>{Foo{735}}}},
+        -:   83:                                      Tree<Foo, Foo>{Foo{3}, {Tree<Foo>{Foo{791}},
+        -:   84:                                                              Tree<Foo>{Foo{  5}},
+        9:   85:                                                              Tree<Foo>{Foo{841}}}}}});
+        -:   86:
+        1:   87:    return 0;
+        -:   88:}
+        -:   89:
+        -:   90:// { dg-final { run-gcov pr88045.C } }

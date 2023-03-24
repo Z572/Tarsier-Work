@@ -1,0 +1,71 @@
+        -:    0:Source:/home/openeuler/rpmbuild/BUILD/gcc-10.3.0/gcc/testsuite/g++.dg/gcov/pr16855.C
+        -:    0:Graph:pr16855.gcno
+        -:    0:Data:pr16855.gcda
+        -:    0:Runs:1
+        -:    1:/* { dg-options "-fprofile-arcs -ftest-coverage" } */
+        -:    2:/* { dg-do run { target native } } */
+        -:    3:
+        -:    4:/* See PR91087 for information on Darwin xfails. */
+        -:    5:
+        -:    6:#include <stdlib.h>
+        -:    7:#include <stdio.h>
+        -:    8:
+        -:    9:int a;
+        -:   10:
+        -:   11:void
+function _Z3foov called 1 returned 100% blocks executed 100%
+        1:   12:foo ()
+        -:   13:{
+        1:   14:  fprintf (stderr, "In foo\n");
+call    0 returned 100%
+        1:   15:  a = 123; /* count(1) */
+        1:   16:}
+        -:   17:
+        -:   18:using namespace std;
+        -:   19:class Test
+        -:   20:{
+        -:   21:public:
+function _ZN4TestC2Ev called 1 returned 100% blocks executed 100%
+        1:   22:  Test (void) { fprintf (stderr, "In Test::Test\n"); /* count(1) */ }
+call    0 returned 100%
+function _ZN4TestD2Ev called 1 returned 100% blocks executed 100%
+        1:   23:  ~Test (void) {
+        1:   24:   fprintf (stderr, "In Test::~Test\n"); /* count(1) { xfail *-*-darwin* } */
+call    0 returned 100%
+        1:   25:  }
+        -:   26:} T1;
+        -:   27:
+        -:   28:void
+function _Z8uncalledv called 0 returned 0% blocks executed 0%
+    #####:   29:uncalled (void)
+        -:   30:{
+    #####:   31:  fprintf (stderr, "In uncalled\n"); /* count(#####) */
+call    0 never executed
+    #####:   32:}
+        -:   33:
+        -:   34:int
+function main called 1 returned 100% blocks executed 100%
+        1:   35:main (void)
+        -:   36:{
+        1:   37:  atexit (&foo);
+call    0 returned 100%
+        1:   38:  fprintf (stderr, "In main\n"); /* count(1) */
+call    0 returned 100%
+        1:   39:  return 0;
+        -:   40:}
+        -:   41:
+function _ZL12ctor_defaultv called 1 returned 100% blocks executed 100%
+        1:   42:static void __attribute__ ((constructor)) ctor_default ()
+        -:   43:{
+        1:   44:  fprintf (stderr, "in constructor(())\n"); /* count(1) */
+call    0 returned 100%
+        1:   45:}
+        -:   46:
+function _ZL12dtor_defaultv called 1 returned 100% blocks executed 100%
+        1:   47:static void __attribute__ ((destructor)) dtor_default ()
+        -:   48:{
+        1:   49:  fprintf (stderr, "in destructor(())\n"); /* count(1) { xfail *-*-darwin* } */
+call    0 returned 100%
+        1:   50:}
+        -:   51:
+        -:   52:/* { dg-final { run-gcov branches { -b pr16855.C } { xfail *-*-darwin* } } } */

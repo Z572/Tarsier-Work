@@ -1,0 +1,24 @@
+        -:    0:Source:/home/openeuler/rpmbuild/BUILD/gcc-10.3.0/gcc/testsuite/g++.dg/gcov/gcov-10.C
+        -:    0:Graph:gcov-10.gcno
+        -:    0:Data:gcov-10.gcda
+        -:    0:Runs:1
+        -:    1:/* Ensure PIC sequence used for comdat functions */
+        -:    2:
+        -:    3:/* { dg-options "-fprofile-arcs -ftest-coverage -fpic" } */
+        -:    4:/* { dg-do run { target native } } */
+        -:    5:/* { dg-require-effective-target fpic } */
+        -:    6:
+        1:    7:inline int __attribute__ ((noinline)) Foo ()
+        -:    8:{
+        -:    9:  static int x[1];
+        -:   10:
+        1:   11:  return x[0]++;  /* count (1) */
+        -:   12:}
+        -:   13:
+        1:   14:int main ()
+        -:   15:{
+        1:   16:  Foo ();  /* count (1) */
+        1:   17:  return 0;  /* count (1) */
+        -:   18:}
+        -:   19:
+        -:   20:/* { dg-final { run-gcov gcov-10.C } } */

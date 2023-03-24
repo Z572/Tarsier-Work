@@ -1,0 +1,21 @@
+        -:    0:Source:/home/openeuler/rpmbuild/BUILD/gcc-10.3.0/gcc/testsuite/g++.dg/gcov/gcov-3.C
+        -:    0:Graph:gcov-3.gcno
+        -:    0:Data:gcov-3.gcda
+        -:    0:Runs:1
+        -:    1:/* Check that gcov doesn't abort when a static object is defined
+        -:    2:   within a header file.  */
+        -:    3:
+        -:    4:/* { dg-options "-fprofile-arcs -ftest-coverage" } */
+        -:    5:/* { dg-do run { target native } } */
+        -:    6:
+        -:    7:#include "gcov-3.h"
+        -:    8:
+        -:    9:extern int foo();
+        -:   10:
+        -:   11:int
+        1:   12:main ()
+        -:   13:{
+        1:   14:  return foo();                                /* count(1) */
+        -:   15:}
+        -:   16:
+        -:   17:/* { dg-final { run-gcov gcov-3.C } } */

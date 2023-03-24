@@ -1,0 +1,36 @@
+        -:    0:Source:/home/openeuler/rpmbuild/BUILD/gcc-10.3.0/gcc/testsuite/g++.dg/gcov/gcov-2.C
+        -:    0:Graph:gcov-2.gcno
+        -:    0:Data:gcov-2.gcda
+        -:    0:Runs:1
+        -:    1:/* Verify line coverage counts for simple member functions. */
+        -:    2:
+        -:    3:/* { dg-options "-fprofile-arcs -ftest-coverage" } */
+        -:    4:/* { dg-do run { target native } } */
+        -:    5:
+        -:    6:class C {
+        -:    7:public:
+        1:    8:  C()
+        1:    9:  {
+        1:   10:    i = 0;				/* count(1) */
+        1:   11:  }
+        1:   12:  ~C() {}
+        1:   13:  void seti (int j)
+        -:   14:  {
+        1:   15:    i = j;				/* count(1) */
+        1:   16:  }
+        -:   17:private:
+        -:   18:  int i;
+        -:   19:};
+        -:   20:
+        1:   21:void foo()
+        -:   22:{
+        2:   23:  C c;					/* count(2) */
+        1:   24:  c.seti (1);				/* count(1) */
+        1:   25:}
+        -:   26:
+        1:   27:int main()
+        -:   28:{
+        1:   29:  foo();				/* count(1) */
+        1:   30:}
+        -:   31:
+        -:   32:/* { dg-final { run-gcov gcov-2.C } } */

@@ -1,0 +1,54 @@
+        -:    0:Source:/home/openeuler/rpmbuild/BUILD/gcc-10.3.0/gcc/testsuite/g++.dg/gcov/gcov-5.C
+        -:    0:Graph:gcov-5.gcno
+        -:    0:Data:gcov-5.gcda
+        -:    0:Runs:1
+        -:    1:/* Check that execution counts for template functions
+        -:    2:   are reported correctly by gcov. */
+        -:    3:
+        -:    4:#include <stdio.h>
+        -:    5:#include <stdlib.h>
+        -:    6:
+        -:    7:/* { dg-options "-fprofile-arcs -ftest-coverage -fno-inline" } */
+        -:    8:/* { dg-do run { target native } } */
+        -:    9:
+        -:   10:class A {
+        -:   11:  int count;
+        -:   12: public:
+        1:   13:  A(int c) { count = c; }
+        -:   14:  void func(void) { printf("func\n"); }
+        2:   15:  bool done(void) { 
+       2*:   16:    return (count == 0) ? true : (count-- != 0);
+        -:   17:  }
+    #####:   18:  void run(void) { abort(); }
+        -:   19:};
+        -:   20:
+        -:   21://typedef A T;
+        -:   22:template<class T>
+        1:   23:void WithoutBrace(T *a) {
+       1*:   24:  while (!a->done())   
+    #####:   25:    a->run();           /* count(#####) */
+        1:   26:}                       /* count(1) */
+        -:   27:
+        -:   28:template<class T>
+        1:   29:void WithBrace(T *a)
+        -:   30:{
+       1*:   31:  while (!a->done())   
+        -:   32:    { 
+    #####:   33:      a->run();         /* count(#####) */
+        -:   34:    }
+        1:   35:}                       /* count(1) */
+        -:   36:
+        1:   37:A *func(A *a)
+        -:   38:{
+        1:   39:  WithoutBrace(a);
+        1:   40:  WithBrace(a);
+        1:   41:  return a;
+        -:   42:}
+        -:   43:
+        1:   44:int main() {
+        1:   45:  A a(0);
+        1:   46:  func(&a);
+        1:   47:  return 0;
+        -:   48:}
+        -:   49:
+        -:   50:/* { dg-final { run-gcov gcov-5.C } } */

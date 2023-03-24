@@ -1,0 +1,479 @@
+        -:    0:Source:/home/openeuler/rpmbuild/BUILD/gcc-10.3.0/gcc/testsuite/g++.dg/gcov/gcov-1.C
+        -:    0:Graph:gcov-1.gcno
+        -:    0:Data:gcov-1.gcda
+        -:    0:Runs:1
+        -:    1:/* Check that execution counts and branch probabilities for various C
+        -:    2:   constructs are reported correctly by gcov. */
+        -:    3:
+        -:    4:/* { dg-options "-fprofile-arcs -ftest-coverage" } */
+        -:    5:/* { dg-do run { target native } } */
+        -:    6:
+        -:    7:extern "C" void abort (void);
+        -:    8:
+function _Z12do_somethingi called 23 returned 100% blocks executed 100%
+       23:    9:int do_something (int i)
+        -:   10:{
+       23:   11:  return i;
+        -:   12:}
+        -:   13:
+        -:   14:/* Check static inline functions. */
+        -:   15:
+        -:   16:int unref_val;
+        -:   17:
+        -:   18:static inline int
+        -:   19:unreferenced (int i, int j)
+        -:   20:{
+        -:   21:  return i - j;
+        -:   22:}
+        -:   23:
+        -:   24:static inline int
+function _ZL8uncalledii called 0 returned 0% blocks executed 0%
+    #####:   25:uncalled (int i, int j)
+        -:   26:{
+    #####:   27:  return i * j;
+        -:   28:}
+        -:   29:
+        -:   30:static inline int
+function _ZL6calledii called 1 returned 100% blocks executed 100%
+        1:   31:called (int i, int j)
+        -:   32:{
+        1:   33:    return i + j;			/* count(1) */
+        -:   34:}
+        -:   35:
+        -:   36:void
+function _Z10call_unrefv called 1 returned 100% blocks executed 60%
+        1:   37:call_unref ()
+        -:   38:{
+        1:   39:  if (unref_val)			/* count(1) */
+branch  0 taken 0% (fallthrough)
+branch  1 taken 100%
+    #####:   40:    unref_val = uncalled (1, 2);
+call    0 never executed
+        1:   41:  unref_val = called (unref_val, 4);	/* count(1) */
+call    0 returned 100%
+        1:   42:}
+        -:   43:
+        -:   44:
+        -:   45:/* Check for loops. */
+        -:   46:
+        -:   47:int for_val1;
+        -:   48:int for_val2;
+        -:   49:int for_temp;
+        -:   50:
+        -:   51:int
+function _Z9test_for1i called 3 returned 100% blocks executed 100%
+        3:   52:test_for1 (int n)
+        -:   53:{
+        -:   54:  int i;
+        3:   55:  for_temp = 1;				/* count(3) */
+       12:   56:  for (i = 0; i < n; i++)		/* branch(25) */
+branch  0 taken 75% (fallthrough)
+branch  1 taken 25%
+        -:   57:					/* branch(end) */
+        9:   58:    for_temp++;				/* count(9) */
+        3:   59:  return for_temp;			/* count(3) */
+        -:   60:}
+        -:   61:
+        -:   62:int
+function _Z9test_for2iii called 6 returned 100% blocks executed 100%
+        6:   63:test_for2 (int m, int n, int o)
+        -:   64:{
+        -:   65:  int i, j, k;
+        6:   66:  for_temp = 1;				/* count(6) */
+       20:   67:  for (i = 0; i < n; i++)		/* branch(30) */
+branch  0 taken 70% (fallthrough)
+branch  1 taken 30%
+        -:   68:					/* branch(end) */
+       44:   69:    for (j = 0; j < m; j++)		/* branch(32) */
+branch  0 taken 68% (fallthrough)
+branch  1 taken 32%
+        -:   70:					/* branch(end) */
+      111:   71:      for (k = 0; k < o; k++)		/* branch(27) */
+branch  0 taken 73% (fallthrough)
+branch  1 taken 27%
+        -:   72:					/* branch(end) */
+       81:   73:	for_temp++;			/* count(81) */
+        6:   74:  return for_temp;			/* count(6) */
+        -:   75:}
+        -:   76:
+        -:   77:void
+function _Z8call_forv called 1 returned 100% blocks executed 100%
+        1:   78:call_for ()
+        -:   79:{
+        1:   80:  for_val1 += test_for1 (0);
+call    0 returned 100%
+        1:   81:  for_val1 += test_for1 (2);
+call    0 returned 100%
+        1:   82:  for_val1 += test_for1 (7);
+call    0 returned 100%
+        -:   83:
+        1:   84:  for_val2 += test_for2 (0, 0, 0);
+call    0 returned 100%
+        1:   85:  for_val2 += test_for2 (1, 0, 0);
+call    0 returned 100%
+        1:   86:  for_val2 += test_for2 (1, 3, 0);
+call    0 returned 100%
+        1:   87:  for_val2 += test_for2 (1, 3, 1);
+call    0 returned 100%
+        1:   88:  for_val2 += test_for2 (3, 1, 5);
+call    0 returned 100%
+        1:   89:  for_val2 += test_for2 (3, 7, 3);
+call    0 returned 100%
+        1:   90:}
+        -:   91:
+        -:   92:/* Check the use of goto. */
+        -:   93:
+        -:   94:int goto_val;
+        -:   95:
+        -:   96:int
+function _Z10test_goto1i called 2 returned 100% blocks executed 100%
+        2:   97:test_goto1 (int f)
+        -:   98:{
+        -:   99:					/* branch(50) */
+        2:  100:  if (f)				/* count(2) */
+branch  0 taken 50% (fallthrough)
+branch  1 taken 50%
+        -:  101:					/* branch(end) */
+        1:  102:    goto lab1;				/* count(1) */
+        1:  103:  return 1;				/* count(1) */
+        1:  104:lab1:
+        1:  105:  return 2;				/* count(1) */
+        -:  106:}
+        -:  107:
+        -:  108:int
+function _Z10test_goto2i called 2 returned 100% blocks executed 100%
+        2:  109:test_goto2 (int f)
+        -:  110:{
+        -:  111:  int i;
+        -:  112:					/* branch(7) */
+       15:  113:  for (i = 0; i < 10; i++)		/* count(15) */
+branch  0 taken 93% (fallthrough)
+branch  1 taken 7%
+        -:  114:					/* branch(end) */
+       14:  115:    if (i == f) goto lab2;		/* count(14) */
+branch  0 taken 7% (fallthrough)
+branch  1 taken 93%
+        1:  116:  return 4;				/* count(1) */
+        1:  117:lab2:
+        1:  118:  return 8;				/* count(1) */
+        -:  119:}
+        -:  120:
+        -:  121:void
+function _Z9call_gotov called 1 returned 100% blocks executed 100%
+        1:  122:call_goto ()
+        -:  123:{
+        1:  124:  goto_val += test_goto1 (0);
+call    0 returned 100%
+        1:  125:  goto_val += test_goto1 (1);
+call    0 returned 100%
+        1:  126:  goto_val += test_goto2 (3);
+call    0 returned 100%
+        1:  127:  goto_val += test_goto2 (30);
+call    0 returned 100%
+        1:  128:}
+        -:  129:
+        -:  130:/* Check nested if-then-else statements. */
+        -:  131:
+        -:  132:int ifelse_val1;
+        -:  133:int ifelse_val2;
+        -:  134:int ifelse_val3;
+        -:  135:
+        -:  136:int
+function _Z12test_ifelse1ii called 5 returned 100% blocks executed 93%
+        5:  137:test_ifelse1 (int i, int j)
+        -:  138:{
+        5:  139:  int result = 0;
+        -:  140:					/* branch(40) */
+        5:  141:  if (i)				/* count(5) */
+branch  0 taken 60% (fallthrough)
+branch  1 taken 40%
+        -:  142:					/* branch(0) */
+        3:  143:    if (j)				/* count(3) */
+branch  0 taken 100% (fallthrough)
+branch  1 taken 0%
+        -:  144:					/* branch(end) */
+        3:  145:      result = do_something (4);	/* count(3) */
+call    0 returned 100%
+        -:  146:    else
+    #####:  147:      result = do_something (1024);
+call    0 never executed
+        -:  148:  else
+        -:  149:					/* branch(50) */
+        2:  150:    if (j)				/* count(2) */
+branch  0 taken 50% (fallthrough)
+branch  1 taken 50%
+        -:  151:					/* branch(end) */
+        1:  152:      result = do_something (1);	/* count(1) */
+call    0 returned 100%
+        -:  153:    else
+        1:  154:      result = do_something (2);	/* count(1) */
+call    0 returned 100%
+        -:  155:					/* branch(80) */
+        5:  156:  if (i > j)				/* count(5) */
+branch  0 taken 20% (fallthrough)
+branch  1 taken 80%
+        -:  157:					/* branch(end) */
+        1:  158:    result = do_something (result*2);	/* count(1) */
+call    0 returned 100%
+        -:  159:					/* branch(80) */
+        5:  160:  if (i > 10)				/* count(5) */
+branch  0 taken 20% (fallthrough)
+branch  1 taken 80%
+        -:  161:					/* branch(100) */
+        1:  162:    if (j > 10)				/* count(1) */
+branch  0 taken 100% (fallthrough)
+branch  1 taken 0%
+        -:  163:					/* branch(end) */
+        1:  164:      result = do_something (result*4);	/* count(1) */
+call    0 returned 100%
+        5:  165:  return result;			/* count(5) */
+        -:  166:}
+        -:  167:
+        -:  168:int
+function _Z12test_ifelse2i called 6 returned 100% blocks executed 83%
+        6:  169:test_ifelse2 (int i)
+        -:  170:{
+        6:  171:  int result = 0;
+        -:  172:					/* branch(83) */
+        6:  173:  if (!i)				/* count(6) */
+branch  0 taken 17% (fallthrough)
+branch  1 taken 83%
+        -:  174:					/* branch(end) */
+        1:  175:    result = do_something (1);		/* count(1) */
+call    0 returned 100%
+        -:  176:					/* branch(100) */
+        6:  177:  if (i == 1)				/* count(6) */
+branch  0 taken 0% (fallthrough)
+branch  1 taken 100%
+        -:  178:					/* branch(end) */
+    #####:  179:    result = do_something (1024);
+call    0 never executed
+        -:  180:					/* branch(50) */
+        6:  181:  if (i == 2)				/* count(6) */
+branch  0 taken 50% (fallthrough)
+branch  1 taken 50%
+        -:  182:					/* branch(end) */
+        3:  183:    result = do_something (2);		/* count(3) */
+call    0 returned 100%
+        -:  184:					/* branch(67) */
+        6:  185:  if (i == 3)				/* count(6) */
+branch  0 taken 33% (fallthrough)
+branch  1 taken 67%
+        -:  186:					/* branch(end) */
+        2:  187:    return do_something (8);		/* count(2) */
+call    0 returned 100%
+        -:  188:					/* branch(100) */
+        4:  189:  if (i == 4)				/* count(4) */
+branch  0 taken 0% (fallthrough)
+branch  1 taken 100%
+        -:  190:					/* branch(end) */
+    #####:  191:    return do_something (2048);
+call    0 never executed
+        4:  192:  return result;			/* count(4) */
+        -:  193:}
+        -:  194:
+        -:  195:int
+function _Z12test_ifelse3ii called 11 returned 100% blocks executed 100%
+       11:  196:test_ifelse3 (int i, int j)
+        -:  197:{
+       11:  198:  int result = 1;
+        -:  199:					/* branch(27 50 75) */
+       11:  200:  if (i > 10 && j > i && j < 20)	/* count(11) */
+branch  0 taken 73% (fallthrough)
+branch  1 taken 27%
+branch  2 taken 50% (fallthrough)
+branch  3 taken 50%
+branch  4 taken 25% (fallthrough)
+branch  5 taken 75%
+        -:  201:					/* branch(end) */
+        1:  202:    result = do_something (16);		/* count(1) */
+call    0 returned 100%
+        -:  203:					/* branch(55) */
+       11:  204:  if (i > 20)				/* count(11) */
+branch  0 taken 45% (fallthrough)
+branch  1 taken 55%
+        -:  205:					/* branch(60) */
+        5:  206:    if (j > i)				/* count(5) */
+branch  0 taken 40% (fallthrough)
+branch  1 taken 60%
+        -:  207:					/* branch(50) */
+        2:  208:      if (j < 30)			/* count(2) */
+branch  0 taken 50% (fallthrough)
+branch  1 taken 50%
+        -:  209:					/* branch(end) */
+        1:  210:	result = do_something (32);	/* count(1) */
+call    0 returned 100%
+        -:  211:					/* branch(9 10 89) */
+       11:  212:  if (i == 3 || j == 47 || i == j)	/* count(11) */
+branch  0 taken 91% (fallthrough)
+branch  1 taken 9%
+branch  2 taken 90% (fallthrough)
+branch  3 taken 10%
+branch  4 taken 11% (fallthrough)
+branch  5 taken 89%
+        -:  213:					/* branch(end) */
+        3:  214:    result = do_something (64);		/* count(3) */
+call    0 returned 100%
+       11:  215:  return result;			/* count(11) */
+        -:  216:}
+        -:  217:
+        -:  218:void
+function _Z11call_ifelsev called 1 returned 100% blocks executed 100%
+        1:  219:call_ifelse ()
+        -:  220:{
+        1:  221:  ifelse_val1 += test_ifelse1 (0, 2);
+call    0 returned 100%
+        1:  222:  ifelse_val1 += test_ifelse1 (0, 0);
+call    0 returned 100%
+        1:  223:  ifelse_val1 += test_ifelse1 (1, 2);
+call    0 returned 100%
+        1:  224:  ifelse_val1 += test_ifelse1 (10, 2);
+call    0 returned 100%
+        1:  225:  ifelse_val1 += test_ifelse1 (11, 11);
+call    0 returned 100%
+        -:  226:
+        1:  227:  ifelse_val2 += test_ifelse2 (0);
+call    0 returned 100%
+        1:  228:  ifelse_val2 += test_ifelse2 (2);
+call    0 returned 100%
+        1:  229:  ifelse_val2 += test_ifelse2 (2);
+call    0 returned 100%
+        1:  230:  ifelse_val2 += test_ifelse2 (2);
+call    0 returned 100%
+        1:  231:  ifelse_val2 += test_ifelse2 (3);
+call    0 returned 100%
+        1:  232:  ifelse_val2 += test_ifelse2 (3);
+call    0 returned 100%
+        -:  233:
+        1:  234:  ifelse_val3 += test_ifelse3 (11, 19);
+call    0 returned 100%
+        1:  235:  ifelse_val3 += test_ifelse3 (25, 27);
+call    0 returned 100%
+        1:  236:  ifelse_val3 += test_ifelse3 (11, 22);
+call    0 returned 100%
+        1:  237:  ifelse_val3 += test_ifelse3 (11, 10);
+call    0 returned 100%
+        1:  238:  ifelse_val3 += test_ifelse3 (21, 32);
+call    0 returned 100%
+        1:  239:  ifelse_val3 += test_ifelse3 (21, 20);
+call    0 returned 100%
+        1:  240:  ifelse_val3 += test_ifelse3 (1, 2);
+call    0 returned 100%
+        1:  241:  ifelse_val3 += test_ifelse3 (32, 31);
+call    0 returned 100%
+        1:  242:  ifelse_val3 += test_ifelse3 (3, 0);
+call    0 returned 100%
+        1:  243:  ifelse_val3 += test_ifelse3 (0, 47);
+call    0 returned 100%
+        1:  244:  ifelse_val3 += test_ifelse3 (65, 65);
+call    0 returned 100%
+        1:  245:}
+        -:  246:
+        -:  247:/* Check switch statements. */
+        -:  248:
+        -:  249:int switch_val, switch_m;
+        -:  250:
+        -:  251:int
+function _Z11test_switchii called 5 returned 100% blocks executed 85%
+        5:  252:test_switch (int i, int j)
+        -:  253:{
+        5:  254:  int result = 0;			/* count(5) */
+        -:  255:
+        -:  256:					/* branch(20 0 60 20) */
+        5:  257:  switch (i)				/* count(5) */
+branch  0 taken 20%
+branch  1 taken 0%
+branch  2 taken 60%
+branch  3 taken 20%
+        -:  258:					/* branch(end) */
+        -:  259:    {
+        1:  260:      case 1:
+        1:  261:        result = do_something (2);	/* count(1) */
+call    0 returned 100%
+        1:  262:        break;
+    #####:  263:      case 2:
+    #####:  264:        result = do_something (1024);
+call    0 never executed
+    #####:  265:        break;
+        3:  266:      case 3:
+        -:  267:      case 4:
+        -:  268:					/* branch(67) */
+        3:  269:        if (j == 2)			/* count(3) */
+branch  0 taken 33% (fallthrough)
+branch  1 taken 67%
+        -:  270:					/* branch(end) */
+        1:  271:          return do_something (4);	/* count(1) */
+call    0 returned 100%
+        2:  272:        result = do_something (8);	/* count(2) */
+call    0 returned 100%
+        2:  273:        break;
+        1:  274:      default:
+        1:  275:	result = do_something (32);	/* count(1) */
+call    0 returned 100%
+        1:  276:	switch_m++;			/* count(1) */
+        1:  277:        break;
+        -:  278:    }
+        4:  279:  return result;			/* count(4) */
+        -:  280:}
+        -:  281:
+        -:  282:void
+function _Z11call_switchv called 1 returned 100% blocks executed 100%
+        1:  283:call_switch ()
+        -:  284:{
+        1:  285:  switch_val += test_switch (1, 0);
+call    0 returned 100%
+        1:  286:  switch_val += test_switch (3, 0);
+call    0 returned 100%
+        1:  287:  switch_val += test_switch (3, 2);
+call    0 returned 100%
+        1:  288:  switch_val += test_switch (4, 0);
+call    0 returned 100%
+        1:  289:  switch_val += test_switch (16, 0);	
+call    0 returned 100%
+        1:  290:  switch_val += switch_m;
+        1:  291:}
+        -:  292:
+        -:  293:int
+function main called 1 returned 100% blocks executed 94%
+        1:  294:main()
+        -:  295:{
+        1:  296:  call_for ();
+call    0 returned 100%
+        1:  297:  call_goto ();
+call    0 returned 100%
+        1:  298:  call_ifelse ();
+call    0 returned 100%
+        1:  299:  call_switch ();
+call    0 returned 100%
+        1:  300:  call_unref ();
+call    0 returned 100%
+        1:  301:  if ((for_val1 != 12)
+branch  0 taken 100% (fallthrough)
+branch  1 taken 0%
+        1:  302:      || (for_val2 != 87)
+branch  0 taken 100% (fallthrough)
+branch  1 taken 0%
+        1:  303:      || (goto_val != 15)
+branch  0 taken 100% (fallthrough)
+branch  1 taken 0%
+        1:  304:      || (ifelse_val1 != 31)
+branch  0 taken 100% (fallthrough)
+branch  1 taken 0%
+        1:  305:      || (ifelse_val2 != 23)
+branch  0 taken 100% (fallthrough)
+branch  1 taken 0%
+        1:  306:      || (ifelse_val3 != 246)
+branch  0 taken 100% (fallthrough)
+branch  1 taken 0%
+        1:  307:      || (switch_val != 55)
+branch  0 taken 100% (fallthrough)
+branch  1 taken 0%
+        1:  308:      || (unref_val != 4))
+branch  0 taken 0% (fallthrough)
+branch  1 taken 100%
+    #####:  309:    abort ();
+call    0 never executed
+        1:  310:  return 0;
+        -:  311:}
+        -:  312:
+        -:  313:/* { dg-final { run-gcov branches { -b gcov-1.C } } } */

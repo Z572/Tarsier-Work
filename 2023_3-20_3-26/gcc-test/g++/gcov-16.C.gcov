@@ -1,0 +1,14 @@
+        -:    0:Source:/home/openeuler/rpmbuild/BUILD/gcc-10.3.0/gcc/testsuite/g++.dg/gcov/gcov-16.C
+        -:    0:Graph:gcov-16.gcno
+        -:    0:Data:-
+        -:    0:Runs:0
+        -:    1:// PR gcov-profile/64634
+        -:    2:// { dg-options "-fprofile-arcs -ftest-coverage" }
+        -:    3:// { dg-do run { target native } }
+        -:    4:
+    #####:    5:int main()
+        -:    6:{
+    #####:    7:  return 0;   /* count(#####) */
+        -:    8:}
+        -:    9:
+        -:   10:// { dg-final { run-gcov remove-gcda gcov-16.C } }

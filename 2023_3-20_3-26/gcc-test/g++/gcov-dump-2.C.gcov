@@ -1,0 +1,36 @@
+        -:    0:Source:/home/openeuler/rpmbuild/BUILD/gcc-10.3.0/gcc/testsuite/g++.dg/gcov/gcov-dump-2.C
+        -:    0:Graph:gcov-dump-2.gcno
+        -:    0:Data:gcov-dump-2.gcda
+        -:    0:Runs:1
+        -:    1:/* { dg-options "-fprofile-generate -ftest-coverage -lgcov" } */
+        -:    2:/* { dg-do run { target native } } */
+        -:    3:
+        -:    4:int value;
+        -:    5:
+        -:    6:extern "C"
+        -:    7:{
+        -:    8:  void __gcov_dump(void);
+        -:    9:  void __gcov_reset(void);
+        -:   10:}
+        -:   11:
+        1:   12:int main(int argc, char **argv)
+        -:   13:{
+        1:   14:  value = 123;					/* count(1) */
+        -:   15:
+      101:   16:  for (unsigned i = 0; i < 100; i++)
+      100:   17:    value += argc;				/* count(100) */
+        -:   18:
+        1:   19:  __gcov_dump();
+        -:   20:
+    #####:   21:  for (unsigned i = 0; i < 1000; i++)		/* count(#####) */
+    #####:   22:    value += argc;
+        -:   23:
+    #####:   24:  __gcov_reset ();
+        -:   25:
+    10001:   26:  for (unsigned i = 0; i < 10000; i++)		/* count(10001) */
+    10000:   27:    value += argc;
+        -:   28:
+        1:   29:  return 0;					/* count(1) */
+        -:   30:}
+        -:   31:
+        -:   32:/* { dg-final { run-gcov gcov-dump-2.C } } */

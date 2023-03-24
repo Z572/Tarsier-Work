@@ -1,0 +1,302 @@
+Trivially needed symbols: int main()/6 void test()/5 void write_ptr()/4 a* aptr/3 a a/2 short int** ptr/1 ptr_init/0
+
+
+Initial Symbol table:
+
+abort/8 (void __builtin_abort()) @0x3fd9bd95a0
+  Type: function
+  Visibility: external public visibility_specified artificial
+  References: 
+  Referring: 
+  Function flags:
+  Called by: _Z4testv/5 
+  Calls: 
+int __builtin_constant_p(...)/7 (int __builtin_constant_p(...)) @0x3fd9bd9438
+  Type: function
+  Visibility: external public visibility_specified artificial
+  References: 
+  Referring: 
+  Function flags:
+  Called by: _Z4testv/5 
+  Calls: 
+main/6 (int main()) @0x3fd9bd92d0
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @0x1304888
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: 
+  Calls: _Z4testv/5 
+_Z4testv/5 (void test()) @0x3fd9bd9168
+  Type: function definition analyzed
+  Visibility: force_output public
+  Aux: @0x3fd9bd92d0
+  References: short int** ptr/1 (read) short int** ptr/1 (read) 
+  Referring: 
+  Function flags: body
+  Called by: main/6 
+  Calls: abort/8 int __builtin_constant_p(...)/7 _Z9write_ptrv/4 
+_Z9write_ptrv/4 (void write_ptr()) @0x3fd9bd9000
+  Type: function definition analyzed
+  Visibility: public
+  Aux: @0x3fd9bd9168
+  References: a* aptr/3 (read) a a/2 (read) 
+  Referring: 
+  Function flags: body
+  Called by: _Z4testv/5 
+  Calls: 
+a* aptr/3 (a* aptr) @0x3fd9bbcd00
+  Type: variable definition analyzed
+  Visibility: force_output public
+  Aux: @0x3fd9bd9000
+  References: a a/2 (addr) 
+  Referring: _Z9write_ptrv/4 (read) 
+  Availability: not-ready
+  Varpool flags: initialized
+a a/2 (a a) @0x3fd9bbc980
+  Type: variable definition analyzed
+  Visibility: force_output public
+  Aux: @0x3fd9bbcd00
+  References: 
+  Referring: a* aptr/3 (addr) _Z9write_ptrv/4 (read) 
+  Availability: not-ready
+  Varpool flags:
+short int** ptr/1 (short int** ptr) @0x3fd9bbc100
+  Type: variable definition analyzed
+  Visibility: force_output public
+  Aux: @0x3fd9bbc980
+  References: ptr_init/0 (addr) 
+  Referring: _Z4testv/5 (read) _Z4testv/5 (read) 
+  Availability: not-ready
+  Varpool flags: initialized
+ptr_init/0 (short int* ptr_init) @0x3fd9bbc080
+  Type: variable definition analyzed
+  Visibility: force_output public
+  Aux: @0x3fd9bbc100
+  References: 
+  Referring: short int** ptr/1 (addr) 
+  Availability: not-ready
+  Varpool flags:
+
+Removing unused symbols:
+
+Reclaimed Symbol table:
+
+abort/8 (void __builtin_abort()) @0x3fd9bd95a0
+  Type: function
+  Visibility: external public visibility_specified artificial
+  References: 
+  Referring: 
+  Function flags:
+  Called by: _Z4testv/5 
+  Calls: 
+int __builtin_constant_p(...)/7 (int __builtin_constant_p(...)) @0x3fd9bd9438
+  Type: function
+  Visibility: external public visibility_specified artificial
+  References: 
+  Referring: 
+  Function flags:
+  Called by: _Z4testv/5 
+  Calls: 
+main/6 (int main()) @0x3fd9bd92d0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: 
+  Calls: _Z4testv/5 
+_Z4testv/5 (void test()) @0x3fd9bd9168
+  Type: function definition analyzed
+  Visibility: force_output public
+  References: short int** ptr/1 (read) short int** ptr/1 (read) 
+  Referring: 
+  Function flags: body
+  Called by: main/6 
+  Calls: abort/8 int __builtin_constant_p(...)/7 _Z9write_ptrv/4 
+_Z9write_ptrv/4 (void write_ptr()) @0x3fd9bd9000
+  Type: function definition analyzed
+  Visibility: public
+  References: a* aptr/3 (read) a a/2 (read) 
+  Referring: 
+  Function flags: body
+  Called by: _Z4testv/5 
+  Calls: 
+a* aptr/3 (a* aptr) @0x3fd9bbcd00
+  Type: variable definition analyzed
+  Visibility: force_output public
+  References: a a/2 (addr) 
+  Referring: _Z9write_ptrv/4 (read) 
+  Availability: not-ready
+  Varpool flags: initialized
+a a/2 (a a) @0x3fd9bbc980
+  Type: variable definition analyzed
+  Visibility: force_output public
+  References: 
+  Referring: a* aptr/3 (addr) _Z9write_ptrv/4 (read) 
+  Availability: not-ready
+  Varpool flags:
+short int** ptr/1 (short int** ptr) @0x3fd9bbc100
+  Type: variable definition analyzed
+  Visibility: force_output public
+  References: ptr_init/0 (addr) 
+  Referring: _Z4testv/5 (read) _Z4testv/5 (read) 
+  Availability: not-ready
+  Varpool flags: initialized
+ptr_init/0 (short int* ptr_init) @0x3fd9bbc080
+  Type: variable definition analyzed
+  Visibility: force_output public
+  References: 
+  Referring: short int** ptr/1 (addr) 
+  Availability: not-ready
+  Varpool flags:
+
+
+Initial Symbol table:
+
+abort/8 (void __builtin_abort()) @0x3fd9bd95a0
+  Type: function
+  Visibility: external public visibility_specified artificial
+  References: 
+  Referring: 
+  Function flags:
+  Called by: _Z4testv/5 
+  Calls: 
+__builtin_constant_p/7 (int __builtin_constant_p(...)) @0x3fd9bd9438
+  Type: function
+  Visibility: external public visibility_specified artificial
+  References: 
+  Referring: 
+  Function flags:
+  Called by: _Z4testv/5 
+  Calls: 
+main/6 (int main()) @0x3fd9bd92d0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: 
+  Calls: _Z4testv/5 
+_Z4testv/5 (void test()) @0x3fd9bd9168
+  Type: function definition analyzed
+  Visibility: force_output public
+  References: ptr/1 (read) ptr/1 (read) 
+  Referring: 
+  Function flags: body
+  Called by: main/6 
+  Calls: abort/8 __builtin_constant_p/7 _Z9write_ptrv/4 
+_Z9write_ptrv/4 (void write_ptr()) @0x3fd9bd9000
+  Type: function definition analyzed
+  Visibility: public
+  References: aptr/3 (read) a/2 (read) 
+  Referring: 
+  Function flags: body
+  Called by: _Z4testv/5 
+  Calls: 
+aptr/3 (a* aptr) @0x3fd9bbcd00
+  Type: variable definition analyzed
+  Visibility: force_output public
+  References: a/2 (addr) 
+  Referring: _Z9write_ptrv/4 (read) 
+  Availability: not-ready
+  Varpool flags: initialized
+a/2 (a a) @0x3fd9bbc980
+  Type: variable definition analyzed
+  Visibility: force_output public
+  References: 
+  Referring: aptr/3 (addr) _Z9write_ptrv/4 (read) 
+  Availability: not-ready
+  Varpool flags:
+ptr/1 (short int** ptr) @0x3fd9bbc100
+  Type: variable definition analyzed
+  Visibility: force_output public
+  References: ptr_init/0 (addr) 
+  Referring: _Z4testv/5 (read) _Z4testv/5 (read) 
+  Availability: not-ready
+  Varpool flags: initialized
+ptr_init/0 (short int* ptr_init) @0x3fd9bbc080
+  Type: variable definition analyzed
+  Visibility: force_output public
+  References: 
+  Referring: ptr/1 (addr) 
+  Availability: not-ready
+  Varpool flags:
+
+Removing unused symbols:
+
+Reclaimed Symbol table:
+
+abort/8 (void __builtin_abort()) @0x3fd9bd95a0
+  Type: function
+  Visibility: external public visibility_specified artificial
+  References: 
+  Referring: 
+  Function flags:
+  Called by: _Z4testv/5 
+  Calls: 
+__builtin_constant_p/7 (int __builtin_constant_p(...)) @0x3fd9bd9438
+  Type: function
+  Visibility: external public visibility_specified artificial
+  References: 
+  Referring: 
+  Function flags:
+  Called by: _Z4testv/5 
+  Calls: 
+main/6 (int main()) @0x3fd9bd92d0
+  Type: function definition analyzed
+  Visibility: public
+  References: 
+  Referring: 
+  Function flags: body
+  Called by: 
+  Calls: _Z4testv/5 
+_Z4testv/5 (void test()) @0x3fd9bd9168
+  Type: function definition analyzed
+  Visibility: force_output public
+  References: ptr/1 (read) ptr/1 (read) 
+  Referring: 
+  Function flags: body
+  Called by: main/6 
+  Calls: abort/8 __builtin_constant_p/7 _Z9write_ptrv/4 
+_Z9write_ptrv/4 (void write_ptr()) @0x3fd9bd9000
+  Type: function definition analyzed
+  Visibility: public
+  References: aptr/3 (read) a/2 (read) 
+  Referring: 
+  Function flags: body
+  Called by: _Z4testv/5 
+  Calls: 
+aptr/3 (a* aptr) @0x3fd9bbcd00
+  Type: variable definition analyzed
+  Visibility: force_output public
+  References: a/2 (addr) 
+  Referring: _Z9write_ptrv/4 (read) 
+  Availability: not-ready
+  Varpool flags: initialized
+a/2 (a a) @0x3fd9bbc980
+  Type: variable definition analyzed
+  Visibility: force_output public
+  References: 
+  Referring: aptr/3 (addr) _Z9write_ptrv/4 (read) 
+  Availability: not-ready
+  Varpool flags:
+ptr/1 (short int** ptr) @0x3fd9bbc100
+  Type: variable definition analyzed
+  Visibility: force_output public
+  References: ptr_init/0 (addr) 
+  Referring: _Z4testv/5 (read) _Z4testv/5 (read) 
+  Availability: not-ready
+  Varpool flags: initialized
+ptr_init/0 (short int* ptr_init) @0x3fd9bbc080
+  Type: variable definition analyzed
+  Visibility: force_output public
+  References: 
+  Referring: ptr/1 (addr) 
+  Availability: not-ready
+  Varpool flags:
+
+Reclaiming functions:
+Reclaiming variables:
+Clearing address taken flags:

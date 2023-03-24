@@ -1,0 +1,245 @@
+IPA function summary for key.constprop/9 inlinable
+  global time:     2.000000
+  self size:       3
+  global size:     3
+  min size:       0
+  self stack:      0
+  global stack:    0
+    size:0.000000, time:0.000000
+    size:3.000000, time:2.000000,  executed if:(not inlined)
+  calls:
+
+IPA function summary for ret1.constprop/8 inlinable
+  global time:     2.000000
+  self size:       3
+  global size:     3
+  min size:       0
+  self stack:      0
+  global stack:    0
+    size:0.000000, time:0.000000
+    size:3.000000, time:2.000000,  executed if:(not inlined)
+  calls:
+
+IPA function summary for ret2.constprop/7 inlinable
+  global time:     2.000000
+  self size:       3
+  global size:     3
+  min size:       0
+  self stack:      0
+  global stack:    0
+    size:0.000000, time:0.000000
+    size:3.000000, time:2.000000,  executed if:(not inlined)
+  calls:
+
+IPA function summary for main/5 inlinable
+  global time:     41.000000
+  self size:       15
+  global size:     15
+  min size:       0
+  self stack:      2
+  global stack:    2
+    size:3.000000, time:3.000000
+    size:3.000000, time:2.000000,  executed if:(not inlined)
+  calls:
+    ret2.constprop/7 function not considered for inlining
+      freq:1.00 loop depth: 0 size: 3 time: 12 callee size: 1 stack: 0
+       op0 is compile time invariant
+    ret1.constprop/8 function not considered for inlining
+      freq:1.00 loop depth: 0 size: 3 time: 12 callee size: 1 stack: 0
+       op0 is compile time invariant
+    key.constprop/9 function body not available
+      freq:1.00 cross module loop depth: 0 size: 3 time: 12 callee size: 1 stack: 0
+       op0 is compile time invariant
+
+
+Flattening functions:
+Overall time estimate: 47.000000 weighted by profile: 0.000000
+   Estimating body: key.constprop/9
+   Known to be false: not inlined
+   size:0 time:0.000000 nonspec time:0.000000
+   Estimating body: ret1.constprop/8
+   Known to be false: not inlined
+   size:0 time:0.000000 nonspec time:0.000000
+   Estimating body: ret2.constprop/7
+   Known to be false: not inlined
+   size:0 time:0.000000 nonspec time:0.000000
+
+Deciding on inlining of small functions.  Starting with size 24.
+Enqueueing calls in key.constprop/9.
+Enqueueing calls in ret1.constprop/8.
+Enqueueing calls in ret2.constprop/7.
+Enqueueing calls in main/5.
+   Estimating body: ret2.constprop/7
+   Known to be false: not inlined
+   size:0 time:0.000000 nonspec time:2.000000
+  enqueuing call main/5 -> ret2.constprop/7, badness -inf
+   Estimating body: ret1.constprop/8
+   Known to be false: not inlined
+   size:0 time:0.000000 nonspec time:2.000000
+  enqueuing call main/5 -> ret1.constprop/8, badness -inf
+   Estimating body: key.constprop/9
+   Known to be false: not inlined
+   size:0 time:0.000000 nonspec time:2.000000
+  enqueuing call main/5 -> key.constprop/9, badness -inf
+
+Considering ret2.constprop/7 with 3 size
+ to be inlined into main/5 in unknown:-1
+ Estimated badness is -inf, frequency 1.00.
+    Badness calculation for main/5 -> ret2.constprop/7
+      size growth -3, time 0.000000 unspec 2.000000 IPA hints: declared_inline big_speedup
+      -inf: Growth -3 <= 0
+      Adjusted by hints -inf
+Processing frequency ret2.constprop/7
+  Called by main/5 that is executed once
+		Accounting size:3.00, time:12.00 on predicate exec:(true)
+		Accounting size:3.00, time:12.00 on predicate exec:(true)
+optimized:  Inlined ret2.constprop/7 into main/5 which now has time 29.000000 and size 12, net change of -6.
+New minimal size reached: 18
+
+Considering ret1.constprop/8 with 3 size
+ to be inlined into main/5 in unknown:-1
+ Estimated badness is -inf, frequency 1.00.
+    Badness calculation for main/5 -> ret1.constprop/8
+      size growth -3, time 0.000000 unspec 2.000000 IPA hints: declared_inline big_speedup
+      -inf: Growth -3 <= 0
+      Adjusted by hints -inf
+Processing frequency ret1.constprop/8
+  Called by main/5 that is executed once
+		Accounting size:-3.00, time:-12.00 on predicate exec:(true)
+optimized:  Inlined ret1.constprop/8 into main/5 which now has time 17.000000 and size 9, net change of -6.
+New minimal size reached: 12
+
+Considering key.constprop/9 with 3 size
+ to be inlined into main/5 in unknown:-1
+ Estimated badness is -inf, frequency 1.00.
+    Badness calculation for main/5 -> key.constprop/9
+      size growth -3, time 0.000000 unspec 2.000000 IPA hints: cross_module big_speedup
+      -inf: Growth -3 <= 0
+      Adjusted by hints -inf
+Processing frequency key.constprop/9
+  Called by main/5 that is executed once
+		Accounting size:-3.00, time:-12.00 on predicate exec:(true)
+optimized:  Inlined key.constprop/9 into main/5 which now has time 5.000000 and size 6, net change of -6 (cross module).
+New minimal size reached: 6
+node context cache: 15 hits, 0 misses, 3 initializations
+Unit growth for small function inlining: 24->6 (-75%)
+
+Reclaiming functions:
+Reclaiming variables:
+Clearing address taken flags:
+
+Deciding on functions to be inlined into all callers and removing useless speculations:
+
+Inlined 3 calls, eliminated 3 functions
+
+Overall time estimate: 5.000000 weighted by profile: 0.000000
+
+Why inlining failed?
+IPA function summary for main/5 inlinable
+  global time:     5.000000
+  self size:       15
+  global size:     6
+  min size:       3
+  self stack:      2
+  global stack:    2
+    size:3.000000, time:3.000000
+    size:3.000000, time:2.000000,  executed if:(not inlined)
+  calls:
+    ret2.constprop/7 inlined
+      freq:1.00
+      Stack frame offset 2, callee self size 0
+    ret1.constprop/8 inlined
+      freq:1.00
+      Stack frame offset 2, callee self size 0
+    key.constprop/9 inlined
+      freq:1.00 cross module
+      Stack frame offset 2, callee self size 0
+
+Symbol table:
+
+_ZN1a3keyEv.constprop.0/9 (key.constprop) @0x3fda238ca8
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Read from file: cp_lto_inline-crossmodule-1_0.o
+  Function key.constprop/9 is inline copy in main/5
+  Clone of _ZN1a3keyEv/2
+  Availability: local
+  Unit id: 1
+  Function flags: count:1073741824 (estimated locally) local executed_once
+  Called by: main/5 (inlined) (1073741824 (estimated locally),1.00 per call) (can throw external) 
+  Calls: 
+_ZN1a4ret1Ev.constprop.0/8 (ret1.constprop) @0x3fda2389d8
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Read from file: cp_lto_inline-crossmodule-1_1.o
+  Function ret1.constprop/8 is inline copy in main/5
+  Clone of _ZN1a4ret1Ev/3
+  Availability: local
+  Unit id: 2
+  Function flags: count:1073741824 (estimated locally) local executed_once
+  Called by: main/5 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+_ZN1b4ret2Ev.constprop.0/7 (ret2.constprop) @0x3fda238708
+  Type: function definition analyzed
+  Visibility:
+  References: 
+  Referring: 
+  Read from file: cp_lto_inline-crossmodule-1_1.o
+  Function ret2.constprop/7 is inline copy in main/5
+  Clone of _ZN1b4ret2Ev/4
+  Availability: local
+  Unit id: 2
+  Function flags: count:1073741824 (estimated locally) local executed_once
+  Called by: main/5 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+main/5 (main) @0x3fda238438
+  Type: function definition analyzed
+  Visibility: externally_visible prevailing_def public
+  References: 
+  Referring: 
+  Read from file: cp_lto_inline-crossmodule-1_1.o
+  Availability: available
+  Unit id: 2
+  Function flags: count:1073741824 (estimated locally) only_called_at_startup executed_once
+  Called by: 
+  Calls: _ZN1b4ret2Ev.constprop.0/7 (inlined) (1073741824 (estimated locally),1.00 per call) _ZN1a4ret1Ev.constprop.0/8 (inlined) (1073741824 (estimated locally),1.00 per call) _ZN1a3keyEv.constprop.0/9 (inlined) (1073741824 (estimated locally),1.00 per call) (can throw external) 
+_ZN1b4ret2Ev/4 (ret2) @0x3fda2382d0
+  Type: function
+  Body removed by symtab_remove_unreachable_nodes
+  Visibility: prevailing_def_ironly
+  References: 
+  Referring: 
+  Read from file: cp_lto_inline-crossmodule-1_1.o
+  Availability: not_available
+  Unit id: 2
+  Function flags: count:1073741824 (estimated locally) executed_once
+  Called by: 
+  Calls: 
+_ZN1a4ret1Ev/3 (ret1) @0x3fda238168
+  Type: function
+  Body removed by symtab_remove_unreachable_nodes
+  Visibility: prevailing_def_ironly
+  References: 
+  Referring: 
+  Read from file: cp_lto_inline-crossmodule-1_1.o
+  Availability: not_available
+  Unit id: 2
+  Function flags: count:1073741824 (estimated locally) executed_once
+  Called by: 
+  Calls: 
+_ZN1a3keyEv/2 (key) @0x3fda238000
+  Type: function
+  Body removed by symtab_remove_unreachable_nodes
+  Visibility: prevailing_def_ironly
+  References: 
+  Referring: 
+  Read from file: cp_lto_inline-crossmodule-1_0.o
+  Availability: not_available
+  Unit id: 1
+  Function flags: count:1073741824 (estimated locally) executed_once
+  Called by: 
+  Calls: 

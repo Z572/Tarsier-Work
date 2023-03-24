@@ -1,0 +1,37 @@
+
+
+Type inheritance graph:
+ type 0: struct A
+ mangled name: 1A
+ derived types:
+   type 1: struct B
+   mangled name: 1B
+   base odr type ids:  0
+
+
+Out of 2 types there are 0 types with duplicates; 0 duplicates overall
+
+
+Procesing function f/4
+  Targets of polymorphic call of type 1:struct B token 2
+    Outer type (dynamic):struct B (or a derived type) offset 0
+    This is partial list; extra targets may be defined in other units. (derived types included)
+      
+
+1 polymorphic calls, 0 devirtualized, 0 speculatively devirtualized, 0 cold
+0 have multiple targets, 0 overwritable, 0 already speculated (0 agree, 0 disagree), 0 external, 0 not defined, 0 artificial, 0 infos dropped
+Symbol table:
+
+_Z1fP1B/4 (f) @0x3fef68b000
+  Type: function definition analyzed
+  Visibility: externally_visible prevailing_def_ironly_exp public
+  References: 
+  Referring: 
+  Read from file: cp_lto_devirt-30_0.o
+  Availability: available
+  Unit id: 1
+  Function flags: count:1073741824 (estimated locally)
+  Called by: 
+  Calls: 
+   Polymorphic indirect call of type struct B token:2(751619281 (estimated locally),0.70 per call)  of param:0 Num speculative call targets: 0
+    Outer type (dynamic):struct B (or a derived type) offset 0

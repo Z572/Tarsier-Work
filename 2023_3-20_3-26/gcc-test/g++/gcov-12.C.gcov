@@ -1,0 +1,25 @@
+        -:    0:Source:/home/openeuler/rpmbuild/BUILD/gcc-10.3.0/gcc/testsuite/g++.dg/gcov/gcov-12.C
+        -:    0:Graph:gcov-12.gcno
+        -:    0:Data:gcov-12.gcda
+        -:    0:Runs:1
+        -:    1:/* PR 51113 */
+        -:    2:/* { dg-options "-fprofile-arcs -ftest-coverage -fpic" } */
+        -:    3:/* { dg-do run { target native } } */
+        -:    4:/* { dg-additional-sources "gcovpart-12b.C" } */
+        -:    5:
+        -:    6:struct Foo {
+        1:    7:  Foo ()
+        1:    8:  {}  /* count(1) */
+    #####:    9:  virtual void Func () /* count(#####) */
+    #####:   10:  {}   /* count(#####) */
+        -:   11:};
+        -:   12:
+        1:   13:int main ()
+        -:   14:{
+        1:   15:  Foo b;
+        -:   16:  
+        1:   17:  return 0;  /* count (1) */
+        -:   18:}
+        -:   19:
+        -:   20:/* { dg-final { run-gcov gcov-12.C } } */
+        -:   21:/* { dg-final { run-gcov gcovpart-12b.C { xfail *-*-* } } } */

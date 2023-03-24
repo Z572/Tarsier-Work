@@ -1,0 +1,268 @@
+Creating file /tmp/g++-dg-lto-alias-4-01.exe.gfiBdv.ltrans0.o with sub id 0xbe9a170632d9ae7
+New canonical ODR type: struct a mangled:1a
+Symbol table:
+
+__builtin_constant_p/7 (__builtin_constant_p) @0x3fd9c975a0
+  Type: function
+  Visibility: external public visibility_specified artificial
+  References: 
+  Referring: 
+  Read from file: /tmp/g++-dg-lto-alias-4-01.exe.gfiBdv.ltrans0.o
+  Unit id: 2
+  Function flags:
+  Called by: _Z4testv/5 (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+abort/8 (__builtin_abort) @0x3fd9c97438
+  Type: function
+  Visibility: external public visibility_specified artificial
+  References: 
+  Referring: 
+  Read from file: /tmp/g++-dg-lto-alias-4-01.exe.gfiBdv.ltrans0.o
+  Unit id: 2
+  Function flags:
+  Called by: _Z4testv/5 (0 (precise),0.00 per call) 
+  Calls: 
+ptr_init/0 (ptr_init) @0x3fd9c98180
+  Type: variable definition analyzed
+  Visibility: force_output externally_visible prevailing_def_ironly public
+  References: 
+  Referring: ptr/1 (addr) 
+  Read from file: /tmp/g++-dg-lto-alias-4-01.exe.gfiBdv.ltrans0.o
+  Availability: not-ready
+  Varpool flags:
+main/6 (main) @0x3fd9c972d0
+  Type: function definition analyzed
+  Visibility: externally_visible prevailing_def public
+  References: 
+  Referring: 
+  Read from file: /tmp/g++-dg-lto-alias-4-01.exe.gfiBdv.ltrans0.o
+  Unit id: 2
+  Function flags: count:1073741824 (estimated locally) only_called_at_startup executed_once
+  Called by: 
+  Calls: _Z4testv/5 (1073741824 (estimated locally),1.00 per call) 
+a/2 (a) @0x3fd9c98100
+  Type: variable definition analyzed
+  Visibility: force_output externally_visible prevailing_def_ironly public
+  References: 
+  Referring: _Z9write_ptrv/4 (read) aptr/3 (addr) 
+  Read from file: /tmp/g++-dg-lto-alias-4-01.exe.gfiBdv.ltrans0.o
+  Availability: not-ready
+  Varpool flags:
+aptr/3 (aptr) @0x3fd9c98080
+  Type: variable definition analyzed
+  Visibility: force_output externally_visible prevailing_def_ironly public
+  References: a/2 (addr) 
+  Referring: _Z9write_ptrv/4 (read) 
+  Read from file: /tmp/g++-dg-lto-alias-4-01.exe.gfiBdv.ltrans0.o
+  Availability: not-ready
+  Varpool flags: initialized
+_Z9write_ptrv/4 (write_ptr) @0x3fd9c97168
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  References: aptr/3 (read) a/2 (read) 
+  Referring: 
+  Read from file: /tmp/g++-dg-lto-alias-4-01.exe.gfiBdv.ltrans0.o
+  Function write_ptr/4 is inline copy in test/5
+  Unit id: 2
+  Function flags: count:1073741824 (estimated locally) local nonfreeing_fn
+  Called by: _Z4testv/5 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+ptr/1 (ptr) @0x3fd9c98000
+  Type: variable definition analyzed
+  Visibility: force_output externally_visible prevailing_def_ironly public
+  References: ptr_init/0 (addr) 
+  Referring: _Z4testv/5 (read) _Z4testv/5 (read) 
+  Read from file: /tmp/g++-dg-lto-alias-4-01.exe.gfiBdv.ltrans0.o
+  Availability: not-ready
+  Varpool flags: initialized
+_Z4testv/5 (test) @0x3fd9c97000
+  Type: function definition analyzed
+  Visibility: force_output externally_visible prevailing_def_ironly public
+  References: ptr/1 (read) ptr/1 (read) 
+  Referring: 
+  Read from file: /tmp/g++-dg-lto-alias-4-01.exe.gfiBdv.ltrans0.o
+  Unit id: 2
+  Function flags: count:1073741824 (estimated locally)
+  Called by: main/6 (1073741824 (estimated locally),1.00 per call) 
+  Calls: abort/8 (0 (precise),0.00 per call) __builtin_constant_p/7 (1073741824 (estimated locally),1.00 per call) _Z9write_ptrv/4 (inlined) (1073741824 (estimated locally),1.00 per call) 
+
+Reclaiming functions:
+Reclaiming variables:
+Clearing address taken flags:
+
+Reclaiming functions:
+Reclaiming variables:
+Clearing address taken flags:
+Optimized Symbol table:
+
+__builtin_constant_p/7 (__builtin_constant_p) @0x3fd9c975a0
+  Type: function
+  Visibility: external public visibility_specified artificial
+  References: 
+  Referring: 
+  Availability: not_available
+  Unit id: 2
+  Function flags:
+  Called by: _Z4testv/5 (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+abort/8 (__builtin_abort) @0x3fd9c97438
+  Type: function
+  Visibility: external public visibility_specified artificial
+  References: 
+  Referring: 
+  Availability: not_available
+  Unit id: 2
+  Function flags:
+  Called by: _Z4testv/5 (0 (precise),0.00 per call) 
+  Calls: 
+ptr_init/0 (ptr_init) @0x3fd9c98180
+  Type: variable definition analyzed
+  Visibility: force_output externally_visible prevailing_def_ironly public
+  References: 
+  Referring: ptr/1 (addr) 
+  Read from file: /tmp/g++-dg-lto-alias-4-01.exe.gfiBdv.ltrans0.o
+  Availability: available
+  Varpool flags:
+main/6 (main) @0x3fd9c972d0
+  Type: function definition analyzed
+  Visibility: externally_visible prevailing_def public
+  References: 
+  Referring: 
+  Read from file: /tmp/g++-dg-lto-alias-4-01.exe.gfiBdv.ltrans0.o
+  Availability: available
+  Unit id: 2
+  Function flags: count:1073741824 (estimated locally) only_called_at_startup executed_once
+  Called by: 
+  Calls: _Z4testv/5 (1073741824 (estimated locally),1.00 per call) 
+a/2 (a) @0x3fd9c98100
+  Type: variable definition analyzed
+  Visibility: force_output externally_visible prevailing_def_ironly public
+  References: 
+  Referring: _Z9write_ptrv/4 (read) aptr/3 (addr) 
+  Read from file: /tmp/g++-dg-lto-alias-4-01.exe.gfiBdv.ltrans0.o
+  Availability: available
+  Varpool flags:
+aptr/3 (aptr) @0x3fd9c98080
+  Type: variable definition analyzed
+  Visibility: force_output externally_visible prevailing_def_ironly public
+  References: a/2 (addr) 
+  Referring: _Z9write_ptrv/4 (read) 
+  Read from file: /tmp/g++-dg-lto-alias-4-01.exe.gfiBdv.ltrans0.o
+  Availability: available
+  Varpool flags: initialized
+_Z9write_ptrv/4 (write_ptr) @0x3fd9c97168
+  Type: function definition analyzed
+  Visibility: prevailing_def_ironly
+  References: aptr/3 (read) a/2 (read) 
+  Referring: 
+  Read from file: /tmp/g++-dg-lto-alias-4-01.exe.gfiBdv.ltrans0.o
+  Function write_ptr/4 is inline copy in test/5
+  Availability: local
+  Unit id: 2
+  Function flags: count:1073741824 (estimated locally) local nonfreeing_fn
+  Called by: _Z4testv/5 (inlined) (1073741824 (estimated locally),1.00 per call) 
+  Calls: 
+ptr/1 (ptr) @0x3fd9c98000
+  Type: variable definition analyzed
+  Visibility: force_output externally_visible prevailing_def_ironly public
+  References: ptr_init/0 (addr) 
+  Referring: _Z4testv/5 (read) _Z4testv/5 (read) 
+  Read from file: /tmp/g++-dg-lto-alias-4-01.exe.gfiBdv.ltrans0.o
+  Availability: available
+  Varpool flags: initialized
+_Z4testv/5 (test) @0x3fd9c97000
+  Type: function definition analyzed
+  Visibility: force_output externally_visible prevailing_def_ironly public
+  References: ptr/1 (read) ptr/1 (read) 
+  Referring: 
+  Read from file: /tmp/g++-dg-lto-alias-4-01.exe.gfiBdv.ltrans0.o
+  Availability: available
+  Unit id: 2
+  Function flags: count:1073741824 (estimated locally)
+  Called by: main/6 (1073741824 (estimated locally),1.00 per call) 
+  Calls: abort/8 (0 (precise),0.00 per call) __builtin_constant_p/7 (1073741824 (estimated locally),1.00 per call) _Z9write_ptrv/4 (inlined) (1073741824 (estimated locally),1.00 per call) 
+Materializing clones
+Materialization Call site updates done.
+
+Reclaiming functions:
+Reclaiming variables:
+Clearing address taken flags:
+Trivially needed variables: ptr_init/0 a/2 aptr/3 ptr/1
+Removing variables:
+
+Final Symbol table:
+
+__builtin_constant_p/7 (__builtin_constant_p) @0x3fd9c975a0
+  Type: function
+  Visibility: external public visibility_specified artificial
+  References: 
+  Referring: 
+  Availability: not_available
+  Unit id: 2
+  Function flags:
+  Called by: 
+  Calls: 
+abort/8 (__builtin_abort) @0x3fd9c97438
+  Type: function
+  Visibility: external public visibility_specified artificial
+  References: 
+  Referring: 
+  Availability: not_available
+  Unit id: 2
+  Function flags:
+  Called by: 
+  Calls: 
+ptr_init/0 (ptr_init) @0x3fd9c98180
+  Type: variable definition analyzed
+  Visibility: force_output externally_visible prevailing_def_ironly asm_written public
+  Aux: @0x1
+  References: 
+  Referring: ptr/1 (addr) 
+  Read from file: /tmp/g++-dg-lto-alias-4-01.exe.gfiBdv.ltrans0.o
+  Availability: available
+  Varpool flags:
+main/6 (main) @0x3fd9c972d0
+  Type: function definition analyzed
+  Visibility: externally_visible prevailing_def asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Unit id: 2
+  Function flags: count:1073741824 (estimated locally) only_called_at_startup executed_once
+  Called by: 
+  Calls: 
+a/2 (a) @0x3fd9c98100
+  Type: variable definition analyzed
+  Visibility: force_output externally_visible prevailing_def_ironly asm_written public
+  Aux: @0x3fd9c98180
+  References: 
+  Referring: aptr/3 (addr) 
+  Read from file: /tmp/g++-dg-lto-alias-4-01.exe.gfiBdv.ltrans0.o
+  Availability: available
+  Varpool flags:
+aptr/3 (aptr) @0x3fd9c98080
+  Type: variable definition analyzed
+  Visibility: force_output externally_visible prevailing_def_ironly asm_written public
+  Aux: @0x3fd9c98100
+  References: a/2 (addr) 
+  Referring: 
+  Availability: available
+  Varpool flags: initialized
+ptr/1 (ptr) @0x3fd9c98000
+  Type: variable definition analyzed
+  Visibility: force_output externally_visible prevailing_def_ironly asm_written public
+  Aux: @0x3fd9c98080
+  References: ptr_init/0 (addr) 
+  Referring: 
+  Availability: available
+  Varpool flags: initialized
+_Z4testv/5 (test) @0x3fd9c97000
+  Type: function definition analyzed
+  Visibility: force_output externally_visible prevailing_def_ironly asm_written public
+  References: 
+  Referring: 
+  Availability: available
+  Unit id: 2
+  Function flags: count:1073741824 (estimated locally)
+  Called by: 
+  Calls: 

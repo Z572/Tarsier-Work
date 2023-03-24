@@ -1,0 +1,25 @@
+        -:    0:Source:/home/openeuler/rpmbuild/BUILD/gcc-10.3.0/gcc/testsuite/g++.dg/gcov/gcov-14.C
+        -:    0:Graph:gcov-14.gcno
+        -:    0:Data:gcov-14.gcda
+        -:    0:Runs:1
+        -:    1:/* { dg-options "-fprofile-arcs -ftest-coverage -Ofast" } */
+        -:    2:/* { dg-do run { target native } } */
+        -:    3:
+        -:    4:#include <iostream>
+        -:    5:
+        -:    6:void __attribute__ ((noinline))
+        1:    7:  Out (std::ostream &out, double x)
+        1:    8:{ out << x << std::endl; } /* count(1) */
+        -:    9:
+        1:   10:int main ()
+        -:   11:{
+        1:   12:  Out (std::cout, 1.5); /* count(1) */
+        -:   13:  return 0;
+        -:   14:}
+        -:   15:
+        -:   16:/* { dg-final { run-gcov gcov-14.C } } */
+        -:   17:/* run-gcov cleanups up after itself, but doesn't find all created gcov files.
+        -:   18:   We could try to grep for ^Created in the exec log, but since there's only one
+        -:   19:   testcase where we create these extra gcov files, do a local cleanup for
+        -:   20:   now.  */
+        -:   21:/* { dg-final { remote_file target delete iostream.gcov ostream.gcov locale_facets.h.gcov } } */

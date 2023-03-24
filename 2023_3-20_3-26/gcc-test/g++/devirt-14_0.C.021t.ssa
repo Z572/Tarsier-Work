@@ -1,0 +1,52 @@
+
+;; Function B::foo (_ZN1B3fooEv, funcdef_no=0, decl_uid=1868, cgraph_uid=1, symbol_order=0)
+
+B::foo (struct B * const this)
+{
+  int D.1982;
+  int _1;
+
+  <bb 2> :
+  _1 = 0;
+
+  <bb 3> :
+<L0>:
+  return _1;
+
+}
+
+
+
+;; Function main (main, funcdef_no=5, decl_uid=1934, cgraph_uid=9, symbol_order=10)
+
+main ()
+{
+  int D.1989;
+  struct A a;
+  int D.1987;
+  struct B * b.0_2;
+  struct B * b.1_3;
+  struct B * b.2_4;
+  int (*) () * _5;
+  int (*) () _6;
+  int _8;
+  int _9;
+
+  <bb 2> :
+
+  <bb 3> :
+  b.0_2 = b;
+  b.1_3 = b;
+  b.2_4 = b;
+  _5 = b.2_4->_vptr.B;
+  _6 = *_5;
+  _8 = OBJ_TYPE_REF(_6;(struct B)b.1_3->0) (b.0_2);
+  _9 = _8;
+
+  <bb 4> :
+<L3>:
+  return _9;
+
+}
+
+
