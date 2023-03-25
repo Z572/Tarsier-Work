@@ -96,3 +96,10 @@ ukui 就被启动了
 
 但因为 *性能不够* ，所以可能登录之后会卡住死机
 
+** 其他
+*** issues
+**** https://github.com/tjko/jpegoptim/issues/134
+*** patch/pr
+**** https://issues.guix.gnu.org/62431
+**** https://issues.guix.gnu.org/62432
+**** https://issues.guix.gnu.org/62433
