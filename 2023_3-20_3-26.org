@@ -7,7 +7,7 @@
 *** LicheePI RV Dock swapon 失败 kernel 没开启 CONFIG_SWAP 选项 https://gitee.com/openeuler/RISC-V/issues/I6Q24W
 *** LicheePI RV Dock xfce 没有声音
 *** LicheePI RV Dock 关机无效 https://gitee.com/openeuler/RISC-V/issues/I6Q2UP
-*** LicheePI RV Dock 没有网络
+*** LicheePI RV Dock 没有网络 https://gitee.com/openeuler/RISC-V/issues/I6Q85U
 *** /usr/lib/polkit-1/polkit-agent-helper-1 没有 setuid root https://gitee.com/openeuler/RISC-V/issues/I6Q7QH
 ** openEuler RISC-V gcc 测试
 
@@ -104,3 +104,4 @@ ukui 就被启动了
 **** https://issues.guix.gnu.org/62431
 **** https://issues.guix.gnu.org/62432
 **** https://issues.guix.gnu.org/62433
+**** https://issues.guix.gnu.org/62438
