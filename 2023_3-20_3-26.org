@@ -8,6 +8,7 @@
 *** LicheePI RV Dock xfce 没有声音
 *** LicheePI RV Dock 关机无效 https://gitee.com/openeuler/RISC-V/issues/I6Q2UP
 *** LicheePI RV Dock 没有网络
+*** /usr/lib/polkit-1/polkit-agent-helper-1 没有 setuid root https://gitee.com/openeuler/RISC-V/issues/I6Q7QH
 ** openEuler RISC-V gcc 测试
 
 下载相应 spec 及源码到 ~/rpmbuild/
