@@ -1,0 +1,27 @@
+#+title: openEuler RISC-V gcc 测试
+
+下载相应 spec 及源码到 ~/rpmbuild/
+#+begin_src bash
+sudo dnf install gmp-devel mpfr-devel libmpc-devel bison flex -y
+sudo dnf install dejagnu expect tcl
+
+cd ~/rpmbuild/
+
+git clone https://gitee.com/src-openeuler/gcc.git --depth=1 --branch openEuler-22.03-LTS SOURCE
+
+rpmbuild -bb SOURCE/gcc.spec
+rpmbuild -bp SOURCE/gcc.spec
+
+cd ~/rpmbuild/BUILD/gcc-10.3.0
+
+cd obj-riscv64-linux-gnu && make -k check
+
+#+end_src
+
+#+begin_example 
+# of expected passes		121087
+# of unexpected failures	153
+# of unexpected successes	40
+# of expected failures		709
+# of unsupported tests		2510
+#+end_example

@@ -1,0 +1,35 @@
+** oerv
+*** 缺陷用例
+- https://gitee.com/openeuler/RISC-V/issues/I6NXSV :: 22.03 ukui-control-center 切换 system 页极大概率卡死
+- https://gitee.com/openeuler/RISC-V/issues/I6O31D :: 22.03 23.02 ukui-control-center 无法添加/修改 用户/用户组及相关选项 
+- https://gitee.com/openeuler/RISC-V/issues/I6O33R :: 22.03 ukui-control-center 无法搜索
+- https://gitee.com/openeuler/RISC-V/issues/I6OEEV :: 22.03 ukui-control-center 设置语言失败
+- https://gitee.com/openeuler/RISC-V/issues/I6Q24G :: ukui 登录界面间歇性卡住
+- https://gitee.com/openeuler/RISC-V/issues/I6Q24W :: 23.02 LicheePI RV Dock swapon 失败 kernel 没开启 CONFIG_SWAP 选项
+- https://gitee.com/openeuler/RISC-V/issues/I6Q27C :: ukui panel 图标显示默认可见性有问题
+- https://gitee.com/openeuler/RISC-V/issues/I6Q2UP :: 23.02 LicheePI RV Dock 关机无效
+- https://gitee.com/openeuler/RISC-V/issues/I6Q7QH :: 23.02 /usr/lib/polkit-1/polkit-agent-helper-1 没有 setuid root
+- https://gitee.com/openeuler/RISC-V/issues/I6Q85U :: 23.02 LicheePI RV Dock 没有网络
+- LicheePI RV Dock xfce 没有声音
+- ukui peony 及桌面 trash 相关无法使用
+*** ukui桌面测试用例
+- https://github.com/ArielHeleneto/RISCV-testcase/pull/56
+
+** guix
+*** patch
+- https://issues.guix.gnu.org/61994 :: fix m17n libs cross-compile.
+- https://issues.guix.gnu.org/61995 :: graphene: fix cross-compile.
+- https://issues.guix.gnu.org/62094 :: gamin: fix riscv64 cross-compile.
+- https://issues.guix.gnu.org/62431 :: libjxr: fix cross-build.
+- https://issues.guix.gnu.org/62432 :: libicns: fix riscv64 cross-build.
+- https://issues.guix.gnu.org/62433 :: jpegoptim: fix riscv64 cross-build.
+- https://issues.guix.gnu.org/62438 :: llvm: fix riscv64 cross-compile.
+
+** other
+*** issues
+- https://github.com/tjko/jpegoptim/issues/134 :: update config.guess and config.sub
+*** 文档
+- https://z572.online/%E8%AE%B0%E5%BD%95%E7%BC%96%E8%AF%91-risc-v-opensbi.html
+- https://z572.online/learn-mugen.html
+- [[file:oerv-install-to-licheepi-rv-dock.org][openeuler 安装到 LicheePI RV Dock]]
+- [[file:oerv-do-gcc-test.org][gcc 测试方法]]
