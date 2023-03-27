@@ -22,3 +22,7 @@
 **** https://issues.guix.gnu.org/62432
 **** https://issues.guix.gnu.org/62433
 **** https://issues.guix.gnu.org/62438
+* 下周计划
+
+- 编写 UKUI 使用手册
+- 测试及调研 secpaver，secGear，
