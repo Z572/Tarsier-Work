@@ -10,8 +10,8 @@
 - https://gitee.com/openeuler/RISC-V/issues/I6Q2UP :: 23.02 LicheePI RV Dock 关机无效
 - https://gitee.com/openeuler/RISC-V/issues/I6Q7QH :: 23.02 /usr/lib/polkit-1/polkit-agent-helper-1 没有 setuid root
 - https://gitee.com/openeuler/RISC-V/issues/I6Q85U :: 23.02 LicheePI RV Dock 没有网络
-- LicheePI RV Dock xfce 没有声音
-- ukui peony 及桌面 trash 相关无法使用
+- https://gitee.com/openeuler/RISC-V/issues/I6QHNW :: LicheePI RV Dock xfce 没有声音
+- https://gitee.com/openeuler/RISC-V/issues/I6QHS3 :: ukui peony 及桌面 trash 相关无法使用
 *** ukui桌面测试用例
 - https://github.com/ArielHeleneto/RISCV-testcase/pull/56
 *** 文档
