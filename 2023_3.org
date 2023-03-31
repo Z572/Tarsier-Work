@@ -13,6 +13,8 @@
 - https://gitee.com/openeuler/RISC-V/issues/I6QHNW :: LicheePI RV Dock xfce 没有声音或声音极小
 - https://gitee.com/openeuler/RISC-V/issues/I6QHS3 :: ukui peony 及桌面回收站相关无法使用
 - https://gitee.com/openeuler/RISC-V/issues/I6R07N :: secpaver 无法使用
+*** issues
+- https://gitee.com/openeuler/ukui/issues/I6QJ6O :: ukui 桌面如何进行测试 
 *** pr
 - https://gitee.com/yunxiangluo/openeuler-riscv-2303-test/pulls/21  
 - https://gitee.com/yunxiangluo/openeuler-riscv-2303-test/pulls/20
