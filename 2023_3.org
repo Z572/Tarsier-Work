@@ -12,8 +12,17 @@
 - https://gitee.com/openeuler/RISC-V/issues/I6Q85U :: 23.02 LicheePI RV Dock 没有网络
 - https://gitee.com/openeuler/RISC-V/issues/I6QHNW :: LicheePI RV Dock xfce 没有声音或声音极小
 - https://gitee.com/openeuler/RISC-V/issues/I6QHS3 :: ukui peony 及桌面回收站相关无法使用
-*** ukui桌面测试用例
+- https://gitee.com/openeuler/RISC-V/issues/I6R07N :: secpaver 无法使用
+*** pr
 - https://github.com/ArielHeleneto/RISCV-testcase/pull/56
+
+- https://gitee.com/yunxiangluo/openeuler-riscv-2303-test/pulls/21  
+- https://gitee.com/yunxiangluo/openeuler-riscv-2303-test/pulls/20
+- https://gitee.com/yunxiangluo/openeuler-riscv-2303-test/pulls/14
+- https://gitee.com/yunxiangluo/openeuler-riscv-2303-test/pulls/9
+- https://github.com/ArielHeleneto/RISCV-testcase/pull/56
+
+
 *** 文档
 - [[file:oerv-install-to-licheepi-rv-dock.org][openeuler 安装到 LicheePI RV Dock]]
 - [[file:oerv-do-gcc-test.org][gcc 测试方法]]
@@ -27,6 +36,7 @@
 - https://issues.guix.gnu.org/62432 :: libicns: fix riscv64 cross-build.
 - https://issues.guix.gnu.org/62433 :: jpegoptim: fix riscv64 cross-build.
 - https://issues.guix.gnu.org/62438 :: llvm: fix riscv64 cross-compile.
+- https://issues.guix.gnu.org/62544 :: tcsh: fix riscv64 cross-build.
 
 ** other
 *** issues

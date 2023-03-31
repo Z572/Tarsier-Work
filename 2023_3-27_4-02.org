@@ -1,0 +1,42 @@
+
+* secpaver 
+
+https://documentation.suse.com/zh-cn/sles/15-SP2/html/SLES-all/cha-selinux.html
+
+```
+systemctl start pavd
+pav engine list
+```
+
+
+https://gitee.com/openeuler/secpaver/blob/master/doc/manual.md
+
+https://gitee.com/openeuler/secpaver/blob/master/doc/cmd.md
+
+https://docs.openeuler.org/zh/docs/20.09/docs/SecHarden/SELinux%E9%85%8D%E7%BD%AE.html
+
+git clone https://gitee.com/openeuler/secpaver
+cd secpaver/tests
+bash test.sh
+
+* secgear
+https://gitee.com/openeuler/secGear/blob/master/docs/riscv_tee.md
+
+https://www.modb.pro/db/169955
+
+
+
+需要 penlai sdk
+https://github.com/Penglai-Enclave/penglai-sdk
+* sbcl
+
+
+https://sourceforge.net/p/sbcl/mailman/message/36958085
+
+https://sourceforge.net/p/sbcl/mailman/message/36953558
+
+https://sourceforge.net/p/sbcl/mailman/sbcl-devel/thread/f4ffdd10-0fc0-7ba7-8ed3-8cb12289ec19%40physik.fu-berlin.de/#msg36958085
+https://bugs.launchpad.net/sbcl/+bug/2002930
+
+* openresty
+http://qa.openresty.org/
