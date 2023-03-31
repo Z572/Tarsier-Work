@@ -14,8 +14,6 @@
 - https://gitee.com/openeuler/RISC-V/issues/I6QHS3 :: ukui peony 及桌面回收站相关无法使用
 - https://gitee.com/openeuler/RISC-V/issues/I6R07N :: secpaver 无法使用
 *** pr
-- https://github.com/ArielHeleneto/RISCV-testcase/pull/56
-
 - https://gitee.com/yunxiangluo/openeuler-riscv-2303-test/pulls/21  
 - https://gitee.com/yunxiangluo/openeuler-riscv-2303-test/pulls/20
 - https://gitee.com/yunxiangluo/openeuler-riscv-2303-test/pulls/14
