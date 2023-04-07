@@ -1,0 +1,19 @@
+Wed Apr  5 08:03:37 2023 - INFO  - start to run testcase:oe_test_ansible_01.
+pgrep: pattern that searches for process name longer than 15 characters will result in zero matches
+Try `pgrep -f' option to match against the complete command line.
+Wed Apr  5 08:33:41 2023 - WARN  - The case execution timeout.
+Wed Apr  5 08:33:43 2023 - ERROR - The case exit by code 143.
+Wed Apr  5 08:33:44 2023 - INFO  - End to run testcase:oe_test_ansible_01.
+Wed Apr  5 08:33:46 2023 - INFO  - A total of 1 use cases were executed, with 0 successes and 1 failures.
+Wed Apr  5 08:33:54 2023 - INFO  - start to run testcase:oe_test_ansible_02.
+Wed Apr  5 08:35:15 2023 - ERROR - The case exit by code 8.
+Wed Apr  5 08:35:17 2023 - INFO  - End to run testcase:oe_test_ansible_02.
+Wed Apr  5 08:35:18 2023 - INFO  - A total of 1 use cases were executed, with 0 successes and 1 failures.
+Wed Apr  5 08:35:24 2023 - INFO  - start to run testcase:oe_test_ansible_03.
+Wed Apr  5 08:46:56 2023 - ERROR - The case exit by code 2.
+Wed Apr  5 08:46:58 2023 - INFO  - End to run testcase:oe_test_ansible_03.
+Wed Apr  5 08:46:59 2023 - INFO  - A total of 1 use cases were executed, with 0 successes and 1 failures.
+Wed Apr  5 08:47:06 2023 - INFO  - start to run testcase:oe_test_ansible_04.
+Wed Apr  5 08:54:50 2023 - ERROR - The case exit by code 4.
+Wed Apr  5 08:54:51 2023 - INFO  - End to run testcase:oe_test_ansible_04.
+Wed Apr  5 08:54:52 2023 - INFO  - A total of 1 use cases were executed, with 0 successes and 1 failures.

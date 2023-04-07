@@ -1,0 +1,12 @@
+Thu Apr  6 21:45:47 2023 - INFO  - start to run testcase:oe_test_service_bmc-watchdog.
+Thu Apr  6 21:48:43 2023 - ERROR - The case exit by code 4.
+Thu Apr  6 21:48:44 2023 - INFO  - End to run testcase:oe_test_service_bmc-watchdog.
+Thu Apr  6 21:48:45 2023 - INFO  - A total of 1 use cases were executed, with 0 successes and 1 failures.
+Thu Apr  6 21:48:51 2023 - INFO  - start to run testcase:oe_test_service_ipmidetectd.
+Thu Apr  6 21:51:29 2023 - ERROR - The case exit by code 1.
+Thu Apr  6 21:51:31 2023 - INFO  - End to run testcase:oe_test_service_ipmidetectd.
+Thu Apr  6 21:51:32 2023 - INFO  - A total of 1 use cases were executed, with 0 successes and 1 failures.
+Thu Apr  6 21:51:37 2023 - INFO  - start to run testcase:oe_test_service_ipmiseld.
+Thu Apr  6 21:54:17 2023 - ERROR - The case exit by code 4.
+Thu Apr  6 21:54:18 2023 - INFO  - End to run testcase:oe_test_service_ipmiseld.
+Thu Apr  6 21:54:19 2023 - INFO  - A total of 1 use cases were executed, with 0 successes and 1 failures.

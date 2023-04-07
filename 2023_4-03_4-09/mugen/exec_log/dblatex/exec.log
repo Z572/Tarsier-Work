@@ -1,0 +1,30 @@
+Wed Apr  5 14:31:03 2023 - INFO  - start to run testcase:oe_test_dblatex_dblatex_01.
+pgrep: pattern that searches for process name longer than 15 characters will result in zero matches
+Try `pgrep -f' option to match against the complete command line.
+Wed Apr  5 15:01:06 2023 - WARN  - The case execution timeout.
+Wed Apr  5 15:01:07 2023 - ERROR - The case exit by code 143.
+Wed Apr  5 15:01:09 2023 - INFO  - End to run testcase:oe_test_dblatex_dblatex_01.
+Wed Apr  5 15:01:10 2023 - INFO  - A total of 1 use cases were executed, with 0 successes and 1 failures.
+Wed Apr  5 15:01:15 2023 - INFO  - start to run testcase:oe_test_dblatex_dblatex_02.
+Wed Apr  5 15:03:02 2023 - ERROR - The case exit by code 11.
+Wed Apr  5 15:03:03 2023 - INFO  - End to run testcase:oe_test_dblatex_dblatex_02.
+Wed Apr  5 15:03:04 2023 - INFO  - A total of 1 use cases were executed, with 0 successes and 1 failures.
+Wed Apr  5 15:03:10 2023 - INFO  - start to run testcase:oe_test_dblatex_dblatex_03.
+pgrep: pattern that searches for process name longer than 15 characters will result in zero matches
+Try `pgrep -f' option to match against the complete command line.
+Wed Apr  5 15:33:13 2023 - WARN  - The case execution timeout.
+Wed Apr  5 15:33:14 2023 - ERROR - The case exit by code 143.
+Wed Apr  5 15:33:15 2023 - INFO  - End to run testcase:oe_test_dblatex_dblatex_03.
+Wed Apr  5 15:33:16 2023 - INFO  - A total of 1 use cases were executed, with 0 successes and 1 failures.
+Wed Apr  5 15:33:22 2023 - INFO  - start to run testcase:oe_test_dblatex_dblatex_04.
+Wed Apr  5 15:34:47 2023 - ERROR - The case exit by code 10.
+Wed Apr  5 15:34:48 2023 - INFO  - End to run testcase:oe_test_dblatex_dblatex_04.
+Wed Apr  5 15:34:49 2023 - INFO  - A total of 1 use cases were executed, with 0 successes and 1 failures.
+Wed Apr  5 15:34:56 2023 - INFO  - start to run testcase:oe_test_dblatex_dblatex_05.
+Wed Apr  5 15:40:14 2023 - ERROR - The case exit by code 21.
+Wed Apr  5 15:40:15 2023 - INFO  - End to run testcase:oe_test_dblatex_dblatex_05.
+Wed Apr  5 15:40:16 2023 - INFO  - A total of 1 use cases were executed, with 0 successes and 1 failures.
+Wed Apr  5 15:40:21 2023 - INFO  - start to run testcase:oe_test_dblatex_dblatex_06.
+Wed Apr  5 16:09:03 2023 - INFO  - The case exit by code 0.
+Wed Apr  5 16:09:04 2023 - INFO  - End to run testcase:oe_test_dblatex_dblatex_06.
+Wed Apr  5 16:09:05 2023 - INFO  - A total of 1 use cases were executed, with 1 successes and 0 failures.

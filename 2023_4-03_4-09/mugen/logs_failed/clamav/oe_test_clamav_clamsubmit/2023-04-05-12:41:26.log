@@ -1,0 +1,323 @@
++ source /root/mugen/libs/locallibs/common_lib.sh
+++ python3 --version
+++ '[' 0 -eq 0 ']'
+++ source /root/mugen/libs/locallibs/common_lib_python.sh
++ main
+++ type -t post_test
++ '[' -n function ']'
++ trap post_test EXIT INT HUP TERM
++ rpm -qa
++ grep expect
+++ type -t config_params
++ '[' -n '' ']'
+++ type -t pre_test
++ '[' -n function ']'
++ pre_test
++ LOG_INFO 'Start to prepare the database config.'
++ message='Start to prepare the database config.'
++ python3 /root/mugen/libs/locallibs/mugen_log.py --level info --message 'Start to prepare the database config.'
+Wed Apr  5 12:41:31 2023 - INFO  - Start to prepare the database config.
++ DNF_INSTALL 'clamav clamav-devel'
++ pkgs='clamav clamav-devel'
++ node=1
++ '[' -z '' ']'
++ tmpfile=
+++ python3 /root/mugen/libs/locallibs/rpm_manage.py install --pkgs 'clamav clamav-devel' --node 1 --tempfile ''
++ tmpfile2='Error: transaction check vs depsolve:
+clamav = 0.103.8-1.oe2303 is needed by clamav-devel-0.103.8-1.oe2303.riscv64
+clamav-filesystem = 0.103.8-1.oe2303 is needed by clamav-devel-0.103.8-1.oe2303.riscv64
+To diagnose the problem, try running: '\''rpm -Va --nofiles --nodigest'\''.
+You probably have corrupted RPMDB, running '\''rpm --rebuilddb'\'' might fix the issue.'
++ '[' -z '' ']'
++ tmpfile='Error: transaction check vs depsolve:
+clamav = 0.103.8-1.oe2303 is needed by clamav-devel-0.103.8-1.oe2303.riscv64
+clamav-filesystem = 0.103.8-1.oe2303 is needed by clamav-devel-0.103.8-1.oe2303.riscv64
+To diagnose the problem, try running: '\''rpm -Va --nofiles --nodigest'\''.
+You probably have corrupted RPMDB, running '\''rpm --rebuilddb'\'' might fix the issue.'
++ LOG_INFO 'End to prepare the database config.'
++ message='End to prepare the database config.'
++ python3 /root/mugen/libs/locallibs/mugen_log.py --level info --message 'End to prepare the database config.'
+Wed Apr  5 12:42:58 2023 - INFO  - End to prepare the database config.
+++ type -t run_test
++ '[' -n function ']'
++ run_test
++ LOG_INFO 'Start to run test.'
++ message='Start to run test.'
++ python3 /root/mugen/libs/locallibs/mugen_log.py --level info --message 'Start to run test.'
+Wed Apr  5 12:42:59 2023 - INFO  - Start to run test.
++ clamsubmit -N bubble -n file
+oe_test_clamav_clamsubmit.sh: line 33: clamsubmit: command not found
++ CHECK_RESULT 127 0 0 'Set clamsubmit name failed.'
++ actual_result=127
++ expect_result=0
++ mode=0
++ error_log='Set clamsubmit name failed.'
++ exit_mode=0
++ '[' -z 127 ']'
++ '[' 0 -eq 0 ']'
++ test 127x '!=' 0x
++ test -n 'Set clamsubmit name failed.'
++ LOG_ERROR 'Set clamsubmit name failed.'
++ message='Set clamsubmit name failed.'
++ python3 /root/mugen/libs/locallibs/mugen_log.py --level error --message 'Set clamsubmit name failed.'
+Wed Apr  5 12:43:01 2023 - ERROR - Set clamsubmit name failed.
++ (( exec_result++ ))
++ LOG_ERROR 'oe_test_clamav_clamsubmit.sh line 34'
++ message='oe_test_clamav_clamsubmit.sh line 34'
++ python3 /root/mugen/libs/locallibs/mugen_log.py --level error --message 'oe_test_clamav_clamsubmit.sh line 34'
+Wed Apr  5 12:43:02 2023 - ERROR - oe_test_clamav_clamsubmit.sh line 34
++ '[' 0 -eq 1 ']'
++ return 0
++ clamsubmit -e 244349477@qq.com -n file
+oe_test_clamav_clamsubmit.sh: line 35: clamsubmit: command not found
++ CHECK_RESULT 127 0 0 'Set clamsubmit email failed.'
++ actual_result=127
++ expect_result=0
++ mode=0
++ error_log='Set clamsubmit email failed.'
++ exit_mode=0
++ '[' -z 127 ']'
++ '[' 0 -eq 0 ']'
++ test 127x '!=' 0x
++ test -n 'Set clamsubmit email failed.'
++ LOG_ERROR 'Set clamsubmit email failed.'
++ message='Set clamsubmit email failed.'
++ python3 /root/mugen/libs/locallibs/mugen_log.py --level error --message 'Set clamsubmit email failed.'
+Wed Apr  5 12:43:03 2023 - ERROR - Set clamsubmit email failed.
++ (( exec_result++ ))
++ LOG_ERROR 'oe_test_clamav_clamsubmit.sh line 36'
++ message='oe_test_clamav_clamsubmit.sh line 36'
++ python3 /root/mugen/libs/locallibs/mugen_log.py --level error --message 'oe_test_clamav_clamsubmit.sh line 36'
+Wed Apr  5 12:43:04 2023 - ERROR - oe_test_clamav_clamsubmit.sh line 36
++ '[' 0 -eq 1 ']'
++ return 0
++ clamsubmit -V -p file
+oe_test_clamav_clamsubmit.sh: line 37: clamsubmit: command not found
++ CHECK_RESULT 127 0 0 'Check virush failed.'
++ actual_result=127
++ expect_result=0
++ mode=0
++ error_log='Check virush failed.'
++ exit_mode=0
++ '[' -z 127 ']'
++ '[' 0 -eq 0 ']'
++ test 127x '!=' 0x
++ test -n 'Check virush failed.'
++ LOG_ERROR 'Check virush failed.'
++ message='Check virush failed.'
++ python3 /root/mugen/libs/locallibs/mugen_log.py --level error --message 'Check virush failed.'
+Wed Apr  5 12:43:05 2023 - ERROR - Check virush failed.
++ (( exec_result++ ))
++ LOG_ERROR 'oe_test_clamav_clamsubmit.sh line 38'
++ message='oe_test_clamav_clamsubmit.sh line 38'
++ python3 /root/mugen/libs/locallibs/mugen_log.py --level error --message 'oe_test_clamav_clamsubmit.sh line 38'
+Wed Apr  5 12:43:06 2023 - ERROR - oe_test_clamav_clamsubmit.sh line 38
++ '[' 0 -eq 1 ']'
++ return 0
++ clamsubmit --version
+oe_test_clamav_clamsubmit.sh: line 39: clamsubmit: command not found
++ CHECK_RESULT 127 0 0 'Check clamsubmit version failed.'
++ actual_result=127
++ expect_result=0
++ mode=0
++ error_log='Check clamsubmit version failed.'
++ exit_mode=0
++ '[' -z 127 ']'
++ '[' 0 -eq 0 ']'
++ test 127x '!=' 0x
++ test -n 'Check clamsubmit version failed.'
++ LOG_ERROR 'Check clamsubmit version failed.'
++ message='Check clamsubmit version failed.'
++ python3 /root/mugen/libs/locallibs/mugen_log.py --level error --message 'Check clamsubmit version failed.'
+Wed Apr  5 12:43:07 2023 - ERROR - Check clamsubmit version failed.
++ (( exec_result++ ))
++ LOG_ERROR 'oe_test_clamav_clamsubmit.sh line 40'
++ message='oe_test_clamav_clamsubmit.sh line 40'
++ python3 /root/mugen/libs/locallibs/mugen_log.py --level error --message 'oe_test_clamav_clamsubmit.sh line 40'
+Wed Apr  5 12:43:08 2023 - ERROR - oe_test_clamav_clamsubmit.sh line 40
++ '[' 0 -eq 1 ']'
++ return 0
++ clamsubmit --help
+oe_test_clamav_clamsubmit.sh: line 41: clamsubmit: command not found
++ CHECK_RESULT 127 0 0 'Check clamsubmit help message failed.'
++ actual_result=127
++ expect_result=0
++ mode=0
++ error_log='Check clamsubmit help message failed.'
++ exit_mode=0
++ '[' -z 127 ']'
++ '[' 0 -eq 0 ']'
++ test 127x '!=' 0x
++ test -n 'Check clamsubmit help message failed.'
++ LOG_ERROR 'Check clamsubmit help message failed.'
++ message='Check clamsubmit help message failed.'
++ python3 /root/mugen/libs/locallibs/mugen_log.py --level error --message 'Check clamsubmit help message failed.'
+Wed Apr  5 12:43:09 2023 - ERROR - Check clamsubmit help message failed.
++ (( exec_result++ ))
++ LOG_ERROR 'oe_test_clamav_clamsubmit.sh line 42'
++ message='oe_test_clamav_clamsubmit.sh line 42'
++ python3 /root/mugen/libs/locallibs/mugen_log.py --level error --message 'oe_test_clamav_clamsubmit.sh line 42'
+Wed Apr  5 12:43:10 2023 - ERROR - oe_test_clamav_clamsubmit.sh line 42
++ '[' 0 -eq 1 ']'
++ return 0
++ clamav-config --version
+oe_test_clamav_clamsubmit.sh: line 45: clamav-config: command not found
++ CHECK_RESULT 127 0 0 'Check clambc help message failed.'
++ actual_result=127
++ expect_result=0
++ mode=0
++ error_log='Check clambc help message failed.'
++ exit_mode=0
++ '[' -z 127 ']'
++ '[' 0 -eq 0 ']'
++ test 127x '!=' 0x
++ test -n 'Check clambc help message failed.'
++ LOG_ERROR 'Check clambc help message failed.'
++ message='Check clambc help message failed.'
++ python3 /root/mugen/libs/locallibs/mugen_log.py --level error --message 'Check clambc help message failed.'
+Wed Apr  5 12:43:12 2023 - ERROR - Check clambc help message failed.
++ (( exec_result++ ))
++ LOG_ERROR 'oe_test_clamav_clamsubmit.sh line 46'
++ message='oe_test_clamav_clamsubmit.sh line 46'
++ python3 /root/mugen/libs/locallibs/mugen_log.py --level error --message 'oe_test_clamav_clamsubmit.sh line 46'
+Wed Apr  5 12:43:13 2023 - ERROR - oe_test_clamav_clamsubmit.sh line 46
++ '[' 0 -eq 1 ']'
++ return 0
++ clamav-config --help
+oe_test_clamav_clamsubmit.sh: line 47: clamav-config: command not found
++ CHECK_RESULT 127 0 0 'Check clambc help message failed.'
++ actual_result=127
++ expect_result=0
++ mode=0
++ error_log='Check clambc help message failed.'
++ exit_mode=0
++ '[' -z 127 ']'
++ '[' 0 -eq 0 ']'
++ test 127x '!=' 0x
++ test -n 'Check clambc help message failed.'
++ LOG_ERROR 'Check clambc help message failed.'
++ message='Check clambc help message failed.'
++ python3 /root/mugen/libs/locallibs/mugen_log.py --level error --message 'Check clambc help message failed.'
+Wed Apr  5 12:43:14 2023 - ERROR - Check clambc help message failed.
++ (( exec_result++ ))
++ LOG_ERROR 'oe_test_clamav_clamsubmit.sh line 48'
++ message='oe_test_clamav_clamsubmit.sh line 48'
++ python3 /root/mugen/libs/locallibs/mugen_log.py --level error --message 'oe_test_clamav_clamsubmit.sh line 48'
+Wed Apr  5 12:43:15 2023 - ERROR - oe_test_clamav_clamsubmit.sh line 48
++ '[' 0 -eq 1 ']'
++ return 0
++ clamav-config --libs
+oe_test_clamav_clamsubmit.sh: line 49: clamav-config: command not found
++ CHECK_RESULT 127 0 0 'Check clambc help message failed.'
++ actual_result=127
++ expect_result=0
++ mode=0
++ error_log='Check clambc help message failed.'
++ exit_mode=0
++ '[' -z 127 ']'
++ '[' 0 -eq 0 ']'
++ test 127x '!=' 0x
++ test -n 'Check clambc help message failed.'
++ LOG_ERROR 'Check clambc help message failed.'
++ message='Check clambc help message failed.'
++ python3 /root/mugen/libs/locallibs/mugen_log.py --level error --message 'Check clambc help message failed.'
+Wed Apr  5 12:43:16 2023 - ERROR - Check clambc help message failed.
++ (( exec_result++ ))
++ LOG_ERROR 'oe_test_clamav_clamsubmit.sh line 50'
++ message='oe_test_clamav_clamsubmit.sh line 50'
++ python3 /root/mugen/libs/locallibs/mugen_log.py --level error --message 'oe_test_clamav_clamsubmit.sh line 50'
+Wed Apr  5 12:43:17 2023 - ERROR - oe_test_clamav_clamsubmit.sh line 50
++ '[' 0 -eq 1 ']'
++ return 0
++ clamav-config --cflags
+oe_test_clamav_clamsubmit.sh: line 51: clamav-config: command not found
++ CHECK_RESULT 127 0 0 'Check clambc help message failed.'
++ actual_result=127
++ expect_result=0
++ mode=0
++ error_log='Check clambc help message failed.'
++ exit_mode=0
++ '[' -z 127 ']'
++ '[' 0 -eq 0 ']'
++ test 127x '!=' 0x
++ test -n 'Check clambc help message failed.'
++ LOG_ERROR 'Check clambc help message failed.'
++ message='Check clambc help message failed.'
++ python3 /root/mugen/libs/locallibs/mugen_log.py --level error --message 'Check clambc help message failed.'
+Wed Apr  5 12:43:18 2023 - ERROR - Check clambc help message failed.
++ (( exec_result++ ))
++ LOG_ERROR 'oe_test_clamav_clamsubmit.sh line 52'
++ message='oe_test_clamav_clamsubmit.sh line 52'
++ python3 /root/mugen/libs/locallibs/mugen_log.py --level error --message 'oe_test_clamav_clamsubmit.sh line 52'
+Wed Apr  5 12:43:19 2023 - ERROR - oe_test_clamav_clamsubmit.sh line 52
++ '[' 0 -eq 1 ']'
++ return 0
++ clamav-config --prefix
+oe_test_clamav_clamsubmit.sh: line 53: clamav-config: command not found
++ grep /usr
++ CHECK_RESULT 1 0 0 'Check clambc help message failed.'
++ actual_result=1
++ expect_result=0
++ mode=0
++ error_log='Check clambc help message failed.'
++ exit_mode=0
++ '[' -z 1 ']'
++ '[' 0 -eq 0 ']'
++ test 1x '!=' 0x
++ test -n 'Check clambc help message failed.'
++ LOG_ERROR 'Check clambc help message failed.'
++ message='Check clambc help message failed.'
++ python3 /root/mugen/libs/locallibs/mugen_log.py --level error --message 'Check clambc help message failed.'
+Wed Apr  5 12:43:21 2023 - ERROR - Check clambc help message failed.
++ (( exec_result++ ))
++ LOG_ERROR 'oe_test_clamav_clamsubmit.sh line 54'
++ message='oe_test_clamav_clamsubmit.sh line 54'
++ python3 /root/mugen/libs/locallibs/mugen_log.py --level error --message 'oe_test_clamav_clamsubmit.sh line 54'
+Wed Apr  5 12:43:22 2023 - ERROR - oe_test_clamav_clamsubmit.sh line 54
++ '[' 0 -eq 1 ']'
++ return 0
++ LOG_INFO 'End to run test.'
++ message='End to run test.'
++ python3 /root/mugen/libs/locallibs/mugen_log.py --level info --message 'End to run test.'
+Wed Apr  5 12:43:23 2023 - INFO  - End to run test.
++ CASE_RESULT 0
++ case_re=0
++ test -z 10
++ test 10 -gt 0
++ LOG_ERROR 'failed to execute the case.'
++ message='failed to execute the case.'
++ python3 /root/mugen/libs/locallibs/mugen_log.py --level error --message 'failed to execute the case.'
+Wed Apr  5 12:43:24 2023 - ERROR - failed to execute the case.
++ exit 10
++ post_test
++ LOG_INFO 'Start to restore the test environment.'
++ message='Start to restore the test environment.'
++ python3 /root/mugen/libs/locallibs/mugen_log.py --level info --message 'Start to restore the test environment.'
+Wed Apr  5 12:43:25 2023 - INFO  - Start to restore the test environment.
++ DNF_REMOVE
++ node=1
++ pkg_list=
++ mode=0
++ [[ -z Error: transaction check vs depsolve:
+clamav = 0.103.8-1.oe2303 is needed by clamav-devel-0.103.8-1.oe2303.riscv64
+clamav-filesystem = 0.103.8-1.oe2303 is needed by clamav-devel-0.103.8-1.oe2303.riscv64
+To diagnose the problem, try running: 'rpm -Va --nofiles --nodigest'.
+You probably have corrupted RPMDB, running 'rpm --rebuilddb' might fix the issue. ]]
++ '[' 0 -ne 0 ']'
++ '[' 1 == 0 ']'
++ python3 /root/mugen/libs/locallibs/rpm_manage.py remove --node 1 --pkgs '' --tempfile 'Error: transaction check vs depsolve:
+clamav = 0.103.8-1.oe2303 is needed by clamav-devel-0.103.8-1.oe2303.riscv64
+clamav-filesystem = 0.103.8-1.oe2303 is needed by clamav-devel-0.103.8-1.oe2303.riscv64
+To diagnose the problem, try running: '\''rpm -Va --nofiles --nodigest'\''.
+You probably have corrupted RPMDB, running '\''rpm --rebuilddb'\'' might fix the issue.'
+Traceback (most recent call last):
+  File "/root/mugen/libs/locallibs/rpm_manage.py", line 181, in <module>
+    exitcode = rpm_remove(args.node, args.pkgs, args.tempfile)
+  File "/root/mugen/libs/locallibs/rpm_manage.py", line 152, in rpm_remove
+    with open(tmpfile, "r") as f:
+OSError: [Errno 36] File name too long: "Error: transaction check vs depsolve:\nclamav = 0.103.8-1.oe2303 is needed by clamav-devel-0.103.8-1.oe2303.riscv64\nclamav-filesystem = 0.103.8-1.oe2303 is needed by clamav-devel-0.103.8-1.oe2303.riscv64\nTo diagnose the problem, try running: 'rpm -Va --nofiles --nodigest'.\nYou probably have corrupted RPMDB, running 'rpm --rebuilddb' might fix the issue."
++ '[' 0 -ne 0 ']'
++ LOG_INFO 'End to restore the test environment.'
++ message='End to restore the test environment.'
++ python3 /root/mugen/libs/locallibs/mugen_log.py --level info --message 'End to restore the test environment.'
+Wed Apr  5 12:43:32 2023 - INFO  - End to restore the test environment.

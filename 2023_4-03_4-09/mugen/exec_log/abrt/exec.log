@@ -1,0 +1,28 @@
+Wed Apr  5 07:37:32 2023 - INFO  - start to run testcase:oe_test_service_abrtd.
+Wed Apr  5 07:40:47 2023 - INFO  - The case exit by code 0.
+Wed Apr  5 07:40:49 2023 - INFO  - End to run testcase:oe_test_service_abrtd.
+Wed Apr  5 07:40:50 2023 - INFO  - A total of 1 use cases were executed, with 1 successes and 0 failures.
+Wed Apr  5 07:40:56 2023 - INFO  - start to run testcase:oe_test_service_abrt-journal-core.
+Wed Apr  5 07:44:04 2023 - INFO  - The case exit by code 0.
+Wed Apr  5 07:44:06 2023 - INFO  - End to run testcase:oe_test_service_abrt-journal-core.
+Wed Apr  5 07:44:07 2023 - INFO  - A total of 1 use cases were executed, with 1 successes and 0 failures.
+Wed Apr  5 07:44:14 2023 - INFO  - start to run testcase:oe_test_service_abrt-oops.
+Wed Apr  5 07:47:22 2023 - INFO  - The case exit by code 0.
+Wed Apr  5 07:47:23 2023 - INFO  - End to run testcase:oe_test_service_abrt-oops.
+Wed Apr  5 07:47:24 2023 - INFO  - A total of 1 use cases were executed, with 1 successes and 0 failures.
+Wed Apr  5 07:47:30 2023 - INFO  - start to run testcase:oe_test_service_abrt-pstoreoops.
+Wed Apr  5 07:50:14 2023 - INFO  - The case exit by code 0.
+Wed Apr  5 07:50:16 2023 - INFO  - End to run testcase:oe_test_service_abrt-pstoreoops.
+Wed Apr  5 07:50:17 2023 - INFO  - A total of 1 use cases were executed, with 1 successes and 0 failures.
+Wed Apr  5 07:50:23 2023 - INFO  - start to run testcase:oe_test_service_abrt-upload-watch.
+Wed Apr  5 07:53:29 2023 - INFO  - The case exit by code 0.
+Wed Apr  5 07:53:30 2023 - INFO  - End to run testcase:oe_test_service_abrt-upload-watch.
+Wed Apr  5 07:53:31 2023 - INFO  - A total of 1 use cases were executed, with 1 successes and 0 failures.
+Wed Apr  5 07:53:36 2023 - INFO  - start to run testcase:oe_test_service_abrt-vmcore.
+Wed Apr  5 07:57:33 2023 - INFO  - The case exit by code 0.
+Wed Apr  5 07:57:35 2023 - INFO  - End to run testcase:oe_test_service_abrt-vmcore.
+Wed Apr  5 07:57:36 2023 - INFO  - A total of 1 use cases were executed, with 1 successes and 0 failures.
+Wed Apr  5 07:57:42 2023 - INFO  - start to run testcase:oe_test_service_abrt-xorg.
+Wed Apr  5 08:00:42 2023 - INFO  - The case exit by code 0.
+Wed Apr  5 08:00:43 2023 - INFO  - End to run testcase:oe_test_service_abrt-xorg.
+Wed Apr  5 08:00:45 2023 - INFO  - A total of 1 use cases were executed, with 1 successes and 0 failures.

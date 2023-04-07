@@ -1,0 +1,324 @@
++ source ../common/common_lib.sh
+++ source /root/mugen/libs/locallibs/common_lib.sh
++++ python3 --version
++++ '[' 0 -eq 0 ']'
++++ source /root/mugen/libs/locallibs/common_lib_python.sh
+++ main
++++ type -t post_test
+++ '[' -n '' ']'
+++ trap POST_TEST_DEFAULT EXIT INT HUP TERM
+++ rpm -qa
+++ grep expect
++++ type -t config_params
+++ '[' -n '' ']'
++++ type -t pre_test
+++ '[' -n '' ']'
++++ type -t run_test
+++ '[' -n '' ']'
++ main
+++ type -t post_test
++ '[' -n function ']'
++ trap post_test EXIT INT HUP TERM
++ grep expect
++ rpm -qa
+++ type -t config_params
++ '[' -n '' ']'
+++ type -t pre_test
++ '[' -n function ']'
++ pre_test
++ LOG_INFO 'Start to prepare the test environment.'
++ message='Start to prepare the test environment.'
++ python3 /root/mugen/libs/locallibs/mugen_log.py --level info --message 'Start to prepare the test environment.'
+Wed Apr  5 08:34:04 2023 - INFO  - Start to prepare the test environment.
++ Pre_Test
++ DNF_INSTALL ansible
++ pkgs=ansible
++ node=1
++ '[' -z '' ']'
++ tmpfile=
+++ python3 /root/mugen/libs/locallibs/rpm_manage.py install --pkgs ansible --node 1 --tempfile ''
+Wed Apr  5 08:34:26 2023 - INFO  - pkgs:(ansible) is already installed
++ tmpfile2=
++ '[' -z '' ']'
++ tmpfile=
++ sed -i '1i\${NODE2_IPV4}' /etc/ansible/hosts
+sed: can't read /etc/ansible/hosts: No such file or directory
++ expect
+spawn ssh-keygen
+Generating public/private rsa key pair.
+
+Enter file in which to save the key (/root/.ssh/id_rsa): Enter passphrase (empty for no passphrase): 
+Enter same passphrase again: 
+Your identification has been saved in /root/.ssh/id_rsa
+Your public key has been saved in /root/.ssh/id_rsa.pub
+The key fingerprint is:
+SHA256:6wN+gF7urEQTRalLw/kCguti4NPcxsyoLWj3HQ7avvQ root@openeuler-riscv64
+The key's randomart image is:
++---[RSA 3072]----+
+|     .o.         |
+|     ..          |
+|.  ..o           |
+|o . *.           |
+| o oo=  S        |
+|o  .+.=  .       |
+|= o.BB +.        |
+|oB.*=BB.+        |
+|+.=o=B+E..       |
++----[SHA256]-----+
++ expect
+spawn ssh-copy-id root@
+/usr/bin/ssh-copy-id: INFO: Source of key(s) to be installed: "/root/.ssh/id_rsa.pub"
+/usr/bin/ssh-copy-id: INFO: attempting to log in with the new key(s), to filter out any that are already installed
+
+/usr/bin/ssh-copy-id: ERROR: ssh: Could not resolve hostname : Name or service not known
+
+send: spawn id exp3 not open
+    while executing
+"send "yes\n""
++ LOG_INFO 'End to prepare the test environment.'
++ message='End to prepare the test environment.'
++ python3 /root/mugen/libs/locallibs/mugen_log.py --level info --message 'End to prepare the test environment.'
+Wed Apr  5 08:34:42 2023 - INFO  - End to prepare the test environment.
+++ type -t run_test
++ '[' -n function ']'
++ run_test
++ LOG_INFO 'Start to run test.'
++ message='Start to run test.'
++ python3 /root/mugen/libs/locallibs/mugen_log.py --level info --message 'Start to run test.'
+Wed Apr  5 08:34:43 2023 - INFO  - Start to run test.
++ ansible-config --version
+oe_test_ansible_02.sh: line 27: ansible-config: command not found
++ grep ansible-config
++ CHECK_RESULT 1 0 0 'Check ansible-config --version failed.'
++ actual_result=1
++ expect_result=0
++ mode=0
++ error_log='Check ansible-config --version failed.'
++ exit_mode=0
++ '[' -z 1 ']'
++ '[' 0 -eq 0 ']'
++ test 1x '!=' 0x
++ test -n 'Check ansible-config --version failed.'
++ LOG_ERROR 'Check ansible-config --version failed.'
++ message='Check ansible-config --version failed.'
++ python3 /root/mugen/libs/locallibs/mugen_log.py --level error --message 'Check ansible-config --version failed.'
+Wed Apr  5 08:34:45 2023 - ERROR - Check ansible-config --version failed.
++ (( exec_result++ ))
++ LOG_ERROR 'oe_test_ansible_02.sh line 28'
++ message='oe_test_ansible_02.sh line 28'
++ python3 /root/mugen/libs/locallibs/mugen_log.py --level error --message 'oe_test_ansible_02.sh line 28'
+Wed Apr  5 08:34:47 2023 - ERROR - oe_test_ansible_02.sh line 28
++ '[' 0 -eq 1 ']'
++ return 0
++ ansible-config --help
++ grep Usage:
+oe_test_ansible_02.sh: line 29: ansible-config: command not found
++ CHECK_RESULT 1 0 0 'Check ansible-config --help failed.'
++ actual_result=1
++ expect_result=0
++ mode=0
++ error_log='Check ansible-config --help failed.'
++ exit_mode=0
++ '[' -z 1 ']'
++ '[' 0 -eq 0 ']'
++ test 1x '!=' 0x
++ test -n 'Check ansible-config --help failed.'
++ LOG_ERROR 'Check ansible-config --help failed.'
++ message='Check ansible-config --help failed.'
++ python3 /root/mugen/libs/locallibs/mugen_log.py --level error --message 'Check ansible-config --help failed.'
+Wed Apr  5 08:34:48 2023 - ERROR - Check ansible-config --help failed.
++ (( exec_result++ ))
++ LOG_ERROR 'oe_test_ansible_02.sh line 30'
++ message='oe_test_ansible_02.sh line 30'
++ python3 /root/mugen/libs/locallibs/mugen_log.py --level error --message 'oe_test_ansible_02.sh line 30'
+Wed Apr  5 08:34:50 2023 - ERROR - oe_test_ansible_02.sh line 30
++ '[' 0 -eq 1 ']'
++ return 0
++ expect
+spawn ansible-config view
+couldn't execute "ansible-config": no such file or directory
+    while executing
+"spawn ansible-config view"
++ CHECK_RESULT 1 0 0 'Check ansible-config view failed.'
++ actual_result=1
++ expect_result=0
++ mode=0
++ error_log='Check ansible-config view failed.'
++ exit_mode=0
++ '[' -z 1 ']'
++ '[' 0 -eq 0 ']'
++ test 1x '!=' 0x
++ test -n 'Check ansible-config view failed.'
++ LOG_ERROR 'Check ansible-config view failed.'
++ message='Check ansible-config view failed.'
++ python3 /root/mugen/libs/locallibs/mugen_log.py --level error --message 'Check ansible-config view failed.'
+Wed Apr  5 08:34:51 2023 - ERROR - Check ansible-config view failed.
++ (( exec_result++ ))
++ LOG_ERROR 'oe_test_ansible_02.sh line 37'
++ message='oe_test_ansible_02.sh line 37'
++ python3 /root/mugen/libs/locallibs/mugen_log.py --level error --message 'oe_test_ansible_02.sh line 37'
+Wed Apr  5 08:34:53 2023 - ERROR - oe_test_ansible_02.sh line 37
++ '[' 0 -eq 1 ']'
++ return 0
++ expect
+spawn ansible-config dump
+couldn't execute "ansible-config": no such file or directory
+    while executing
+"spawn ansible-config dump"
++ CHECK_RESULT 1 0 0 'Check ansible-config dump failed.'
++ actual_result=1
++ expect_result=0
++ mode=0
++ error_log='Check ansible-config dump failed.'
++ exit_mode=0
++ '[' -z 1 ']'
++ '[' 0 -eq 0 ']'
++ test 1x '!=' 0x
++ test -n 'Check ansible-config dump failed.'
++ LOG_ERROR 'Check ansible-config dump failed.'
++ message='Check ansible-config dump failed.'
++ python3 /root/mugen/libs/locallibs/mugen_log.py --level error --message 'Check ansible-config dump failed.'
+Wed Apr  5 08:34:54 2023 - ERROR - Check ansible-config dump failed.
++ (( exec_result++ ))
++ LOG_ERROR 'oe_test_ansible_02.sh line 44'
++ message='oe_test_ansible_02.sh line 44'
++ python3 /root/mugen/libs/locallibs/mugen_log.py --level error --message 'oe_test_ansible_02.sh line 44'
+Wed Apr  5 08:34:56 2023 - ERROR - oe_test_ansible_02.sh line 44
++ '[' 0 -eq 1 ']'
++ return 0
++ expect
+spawn ansible-config list -v
+couldn't execute "ansible-config": no such file or directory
+    while executing
+"spawn ansible-config list -v"
++ CHECK_RESULT 1 0 0 'Check ansible-config list -v failed.'
++ actual_result=1
++ expect_result=0
++ mode=0
++ error_log='Check ansible-config list -v failed.'
++ exit_mode=0
++ '[' -z 1 ']'
++ '[' 0 -eq 0 ']'
++ test 1x '!=' 0x
++ test -n 'Check ansible-config list -v failed.'
++ LOG_ERROR 'Check ansible-config list -v failed.'
++ message='Check ansible-config list -v failed.'
++ python3 /root/mugen/libs/locallibs/mugen_log.py --level error --message 'Check ansible-config list -v failed.'
+Wed Apr  5 08:34:57 2023 - ERROR - Check ansible-config list -v failed.
++ (( exec_result++ ))
++ LOG_ERROR 'oe_test_ansible_02.sh line 51'
++ message='oe_test_ansible_02.sh line 51'
++ python3 /root/mugen/libs/locallibs/mugen_log.py --level error --message 'oe_test_ansible_02.sh line 51'
+Wed Apr  5 08:34:58 2023 - ERROR - oe_test_ansible_02.sh line 51
++ '[' 0 -eq 1 ']'
++ return 0
++ grep Usage:
++ ansible-console --help
+oe_test_ansible_02.sh: line 52: ansible-console: command not found
++ CHECK_RESULT 1 0 0 'Check ansible-console --help failed.'
++ actual_result=1
++ expect_result=0
++ mode=0
++ error_log='Check ansible-console --help failed.'
++ exit_mode=0
++ '[' -z 1 ']'
++ '[' 0 -eq 0 ']'
++ test 1x '!=' 0x
++ test -n 'Check ansible-console --help failed.'
++ LOG_ERROR 'Check ansible-console --help failed.'
++ message='Check ansible-console --help failed.'
++ python3 /root/mugen/libs/locallibs/mugen_log.py --level error --message 'Check ansible-console --help failed.'
+Wed Apr  5 08:35:00 2023 - ERROR - Check ansible-console --help failed.
++ (( exec_result++ ))
++ LOG_ERROR 'oe_test_ansible_02.sh line 53'
++ message='oe_test_ansible_02.sh line 53'
++ python3 /root/mugen/libs/locallibs/mugen_log.py --level error --message 'oe_test_ansible_02.sh line 53'
+Wed Apr  5 08:35:01 2023 - ERROR - oe_test_ansible_02.sh line 53
++ '[' 0 -eq 1 ']'
++ return 0
++ ansible-console --version
+oe_test_ansible_02.sh: line 54: ansible-console: command not found
++ grep ansible-console
++ CHECK_RESULT 1 0 0 'Check ansible-console --version failed.'
++ actual_result=1
++ expect_result=0
++ mode=0
++ error_log='Check ansible-console --version failed.'
++ exit_mode=0
++ '[' -z 1 ']'
++ '[' 0 -eq 0 ']'
++ test 1x '!=' 0x
++ test -n 'Check ansible-console --version failed.'
++ LOG_ERROR 'Check ansible-console --version failed.'
++ message='Check ansible-console --version failed.'
++ python3 /root/mugen/libs/locallibs/mugen_log.py --level error --message 'Check ansible-console --version failed.'
+Wed Apr  5 08:35:03 2023 - ERROR - Check ansible-console --version failed.
++ (( exec_result++ ))
++ LOG_ERROR 'oe_test_ansible_02.sh line 55'
++ message='oe_test_ansible_02.sh line 55'
++ python3 /root/mugen/libs/locallibs/mugen_log.py --level error --message 'oe_test_ansible_02.sh line 55'
+Wed Apr  5 08:35:04 2023 - ERROR - oe_test_ansible_02.sh line 55
++ '[' 0 -eq 1 ']'
++ return 0
++ expect
+spawn ansible-console
+couldn't execute "ansible-console": no such file or directory
+    while executing
+"spawn ansible-console"
++ CHECK_RESULT 1 0 0 'Check ansible-console failed.'
++ actual_result=1
++ expect_result=0
++ mode=0
++ error_log='Check ansible-console failed.'
++ exit_mode=0
++ '[' -z 1 ']'
++ '[' 0 -eq 0 ']'
++ test 1x '!=' 0x
++ test -n 'Check ansible-console failed.'
++ LOG_ERROR 'Check ansible-console failed.'
++ message='Check ansible-console failed.'
++ python3 /root/mugen/libs/locallibs/mugen_log.py --level error --message 'Check ansible-console failed.'
+Wed Apr  5 08:35:06 2023 - ERROR - Check ansible-console failed.
++ (( exec_result++ ))
++ LOG_ERROR 'oe_test_ansible_02.sh line 66'
++ message='oe_test_ansible_02.sh line 66'
++ python3 /root/mugen/libs/locallibs/mugen_log.py --level error --message 'oe_test_ansible_02.sh line 66'
+Wed Apr  5 08:35:07 2023 - ERROR - oe_test_ansible_02.sh line 66
++ '[' 0 -eq 1 ']'
++ return 0
++ LOG_INFO 'End to run test.'
++ message='End to run test.'
++ python3 /root/mugen/libs/locallibs/mugen_log.py --level info --message 'End to run test.'
+Wed Apr  5 08:35:09 2023 - INFO  - End to run test.
++ CASE_RESULT 0
++ case_re=0
++ test -z 8
++ test 8 -gt 0
++ LOG_ERROR 'failed to execute the case.'
++ message='failed to execute the case.'
++ python3 /root/mugen/libs/locallibs/mugen_log.py --level error --message 'failed to execute the case.'
+Wed Apr  5 08:35:10 2023 - ERROR - failed to execute the case.
++ exit 8
++ post_test
++ LOG_INFO 'Start to restore the test environment.'
++ message='Start to restore the test environment.'
++ python3 /root/mugen/libs/locallibs/mugen_log.py --level info --message 'Start to restore the test environment.'
+Wed Apr  5 08:35:11 2023 - INFO  - Start to restore the test environment.
++ Post_Test
++ rm -rf /etc/ansible/hosts
++ DNF_REMOVE
++ node=1
++ pkg_list=
++ mode=0
++ [[ -z '' ]]
++ [[ -z '' ]]
++ LOG_WARN 'no thing to do.'
++ message='no thing to do.'
++ python3 /root/mugen/libs/locallibs/mugen_log.py --level warn --message 'no thing to do.'
+Wed Apr  5 08:35:13 2023 - WARN  - no thing to do.
++ return 0
++ rm -rf /root/.ssh
++ LOG_INFO 'End to restore the test environment.'
++ message='End to restore the test environment.'
++ python3 /root/mugen/libs/locallibs/mugen_log.py --level info --message 'End to restore the test environment.'
+Wed Apr  5 08:35:14 2023 - INFO  - End to restore the test environment.

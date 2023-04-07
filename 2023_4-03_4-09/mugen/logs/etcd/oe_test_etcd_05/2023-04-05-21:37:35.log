@@ -1,0 +1,874 @@
++ source /root/mugen/libs/locallibs/common_lib.sh
+++ python3 --version
+++ '[' 0 -eq 0 ']'
+++ source /root/mugen/libs/locallibs/common_lib_python.sh
++ main
+++ type -t post_test
++ '[' -n function ']'
++ trap post_test EXIT INT HUP TERM
++ rpm -qa
++ grep expect
+++ type -t config_params
++ '[' -n '' ']'
+++ type -t pre_test
++ '[' -n function ']'
++ pre_test
++ LOG_INFO 'Start to prepare the test environment.'
++ message='Start to prepare the test environment.'
++ python3 /root/mugen/libs/locallibs/mugen_log.py --level info --message 'Start to prepare the test environment.'
+Wed Apr  5 21:37:39 2023 - INFO  - Start to prepare the test environment.
++ DNF_INSTALL etcd
++ pkgs=etcd
++ node=1
++ '[' -z '' ']'
++ tmpfile=
+++ python3 /root/mugen/libs/locallibs/rpm_manage.py install --pkgs etcd --node 1 --tempfile ''
+Wed Apr  5 21:37:54 2023 - INFO  - pkgs:(etcd) is already installed
++ tmpfile2=
++ '[' -z '' ']'
++ tmpfile=
++ systemctl start etcd
+Job for etcd.service failed because the control process exited with error code.
+See "systemctl status etcd.service" and "journalctl -xeu etcd.service" for details.
++ LOG_INFO 'End to prepare the test environment.'
++ message='End to prepare the test environment.'
++ python3 /root/mugen/libs/locallibs/mugen_log.py --level info --message 'End to prepare the test environment.'
+Wed Apr  5 21:37:56 2023 - INFO  - End to prepare the test environment.
+++ type -t run_test
++ '[' -n function ']'
++ run_test
++ LOG_INFO 'Start to run test.'
++ message='Start to run test.'
++ python3 /root/mugen/libs/locallibs/mugen_log.py --level info --message 'Start to run test.'
+Wed Apr  5 21:37:57 2023 - INFO  - Start to run test.
++ systemctl status etcd
++ grep 'active (running)'
++ CHECK_RESULT 1 0 0 'Check etcd.service start failed'
++ actual_result=1
++ expect_result=0
++ mode=0
++ error_log='Check etcd.service start failed'
++ exit_mode=0
++ '[' -z 1 ']'
++ '[' 0 -eq 0 ']'
++ test 1x '!=' 0x
++ test -n 'Check etcd.service start failed'
++ LOG_ERROR 'Check etcd.service start failed'
++ message='Check etcd.service start failed'
++ python3 /root/mugen/libs/locallibs/mugen_log.py --level error --message 'Check etcd.service start failed'
+Wed Apr  5 21:37:58 2023 - ERROR - Check etcd.service start failed
++ (( exec_result++ ))
++ LOG_ERROR 'oe_test_etcd_05.sh line 29'
++ message='oe_test_etcd_05.sh line 29'
++ python3 /root/mugen/libs/locallibs/mugen_log.py --level error --message 'oe_test_etcd_05.sh line 29'
+Wed Apr  5 21:37:59 2023 - ERROR - oe_test_etcd_05.sh line 29
++ '[' 0 -eq 1 ']'
++ return 0
++ etcdctl defrag
++ grep defragmenting
+{"level":"warn","ts":"2023-04-05T21:38:05.499+0800","caller":"clientv3/retry_interceptor.go:62","msg":"retrying of unary invoker failed","target":"passthrough:///127.0.0.1:2379","attempt":0,"error":"rpc error: code = DeadlineExceeded desc = latest balancer error: connection error: desc = \"transport: Error while dialing dial tcp 127.0.0.1:2379: connect: connection refused\""}
+Failed to defragment etcd member[127.0.0.1:2379] (context deadline exceeded)
++ CHECK_RESULT 1 0 0 'Check etcdctl defrag failed.'
++ actual_result=1
++ expect_result=0
++ mode=0
++ error_log='Check etcdctl defrag failed.'
++ exit_mode=0
++ '[' -z 1 ']'
++ '[' 0 -eq 0 ']'
++ test 1x '!=' 0x
++ test -n 'Check etcdctl defrag failed.'
++ LOG_ERROR 'Check etcdctl defrag failed.'
++ message='Check etcdctl defrag failed.'
++ python3 /root/mugen/libs/locallibs/mugen_log.py --level error --message 'Check etcdctl defrag failed.'
+Wed Apr  5 21:38:06 2023 - ERROR - Check etcdctl defrag failed.
++ (( exec_result++ ))
++ LOG_ERROR 'oe_test_etcd_05.sh line 31'
++ message='oe_test_etcd_05.sh line 31'
++ python3 /root/mugen/libs/locallibs/mugen_log.py --level error --message 'oe_test_etcd_05.sh line 31'
+Wed Apr  5 21:38:07 2023 - ERROR - oe_test_etcd_05.sh line 31
++ '[' 0 -eq 1 ']'
++ return 0
++ etcdctl --endpoints=:2379 endpoint status
++ grep true
+{"level":"warn","ts":"2023-04-05T21:38:13.041+0800","caller":"clientv3/retry_interceptor.go:62","msg":"retrying of unary invoker failed","target":"passthrough:///:2379","attempt":0,"error":"rpc error: code = DeadlineExceeded desc = latest balancer error: connection error: desc = \"transport: Error while dialing dial tcp :2379: connect: connection refused\""}
+Failed to get the status of endpoint :2379 (context deadline exceeded)
++ CHECK_RESULT 1 0 0 'Check etcdctl --endpoints failed.'
++ actual_result=1
++ expect_result=0
++ mode=0
++ error_log='Check etcdctl --endpoints failed.'
++ exit_mode=0
++ '[' -z 1 ']'
++ '[' 0 -eq 0 ']'
++ test 1x '!=' 0x
++ test -n 'Check etcdctl --endpoints failed.'
++ LOG_ERROR 'Check etcdctl --endpoints failed.'
++ message='Check etcdctl --endpoints failed.'
++ python3 /root/mugen/libs/locallibs/mugen_log.py --level error --message 'Check etcdctl --endpoints failed.'
+Wed Apr  5 21:38:13 2023 - ERROR - Check etcdctl --endpoints failed.
++ (( exec_result++ ))
++ LOG_ERROR 'oe_test_etcd_05.sh line 33'
++ message='oe_test_etcd_05.sh line 33'
++ python3 /root/mugen/libs/locallibs/mugen_log.py --level error --message 'oe_test_etcd_05.sh line 33'
+Wed Apr  5 21:38:14 2023 - ERROR - oe_test_etcd_05.sh line 33
++ '[' 0 -eq 1 ']'
++ return 0
++ etcdctl alarm disarm
+{"level":"warn","ts":"2023-04-05T21:38:20.509+0800","caller":"clientv3/retry_interceptor.go:62","msg":"retrying of unary invoker failed","target":"endpoint://client-827c5bd1-c7d6-4540-8719-471c3ae41be9/127.0.0.1:2379","attempt":0,"error":"rpc error: code = DeadlineExceeded desc = latest balancer error: all SubConns are in TransientFailure, latest connection error: connection error: desc = \"transport: Error while dialing dial tcp 127.0.0.1:2379: connect: connection refused\""}
+Error: context deadline exceeded
++ CHECK_RESULT 1 0 0 'Check etcdctl alarm disarm failed.'
++ actual_result=1
++ expect_result=0
++ mode=0
++ error_log='Check etcdctl alarm disarm failed.'
++ exit_mode=0
++ '[' -z 1 ']'
++ '[' 0 -eq 0 ']'
++ test 1x '!=' 0x
++ test -n 'Check etcdctl alarm disarm failed.'
++ LOG_ERROR 'Check etcdctl alarm disarm failed.'
++ message='Check etcdctl alarm disarm failed.'
++ python3 /root/mugen/libs/locallibs/mugen_log.py --level error --message 'Check etcdctl alarm disarm failed.'
+Wed Apr  5 21:38:21 2023 - ERROR - Check etcdctl alarm disarm failed.
++ (( exec_result++ ))
++ LOG_ERROR 'oe_test_etcd_05.sh line 35'
++ message='oe_test_etcd_05.sh line 35'
++ python3 /root/mugen/libs/locallibs/mugen_log.py --level error --message 'oe_test_etcd_05.sh line 35'
+Wed Apr  5 21:38:22 2023 - ERROR - oe_test_etcd_05.sh line 35
++ '[' 0 -eq 1 ']'
++ return 0
++ etcdctl alarm list
+{"level":"warn","ts":"2023-04-05T21:38:28.071+0800","caller":"clientv3/retry_interceptor.go:62","msg":"retrying of unary invoker failed","target":"endpoint://client-14f1a1cf-bc4f-49df-a761-2fff278dbc9d/127.0.0.1:2379","attempt":0,"error":"rpc error: code = DeadlineExceeded desc = latest balancer error: all SubConns are in TransientFailure, latest connection error: connection error: desc = \"transport: Error while dialing dial tcp 127.0.0.1:2379: connect: connection refused\""}
+Error: context deadline exceeded
++ CHECK_RESULT 1 0 0 'Check etcdctl alarm listfailed.'
++ actual_result=1
++ expect_result=0
++ mode=0
++ error_log='Check etcdctl alarm listfailed.'
++ exit_mode=0
++ '[' -z 1 ']'
++ '[' 0 -eq 0 ']'
++ test 1x '!=' 0x
++ test -n 'Check etcdctl alarm listfailed.'
++ LOG_ERROR 'Check etcdctl alarm listfailed.'
++ message='Check etcdctl alarm listfailed.'
++ python3 /root/mugen/libs/locallibs/mugen_log.py --level error --message 'Check etcdctl alarm listfailed.'
+Wed Apr  5 21:38:28 2023 - ERROR - Check etcdctl alarm listfailed.
++ (( exec_result++ ))
++ LOG_ERROR 'oe_test_etcd_05.sh line 37'
++ message='oe_test_etcd_05.sh line 37'
++ python3 /root/mugen/libs/locallibs/mugen_log.py --level error --message 'oe_test_etcd_05.sh line 37'
+Wed Apr  5 21:38:30 2023 - ERROR - oe_test_etcd_05.sh line 37
++ '[' 0 -eq 1 ']'
++ return 0
++ etcdctl check datascale
++ grep PASS:
+runtime: lfstack.push invalid packing: node=0xffffff7874a7e0 cnt=0x1 packed=0xffff7874a7e00001 -> node=0xffff7874a7e0
+fatal error: lfstack.push
+
+runtime stack:
+runtime.throw({0xaaaaaad6807f4a?, 0xaaaaaad623b4c8?})
+	/usr/lib/golang/src/runtime/panic.go:1047 +0x44 fp=0xffffff72ffc750 sp=0xffffff72ffc728 pc=0xaaaaaad6236774
+runtime.(*lfstack).push(0xc000044500?, 0xffffff7874a7e0)
+	/usr/lib/golang/src/runtime/lfstack.go:30 +0x120 fp=0xffffff72ffc780 sp=0xffffff72ffc750 pc=0xaaaaaad620aa30
+runtime.(*spanSetBlockAlloc).free(...)
+	/usr/lib/golang/src/runtime/mspanset.go:292
+runtime.(*spanSet).reset(0xaaaaaad6faaf18)
+	/usr/lib/golang/src/runtime/mspanset.go:265 +0xb0 fp=0xffffff72ffc7b0 sp=0xffffff72ffc780 pc=0xaaaaaad62306d0
+runtime.finishsweep_m()
+	/usr/lib/golang/src/runtime/mgcsweep.go:260 +0xc0 fp=0xffffff72ffc7e8 sp=0xffffff72ffc7b0 pc=0xaaaaaad62246f0
+runtime.gcStart.func1()
+	/usr/lib/golang/src/runtime/mgc.go:668 +0x20 fp=0xffffff72ffc7f0 sp=0xffffff72ffc7e8 pc=0xaaaaaad62195a0
+runtime.systemstack()
+	/usr/lib/golang/src/runtime/asm_riscv64.s:133 +0x54 fp=0xffffff72ffc7f8 sp=0xffffff72ffc7f0 pc=0xaaaaaad62630ac
+
+goroutine 9 [running]:
+runtime.systemstack_switch()
+	/usr/lib/golang/src/runtime/asm_riscv64.s:96 +0x8 fp=0xc00013cd10 sp=0xc00013cd08 pc=0xaaaaaad6263040
+runtime.gcStart({0xffffffa0418108?, 0x7?, 0xd62511f8?})
+	/usr/lib/golang/src/runtime/mgc.go:667 +0x358 fp=0xc00013cda0 sp=0xc00013cd10 pc=0xaaaaaad6219918
+runtime.mallocgc(0x17, 0x0, 0x0)
+	/usr/lib/golang/src/runtime/malloc.go:1148 +0x6a8 fp=0xc00013ce18 sp=0xc00013cda0 pc=0xaaaaaad620c648
+runtime.rawstring(0x17)
+	/usr/lib/golang/src/runtime/string.go:273 +0x48 fp=0xc00013ce60 sp=0xc00013ce18 pc=0xaaaaaad6251a90
+runtime.rawstringtmp(0xaaaaaad63f7acc?, 0xc00019a180?)
+	/usr/lib/golang/src/runtime/string.go:135 +0x5c fp=0xc00013ce78 sp=0xc00013ce60 pc=0xaaaaaad62514e4
+runtime.concatstrings(0x3?, {0xc00013cf10, 0x2, 0x4?})
+	/usr/lib/golang/src/runtime/string.go:51 +0xe8 fp=0xc00013cee8 sp=0xc00013ce78 pc=0xaaaaaad6250f38
+runtime.concatstring2(0xc000348de0?, {0xc00019a1e0?, 0x1?}, {0xc00019a200?, 0xaaaaaad62d8978?})
+	/usr/lib/golang/src/runtime/string.go:60 +0x7c fp=0xc00013cf30 sp=0xc00013cee8 pc=0xaaaaaad625115c
+net.(*OpError).Error(0xc00032a140)
+	/usr/lib/golang/src/net/net.go:490 +0x124 fp=0xc00013cf80 sp=0xc00013cf30 pc=0xaaaaaad63f7ae4
+fmt.(*pp).handleMethods(0xc000092000, 0xd696cec0?)
+	/usr/lib/golang/src/fmt/print.go:651 +0x1ac fp=0xc00013d1d0 sp=0xc00013cf80 pc=0xaaaaaad62d89e4
+fmt.(*pp).printArg(0xc000092000, {0xaaaaaad69e44c0?, 0xc00032a140}, 0x76)
+	/usr/lib/golang/src/fmt/print.go:740 +0x5e8 fp=0xc00013d268 sp=0xc00013d1d0 pc=0xaaaaaad62d9448
+fmt.(*pp).doPrintf(0xc000092000, {0xaaaaaad681d2e0, 0x21}, {0xc00013d6e8?, 0x1, 0x1})
+	/usr/lib/golang/src/fmt/print.go:1057 +0x220 fp=0xc00013d360 sp=0xc00013d268 pc=0xaaaaaad62dbb10
+fmt.Sprintf({0xaaaaaad681d2e0, 0x21}, {0xc00013d6e8, 0x1, 0x1})
+	/usr/lib/golang/src/fmt/print.go:219 +0x78 fp=0xc00013d3b0 sp=0xc00013d360 pc=0xaaaaaad62d64e8
+google.golang.org/grpc/internal/transport.connectionErrorf(...)
+	/home/abuild/rpmbuild/BUILD/etcd-3.4.14/vendor/google.golang.org/grpc/internal/transport/transport.go:713
+google.golang.org/grpc/internal/transport.newHTTP2Client({0xaaaaaad6a93048, 0xc00034a6c0}, {0xaaaaaad6a92fd8?, 0xc000198180?}, {{0xc00029e410, 0xe}, {0x0, 0x0}, {0xc0001ba037, _}}, ...)
+	/home/abuild/rpmbuild/BUILD/etcd-3.4.14/vendor/google.golang.org/grpc/internal/transport/http2_client.go:178 +0x18c fp=0xc00013d8c0 sp=0xc00013d3b0 pc=0xaaaaaad668ef84
+google.golang.org/grpc/internal/transport.NewClientTransport(...)
+	/home/abuild/rpmbuild/BUILD/etcd-3.4.14/vendor/google.golang.org/grpc/internal/transport/transport.go:581
+google.golang.org/grpc.(*addrConn).createTransport(0xc0001c0dc0, {{0xc00029e410, 0xe}, {0x0, 0x0}, 0x0, 0x0, {0x0, 0x0}}, {{0xaaaaaad68095ac, ...}, ...}, ...)
+	/home/abuild/rpmbuild/BUILD/etcd-3.4.14/vendor/google.golang.org/grpc/clientconn.go:1285 +0x380 fp=0xc00013db70 sp=0xc00013d8c0 pc=0xaaaaaad66cefe0
+google.golang.org/grpc.(*addrConn).tryAllAddrs(0xc0001c0dc0, {0xc000198300?, 0x1, 0x0?}, {0x0?, 0x0?, 0xaaaaaad6f832c0?})
+	/home/abuild/rpmbuild/BUILD/etcd-3.4.14/vendor/google.golang.org/grpc/clientconn.go:1208 +0x3f4 fp=0xc00013de20 sp=0xc00013db70 pc=0xaaaaaad66ceb0c
+google.golang.org/grpc.(*addrConn).resetTransport(0xc0001c0dc0)
+	/home/abuild/rpmbuild/BUILD/etcd-3.4.14/vendor/google.golang.org/grpc/clientconn.go:1118 +0x1dc fp=0xc00013dfc8 sp=0xc00013de20 pc=0xaaaaaad66ce29c
+google.golang.org/grpc.(*addrConn).connect.func1()
+	/home/abuild/rpmbuild/BUILD/etcd-3.4.14/vendor/google.golang.org/grpc/clientconn.go:800 +0x2c fp=0xc00013dfd8 sp=0xc00013dfc8 pc=0xaaaaaad66ccdf4
+runtime.goexit()
+	/usr/lib/golang/src/runtime/asm_riscv64.s:516 +0x4 fp=0xc00013dfd8 sp=0xc00013dfd8 pc=0xaaaaaad62652bc
+created by google.golang.org/grpc.(*addrConn).connect
+	/home/abuild/rpmbuild/BUILD/etcd-3.4.14/vendor/google.golang.org/grpc/clientconn.go:800 +0x178
+
+goroutine 1 [semacquire]:
+runtime.gopark(0xaaaaaad6f88220?, 0xaaaaaad6fb27e0?, 0x0?, 0x80?, 0xffffff792e6fff?)
+	/usr/lib/golang/src/runtime/proc.go:363 +0x110 fp=0xc000150e10 sp=0xc000150df8 pc=0xaaaaaad6239190
+runtime.goparkunlock(...)
+	/usr/lib/golang/src/runtime/proc.go:369
+runtime.semacquire1(0xaaaaaad6f83ab8, 0x0?, 0x0, 0x0)
+	/usr/lib/golang/src/runtime/sema.go:150 +0x1fc fp=0xc000150e60 sp=0xc000150e10 pc=0xaaaaaad62497d4
+runtime.semacquire(...)
+	/usr/lib/golang/src/runtime/sema.go:101
+runtime.gcStart({0xaaaaaad69c2940?, 0x70000?, 0x216c01?})
+	/usr/lib/golang/src/runtime/mgc.go:608 +0x15c fp=0xc000150ef0 sp=0xc000150e60 pc=0xaaaaaad621971c
+runtime.mallocgc(0x70000, 0xaaaaaad69a7cc0, 0x1)
+	/usr/lib/golang/src/runtime/malloc.go:1148 +0x6a8 fp=0xc000150f68 sp=0xc000150ef0 pc=0xaaaaaad620c648
+runtime.newobject(0x50?)
+	/usr/lib/golang/src/runtime/malloc.go:1202 +0x38 fp=0xc000150f88 sp=0xc000150f68 pc=0xaaaaaad620c870
+go.uber.org/zap/zapcore.newCounters(...)
+	/home/abuild/rpmbuild/BUILD/etcd-3.4.14/vendor/go.uber.org/zap/zapcore/sampler.go:42
+go.uber.org/zap/zapcore.NewSampler(...)
+	/home/abuild/rpmbuild/BUILD/etcd-3.4.14/vendor/go.uber.org/zap/zapcore/sampler.go:107
+go.uber.org/zap.Config.buildOptions.func1({0xaaaaaad6a93b80?, 0xc000216cc0})
+	/home/abuild/rpmbuild/BUILD/etcd-3.4.14/vendor/go.uber.org/zap/config.go:208 +0x5c fp=0xc000150fc8 sp=0xc000150f88 pc=0xaaaaaad65c562c
+go.uber.org/zap.WrapCore.func1(0xc0000880c0)
+	/home/abuild/rpmbuild/BUILD/etcd-3.4.14/vendor/go.uber.org/zap/options.go:40 +0x40 fp=0xc000150fe0 sp=0xc000150fc8 pc=0xaaaaaad65c95b0
+go.uber.org/zap.optionFunc.apply(0xc00000c150?, 0x0?)
+	/home/abuild/rpmbuild/BUILD/etcd-3.4.14/vendor/go.uber.org/zap/options.go:34 +0x3c fp=0xc000150ff0 sp=0xc000150fe0 pc=0xaaaaaad65c94e4
+go.uber.org/zap.(*Logger).WithOptions(0xc000151098, {0xc0002a4340, 0x4, 0xaaaaaad6802656?})
+	/home/abuild/rpmbuild/BUILD/etcd-3.4.14/vendor/go.uber.org/zap/logger.go:152 +0xe8 fp=0xc000151028 sp=0xc000150ff0 pc=0xaaaaaad65c89f0
+go.uber.org/zap.New({0xaaaaaad6a93b80, 0xc000216cc0}, {0xc0002a4340, 0x4, 0x4})
+	/home/abuild/rpmbuild/BUILD/etcd-3.4.14/vendor/go.uber.org/zap/logger.go:73 +0x20c fp=0xc0001510f0 sp=0xc000151028 pc=0xaaaaaad65c8424
+go.uber.org/zap.Config.Build({{0xc00019ab7c}, 0x0, 0x0, 0x0, 0xaaaaaad6f38270, {0xaaaaaad6800e3f, 0x4}, {{0xaaaaaad680086f, 0x3}, {0xaaaaaad68019fc, ...}, ...}, ...}, ...)
+	/home/abuild/rpmbuild/BUILD/etcd-3.4.14/vendor/go.uber.org/zap/config.go:177 +0x174 fp=0xc000151338 sp=0xc0001510f0 pc=0xaaaaaad65c4d5c
+go.etcd.io/etcd/clientv3.newClient(0xc0002987c0?)
+	/home/abuild/rpmbuild/BUILD/etcd-3.4.14/clientv3/client.go:430 +0x204 fp=0xc000151790 sp=0xc000151338 pc=0xaaaaaad67865bc
+go.etcd.io/etcd/clientv3.New(...)
+	/home/abuild/rpmbuild/BUILD/etcd-3.4.14/clientv3/client.go:107
+go.etcd.io/etcd/etcdctl/ctlv3/command.(*clientConfig).mustClient(0xc000345900?)
+	/home/abuild/rpmbuild/BUILD/etcd-3.4.14/etcdctl/ctlv3/command/global.go:179 +0x9c fp=0xc000151898 sp=0xc000151790 pc=0xaaaaaad67dd30c
+go.etcd.io/etcd/etcdctl/ctlv3/command.newCheckDatascaleCommand(0xc000345900?, {0xaaaaaad6800ddf?, 0x0?, 0x0?})
+	/home/abuild/rpmbuild/BUILD/etcd-3.4.14/etcdctl/ctlv3/command/check.go:305 +0x400 fp=0xc000151d80 sp=0xc000151898 pc=0xaaaaaad67d7e30
+github.com/spf13/cobra.(*Command).execute(0xc000345900, {0xaaaaaad6fb1970, 0x0, 0x0})
+	/home/abuild/rpmbuild/BUILD/etcd-3.4.14/vendor/github.com/spf13/cobra/command.go:766 +0x4dc fp=0xc000151e50 sp=0xc000151d80 pc=0xaaaaaad6772324
+github.com/spf13/cobra.(*Command).ExecuteC(0xaaaaaad6f30000)
+	/home/abuild/rpmbuild/BUILD/etcd-3.4.14/vendor/github.com/spf13/cobra/command.go:852 +0x28c fp=0xc000151f00 sp=0xc000151e50 pc=0xaaaaaad677278c
+github.com/spf13/cobra.(*Command).Execute(...)
+	/home/abuild/rpmbuild/BUILD/etcd-3.4.14/vendor/github.com/spf13/cobra/command.go:800
+go.etcd.io/etcd/etcdctl/ctlv3.Start()
+	/home/abuild/rpmbuild/BUILD/etcd-3.4.14/etcdctl/ctlv3/ctl_nocov.go:25 +0x9c fp=0xc000151f20 sp=0xc000151f00 pc=0xaaaaaad67fe19c
+main.main()
+	/home/abuild/rpmbuild/BUILD/etcd-3.4.14/etcdctl/main.go:35 +0x6c fp=0xc000151f80 sp=0xc000151f20 pc=0xaaaaaad67fede4
+runtime.main()
+	/usr/lib/golang/src/runtime/proc.go:250 +0x218 fp=0xc000151fd8 sp=0xc000151f80 pc=0xaaaaaad6238da0
+runtime.goexit()
+	/usr/lib/golang/src/runtime/asm_riscv64.s:516 +0x4 fp=0xc000151fd8 sp=0xc000151fd8 pc=0xaaaaaad62652bc
+
+goroutine 2 [force gc (idle)]:
+runtime.gopark(0x0?, 0x0?, 0x0?, 0x0?, 0x0?)
+	/usr/lib/golang/src/runtime/proc.go:363 +0x110 fp=0xc000054fb0 sp=0xc000054f98 pc=0xaaaaaad6239190
+runtime.goparkunlock(...)
+	/usr/lib/golang/src/runtime/proc.go:369
+runtime.forcegchelper()
+	/usr/lib/golang/src/runtime/proc.go:302 +0xb0 fp=0xc000054fd8 sp=0xc000054fb0 pc=0xaaaaaad6239018
+runtime.goexit()
+	/usr/lib/golang/src/runtime/asm_riscv64.s:516 +0x4 fp=0xc000054fd8 sp=0xc000054fd8 pc=0xaaaaaad62652bc
+created by runtime.init.5
+	/usr/lib/golang/src/runtime/proc.go:290 +0x28
+
+goroutine 3 [GC sweep wait]:
+runtime.gopark(0x1?, 0x0?, 0x0?, 0x0?, 0x0?)
+	/usr/lib/golang/src/runtime/proc.go:363 +0x110 fp=0xc000055798 sp=0xc000055780 pc=0xaaaaaad6239190
+runtime.goparkunlock(...)
+	/usr/lib/golang/src/runtime/proc.go:369
+runtime.bgsweep(0x0?)
+	/usr/lib/golang/src/runtime/mgcsweep.go:297 +0x114 fp=0xc0000557c8 sp=0xc000055798 pc=0xaaaaaad622489c
+runtime.gcenable.func1()
+	/usr/lib/golang/src/runtime/mgc.go:178 +0x2c fp=0xc0000557d8 sp=0xc0000557c8 pc=0xaaaaaad621906c
+runtime.goexit()
+	/usr/lib/golang/src/runtime/asm_riscv64.s:516 +0x4 fp=0xc0000557d8 sp=0xc0000557d8 pc=0xaaaaaad62652bc
+created by runtime.gcenable
+	/usr/lib/golang/src/runtime/mgc.go:178 +0x70
+
+goroutine 4 [GC scavenge wait]:
+runtime.gopark(0x0?, 0x0?, 0x0?, 0x0?, 0x412e848000000000?)
+	/usr/lib/golang/src/runtime/proc.go:363 +0x110 fp=0xc000055f80 sp=0xc000055f68 pc=0xaaaaaad6239190
+runtime.goparkunlock(...)
+	/usr/lib/golang/src/runtime/proc.go:369
+runtime.(*scavengerState).park(0xaaaaaad6f83340)
+	/usr/lib/golang/src/runtime/mgcscavenge.go:389 +0x68 fp=0xc000055fa8 sp=0xc000055f80 pc=0xaaaaaad62227c8
+runtime.bgscavenge(0x0?)
+	/usr/lib/golang/src/runtime/mgcscavenge.go:622 +0x6c fp=0xc000055fc8 sp=0xc000055fa8 pc=0xaaaaaad6222d34
+runtime.gcenable.func2()
+	/usr/lib/golang/src/runtime/mgc.go:179 +0x2c fp=0xc000055fd8 sp=0xc000055fc8 pc=0xaaaaaad621900c
+runtime.goexit()
+	/usr/lib/golang/src/runtime/asm_riscv64.s:516 +0x4 fp=0xc000055fd8 sp=0xc000055fd8 pc=0xaaaaaad62652bc
+created by runtime.gcenable
+	/usr/lib/golang/src/runtime/mgc.go:179 +0xb0
+
+goroutine 18 [finalizer wait]:
+runtime.gopark(0x3000?, 0x18000?, 0x0?, 0x30?, 0x3000?)
+	/usr/lib/golang/src/runtime/proc.go:363 +0x110 fp=0xc0000545a8 sp=0xc000054590 pc=0xaaaaaad6239190
+runtime.goparkunlock(...)
+	/usr/lib/golang/src/runtime/proc.go:369
+runtime.runfinq()
+	/usr/lib/golang/src/runtime/mfinal.go:180 +0x110 fp=0xc0000547d8 sp=0xc0000545a8 pc=0xaaaaaad6218260
+runtime.goexit()
+	/usr/lib/golang/src/runtime/asm_riscv64.s:516 +0x4 fp=0xc0000547d8 sp=0xc0000547d8 pc=0xaaaaaad62652bc
+created by runtime.createfing
+	/usr/lib/golang/src/runtime/mfinal.go:157 +0x64
+
+goroutine 37 [chan receive]:
+runtime.gopark(0x50000000000eb8?, 0xaaaaaad623f494?, 0xcc?, 0x4a?, 0xc000284340?)
+	/usr/lib/golang/src/runtime/proc.go:363 +0x110 fp=0xc0002ae5b8 sp=0xc0002ae5a0 pc=0xaaaaaad6239190
+runtime.chanrecv(0xc000187380, 0xc0002ae738, 0x80?)
+	/usr/lib/golang/src/runtime/chan.go:583 +0x498 fp=0xc0002ae648 sp=0xc0002ae5b8 pc=0xaaaaaad6206948
+runtime.chanrecv2(0x3b9aca00?, 0x0?)
+	/usr/lib/golang/src/runtime/chan.go:447 +0x14 fp=0xc0002ae668 sp=0xc0002ae648 pc=0xaaaaaad620649c
+go.etcd.io/etcd/pkg/logutil.(*MergeLogger).outputLoop(0xc00028e7c8)
+	/home/abuild/rpmbuild/BUILD/etcd-3.4.14/pkg/logutil/merge_logger.go:173 +0x74 fp=0xc0002ae7c8 sp=0xc0002ae668 pc=0xaaaaaad67826f4
+go.etcd.io/etcd/pkg/logutil.NewMergeLogger.func1()
+	/home/abuild/rpmbuild/BUILD/etcd-3.4.14/pkg/logutil/merge_logger.go:91 +0x2c fp=0xc0002ae7d8 sp=0xc0002ae7c8 pc=0xaaaaaad678263c
+runtime.goexit()
+	/usr/lib/golang/src/runtime/asm_riscv64.s:516 +0x4 fp=0xc0002ae7d8 sp=0xc0002ae7d8 pc=0xaaaaaad62652bc
+created by go.etcd.io/etcd/pkg/logutil.NewMergeLogger
+	/home/abuild/rpmbuild/BUILD/etcd-3.4.14/pkg/logutil/merge_logger.go:91 +0xbc
+
+goroutine 99 [select]:
+runtime.gopark(0xc000350f48?, 0x2?, 0x0?, 0x0?, 0xc000350f0c?)
+	/usr/lib/golang/src/runtime/proc.go:363 +0x110 fp=0xc000350dc0 sp=0xc000350da8 pc=0xaaaaaad6239190
+runtime.selectgo(0xc000350f48, 0xc000350f08, 0xc000298ab0?, 0x0, 0xc0002aef90?, 0x1)
+	/usr/lib/golang/src/runtime/select.go:328 +0x3b4 fp=0xc000350ec8 sp=0xc000350dc0 pc=0xaaaaaad62485d4
+google.golang.org/grpc.(*ccBalancerWrapper).watcher(0xc0002a4700)
+	/home/abuild/rpmbuild/BUILD/etcd-3.4.14/vendor/google.golang.org/grpc/balancer_conn_wrappers.go:69 +0x88 fp=0xc000350fc8 sp=0xc000350ec8 pc=0xaaaaaad66c7438
+google.golang.org/grpc.newCCBalancerWrapper.func1()
+	/home/abuild/rpmbuild/BUILD/etcd-3.4.14/vendor/google.golang.org/grpc/balancer_conn_wrappers.go:60 +0x2c fp=0xc000350fd8 sp=0xc000350fc8 pc=0xaaaaaad66c737c
+runtime.goexit()
+	/usr/lib/golang/src/runtime/asm_riscv64.s:516 +0x4 fp=0xc000350fd8 sp=0xc000350fd8 pc=0xaaaaaad62652bc
+created by google.golang.org/grpc.newCCBalancerWrapper
+	/home/abuild/rpmbuild/BUILD/etcd-3.4.14/vendor/google.golang.org/grpc/balancer_conn_wrappers.go:60 +0x220
+
+goroutine 100 [select]:
+runtime.gopark(0xc000141f18?, 0x3?, 0x8?, 0x6a?, 0xc000141eaa?)
+	/usr/lib/golang/src/runtime/proc.go:363 +0x110 fp=0xc000141d18 sp=0xc000141d00 pc=0xaaaaaad6239190
+runtime.selectgo(0xc000141f18, 0xc000141ea4, 0xaaaaaad6a8c920?, 0x0, 0x0?, 0x1)
+	/usr/lib/golang/src/runtime/select.go:328 +0x3b4 fp=0xc000141e20 sp=0xc000141d18 pc=0xaaaaaad62485d4
+google.golang.org/grpc.(*addrConn).resetTransport(0xc0002bc2c0)
+	/home/abuild/rpmbuild/BUILD/etcd-3.4.14/vendor/google.golang.org/grpc/clientconn.go:1134 +0x478 fp=0xc000141fc8 sp=0xc000141e20 pc=0xaaaaaad66ce538
+google.golang.org/grpc.(*addrConn).connect.func1()
+	/home/abuild/rpmbuild/BUILD/etcd-3.4.14/vendor/google.golang.org/grpc/clientconn.go:800 +0x2c fp=0xc000141fd8 sp=0xc000141fc8 pc=0xaaaaaad66ccdf4
+runtime.goexit()
+	/usr/lib/golang/src/runtime/asm_riscv64.s:516 +0x4 fp=0xc000141fd8 sp=0xc000141fd8 pc=0xaaaaaad62652bc
+created by google.golang.org/grpc.(*addrConn).connect
+	/home/abuild/rpmbuild/BUILD/etcd-3.4.14/vendor/google.golang.org/grpc/clientconn.go:800 +0x178
+
+goroutine 5 [GC worker (idle)]:
+runtime.gopark(0x0?, 0x0?, 0x0?, 0x0?, 0x0?)
+	/usr/lib/golang/src/runtime/proc.go:363 +0x110 fp=0xc0002aff48 sp=0xc0002aff30 pc=0xaaaaaad6239190
+runtime.gcBgMarkWorker()
+	/usr/lib/golang/src/runtime/mgc.go:1235 +0x100 fp=0xc0002affd8 sp=0xc0002aff48 pc=0xaaaaaad621b258
+runtime.goexit()
+	/usr/lib/golang/src/runtime/asm_riscv64.s:516 +0x4 fp=0xc0002affd8 sp=0xc0002affd8 pc=0xaaaaaad62652bc
+created by runtime.gcBgMarkStartWorkers
+	/usr/lib/golang/src/runtime/mgc.go:1159 +0x2c
+
+goroutine 102 [select]:
+runtime.gopark(0xc000067f48?, 0x2?, 0xf0?, 0x8d?, 0xc000067f0c?)
+	/usr/lib/golang/src/runtime/proc.go:363 +0x110 fp=0xc000067dc0 sp=0xc000067da8 pc=0xaaaaaad6239190
+runtime.selectgo(0xc000067f48, 0xc000067f08, 0xc000298e30?, 0x0, 0x0?, 0x1)
+	/usr/lib/golang/src/runtime/select.go:328 +0x3b4 fp=0xc000067ec8 sp=0xc000067dc0 pc=0xaaaaaad62485d4
+google.golang.org/grpc.(*ccBalancerWrapper).watcher(0xc0002a4ac0)
+	/home/abuild/rpmbuild/BUILD/etcd-3.4.14/vendor/google.golang.org/grpc/balancer_conn_wrappers.go:69 +0x88 fp=0xc000067fc8 sp=0xc000067ec8 pc=0xaaaaaad66c7438
+google.golang.org/grpc.newCCBalancerWrapper.func1()
+	/home/abuild/rpmbuild/BUILD/etcd-3.4.14/vendor/google.golang.org/grpc/balancer_conn_wrappers.go:60 +0x2c fp=0xc000067fd8 sp=0xc000067fc8 pc=0xaaaaaad66c737c
+runtime.goexit()
+	/usr/lib/golang/src/runtime/asm_riscv64.s:516 +0x4 fp=0xc000067fd8 sp=0xc000067fd8 pc=0xaaaaaad62652bc
+created by google.golang.org/grpc.newCCBalancerWrapper
+	/home/abuild/rpmbuild/BUILD/etcd-3.4.14/vendor/google.golang.org/grpc/balancer_conn_wrappers.go:60 +0x220
+
+goroutine 103 [select]:
+runtime.gopark(0xc00013df18?, 0x3?, 0xb8?, 0x69?, 0xc00013deaa?)
+	/usr/lib/golang/src/runtime/proc.go:363 +0x110 fp=0xc000062d18 sp=0xc000062d00 pc=0xaaaaaad6239190
+runtime.selectgo(0xc000062f18, 0xc00013dea4, 0xaaaaaad6a8c920?, 0x0, 0x0?, 0x1)
+	/usr/lib/golang/src/runtime/select.go:328 +0x3b4 fp=0xc000062e20 sp=0xc000062d18 pc=0xaaaaaad62485d4
+google.golang.org/grpc.(*addrConn).resetTransport(0xc0002bcb00)
+	/home/abuild/rpmbuild/BUILD/etcd-3.4.14/vendor/google.golang.org/grpc/clientconn.go:1134 +0x478 fp=0xc000062fc8 sp=0xc000062e20 pc=0xaaaaaad66ce538
+google.golang.org/grpc.(*addrConn).connect.func1()
+	/home/abuild/rpmbuild/BUILD/etcd-3.4.14/vendor/google.golang.org/grpc/clientconn.go:800 +0x2c fp=0xc000062fd8 sp=0xc000062fc8 pc=0xaaaaaad66ccdf4
+runtime.goexit()
+	/usr/lib/golang/src/runtime/asm_riscv64.s:516 +0x4 fp=0xc000062fd8 sp=0xc000062fd8 pc=0xaaaaaad62652bc
+created by google.golang.org/grpc.(*addrConn).connect
+	/home/abuild/rpmbuild/BUILD/etcd-3.4.14/vendor/google.golang.org/grpc/clientconn.go:800 +0x178
+
+goroutine 105 [GC worker (idle)]:
+runtime.gopark(0x0?, 0x0?, 0x0?, 0x0?, 0x0?)
+	/usr/lib/golang/src/runtime/proc.go:363 +0x110 fp=0xc0002b1748 sp=0xc0002b1730 pc=0xaaaaaad6239190
+runtime.gcBgMarkWorker()
+	/usr/lib/golang/src/runtime/mgc.go:1235 +0x100 fp=0xc0002b17d8 sp=0xc0002b1748 pc=0xaaaaaad621b258
+runtime.goexit()
+	/usr/lib/golang/src/runtime/asm_riscv64.s:516 +0x4 fp=0xc0002b17d8 sp=0xc0002b17d8 pc=0xaaaaaad62652bc
+created by runtime.gcBgMarkStartWorkers
+	/usr/lib/golang/src/runtime/mgc.go:1159 +0x2c
+
+goroutine 6 [GC worker (idle)]:
+runtime.gopark(0x53cc8d3f825?, 0xc000281020?, 0x38?, 0x7?, 0x0?)
+	/usr/lib/golang/src/runtime/proc.go:363 +0x110 fp=0xc0002b0748 sp=0xc0002b0730 pc=0xaaaaaad6239190
+runtime.gcBgMarkWorker()
+	/usr/lib/golang/src/runtime/mgc.go:1235 +0x100 fp=0xc0002b07d8 sp=0xc0002b0748 pc=0xaaaaaad621b258
+runtime.goexit()
+	/usr/lib/golang/src/runtime/asm_riscv64.s:516 +0x4 fp=0xc0002b07d8 sp=0xc0002b07d8 pc=0xaaaaaad62652bc
+created by runtime.gcBgMarkStartWorkers
+	/usr/lib/golang/src/runtime/mgc.go:1159 +0x2c
+
+goroutine 7 [GC worker (idle)]:
+runtime.gopark(0xaaaaaad6a87c30?, 0xc000036040?, 0x18?, 0x14?, 0x0?)
+	/usr/lib/golang/src/runtime/proc.go:363 +0x110 fp=0xc000056748 sp=0xc000056730 pc=0xaaaaaad6239190
+runtime.gcBgMarkWorker()
+	/usr/lib/golang/src/runtime/mgc.go:1235 +0x100 fp=0xc0000567d8 sp=0xc000056748 pc=0xaaaaaad621b258
+runtime.goexit()
+	/usr/lib/golang/src/runtime/asm_riscv64.s:516 +0x4 fp=0xc0000567d8 sp=0xc0000567d8 pc=0xaaaaaad62652bc
+created by runtime.gcBgMarkStartWorkers
+	/usr/lib/golang/src/runtime/mgc.go:1159 +0x2c
+
+goroutine 8 [select]:
+runtime.gopark(0xc000069f48?, 0x2?, 0x0?, 0x0?, 0xc000069f0c?)
+	/usr/lib/golang/src/runtime/proc.go:363 +0x110 fp=0xc000069dc0 sp=0xc000069da8 pc=0xaaaaaad6239190
+runtime.selectgo(0xc000069f48, 0xc000069f08, 0xc00033e1d0?, 0x0, 0x0?, 0x1)
+	/usr/lib/golang/src/runtime/select.go:328 +0x3b4 fp=0xc000069ec8 sp=0xc000069dc0 pc=0xaaaaaad62485d4
+google.golang.org/grpc.(*ccBalancerWrapper).watcher(0xc000198280)
+	/home/abuild/rpmbuild/BUILD/etcd-3.4.14/vendor/google.golang.org/grpc/balancer_conn_wrappers.go:69 +0x88 fp=0xc000069fc8 sp=0xc000069ec8 pc=0xaaaaaad66c7438
+google.golang.org/grpc.newCCBalancerWrapper.func1()
+	/home/abuild/rpmbuild/BUILD/etcd-3.4.14/vendor/google.golang.org/grpc/balancer_conn_wrappers.go:60 +0x2c fp=0xc000069fd8 sp=0xc000069fc8 pc=0xaaaaaad66c737c
+runtime.goexit()
+	/usr/lib/golang/src/runtime/asm_riscv64.s:516 +0x4 fp=0xc000069fd8 sp=0xc000069fd8 pc=0xaaaaaad62652bc
+created by google.golang.org/grpc.newCCBalancerWrapper
+	/home/abuild/rpmbuild/BUILD/etcd-3.4.14/vendor/google.golang.org/grpc/balancer_conn_wrappers.go:60 +0x220
++ CHECK_RESULT 1 0 0 'Check etcdctl check datascale failed.'
++ actual_result=1
++ expect_result=0
++ mode=0
++ error_log='Check etcdctl check datascale failed.'
++ exit_mode=0
++ '[' -z 1 ']'
++ '[' 0 -eq 0 ']'
++ test 1x '!=' 0x
++ test -n 'Check etcdctl check datascale failed.'
++ LOG_ERROR 'Check etcdctl check datascale failed.'
++ message='Check etcdctl check datascale failed.'
++ python3 /root/mugen/libs/locallibs/mugen_log.py --level error --message 'Check etcdctl check datascale failed.'
+Wed Apr  5 21:38:32 2023 - ERROR - Check etcdctl check datascale failed.
++ (( exec_result++ ))
++ LOG_ERROR 'oe_test_etcd_05.sh line 39'
++ message='oe_test_etcd_05.sh line 39'
++ python3 /root/mugen/libs/locallibs/mugen_log.py --level error --message 'oe_test_etcd_05.sh line 39'
+Wed Apr  5 21:38:33 2023 - ERROR - oe_test_etcd_05.sh line 39
++ '[' 0 -eq 1 ']'
++ return 0
++ etcdctl check perf
++ grep PASS:
+runtime: lfstack.push invalid packing: node=0xffffff844aa860 cnt=0x1 packed=0xffff844aa8600001 -> node=0xffff844aa860
+fatal error: lfstack.push
+
+runtime stack:
+runtime.throw({0xaaaaaae605df4a?, 0x53d7eaee523?})
+	/usr/lib/golang/src/runtime/panic.go:1047 +0x44 fp=0xffffff767fb750 sp=0xffffff767fb728 pc=0xaaaaaae5a8c774
+runtime.(*lfstack).push(0x186a0?, 0xffffff844aa860)
+	/usr/lib/golang/src/runtime/lfstack.go:30 +0x120 fp=0xffffff767fb780 sp=0xffffff767fb750 pc=0xaaaaaae5a60a30
+runtime.(*spanSetBlockAlloc).free(...)
+	/usr/lib/golang/src/runtime/mspanset.go:292
+runtime.(*spanSet).reset(0xaaaaaae6800f18)
+	/usr/lib/golang/src/runtime/mspanset.go:265 +0xb0 fp=0xffffff767fb7b0 sp=0xffffff767fb780 pc=0xaaaaaae5a866d0
+runtime.finishsweep_m()
+	/usr/lib/golang/src/runtime/mgcsweep.go:260 +0xc0 fp=0xffffff767fb7e8 sp=0xffffff767fb7b0 pc=0xaaaaaae5a7a6f0
+runtime.gcStart.func1()
+	/usr/lib/golang/src/runtime/mgc.go:668 +0x20 fp=0xffffff767fb7f0 sp=0xffffff767fb7e8 pc=0xaaaaaae5a6f5a0
+runtime.systemstack()
+	/usr/lib/golang/src/runtime/asm_riscv64.s:133 +0x54 fp=0xffffff767fb7f8 sp=0xffffff767fb7f0 pc=0xaaaaaae5ab90ac
+
+goroutine 135 [running]:
+runtime.systemstack_switch()
+	/usr/lib/golang/src/runtime/asm_riscv64.s:96 +0x8 fp=0xc000329200 sp=0xc0003291f8 pc=0xaaaaaae5ab9040
+runtime.gcStart({0xffffffad1be5b8?, 0xc000176313?, 0x1a?})
+	/usr/lib/golang/src/runtime/mgc.go:667 +0x358 fp=0xc000329290 sp=0xc000329200 pc=0xaaaaaae5a6f918
+runtime.mallocgc(0x6e, 0x0, 0x0)
+	/usr/lib/golang/src/runtime/malloc.go:1148 +0x6a8 fp=0xc000329308 sp=0xc000329290 pc=0xaaaaaae5a62648
+runtime.slicebytetostring(0xc00029eb60?, 0xc000094a00, 0x6e)
+	/usr/lib/golang/src/runtime/string.go:114 +0x6c fp=0xc000329338 sp=0xc000329308 pc=0xaaaaaae5aa7414
+fmt.Sprintf({0xaaaaaae606b553, 0x1b}, {0xc0003293b8, 0x1, 0x1})
+	/usr/lib/golang/src/fmt/print.go:220 +0x8c fp=0xc000329388 sp=0xc000329338 pc=0xaaaaaae5b2c4fc
+google.golang.org/grpc/internal/transport.ConnectionError.Error(...)
+	/home/abuild/rpmbuild/BUILD/etcd-3.4.14/vendor/google.golang.org/grpc/internal/transport/transport.go:728
+google.golang.org/grpc/internal/transport.(*ConnectionError).Error(0xaaaaaae6287f80?)
+	<autogenerated>:1 +0x7c fp=0xc0003293f0 sp=0xc000329388 pc=0xaaaaaae5ef34dc
+fmt.(*pp).handleMethods(0xc000147a00, 0xe6287f80?)
+	/usr/lib/golang/src/fmt/print.go:651 +0x1ac fp=0xc000329640 sp=0xc0003293f0 pc=0xaaaaaae5b2e9e4
+fmt.(*pp).printArg(0xc000147a00, {0xaaaaaae6287ce0?, 0xc0001f89f0}, 0x76)
+	/usr/lib/golang/src/fmt/print.go:740 +0x5e8 fp=0xc0003296d8 sp=0xc000329640 pc=0xaaaaaae5b2f448
+fmt.(*pp).doPrintf(0xc000147a00, {0xaaaaaae608f707, 0x50}, {0xc00018a8e0?, 0x2, 0x2})
+	/usr/lib/golang/src/fmt/print.go:1057 +0x220 fp=0xc0003297d0 sp=0xc0003296d8 pc=0xaaaaaae5b31b10
+fmt.Sprintf({0xaaaaaae608f707, 0x50}, {0xc00018a8e0, 0x2, 0x2})
+	/usr/lib/golang/src/fmt/print.go:219 +0x78 fp=0xc000329820 sp=0xc0003297d0 pc=0xaaaaaae5b2c4e8
+log.(*Logger).Printf(0xc000286780, {0xaaaaaae608f707?, 0xffffff8452cbe8?}, {0xc00018a8e0?, 0xc000088c00?, 0xc0001a6900?})
+	/usr/lib/golang/src/log/log.go:208 +0x94 fp=0xc000329850 sp=0xc000329820 pc=0xaaaaaae5cb2674
+google.golang.org/grpc/grpclog.(*loggerT).Warningf(0xaaaaaae5f25018?, {0xaaaaaae608f707?, 0xc0001a6900?}, {0xc00018a8e0?, 0xc0001a6900?, 0xc000329b28?})
+	/home/abuild/rpmbuild/BUILD/etcd-3.4.14/vendor/google.golang.org/grpc/grpclog/loggerv2.go:163 +0x6c fp=0xc000329888 sp=0xc000329850 pc=0xaaaaaae5ebf2dc
+go.etcd.io/etcd/pkg/logutil.(*defaultLogger).Warningf(0xaaaaaae6287f80?, {0xaaaaaae608f707?, 0xaaaaaae62dcf90?}, {0xc00018a8e0?, 0x0?, 0x0?})
+	/home/abuild/rpmbuild/BUILD/etcd-3.4.14/pkg/logutil/logger.go:51 +0x64 fp=0xc0003298c0 sp=0xc000329888 pc=0xaaaaaae5fd8034
+google.golang.org/grpc/grpclog.Warningf(...)
+	/home/abuild/rpmbuild/BUILD/etcd-3.4.14/vendor/google.golang.org/grpc/grpclog/grpclog.go:60
+google.golang.org/grpc.(*addrConn).createTransport(0xc0000f02c0, {{0xc000296430, 0xe}, {0x0, 0x0}, 0x0, 0x0, {0x0, 0x0}}, {{0xaaaaaae605f5ac, ...}, ...}, ...)
+	/home/abuild/rpmbuild/BUILD/etcd-3.4.14/vendor/google.golang.org/grpc/clientconn.go:1288 +0x454 fp=0xc000329b70 sp=0xc0003298c0 pc=0xaaaaaae5f250b4
+google.golang.org/grpc.(*addrConn).tryAllAddrs(0xc0000f02c0, {0xc0001a67c0?, 0x1, 0x0?}, {0x0?, 0x0?, 0xaaaaaae67d92c0?})
+	/home/abuild/rpmbuild/BUILD/etcd-3.4.14/vendor/google.golang.org/grpc/clientconn.go:1208 +0x3f4 fp=0xc000329e20 sp=0xc000329b70 pc=0xaaaaaae5f24b0c
+google.golang.org/grpc.(*addrConn).resetTransport(0xc0000f02c0)
+	/home/abuild/rpmbuild/BUILD/etcd-3.4.14/vendor/google.golang.org/grpc/clientconn.go:1118 +0x1dc fp=0xc000329fc8 sp=0xc000329e20 pc=0xaaaaaae5f2429c
+google.golang.org/grpc.(*addrConn).connect.func1()
+	/home/abuild/rpmbuild/BUILD/etcd-3.4.14/vendor/google.golang.org/grpc/clientconn.go:800 +0x2c fp=0xc000329fd8 sp=0xc000329fc8 pc=0xaaaaaae5f22df4
+runtime.goexit()
+	/usr/lib/golang/src/runtime/asm_riscv64.s:516 +0x4 fp=0xc000329fd8 sp=0xc000329fd8 pc=0xaaaaaae5abb2bc
+created by google.golang.org/grpc.(*addrConn).connect
+	/home/abuild/rpmbuild/BUILD/etcd-3.4.14/vendor/google.golang.org/grpc/clientconn.go:800 +0x178
+
+goroutine 1 [runnable]:
+runtime.gcTrigger.test({0x0, 0x0, 0x0})
+	/usr/lib/golang/src/runtime/mgc.go:548 +0x18 fp=0xc0000deee8 sp=0xc0000deee8 pc=0xaaaaaae5a6f450
+runtime.mallocgc(0x70000, 0xaaaaaae61fdcc0, 0x1)
+	/usr/lib/golang/src/runtime/malloc.go:1147 +0x690 fp=0xc0000def60 sp=0xc0000deee8 pc=0xaaaaaae5a62630
+runtime.newobject(0x50?)
+	/usr/lib/golang/src/runtime/malloc.go:1202 +0x38 fp=0xc0000def80 sp=0xc0000def60 pc=0xaaaaaae5a62870
+go.uber.org/zap/zapcore.newCounters(...)
+	/home/abuild/rpmbuild/BUILD/etcd-3.4.14/vendor/go.uber.org/zap/zapcore/sampler.go:42
+go.uber.org/zap/zapcore.NewSampler(...)
+	/home/abuild/rpmbuild/BUILD/etcd-3.4.14/vendor/go.uber.org/zap/zapcore/sampler.go:107
+go.uber.org/zap.Config.buildOptions.func1({0xaaaaaae62e9b80?, 0xc000298a50})
+	/home/abuild/rpmbuild/BUILD/etcd-3.4.14/vendor/go.uber.org/zap/config.go:208 +0x5c fp=0xc0000defc0 sp=0xc0000def80 pc=0xaaaaaae5e1b62c
+go.uber.org/zap.WrapCore.func1(0xc00009c840)
+	/home/abuild/rpmbuild/BUILD/etcd-3.4.14/vendor/go.uber.org/zap/options.go:40 +0x40 fp=0xc0000defd8 sp=0xc0000defc0 pc=0xaaaaaae5e1f5b0
+go.uber.org/zap.optionFunc.apply(0xc000280318?, 0x0?)
+	/home/abuild/rpmbuild/BUILD/etcd-3.4.14/vendor/go.uber.org/zap/options.go:34 +0x3c fp=0xc0000defe8 sp=0xc0000defd8 pc=0xaaaaaae5e1f4e4
+go.uber.org/zap.(*Logger).WithOptions(0xc0000df090, {0xc00020c640, 0x4, 0xaaaaaae6058656?})
+	/home/abuild/rpmbuild/BUILD/etcd-3.4.14/vendor/go.uber.org/zap/logger.go:152 +0xe8 fp=0xc0000df020 sp=0xc0000defe8 pc=0xaaaaaae5e1e9f0
+go.uber.org/zap.New({0xaaaaaae62e9b80, 0xc000298a50}, {0xc00020c640, 0x4, 0x4})
+	/home/abuild/rpmbuild/BUILD/etcd-3.4.14/vendor/go.uber.org/zap/logger.go:73 +0x20c fp=0xc0000df0e8 sp=0xc0000df020 pc=0xaaaaaae5e1e424
+go.uber.org/zap.Config.Build({{0xc00003419c}, 0x0, 0x0, 0x0, 0xc0000341b0, {0xaaaaaae6056e3f, 0x4}, {{0xaaaaaae605686f, 0x3}, {0xaaaaaae60579fc, ...}, ...}, ...}, ...)
+	/home/abuild/rpmbuild/BUILD/etcd-3.4.14/vendor/go.uber.org/zap/config.go:177 +0x174 fp=0xc0000df330 sp=0xc0000df0e8 pc=0xaaaaaae5e1ad5c
+go.uber.org/zap.NewProduction({0x0, 0x0, 0x0})
+	/home/abuild/rpmbuild/BUILD/etcd-3.4.14/vendor/go.uber.org/zap/logger.go:94 +0x70 fp=0xc0000df540 sp=0xc0000df330 pc=0xaaaaaae5e1e4b0
+go.etcd.io/etcd/etcdctl/ctlv3/command.newClientCfg({0xc000282840, 0x1, 0x1}, 0x77359400, 0x77359400, 0x165a0bc00, 0xc000286870, 0x0)
+	/home/abuild/rpmbuild/BUILD/etcd-3.4.14/etcdctl/ctlv3/command/global.go:191 +0x98 fp=0xc0000df798 sp=0xc0000df540 pc=0xaaaaaae60333d8
+go.etcd.io/etcd/etcdctl/ctlv3/command.(*clientConfig).mustClient(0xc000306500?)
+	/home/abuild/rpmbuild/BUILD/etcd-3.4.14/etcdctl/ctlv3/command/global.go:174 +0x50 fp=0xc0000df8a0 sp=0xc0000df798 pc=0xaaaaaae60332c0
+go.etcd.io/etcd/etcdctl/ctlv3/command.newCheckPerfCommand(0xc000306500?, {0xaaaaaae6056ddf?, 0x0?, 0x0?})
+	/home/abuild/rpmbuild/BUILD/etcd-3.4.14/etcdctl/ctlv3/command/check.go:156 +0x41c fp=0xc0000dfd80 sp=0xc0000df8a0 pc=0xaaaaaae602c81c
+github.com/spf13/cobra.(*Command).execute(0xc000306500, {0xaaaaaae6807970, 0x0, 0x0})
+	/home/abuild/rpmbuild/BUILD/etcd-3.4.14/vendor/github.com/spf13/cobra/command.go:766 +0x4dc fp=0xc0000dfe50 sp=0xc0000dfd80 pc=0xaaaaaae5fc8324
+github.com/spf13/cobra.(*Command).ExecuteC(0xaaaaaae6786000)
+	/home/abuild/rpmbuild/BUILD/etcd-3.4.14/vendor/github.com/spf13/cobra/command.go:852 +0x28c fp=0xc0000dff00 sp=0xc0000dfe50 pc=0xaaaaaae5fc878c
+github.com/spf13/cobra.(*Command).Execute(...)
+	/home/abuild/rpmbuild/BUILD/etcd-3.4.14/vendor/github.com/spf13/cobra/command.go:800
+go.etcd.io/etcd/etcdctl/ctlv3.Start()
+	/home/abuild/rpmbuild/BUILD/etcd-3.4.14/etcdctl/ctlv3/ctl_nocov.go:25 +0x9c fp=0xc0000dff20 sp=0xc0000dff00 pc=0xaaaaaae605419c
+main.main()
+	/home/abuild/rpmbuild/BUILD/etcd-3.4.14/etcdctl/main.go:35 +0x6c fp=0xc0000dff80 sp=0xc0000dff20 pc=0xaaaaaae6054de4
+runtime.main()
+	/usr/lib/golang/src/runtime/proc.go:250 +0x218 fp=0xc0000dffd8 sp=0xc0000dff80 pc=0xaaaaaae5a8eda0
+runtime.goexit()
+	/usr/lib/golang/src/runtime/asm_riscv64.s:516 +0x4 fp=0xc0000dffd8 sp=0xc0000dffd8 pc=0xaaaaaae5abb2bc
+
+goroutine 2 [force gc (idle)]:
+runtime.gopark(0x0?, 0x0?, 0x0?, 0x0?, 0x0?)
+	/usr/lib/golang/src/runtime/proc.go:363 +0x110 fp=0xc000054fb0 sp=0xc000054f98 pc=0xaaaaaae5a8f190
+runtime.goparkunlock(...)
+	/usr/lib/golang/src/runtime/proc.go:369
+runtime.forcegchelper()
+	/usr/lib/golang/src/runtime/proc.go:302 +0xb0 fp=0xc000054fd8 sp=0xc000054fb0 pc=0xaaaaaae5a8f018
+runtime.goexit()
+	/usr/lib/golang/src/runtime/asm_riscv64.s:516 +0x4 fp=0xc000054fd8 sp=0xc000054fd8 pc=0xaaaaaae5abb2bc
+created by runtime.init.5
+	/usr/lib/golang/src/runtime/proc.go:290 +0x28
+
+goroutine 18 [GC sweep wait]:
+runtime.gopark(0x1?, 0x0?, 0x0?, 0x0?, 0x0?)
+	/usr/lib/golang/src/runtime/proc.go:363 +0x110 fp=0xc000050798 sp=0xc000050780 pc=0xaaaaaae5a8f190
+runtime.goparkunlock(...)
+	/usr/lib/golang/src/runtime/proc.go:369
+runtime.bgsweep(0x0?)
+	/usr/lib/golang/src/runtime/mgcsweep.go:297 +0x114 fp=0xc0000507c8 sp=0xc000050798 pc=0xaaaaaae5a7a89c
+runtime.gcenable.func1()
+	/usr/lib/golang/src/runtime/mgc.go:178 +0x2c fp=0xc0000507d8 sp=0xc0000507c8 pc=0xaaaaaae5a6f06c
+runtime.goexit()
+	/usr/lib/golang/src/runtime/asm_riscv64.s:516 +0x4 fp=0xc0000507d8 sp=0xc0000507d8 pc=0xaaaaaae5abb2bc
+created by runtime.gcenable
+	/usr/lib/golang/src/runtime/mgc.go:178 +0x70
+
+goroutine 19 [GC scavenge wait]:
+runtime.gopark(0x0?, 0x0?, 0x0?, 0x0?, 0x412e848000000000?)
+	/usr/lib/golang/src/runtime/proc.go:363 +0x110 fp=0xc000050f80 sp=0xc000050f68 pc=0xaaaaaae5a8f190
+runtime.goparkunlock(...)
+	/usr/lib/golang/src/runtime/proc.go:369
+runtime.(*scavengerState).park(0xaaaaaae67d9340)
+	/usr/lib/golang/src/runtime/mgcscavenge.go:389 +0x68 fp=0xc000050fa8 sp=0xc000050f80 pc=0xaaaaaae5a787c8
+runtime.bgscavenge(0x0?)
+	/usr/lib/golang/src/runtime/mgcscavenge.go:622 +0x6c fp=0xc000050fc8 sp=0xc000050fa8 pc=0xaaaaaae5a78d34
+runtime.gcenable.func2()
+	/usr/lib/golang/src/runtime/mgc.go:179 +0x2c fp=0xc000050fd8 sp=0xc000050fc8 pc=0xaaaaaae5a6f00c
+runtime.goexit()
+	/usr/lib/golang/src/runtime/asm_riscv64.s:516 +0x4 fp=0xc000050fd8 sp=0xc000050fd8 pc=0xaaaaaae5abb2bc
+created by runtime.gcenable
+	/usr/lib/golang/src/runtime/mgc.go:179 +0xb0
+
+goroutine 20 [finalizer wait]:
+runtime.gopark(0x3000?, 0x18000?, 0x0?, 0x30?, 0x3000?)
+	/usr/lib/golang/src/runtime/proc.go:363 +0x110 fp=0xc0000545a8 sp=0xc000054590 pc=0xaaaaaae5a8f190
+runtime.goparkunlock(...)
+	/usr/lib/golang/src/runtime/proc.go:369
+runtime.runfinq()
+	/usr/lib/golang/src/runtime/mfinal.go:180 +0x110 fp=0xc0000547d8 sp=0xc0000545a8 pc=0xaaaaaae5a6e260
+runtime.goexit()
+	/usr/lib/golang/src/runtime/asm_riscv64.s:516 +0x4 fp=0xc0000547d8 sp=0xc0000547d8 pc=0xaaaaaae5abb2bc
+created by runtime.createfing
+	/usr/lib/golang/src/runtime/mfinal.go:157 +0x64
+
+goroutine 46 [chan receive]:
+runtime.gopark(0x50000000000e08?, 0xaaaaaae5a95494?, 0xcc?, 0xaa?, 0xc00008b860?)
+	/usr/lib/golang/src/runtime/proc.go:363 +0x110 fp=0xc0000515b8 sp=0xc0000515a0 pc=0xaaaaaae5a8f190
+runtime.chanrecv(0xc00007c9c0, 0xc000051738, 0xc0?)
+	/usr/lib/golang/src/runtime/chan.go:583 +0x498 fp=0xc000051648 sp=0xc0000515b8 pc=0xaaaaaae5a5c948
+runtime.chanrecv2(0x3b9aca00?, 0xaaaaaae5a8f218?)
+	/usr/lib/golang/src/runtime/chan.go:447 +0x14 fp=0xc000051668 sp=0xc000051648 pc=0xaaaaaae5a5c49c
+go.etcd.io/etcd/pkg/logutil.(*MergeLogger).outputLoop(0xc000183758)
+	/home/abuild/rpmbuild/BUILD/etcd-3.4.14/pkg/logutil/merge_logger.go:173 +0x74 fp=0xc0000517c8 sp=0xc000051668 pc=0xaaaaaae5fd86f4
+go.etcd.io/etcd/pkg/logutil.NewMergeLogger.func1()
+	/home/abuild/rpmbuild/BUILD/etcd-3.4.14/pkg/logutil/merge_logger.go:91 +0x2c fp=0xc0000517d8 sp=0xc0000517c8 pc=0xaaaaaae5fd863c
+runtime.goexit()
+	/usr/lib/golang/src/runtime/asm_riscv64.s:516 +0x4 fp=0xc0000517d8 sp=0xc0000517d8 pc=0xaaaaaae5abb2bc
+created by go.etcd.io/etcd/pkg/logutil.NewMergeLogger
+	/home/abuild/rpmbuild/BUILD/etcd-3.4.14/pkg/logutil/merge_logger.go:91 +0xbc
+
+goroutine 81 [GC worker (idle)]:
+runtime.gopark(0xaaaaaae68087e0?, 0x1?, 0x93?, 0xa5?, 0xaaaaaae5a5c3c8?)
+	/usr/lib/golang/src/runtime/proc.go:363 +0x110 fp=0xc0001f2748 sp=0xc0001f2730 pc=0xaaaaaae5a8f190
+runtime.gcBgMarkWorker()
+	/usr/lib/golang/src/runtime/mgc.go:1235 +0x100 fp=0xc0001f27d8 sp=0xc0001f2748 pc=0xaaaaaae5a71258
+runtime.goexit()
+	/usr/lib/golang/src/runtime/asm_riscv64.s:516 +0x4 fp=0xc0001f27d8 sp=0xc0001f27d8 pc=0xaaaaaae5abb2bc
+created by runtime.gcBgMarkStartWorkers
+	/usr/lib/golang/src/runtime/mgc.go:1159 +0x2c
+
+goroutine 119 [select]:
+runtime.gopark(0xc0002def48?, 0x2?, 0x0?, 0x0?, 0xc0002def0c?)
+	/usr/lib/golang/src/runtime/proc.go:363 +0x110 fp=0xc0002dedc0 sp=0xc0002deda8 pc=0xaaaaaae5a8f190
+runtime.selectgo(0xc0002def48, 0xc0002def08, 0xc000189100?, 0x0, 0x0?, 0x1)
+	/usr/lib/golang/src/runtime/select.go:328 +0x3b4 fp=0xc0002deec8 sp=0xc0002dedc0 pc=0xaaaaaae5a9e5d4
+google.golang.org/grpc.(*ccBalancerWrapper).watcher(0xc000292ac0)
+	/home/abuild/rpmbuild/BUILD/etcd-3.4.14/vendor/google.golang.org/grpc/balancer_conn_wrappers.go:69 +0x88 fp=0xc0002defc8 sp=0xc0002deec8 pc=0xaaaaaae5f1d438
+google.golang.org/grpc.newCCBalancerWrapper.func1()
+	/home/abuild/rpmbuild/BUILD/etcd-3.4.14/vendor/google.golang.org/grpc/balancer_conn_wrappers.go:60 +0x2c fp=0xc0002defd8 sp=0xc0002defc8 pc=0xaaaaaae5f1d37c
+runtime.goexit()
+	/usr/lib/golang/src/runtime/asm_riscv64.s:516 +0x4 fp=0xc0002defd8 sp=0xc0002defd8 pc=0xaaaaaae5abb2bc
+created by google.golang.org/grpc.newCCBalancerWrapper
+	/home/abuild/rpmbuild/BUILD/etcd-3.4.14/vendor/google.golang.org/grpc/balancer_conn_wrappers.go:60 +0x220
+
+goroutine 85 [select]:
+runtime.gopark(0xc0000cbf18?, 0x3?, 0x20?, 0xa0?, 0xc0000cbeaa?)
+	/usr/lib/golang/src/runtime/proc.go:363 +0x110 fp=0xc0000cbd18 sp=0xc0000cbd00 pc=0xaaaaaae5a8f190
+runtime.selectgo(0xc0000cbf18, 0xc0000cbea4, 0xaaaaaae62e2920?, 0x0, 0x0?, 0x1)
+	/usr/lib/golang/src/runtime/select.go:328 +0x3b4 fp=0xc0000cbe20 sp=0xc0000cbd18 pc=0xaaaaaae5a9e5d4
+google.golang.org/grpc.(*addrConn).resetTransport(0xc0001c6dc0)
+	/home/abuild/rpmbuild/BUILD/etcd-3.4.14/vendor/google.golang.org/grpc/clientconn.go:1134 +0x478 fp=0xc0000cbfc8 sp=0xc0000cbe20 pc=0xaaaaaae5f24538
+google.golang.org/grpc.(*addrConn).connect.func1()
+	/home/abuild/rpmbuild/BUILD/etcd-3.4.14/vendor/google.golang.org/grpc/clientconn.go:800 +0x2c fp=0xc0000cbfd8 sp=0xc0000cbfc8 pc=0xaaaaaae5f22df4
+runtime.goexit()
+	/usr/lib/golang/src/runtime/asm_riscv64.s:516 +0x4 fp=0xc0000cbfd8 sp=0xc0000cbfd8 pc=0xaaaaaae5abb2bc
+created by google.golang.org/grpc.(*addrConn).connect
+	/home/abuild/rpmbuild/BUILD/etcd-3.4.14/vendor/google.golang.org/grpc/clientconn.go:800 +0x178
+
+goroutine 80 [GC worker (idle)]:
+runtime.gopark(0x53d78c648d3?, 0x0?, 0x0?, 0x0?, 0x0?)
+	/usr/lib/golang/src/runtime/proc.go:363 +0x110 fp=0xc0001f3748 sp=0xc0001f3730 pc=0xaaaaaae5a8f190
+runtime.gcBgMarkWorker()
+	/usr/lib/golang/src/runtime/mgc.go:1235 +0x100 fp=0xc0001f37d8 sp=0xc0001f3748 pc=0xaaaaaae5a71258
+runtime.goexit()
+	/usr/lib/golang/src/runtime/asm_riscv64.s:516 +0x4 fp=0xc0001f37d8 sp=0xc0001f37d8 pc=0xaaaaaae5abb2bc
+created by runtime.gcBgMarkStartWorkers
+	/usr/lib/golang/src/runtime/mgc.go:1159 +0x2c
+
+goroutine 87 [GC worker (idle)]:
+runtime.gopark(0x53d78d27091?, 0x0?, 0x0?, 0x0?, 0x0?)
+	/usr/lib/golang/src/runtime/proc.go:363 +0x110 fp=0xc0001f3f48 sp=0xc0001f3f30 pc=0xaaaaaae5a8f190
+runtime.gcBgMarkWorker()
+	/usr/lib/golang/src/runtime/mgc.go:1235 +0x100 fp=0xc0001f3fd8 sp=0xc0001f3f48 pc=0xaaaaaae5a71258
+runtime.goexit()
+	/usr/lib/golang/src/runtime/asm_riscv64.s:516 +0x4 fp=0xc0001f3fd8 sp=0xc0001f3fd8 pc=0xaaaaaae5abb2bc
+created by runtime.gcBgMarkStartWorkers
+	/usr/lib/golang/src/runtime/mgc.go:1159 +0x2c
+
+goroutine 120 [GC worker (idle)]:
+runtime.gopark(0x53d797feb03?, 0xc000284f60?, 0x38?, 0xe7?, 0x0?)
+	/usr/lib/golang/src/runtime/proc.go:363 +0x110 fp=0xc0001ee748 sp=0xc0001ee730 pc=0xaaaaaae5a8f190
+runtime.gcBgMarkWorker()
+	/usr/lib/golang/src/runtime/mgc.go:1235 +0x100 fp=0xc0001ee7d8 sp=0xc0001ee748 pc=0xaaaaaae5a71258
+runtime.goexit()
+	/usr/lib/golang/src/runtime/asm_riscv64.s:516 +0x4 fp=0xc0001ee7d8 sp=0xc0001ee7d8 pc=0xaaaaaae5abb2bc
+created by runtime.gcBgMarkStartWorkers
+	/usr/lib/golang/src/runtime/mgc.go:1159 +0x2c
+
+goroutine 131 [select]:
+runtime.gopark(0xc0002e1f48?, 0x2?, 0x0?, 0x0?, 0xc0002e1f0c?)
+	/usr/lib/golang/src/runtime/proc.go:363 +0x110 fp=0xc0002e1dc0 sp=0xc0002e1da8 pc=0xaaaaaae5a8f190
+runtime.selectgo(0xc0002e1f48, 0xc0002e1f08, 0xc0001880e0?, 0x0, 0x0?, 0x1)
+	/usr/lib/golang/src/runtime/select.go:328 +0x3b4 fp=0xc0002e1ec8 sp=0xc0002e1dc0 pc=0xaaaaaae5a9e5d4
+google.golang.org/grpc.(*ccBalancerWrapper).watcher(0xc0001a6140)
+	/home/abuild/rpmbuild/BUILD/etcd-3.4.14/vendor/google.golang.org/grpc/balancer_conn_wrappers.go:69 +0x88 fp=0xc0002e1fc8 sp=0xc0002e1ec8 pc=0xaaaaaae5f1d438
+google.golang.org/grpc.newCCBalancerWrapper.func1()
+	/home/abuild/rpmbuild/BUILD/etcd-3.4.14/vendor/google.golang.org/grpc/balancer_conn_wrappers.go:60 +0x2c fp=0xc0002e1fd8 sp=0xc0002e1fc8 pc=0xaaaaaae5f1d37c
+runtime.goexit()
+	/usr/lib/golang/src/runtime/asm_riscv64.s:516 +0x4 fp=0xc0002e1fd8 sp=0xc0002e1fd8 pc=0xaaaaaae5abb2bc
+created by google.golang.org/grpc.newCCBalancerWrapper
+	/home/abuild/rpmbuild/BUILD/etcd-3.4.14/vendor/google.golang.org/grpc/balancer_conn_wrappers.go:60 +0x220
+
+goroutine 132 [select]:
+runtime.gopark(0xc0000cff18?, 0x3?, 0xb4?, 0xb5?, 0xc0000cfeaa?)
+	/usr/lib/golang/src/runtime/proc.go:363 +0x110 fp=0xc0000cfd18 sp=0xc0000cfd00 pc=0xaaaaaae5a8f190
+runtime.selectgo(0xc0000cff18, 0xc0000cfea4, 0xaaaaaae62e2920?, 0x0, 0x0?, 0x1)
+	/usr/lib/golang/src/runtime/select.go:328 +0x3b4 fp=0xc0000cfe20 sp=0xc0000cfd18 pc=0xaaaaaae5a9e5d4
+google.golang.org/grpc.(*addrConn).resetTransport(0xc0001c7600)
+	/home/abuild/rpmbuild/BUILD/etcd-3.4.14/vendor/google.golang.org/grpc/clientconn.go:1134 +0x478 fp=0xc0000cffc8 sp=0xc0000cfe20 pc=0xaaaaaae5f24538
+google.golang.org/grpc.(*addrConn).connect.func1()
+	/home/abuild/rpmbuild/BUILD/etcd-3.4.14/vendor/google.golang.org/grpc/clientconn.go:800 +0x2c fp=0xc0000cffd8 sp=0xc0000cffc8 pc=0xaaaaaae5f22df4
+runtime.goexit()
+	/usr/lib/golang/src/runtime/asm_riscv64.s:516 +0x4 fp=0xc0000cffd8 sp=0xc0000cffd8 pc=0xaaaaaae5abb2bc
+created by google.golang.org/grpc.(*addrConn).connect
+	/home/abuild/rpmbuild/BUILD/etcd-3.4.14/vendor/google.golang.org/grpc/clientconn.go:800 +0x178
+
+goroutine 122 [runnable]:
+go.etcd.io/etcd/clientv3.newClient.func1()
+	/home/abuild/rpmbuild/BUILD/etcd-3.4.14/clientv3/client.go:497 fp=0xc0000567d8 sp=0xc0000567d8 pc=0xaaaaaae5fdd160
+runtime.goexit()
+	/usr/lib/golang/src/runtime/asm_riscv64.s:516 +0x4 fp=0xc0000567d8 sp=0xc0000567d8 pc=0xaaaaaae5abb2bc
+created by go.etcd.io/etcd/clientv3.newClient
+	/home/abuild/rpmbuild/BUILD/etcd-3.4.14/clientv3/client.go:497 +0xc4c
+
+goroutine 134 [select]:
+runtime.gopark(0xc0002dcf48?, 0x2?, 0x0?, 0x0?, 0xc0002dcf0c?)
+	/usr/lib/golang/src/runtime/proc.go:363 +0x110 fp=0xc0002dcdc0 sp=0xc0002dcda8 pc=0xaaaaaae5a8f190
+runtime.selectgo(0xc0002dcf48, 0xc0002dcf08, 0xc0001888e0?, 0x0, 0x0?, 0x1)
+	/usr/lib/golang/src/runtime/select.go:328 +0x3b4 fp=0xc0002dcec8 sp=0xc0002dcdc0 pc=0xaaaaaae5a9e5d4
+google.golang.org/grpc.(*ccBalancerWrapper).watcher(0xc0001a6740)
+	/home/abuild/rpmbuild/BUILD/etcd-3.4.14/vendor/google.golang.org/grpc/balancer_conn_wrappers.go:69 +0x88 fp=0xc0002dcfc8 sp=0xc0002dcec8 pc=0xaaaaaae5f1d438
+google.golang.org/grpc.newCCBalancerWrapper.func1()
+	/home/abuild/rpmbuild/BUILD/etcd-3.4.14/vendor/google.golang.org/grpc/balancer_conn_wrappers.go:60 +0x2c fp=0xc0002dcfd8 sp=0xc0002dcfc8 pc=0xaaaaaae5f1d37c
+runtime.goexit()
+	/usr/lib/golang/src/runtime/asm_riscv64.s:516 +0x4 fp=0xc0002dcfd8 sp=0xc0002dcfd8 pc=0xaaaaaae5abb2bc
+created by google.golang.org/grpc.newCCBalancerWrapper
+	/home/abuild/rpmbuild/BUILD/etcd-3.4.14/vendor/google.golang.org/grpc/balancer_conn_wrappers.go:60 +0x220
+
+goroutine 123 [runnable]:
+sync.(*RWMutex).Lock(0xc000228660)
+	/usr/lib/golang/src/sync/rwmutex.go:141 +0x10 fp=0xc000067ad0 sp=0xc000067ad0 pc=0xaaaaaae5ad1160
+go.etcd.io/etcd/clientv3/balancer.(*baseBalancer).HandleSubConnStateChange(0xc000228630, {0xaaaaaae62e4468?, 0xc0001447a0}, 0x1)
+	/home/abuild/rpmbuild/BUILD/etcd-3.4.14/clientv3/balancer/balancer.go:198 +0x70 fp=0xc000067ec8 sp=0xc000067ad0 pc=0xaaaaaae5fd0a58
+google.golang.org/grpc.(*ccBalancerWrapper).watcher(0xc00020c480)
+	/home/abuild/rpmbuild/BUILD/etcd-3.4.14/vendor/google.golang.org/grpc/balancer_conn_wrappers.go:80 +0x194 fp=0xc000067fc8 sp=0xc000067ec8 pc=0xaaaaaae5f1d544
+google.golang.org/grpc.newCCBalancerWrapper.func1()
+	/home/abuild/rpmbuild/BUILD/etcd-3.4.14/vendor/google.golang.org/grpc/balancer_conn_wrappers.go:60 +0x2c fp=0xc000067fd8 sp=0xc000067fc8 pc=0xaaaaaae5f1d37c
+runtime.goexit()
+	/usr/lib/golang/src/runtime/asm_riscv64.s:516 +0x4 fp=0xc000067fd8 sp=0xc000067fd8 pc=0xaaaaaae5abb2bc
+created by google.golang.org/grpc.newCCBalancerWrapper
+	/home/abuild/rpmbuild/BUILD/etcd-3.4.14/vendor/google.golang.org/grpc/balancer_conn_wrappers.go:60 +0x220
+
+goroutine 124 [runnable]:
+runtime.makechan(0xaaaaaae61c2ec0, 0x0)
+	/usr/lib/golang/src/runtime/chan.go:72 +0x14 fp=0xc0002dd8c0 sp=0xc0002dd8c0 pc=0xaaaaaae5a5b4ec
+google.golang.org/grpc.(*addrConn).createTransport(0xc0002e8000, {{0xc000296430, 0xe}, {0x0, 0x0}, 0x0, 0x0, {0x0, 0x0}}, {{0xaaaaaae605f5ac, ...}, ...}, ...)
+	/home/abuild/rpmbuild/BUILD/etcd-3.4.14/vendor/google.golang.org/grpc/clientconn.go:1227 +0xf4 fp=0xc0002ddb70 sp=0xc0002dd8c0 pc=0xaaaaaae5f24d54
+google.golang.org/grpc.(*addrConn).tryAllAddrs(0xc0002e8000, {0xc00020c500?, 0x1, 0x0?}, {0x0?, 0x0?, 0xaaaaaae67d92c0?})
+	/home/abuild/rpmbuild/BUILD/etcd-3.4.14/vendor/google.golang.org/grpc/clientconn.go:1208 +0x3f4 fp=0xc0002dde20 sp=0xc0002ddb70 pc=0xaaaaaae5f24b0c
+google.golang.org/grpc.(*addrConn).resetTransport(0xc0002e8000)
+	/home/abuild/rpmbuild/BUILD/etcd-3.4.14/vendor/google.golang.org/grpc/clientconn.go:1118 +0x1dc fp=0xc0002ddfc8 sp=0xc0002dde20 pc=0xaaaaaae5f2429c
+google.golang.org/grpc.(*addrConn).connect.func1()
+	/home/abuild/rpmbuild/BUILD/etcd-3.4.14/vendor/google.golang.org/grpc/clientconn.go:800 +0x2c fp=0xc0002ddfd8 sp=0xc0002ddfc8 pc=0xaaaaaae5f22df4
+runtime.goexit()
+	/usr/lib/golang/src/runtime/asm_riscv64.s:516 +0x4 fp=0xc0002ddfd8 sp=0xc0002ddfd8 pc=0xaaaaaae5abb2bc
+created by google.golang.org/grpc.(*addrConn).connect
+	/home/abuild/rpmbuild/BUILD/etcd-3.4.14/vendor/google.golang.org/grpc/clientconn.go:800 +0x178
+
+goroutine 125 [runnable]:
+go.etcd.io/etcd/clientv3.newClient.func1()
+	/home/abuild/rpmbuild/BUILD/etcd-3.4.14/clientv3/client.go:497 fp=0xc0001f07d8 sp=0xc0001f07d8 pc=0xaaaaaae5fdd160
+runtime.goexit()
+	/usr/lib/golang/src/runtime/asm_riscv64.s:516 +0x4 fp=0xc0001f07d8 sp=0xc0001f07d8 pc=0xaaaaaae5abb2bc
+created by go.etcd.io/etcd/clientv3.newClient
+	/home/abuild/rpmbuild/BUILD/etcd-3.4.14/clientv3/client.go:497 +0xc4c
++ CHECK_RESULT 1 0 0 'Check etcdctl check perf failed.'
++ actual_result=1
++ expect_result=0
++ mode=0
++ error_log='Check etcdctl check perf failed.'
++ exit_mode=0
++ '[' -z 1 ']'
++ '[' 0 -eq 0 ']'
++ test 1x '!=' 0x
++ test -n 'Check etcdctl check perf failed.'
++ LOG_ERROR 'Check etcdctl check perf failed.'
++ message='Check etcdctl check perf failed.'
++ python3 /root/mugen/libs/locallibs/mugen_log.py --level error --message 'Check etcdctl check perf failed.'
+Wed Apr  5 21:38:35 2023 - ERROR - Check etcdctl check perf failed.
++ (( exec_result++ ))
++ LOG_ERROR 'oe_test_etcd_05.sh line 41'
++ message='oe_test_etcd_05.sh line 41'
++ python3 /root/mugen/libs/locallibs/mugen_log.py --level error --message 'oe_test_etcd_05.sh line 41'
+Wed Apr  5 21:38:36 2023 - ERROR - oe_test_etcd_05.sh line 41
++ '[' 0 -eq 1 ']'
++ return 0
++ LOG_INFO 'End to run test.'
++ message='End to run test.'
++ python3 /root/mugen/libs/locallibs/mugen_log.py --level info --message 'End to run test.'
+Wed Apr  5 21:38:37 2023 - INFO  - End to run test.
++ CASE_RESULT 0
++ case_re=0
++ test -z 7
++ test 7 -gt 0
++ LOG_ERROR 'failed to execute the case.'
++ message='failed to execute the case.'
++ python3 /root/mugen/libs/locallibs/mugen_log.py --level error --message 'failed to execute the case.'
+Wed Apr  5 21:38:37 2023 - ERROR - failed to execute the case.
++ exit 7
++ post_test
++ LOG_INFO 'Start to restore the test environment.'
++ message='Start to restore the test environment.'
++ python3 /root/mugen/libs/locallibs/mugen_log.py --level info --message 'Start to restore the test environment.'
+Wed Apr  5 21:38:38 2023 - INFO  - Start to restore the test environment.
++ systemctl stop etcd
++ DNF_REMOVE
++ node=1
++ pkg_list=
++ mode=0
++ [[ -z '' ]]
++ [[ -z '' ]]
++ LOG_WARN 'no thing to do.'
++ message='no thing to do.'
++ python3 /root/mugen/libs/locallibs/mugen_log.py --level warn --message 'no thing to do.'
+Wed Apr  5 21:38:39 2023 - WARN  - no thing to do.
++ return 0
++ LOG_INFO 'End to restore the test environment.'
++ message='End to restore the test environment.'
++ python3 /root/mugen/libs/locallibs/mugen_log.py --level info --message 'End to restore the test environment.'
+Wed Apr  5 21:38:40 2023 - INFO  - End to restore the test environment.

@@ -1,0 +1,711 @@
++ source /root/mugen/libs/locallibs/common_lib.sh
+++ python3 --version
+++ '[' 0 -eq 0 ']'
+++ source /root/mugen/libs/locallibs/common_lib_python.sh
++ main
+++ type -t post_test
++ '[' -n function ']'
++ trap post_test EXIT INT HUP TERM
++ rpm -qa
++ grep expect
+++ type -t config_params
++ '[' -n '' ']'
+++ type -t pre_test
++ '[' -n function ']'
++ pre_test
++ LOG_INFO 'Start environmental preparation.'
++ message='Start environmental preparation.'
++ python3 /root/mugen/libs/locallibs/mugen_log.py --level info --message 'Start environmental preparation.'
+Wed Apr  5 17:43:24 2023 - INFO  - Start environmental preparation.
++ DNF_INSTALL docbook2X
++ pkgs=docbook2X
++ node=1
++ '[' -z '' ']'
++ tmpfile=
+++ python3 /root/mugen/libs/locallibs/rpm_manage.py install --pkgs docbook2X --node 1 --tempfile ''
++ tmpfile2=/tmp/tmpyhp3s2ut
++ '[' -z '' ']'
++ tmpfile=/tmp/tmpyhp3s2ut
++ cp -r common doctest
++ LOG_INFO 'End of environmental preparation!'
++ message='End of environmental preparation!'
++ python3 /root/mugen/libs/locallibs/mugen_log.py --level info --message 'End of environmental preparation!'
+Wed Apr  5 17:44:28 2023 - INFO  - End of environmental preparation!
+++ type -t run_test
++ '[' -n function ']'
++ run_test
++ LOG_INFO 'Start to run test.'
++ message='Start to run test.'
++ python3 /root/mugen/libs/locallibs/mugen_log.py --level info --message 'Start to run test.'
+Wed Apr  5 17:44:29 2023 - INFO  - Start to run test.
++ db2x_xsltproc --version
++ grep 'db2x_xsltproc (part of docbook2X [[:digit:]].*)'
+db2x_xsltproc (part of docbook2X 0.8.8)
++ CHECK_RESULT 0 0 0 'Check db2x_xsltproc --version  failed'
++ actual_result=0
++ expect_result=0
++ mode=0
++ error_log='Check db2x_xsltproc --version  failed'
++ exit_mode=0
++ '[' -z 0 ']'
++ '[' 0 -eq 0 ']'
++ test 0x '!=' 0x
++ return 0
++ db2x_xsltproc --help
++ grep 'Usage: /usr/bin/db2x_xsltproc \[options]'
+Usage: /usr/bin/db2x_xsltproc [options] xml-document
++ CHECK_RESULT 0 0 0 'Check --help  failed'
++ actual_result=0
++ expect_result=0
++ mode=0
++ error_log='Check --help  failed'
++ exit_mode=0
++ '[' -z 0 ']'
++ '[' 0 -eq 0 ']'
++ test 0x '!=' 0x
++ return 0
++ db2x_xsltproc -s texi -o doctest/hello.txml -D 100 -C /etc/xml/catalog -X libxslt doctest/text.xml -d -I -S -N -P
+/usr/bin/sgml2xml:doctest/text.xml:2:0:E: prolog can't be omitted unless CONCUR NO and LINK EXPLICIT NO and either IMPLYDEF ELEMENT YES or IMPLYDEF DOCTYPE YES
+/usr/bin/sgml2xml:doctest/text.xml:2:0:E: no document type declaration; will parse without validation
+warning : xmlAddEntity: invalid redeclaration of predefined entity 'lt'
+docbook2texi:/location: Erroneous request for title for this element
+docbook2texi:/location: Erroneous request for title for this element
+docbook2texi:/location: no description for directory entry
+docbook2texi:/location: make-texinfo-node called for non-node
+docbook2texi:/location: Erroneous request for title for this element
+docbook2texi:/location: element not matched by any template
+docbook2texi:/location/appsettings: element not matched by any template
+docbook2texi:/location/appsettings/add[1]: element not matched by any template
+docbook2texi:/location/appsettings/add[2]: element not matched by any template
+number               match                name      mode  Calls Tot 100us Avg
+
+    0                             user-message                9   1166    129
+    1                             gentext-text                4    419    104
+    2                    *                    nodenamemap
+                                                              4    367     91
+    3                      l10n-match-language                8    334     41
+    4                        gentext-rendering                4    284     71
+    5                        l10n-xml-language                8    237     29
+    6                    *                    print-node-xpath
+                                                             14    229     16
+    7                     l10n-message-choose-language
+                                                              9    127     14
+    8                         make-nodenamemap                1    126    126
+    9                   /*                    for-texinfo-file-name
+                                                              2    114     57
+   10                     make-texinfo-section                1    106    106
+   11                    /                                    1     89     89
+   12                         print-node-xpath                9     85      9
+   13                    *                     for-title      3     71     23
+   14                    *                     top-chunk      1     66     66
+   15                     get-texinfo-file-name
+                                                              2     65     32
+   16                    *                                    4     44     11
+   17                     get-texinfo-section-level
+                                                              1     42     42
+   18                     make-texinfo-directory
+                                                              1     34     34
+   19                        make-texinfo-node                1     27     27
+   20              book|/*                    is-texinfo-top-node
+                                                              1     24     24
+   21                                 print-id                1     21     21
+   22                     make-texinfo-top-node-firstchild
+                                                              2     20     10
+   23                     l10n-xml-actual-language
+                                                              8     19      2
+   24                     make-texinfo-top-node
+                                                              1     18     18
+   25               text()                    l10n-substitution
+                                                              8     13      1
+   26           dl:content                    l10n-substitution
+                                                              4     10      2
+   27                     get-texinfo-directory-category
+                                                              1      6      6
+   28                     get-texinfo-directory-description
+                                                              1      5      5
+   29               text()                                    4      5      1
+   30               node()                    for-menu-title
+                                                              1      1      1
+
+                         Total                              119   4174
+
+index % time    self  children    called     name
+                0.001    0.016      3/9         *[for-title] [13]
+                0.000    0.017      1/9         make-texinfo-directory [18]
+                0.000    0.012      1/9         make-texinfo-node [19]
+                0.000    0.015      4/9         * [16]
+[0]    27.93    0.012    0.002      9     user-message [0]
+                0.001    0.000      9/18        l10n-message-choose-language [7]
+                0.001    0.002      9/18        print-node-xpath [12]
+-----------------------------------------------
+                0.001    0.016      3/4         *[for-title] [13]
+                0.000    0.017      1/4         make-texinfo-directory [18]
+[1]    10.04    0.004    0.000      4     gentext-text [1]
+                0.000    0.006      4/4         l10n-xml-actual-language [23]
+-----------------------------------------------
+                0.001    0.004      1/4         make-nodenamemap [8]
+                0.004    0.004      3/4         *[nodenamemap] [2]
+[2]     8.79    0.004    0.004      4     *[nodenamemap] [2]
+                0.004    0.004      3/3         *[nodenamemap] [2]
+-----------------------------------------------
+                0.000    0.006      8/8         l10n-xml-actual-language [23]
+[3]     8.00    0.003    0.000      8     l10n-match-language [3]
+-----------------------------------------------
+                0.000    0.015      4/4         * [16]
+[4]     6.80    0.003    0.000      4     gentext-rendering [4]
+                0.000    0.006      4/16        l10n-xml-actual-language [23]
+                0.000    0.000      8/16        text()[l10n-substitution] [25]
+                0.000    0.000      4/16        dl:content[l10n-substitution] [26]
+-----------------------------------------------
+                0.000    0.006      8/8         l10n-xml-actual-language [23]
+[5]     5.68    0.002    0.000      8     l10n-xml-language [5]
+-----------------------------------------------
+                0.001    0.002      9/14        print-node-xpath [12]
+                0.002    0.002      5/14        *[print-node-xpath] [6]
+[6]     5.49    0.002    0.002     14     *[print-node-xpath] [6]
+                0.002    0.002      5/5         *[print-node-xpath] [6]
+-----------------------------------------------
+                0.012    0.002      9/9         user-message [0]
+[7]     3.04    0.001    0.000      9     l10n-message-choose-language [7]
+-----------------------------------------------
+                0.001    0.002      1/1         / [11]
+[8]     3.02    0.001    0.004      1     make-nodenamemap [8]
+                0.004    0.004      1/1         *[nodenamemap] [2]
+-----------------------------------------------
+                0.001    0.001      2/2         get-texinfo-file-name [15]
+[9]     2.73    0.001    0.000      2     /*[for-texinfo-file-name] [9]
+-----------------------------------------------
+                0.001    0.003      1/1         *[top-chunk] [14]
+[10]    2.54    0.001    0.001      1     make-texinfo-section [10]
+                0.001    0.016      1/2         *[for-title] [13]
+                0.000    0.000      1/2         get-texinfo-section-level [17]
+-----------------------------------------------
+                0.042    0.000      1/1         - [31]
+[11]    2.13    0.001    0.002      1     / [11]
+                0.001    0.004      1/2         make-nodenamemap [8]
+                0.001    0.003      1/2         *[top-chunk] [14]
+-----------------------------------------------
+                0.012    0.002      9/9         user-message [0]
+[12]    2.04    0.001    0.002      9     print-node-xpath [12]
+                0.002    0.002      9/9         *[print-node-xpath] [6]
+-----------------------------------------------
+                0.001    0.003      1/3         *[top-chunk] [14]
+                0.000    0.001      1/3         node()[for-menu-title] [30]
+                0.001    0.001      1/3         make-texinfo-section [10]
+[13]    1.70    0.001    0.016      3     *[for-title] [13]
+                0.012    0.002      3/6         user-message [0]
+                0.004    0.000      3/6         gentext-text [1]
+-----------------------------------------------
+                0.001    0.002      1/1         / [11]
+[14]    1.58    0.001    0.003      1     *[top-chunk] [14]
+                0.001    0.001      1/6         make-texinfo-section [10]
+                0.001    0.016      1/6         *[for-title] [13]
+                0.001    0.001      1/6         get-texinfo-file-name [15]
+                0.000    0.015      1/6         * [16]
+                0.000    0.017      1/6         make-texinfo-directory [18]
+                0.000    0.012      1/6         make-texinfo-node [19]
+-----------------------------------------------
+                0.001    0.003      1/2         *[top-chunk] [14]
+                0.000    0.017      1/2         make-texinfo-directory [18]
+[15]    1.56    0.001    0.001      2     get-texinfo-file-name [15]
+                0.001    0.000      2/2         /*[for-texinfo-file-name] [9]
+-----------------------------------------------
+                0.001    0.003      1/4         *[top-chunk] [14]
+                0.000    0.015      3/4         * [16]
+[16]    1.05    0.000    0.015      4     * [16]
+                0.012    0.002      4/15        user-message [0]
+                0.003    0.000      4/15        gentext-rendering [4]
+                0.000    0.015      3/15        * [16]
+                0.000    0.000      4/15        text() [29]
+-----------------------------------------------
+                0.001    0.001      1/1         make-texinfo-section [10]
+[17]    1.01    0.000    0.000      1     get-texinfo-section-level [17]
+-----------------------------------------------
+                0.001    0.003      1/1         *[top-chunk] [14]
+[18]    0.81    0.000    0.017      1     make-texinfo-directory [18]
+                0.012    0.002      1/6         user-message [0]
+                0.004    0.000      1/6         gentext-text [1]
+                0.001    0.001      1/6         get-texinfo-file-name [15]
+                0.000    0.000      1/6         get-texinfo-directory-category [27]
+                0.000    0.000      1/6         get-texinfo-directory-description [28]
+                0.000    0.001      1/6         node()[for-menu-title] [30]
+-----------------------------------------------
+                0.001    0.003      1/1         *[top-chunk] [14]
+[19]    0.65    0.000    0.012      1     make-texinfo-node [19]
+                0.012    0.002      1/3         user-message [0]
+                0.000    0.000      1/3         book|/*[is-texinfo-top-node] [20]
+                0.000    0.000      1/3         make-texinfo-top-node [24]
+-----------------------------------------------
+                0.000    0.012      1/1         make-texinfo-node [19]
+[20]    0.57    0.000    0.000      1     book|/*[is-texinfo-top-node] [20]
+-----------------------------------------------
+                0.000    0.000      1/1         make-texinfo-top-node [24]
+[21]    0.50    0.000    0.000      1     print-id [21]
+-----------------------------------------------
+                0.000    0.000      1/2         make-texinfo-top-node [24]
+                0.000    0.000      1/2         make-texinfo-top-node-firstchild [22]
+[22]    0.48    0.000    0.000      2     make-texinfo-top-node-firstchild [22]
+                0.000    0.000      1/1         make-texinfo-top-node-firstchild [22]
+-----------------------------------------------
+                0.004    0.000      4/8         gentext-text [1]
+                0.003    0.000      4/8         gentext-rendering [4]
+[23]    0.46    0.000    0.006      8     l10n-xml-actual-language [23]
+                0.003    0.000      8/16        l10n-match-language [3]
+                0.002    0.000      8/16        l10n-xml-language [5]
+-----------------------------------------------
+                0.000    0.012      1/1         make-texinfo-node [19]
+[24]    0.43    0.000    0.000      1     make-texinfo-top-node [24]
+                0.000    0.000      1/2         print-id [21]
+                0.000    0.000      1/2         make-texinfo-top-node-firstchild [22]
+-----------------------------------------------
+                0.003    0.000      8/8         gentext-rendering [4]
+[25]    0.31    0.000    0.000      8     text()[l10n-substitution] [25]
+-----------------------------------------------
+                0.003    0.000      4/4         gentext-rendering [4]
+[26]    0.24    0.000    0.000      4     dl:content[l10n-substitution] [26]
+-----------------------------------------------
+                0.000    0.017      1/1         make-texinfo-directory [18]
+[27]    0.14    0.000    0.000      1     get-texinfo-directory-category [27]
+-----------------------------------------------
+                0.000    0.017      1/1         make-texinfo-directory [18]
+[28]    0.12    0.000    0.000      1     get-texinfo-directory-description [28]
+-----------------------------------------------
+                0.000    0.015      4/4         * [16]
+[29]    0.12    0.000    0.000      4     text() [29]
+-----------------------------------------------
+                0.000    0.017      1/1         make-texinfo-directory [18]
+[30]    0.02    0.000    0.001      1     node()[for-menu-title] [30]
+                0.001    0.016      1/1         *[for-title] [13]
+-----------------------------------------------
+
+Index by function name
+[0] user-message (/usr/share/docbook2X/xslt/texi/docbook.xsl:117)
+[1] gentext-text (/usr/share/docbook2X/xslt/texi/docbook.xsl:170)
+[2] *[nodenamemap] (/usr/share/docbook2X/xslt/texi/docbook.xsl:37)
+[3] l10n-match-language (/usr/share/docbook2X/xslt/texi/docbook.xsl:109)
+[4] gentext-rendering (/usr/share/docbook2X/xslt/texi/docbook.xsl:140)
+[5] l10n-xml-language (/usr/share/docbook2X/xslt/texi/docbook.xsl:174)
+[6] *[print-node-xpath] (/usr/share/docbook2X/xslt/texi/docbook.xsl:298)
+[7] l10n-message-choose-language (/usr/share/docbook2X/xslt/texi/docbook.xsl:29)
+[8] make-nodenamemap (/usr/share/docbook2X/xslt/texi/docbook.xsl:31)
+[9] /*[for-texinfo-file-name] (/usr/share/docbook2X/xslt/texi/docbook.xsl:126)
+[10] make-texinfo-section (/usr/share/docbook2X/xslt/texi/docbook.xsl:228)
+[11] / (/usr/share/docbook2X/xslt/texi/docbook.xsl:32)
+[12] print-node-xpath (/usr/share/docbook2X/xslt/texi/docbook.xsl:280)
+[13] *[for-title] (/usr/share/docbook2X/xslt/texi/docbook.xsl:65)
+[14] *[top-chunk] (/usr/share/docbook2X/xslt/texi/docbook.xsl:56)
+[15] get-texinfo-file-name (/usr/share/docbook2X/xslt/texi/docbook.xsl:195)
+[16] * (/usr/share/docbook2X/xslt/texi/docbook.xsl:123)
+[17] get-texinfo-section-level (/usr/share/docbook2X/xslt/texi/docbook.xsl:104)
+[18] make-texinfo-directory (/usr/share/docbook2X/xslt/texi/docbook.xsl:171)
+[19] make-texinfo-node (/usr/share/docbook2X/xslt/texi/docbook.xsl:83)
+[20] book|/*[is-texinfo-top-node] (/usr/share/docbook2X/xslt/texi/docbook.xsl:380)
+[21] print-id (/usr/share/docbook2X/xslt/texi/docbook.xsl:53)
+[22] make-texinfo-top-node-firstchild (/usr/share/docbook2X/xslt/texi/docbook.xsl:190)
+[23] l10n-xml-actual-language (/usr/share/docbook2X/xslt/texi/docbook.xsl:207)
+[24] make-texinfo-top-node (/usr/share/docbook2X/xslt/texi/docbook.xsl:171)
+[25] text()[l10n-substitution] (/usr/share/docbook2X/xslt/texi/docbook.xsl:232)
+[26] dl:content[l10n-substitution] (/usr/share/docbook2X/xslt/texi/docbook.xsl:197)
+[27] get-texinfo-directory-category (/usr/share/docbook2X/xslt/texi/docbook.xsl:188)
+[28] get-texinfo-directory-description (/usr/share/docbook2X/xslt/texi/docbook.xsl:160)
+[29] text() (/usr/share/docbook2X/xslt/texi/docbook.xsl:138)
+[30] node()[for-menu-title] (/usr/share/docbook2X/xslt/texi/docbook.xsl:216)
+
++ test -f doctest/hello.txml
++ CHECK_RESULT 0 0 0 'Check db2x_xsltproc -s -o -D -C -X -d -I -S -N -P failed'
++ actual_result=0
++ expect_result=0
++ mode=0
++ error_log='Check db2x_xsltproc -s -o -D -C -X -d -I -S -N -P failed'
++ exit_mode=0
++ '[' -z 0 ']'
++ '[' 0 -eq 0 ']'
++ test 0x '!=' 0x
++ return 0
++ db2x_xsltproc --stylesheet texi --output doctest/hello1.txml --nesting-limit 100 --catalogs /etc/xml/catalog --xslt-processor libxslt doctest/text.xml --debug --xinclude --sgml --network --profile
+/usr/bin/sgml2xml:doctest/text.xml:2:0:E: prolog can't be omitted unless CONCUR NO and LINK EXPLICIT NO and either IMPLYDEF ELEMENT YES or IMPLYDEF DOCTYPE YES
+/usr/bin/sgml2xml:doctest/text.xml:2:0:E: no document type declaration; will parse without validation
+warning : xmlAddEntity: invalid redeclaration of predefined entity 'lt'
+docbook2texi:/location: Erroneous request for title for this element
+docbook2texi:/location: Erroneous request for title for this element
+docbook2texi:/location: no description for directory entry
+docbook2texi:/location: make-texinfo-node called for non-node
+docbook2texi:/location: Erroneous request for title for this element
+docbook2texi:/location: element not matched by any template
+docbook2texi:/location/appsettings: element not matched by any template
+docbook2texi:/location/appsettings/add[1]: element not matched by any template
+docbook2texi:/location/appsettings/add[2]: element not matched by any template
+number               match                name      mode  Calls Tot 100us Avg
+
+    0                             user-message                9   1227    136
+    1                    *                    nodenamemap
+                                                              4    465    116
+    2                      l10n-match-language                8    330     41
+    3                             gentext-text                4    307     76
+    4                    *                    print-node-xpath
+                                                             14    280     20
+    5                        gentext-rendering                4    275     68
+    6                        l10n-xml-language                8    273     34
+    7                         make-nodenamemap                1    136    136
+    8                     l10n-message-choose-language
+                                                              9    123     13
+    9                    /                                    1    123    123
+   10                   /*                    for-texinfo-file-name
+                                                              2    121     60
+   11                     make-texinfo-section                1    104    104
+   12                         print-node-xpath                9     98     10
+   13                    *                     for-title      3     69     23
+   14                    *                     top-chunk      1     68     68
+   15                     get-texinfo-file-name
+                                                              2     62     31
+   16                    *                                    4     47     11
+   17                     get-texinfo-section-level
+                                                              1     40     40
+   18                     l10n-xml-actual-language
+                                                              8     25      3
+   19                     make-texinfo-directory
+                                                              1     25     25
+   20                                 print-id                1     20     20
+   21              book|/*                    is-texinfo-top-node
+                                                              1     19     19
+   22                     make-texinfo-top-node-firstchild
+                                                              2     19      9
+   23                        make-texinfo-node                1     16     16
+   24                     make-texinfo-top-node
+                                                              1     16     16
+   25               text()                    l10n-substitution
+                                                              8     13      1
+   26           dl:content                    l10n-substitution
+                                                              4      9      2
+   27                     get-texinfo-directory-description
+                                                              1      6      6
+   28                     get-texinfo-directory-category
+                                                              1      6      6
+   29               text()                                    4      4      1
+   30               node()                    for-menu-title
+                                                              1      2      2
+
+                         Total                              119   4328
+
+index % time    self  children    called     name
+                0.001    0.015      3/9         *[for-title] [13]
+                0.000    0.016      1/9         make-texinfo-directory [19]
+                0.000    0.013      1/9         make-texinfo-node [23]
+                0.000    0.016      4/9         * [16]
+[0]    28.35    0.012    0.002      9     user-message [0]
+                0.001    0.000      9/18        l10n-message-choose-language [8]
+                0.001    0.003      9/18        print-node-xpath [12]
+-----------------------------------------------
+                0.001    0.005      1/4         make-nodenamemap [7]
+                0.005    0.005      3/4         *[nodenamemap] [1]
+[1]    10.74    0.005    0.005      4     *[nodenamemap] [1]
+                0.005    0.005      3/3         *[nodenamemap] [1]
+-----------------------------------------------
+                0.000    0.006      8/8         l10n-xml-actual-language [18]
+[2]     7.62    0.003    0.000      8     l10n-match-language [2]
+-----------------------------------------------
+                0.001    0.015      3/4         *[for-title] [13]
+                0.000    0.016      1/4         make-texinfo-directory [19]
+[3]     7.09    0.003    0.000      4     gentext-text [3]
+                0.000    0.006      4/4         l10n-xml-actual-language [18]
+-----------------------------------------------
+                0.001    0.003      9/14        print-node-xpath [12]
+                0.003    0.003      5/14        *[print-node-xpath] [4]
+[4]     6.47    0.003    0.003     14     *[print-node-xpath] [4]
+                0.003    0.003      5/5         *[print-node-xpath] [4]
+-----------------------------------------------
+                0.000    0.016      4/4         * [16]
+[5]     6.35    0.003    0.000      4     gentext-rendering [5]
+                0.000    0.006      4/16        l10n-xml-actual-language [18]
+                0.000    0.000      8/16        text()[l10n-substitution] [25]
+                0.000    0.000      4/16        dl:content[l10n-substitution] [26]
+-----------------------------------------------
+                0.000    0.006      8/8         l10n-xml-actual-language [18]
+[6]     6.31    0.003    0.000      8     l10n-xml-language [6]
+-----------------------------------------------
+                0.001    0.002      1/1         / [9]
+[7]     3.14    0.001    0.005      1     make-nodenamemap [7]
+                0.005    0.005      1/1         *[nodenamemap] [1]
+-----------------------------------------------
+                0.012    0.002      9/9         user-message [0]
+[8]     2.84    0.001    0.000      9     l10n-message-choose-language [8]
+-----------------------------------------------
+                0.043    0.000      1/1         - [31]
+[9]     2.84    0.001    0.002      1     / [9]
+                0.001    0.005      1/2         make-nodenamemap [7]
+                0.001    0.003      1/2         *[top-chunk] [14]
+-----------------------------------------------
+                0.001    0.001      2/2         get-texinfo-file-name [15]
+[10]    2.80    0.001    0.000      2     /*[for-texinfo-file-name] [10]
+-----------------------------------------------
+                0.001    0.003      1/1         *[top-chunk] [14]
+[11]    2.40    0.001    0.001      1     make-texinfo-section [11]
+                0.001    0.015      1/2         *[for-title] [13]
+                0.000    0.000      1/2         get-texinfo-section-level [17]
+-----------------------------------------------
+                0.012    0.002      9/9         user-message [0]
+[12]    2.26    0.001    0.003      9     print-node-xpath [12]
+                0.003    0.003      9/9         *[print-node-xpath] [4]
+-----------------------------------------------
+                0.001    0.003      1/3         *[top-chunk] [14]
+                0.000    0.001      1/3         node()[for-menu-title] [30]
+                0.001    0.001      1/3         make-texinfo-section [11]
+[13]    1.59    0.001    0.015      3     *[for-title] [13]
+                0.012    0.002      3/6         user-message [0]
+                0.003    0.000      3/6         gentext-text [3]
+-----------------------------------------------
+                0.001    0.002      1/1         / [9]
+[14]    1.57    0.001    0.003      1     *[top-chunk] [14]
+                0.001    0.001      1/6         make-texinfo-section [11]
+                0.001    0.015      1/6         *[for-title] [13]
+                0.001    0.001      1/6         get-texinfo-file-name [15]
+                0.000    0.016      1/6         * [16]
+                0.000    0.016      1/6         make-texinfo-directory [19]
+                0.000    0.013      1/6         make-texinfo-node [23]
+-----------------------------------------------
+                0.001    0.003      1/2         *[top-chunk] [14]
+                0.000    0.016      1/2         make-texinfo-directory [19]
+[15]    1.43    0.001    0.001      2     get-texinfo-file-name [15]
+                0.001    0.000      2/2         /*[for-texinfo-file-name] [10]
+-----------------------------------------------
+                0.001    0.003      1/4         *[top-chunk] [14]
+                0.000    0.016      3/4         * [16]
+[16]    1.09    0.000    0.016      4     * [16]
+                0.012    0.002      4/15        user-message [0]
+                0.003    0.000      4/15        gentext-rendering [5]
+                0.000    0.016      3/15        * [16]
+                0.000    0.000      4/15        text() [29]
+-----------------------------------------------
+                0.001    0.001      1/1         make-texinfo-section [11]
+[17]    0.92    0.000    0.000      1     get-texinfo-section-level [17]
+-----------------------------------------------
+                0.003    0.000      4/8         gentext-text [3]
+                0.003    0.000      4/8         gentext-rendering [5]
+[18]    0.58    0.000    0.006      8     l10n-xml-actual-language [18]
+                0.003    0.000      8/16        l10n-match-language [2]
+                0.003    0.000      8/16        l10n-xml-language [6]
+-----------------------------------------------
+                0.001    0.003      1/1         *[top-chunk] [14]
+[19]    0.58    0.000    0.016      1     make-texinfo-directory [19]
+                0.012    0.002      1/6         user-message [0]
+                0.003    0.000      1/6         gentext-text [3]
+                0.001    0.001      1/6         get-texinfo-file-name [15]
+                0.000    0.000      1/6         get-texinfo-directory-description [27]
+                0.000    0.000      1/6         get-texinfo-directory-category [28]
+                0.000    0.001      1/6         node()[for-menu-title] [30]
+-----------------------------------------------
+                0.000    0.000      1/1         make-texinfo-top-node [24]
+[20]    0.46    0.000    0.000      1     print-id [20]
+-----------------------------------------------
+                0.000    0.013      1/1         make-texinfo-node [23]
+[21]    0.44    0.000    0.000      1     book|/*[is-texinfo-top-node] [21]
+-----------------------------------------------
+                0.000    0.000      1/2         make-texinfo-top-node [24]
+                0.000    0.000      1/2         make-texinfo-top-node-firstchild [22]
+[22]    0.44    0.000    0.000      2     make-texinfo-top-node-firstchild [22]
+                0.000    0.000      1/1         make-texinfo-top-node-firstchild [22]
+-----------------------------------------------
+                0.001    0.003      1/1         *[top-chunk] [14]
+[23]    0.37    0.000    0.013      1     make-texinfo-node [23]
+                0.012    0.002      1/3         user-message [0]
+                0.000    0.000      1/3         book|/*[is-texinfo-top-node] [21]
+                0.000    0.000      1/3         make-texinfo-top-node [24]
+-----------------------------------------------
+                0.000    0.013      1/1         make-texinfo-node [23]
+[24]    0.37    0.000    0.000      1     make-texinfo-top-node [24]
+                0.000    0.000      1/2         print-id [20]
+                0.000    0.000      1/2         make-texinfo-top-node-firstchild [22]
+-----------------------------------------------
+                0.003    0.000      8/8         gentext-rendering [5]
+[25]    0.30    0.000    0.000      8     text()[l10n-substitution] [25]
+-----------------------------------------------
+                0.003    0.000      4/4         gentext-rendering [5]
+[26]    0.21    0.000    0.000      4     dl:content[l10n-substitution] [26]
+-----------------------------------------------
+                0.000    0.016      1/1         make-texinfo-directory [19]
+[27]    0.14    0.000    0.000      1     get-texinfo-directory-description [27]
+-----------------------------------------------
+                0.000    0.016      1/1         make-texinfo-directory [19]
+[28]    0.14    0.000    0.000      1     get-texinfo-directory-category [28]
+-----------------------------------------------
+                0.000    0.016      4/4         * [16]
+[29]    0.09    0.000    0.000      4     text() [29]
+-----------------------------------------------
+                0.000    0.016      1/1         make-texinfo-directory [19]
+[30]    0.05    0.000    0.001      1     node()[for-menu-title] [30]
+                0.001    0.015      1/1         *[for-title] [13]
+-----------------------------------------------
+
+Index by function name
+[0] user-message (/usr/share/docbook2X/xslt/texi/docbook.xsl:117)
+[1] *[nodenamemap] (/usr/share/docbook2X/xslt/texi/docbook.xsl:37)
+[2] l10n-match-language (/usr/share/docbook2X/xslt/texi/docbook.xsl:109)
+[3] gentext-text (/usr/share/docbook2X/xslt/texi/docbook.xsl:170)
+[4] *[print-node-xpath] (/usr/share/docbook2X/xslt/texi/docbook.xsl:298)
+[5] gentext-rendering (/usr/share/docbook2X/xslt/texi/docbook.xsl:140)
+[6] l10n-xml-language (/usr/share/docbook2X/xslt/texi/docbook.xsl:174)
+[7] make-nodenamemap (/usr/share/docbook2X/xslt/texi/docbook.xsl:31)
+[8] l10n-message-choose-language (/usr/share/docbook2X/xslt/texi/docbook.xsl:29)
+[9] / (/usr/share/docbook2X/xslt/texi/docbook.xsl:32)
+[10] /*[for-texinfo-file-name] (/usr/share/docbook2X/xslt/texi/docbook.xsl:126)
+[11] make-texinfo-section (/usr/share/docbook2X/xslt/texi/docbook.xsl:228)
+[12] print-node-xpath (/usr/share/docbook2X/xslt/texi/docbook.xsl:280)
+[13] *[for-title] (/usr/share/docbook2X/xslt/texi/docbook.xsl:65)
+[14] *[top-chunk] (/usr/share/docbook2X/xslt/texi/docbook.xsl:56)
+[15] get-texinfo-file-name (/usr/share/docbook2X/xslt/texi/docbook.xsl:195)
+[16] * (/usr/share/docbook2X/xslt/texi/docbook.xsl:123)
+[17] get-texinfo-section-level (/usr/share/docbook2X/xslt/texi/docbook.xsl:104)
+[18] l10n-xml-actual-language (/usr/share/docbook2X/xslt/texi/docbook.xsl:207)
+[19] make-texinfo-directory (/usr/share/docbook2X/xslt/texi/docbook.xsl:171)
+[20] print-id (/usr/share/docbook2X/xslt/texi/docbook.xsl:53)
+[21] book|/*[is-texinfo-top-node] (/usr/share/docbook2X/xslt/texi/docbook.xsl:380)
+[22] make-texinfo-top-node-firstchild (/usr/share/docbook2X/xslt/texi/docbook.xsl:190)
+[23] make-texinfo-node (/usr/share/docbook2X/xslt/texi/docbook.xsl:83)
+[24] make-texinfo-top-node (/usr/share/docbook2X/xslt/texi/docbook.xsl:171)
+[25] text()[l10n-substitution] (/usr/share/docbook2X/xslt/texi/docbook.xsl:232)
+[26] dl:content[l10n-substitution] (/usr/share/docbook2X/xslt/texi/docbook.xsl:197)
+[27] get-texinfo-directory-description (/usr/share/docbook2X/xslt/texi/docbook.xsl:160)
+[28] get-texinfo-directory-category (/usr/share/docbook2X/xslt/texi/docbook.xsl:188)
+[29] text() (/usr/share/docbook2X/xslt/texi/docbook.xsl:138)
+[30] node()[for-menu-title] (/usr/share/docbook2X/xslt/texi/docbook.xsl:216)
+
++ test -f doctest/hello1.txml
++ CHECK_RESULT 0 0 0 'Check db2x_xsltproc --stylesheet --output --nesting-limit --catalogs --xslt-processor --debug --xinclude --sgml --network --profile failed'
++ actual_result=0
++ expect_result=0
++ mode=0
++ error_log='Check db2x_xsltproc --stylesheet --output --nesting-limit --catalogs --xslt-processor --debug --xinclude --sgml --network --profile failed'
++ exit_mode=0
++ '[' -z 0 ']'
++ '[' 0 -eq 0 ']'
++ test 0x '!=' 0x
++ return 0
++ db2x_xsltproc -s texi -o doctest/hello2.txml -D 100 -C /etc/xml/catalog -X libxslt -p name=admin doctest/text.xml -d -I -S -N
+/usr/bin/sgml2xml:doctest/text.xml:2:0:E: prolog can't be omitted unless CONCUR NO and LINK EXPLICIT NO and either IMPLYDEF ELEMENT YES or IMPLYDEF DOCTYPE YES
+/usr/bin/sgml2xml:doctest/text.xml:2:0:E: no document type declaration; will parse without validation
+warning : xmlAddEntity: invalid redeclaration of predefined entity 'lt'
+docbook2texi:/location: Erroneous request for title for this element
+docbook2texi:/location: Erroneous request for title for this element
+docbook2texi:/location: no description for directory entry
+docbook2texi:/location: make-texinfo-node called for non-node
+docbook2texi:/location: Erroneous request for title for this element
+docbook2texi:/location: element not matched by any template
+docbook2texi:/location/appsettings: element not matched by any template
+docbook2texi:/location/appsettings/add[1]: element not matched by any template
+docbook2texi:/location/appsettings/add[2]: element not matched by any template
++ test -f doctest/hello2.txml
++ CHECK_RESULT 0 0 0 'Check db2x_xsltproc -p failed'
++ actual_result=0
++ expect_result=0
++ mode=0
++ error_log='Check db2x_xsltproc -p failed'
++ exit_mode=0
++ '[' -z 0 ']'
++ '[' 0 -eq 0 ']'
++ test 0x '!=' 0x
++ return 0
++ db2x_xsltproc -s texi -o doctest/hello3.txml -D 100 -C /etc/xml/catalog -X libxslt --param name=admin doctest/text.xml -d -I -S -N
+/usr/bin/sgml2xml:doctest/text.xml:2:0:E: prolog can't be omitted unless CONCUR NO and LINK EXPLICIT NO and either IMPLYDEF ELEMENT YES or IMPLYDEF DOCTYPE YES
+/usr/bin/sgml2xml:doctest/text.xml:2:0:E: no document type declaration; will parse without validation
+warning : xmlAddEntity: invalid redeclaration of predefined entity 'lt'
+docbook2texi:/location: Erroneous request for title for this element
+docbook2texi:/location: Erroneous request for title for this element
+docbook2texi:/location: no description for directory entry
+docbook2texi:/location: make-texinfo-node called for non-node
+docbook2texi:/location: Erroneous request for title for this element
+docbook2texi:/location: element not matched by any template
+docbook2texi:/location/appsettings: element not matched by any template
+docbook2texi:/location/appsettings/add[1]: element not matched by any template
+docbook2texi:/location/appsettings/add[2]: element not matched by any template
++ test -f doctest/hello3.txml
++ CHECK_RESULT 0 0 0 'Check db2x_xsltproc --param failed'
++ actual_result=0
++ expect_result=0
++ mode=0
++ error_log='Check db2x_xsltproc --param failed'
++ exit_mode=0
++ '[' -z 0 ']'
++ '[' 0 -eq 0 ']'
++ test 0x '!=' 0x
++ return 0
++ db2x_xsltproc -s texi -o doctest/hello4.txml -D 100 -C /etc/xml/catalog -X libxslt -g name=admin doctest/text.xml -d -I -S -N
+/usr/bin/sgml2xml:doctest/text.xml:2:0:E: prolog can't be omitted unless CONCUR NO and LINK EXPLICIT NO and either IMPLYDEF ELEMENT YES or IMPLYDEF DOCTYPE YES
+/usr/bin/sgml2xml:doctest/text.xml:2:0:E: no document type declaration; will parse without validation
+warning : xmlAddEntity: invalid redeclaration of predefined entity 'lt'
+docbook2texi:/location: Erroneous request for title for this element
+docbook2texi:/location: Erroneous request for title for this element
+docbook2texi:/location: no description for directory entry
+docbook2texi:/location: make-texinfo-node called for non-node
+docbook2texi:/location: Erroneous request for title for this element
+docbook2texi:/location: element not matched by any template
+docbook2texi:/location/appsettings: element not matched by any template
+docbook2texi:/location/appsettings/add[1]: element not matched by any template
+docbook2texi:/location/appsettings/add[2]: element not matched by any template
++ test -f doctest/hello4.txml
++ CHECK_RESULT 0 0 0 'Check db2x_xsltproc -g failed'
++ actual_result=0
++ expect_result=0
++ mode=0
++ error_log='Check db2x_xsltproc -g failed'
++ exit_mode=0
++ '[' -z 0 ']'
++ '[' 0 -eq 0 ']'
++ test 0x '!=' 0x
++ return 0
++ db2x_xsltproc -s texi -o doctest/hello5.txml -D 100 -C /etc/xml/catalog -X libxslt --string-param name=admin doctest/text.xml -d -I -S -N
+/usr/bin/sgml2xml:doctest/text.xml:2:0:E: prolog can't be omitted unless CONCUR NO and LINK EXPLICIT NO and either IMPLYDEF ELEMENT YES or IMPLYDEF DOCTYPE YES
+/usr/bin/sgml2xml:doctest/text.xml:2:0:E: no document type declaration; will parse without validation
+warning : xmlAddEntity: invalid redeclaration of predefined entity 'lt'
+docbook2texi:/location: Erroneous request for title for this element
+docbook2texi:/location: Erroneous request for title for this element
+docbook2texi:/location: no description for directory entry
+docbook2texi:/location: make-texinfo-node called for non-node
+docbook2texi:/location: Erroneous request for title for this element
+docbook2texi:/location: element not matched by any template
+docbook2texi:/location/appsettings: element not matched by any template
+docbook2texi:/location/appsettings/add[1]: element not matched by any template
+docbook2texi:/location/appsettings/add[2]: element not matched by any template
++ test -f doctest/hello5.txml
++ CHECK_RESULT 0 0 0 'Check db2x_xsltproc -g failed'
++ actual_result=0
++ expect_result=0
++ mode=0
++ error_log='Check db2x_xsltproc -g failed'
++ exit_mode=0
++ '[' -z 0 ']'
++ '[' 0 -eq 0 ']'
++ test 0x '!=' 0x
++ return 0
++ LOG_INFO 'End to run test.'
++ message='End to run test.'
++ python3 /root/mugen/libs/locallibs/mugen_log.py --level info --message 'End to run test.'
+Wed Apr  5 17:44:39 2023 - INFO  - End to run test.
++ CASE_RESULT 0
++ case_re=0
++ test -z ''
++ test 0 -eq 0
++ LOG_INFO 'succeed to execute the case.'
++ message='succeed to execute the case.'
++ python3 /root/mugen/libs/locallibs/mugen_log.py --level info --message 'succeed to execute the case.'
+Wed Apr  5 17:44:40 2023 - INFO  - succeed to execute the case.
++ exec_result=
++ exit 0
++ post_test
++ LOG_INFO 'Start to restore the test environment.'
++ message='Start to restore the test environment.'
++ python3 /root/mugen/libs/locallibs/mugen_log.py --level info --message 'Start to restore the test environment.'
+Wed Apr  5 17:44:40 2023 - INFO  - Start to restore the test environment.
++ DNF_REMOVE
++ node=1
++ pkg_list=
++ mode=0
++ [[ -z /tmp/tmpyhp3s2ut ]]
++ '[' 0 -ne 0 ']'
++ '[' 1 == 0 ']'
++ python3 /root/mugen/libs/locallibs/rpm_manage.py remove --node 1 --pkgs '' --tempfile /tmp/tmpyhp3s2ut
++ '[' 0 -ne 0 ']'
++ rm -rf doctest
++ LOG_INFO 'Finish restore the test environment.'
++ message='Finish restore the test environment.'
++ python3 /root/mugen/libs/locallibs/mugen_log.py --level info --message 'Finish restore the test environment.'
+Wed Apr  5 17:45:04 2023 - INFO  - Finish restore the test environment.

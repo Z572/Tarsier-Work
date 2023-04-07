@@ -1,0 +1,92 @@
+Fri Apr  7 08:28:35 2023 - INFO  - start to run testcase:oe_test_firewalld_add_sourceip.
+Fri Apr  7 08:28:51 2023 - ERROR - The case exit by code 2.
+Fri Apr  7 08:28:53 2023 - INFO  - End to run testcase:oe_test_firewalld_add_sourceip.
+Fri Apr  7 08:28:54 2023 - INFO  - A total of 1 use cases were executed, with 0 successes and 1 failures.
+Fri Apr  7 08:29:00 2023 - INFO  - start to run testcase:oe_test_firewalld_add_sourceport.
+Fri Apr  7 08:29:16 2023 - ERROR - The case exit by code 2.
+Fri Apr  7 08:29:18 2023 - INFO  - End to run testcase:oe_test_firewalld_add_sourceport.
+Fri Apr  7 08:29:19 2023 - INFO  - A total of 1 use cases were executed, with 0 successes and 1 failures.
+Fri Apr  7 08:29:25 2023 - INFO  - start to run testcase:oe_test_firewalld_block_all_icmp.
+Fri Apr  7 08:29:39 2023 - INFO  - The case exit by code 0.
+Fri Apr  7 08:29:40 2023 - INFO  - End to run testcase:oe_test_firewalld_block_all_icmp.
+Fri Apr  7 08:29:41 2023 - INFO  - A total of 1 use cases were executed, with 1 successes and 0 failures.
+Fri Apr  7 08:29:47 2023 - INFO  - start to run testcase:oe_test_firewalld_getzone.
+Fri Apr  7 08:30:02 2023 - ERROR - The case exit by code 3.
+Fri Apr  7 08:30:03 2023 - INFO  - End to run testcase:oe_test_firewalld_getzone.
+Fri Apr  7 08:30:04 2023 - INFO  - A total of 1 use cases were executed, with 0 successes and 1 failures.
+Fri Apr  7 08:30:10 2023 - INFO  - start to run testcase:oe_test_firewalld_ip_camouflage.
+Fri Apr  7 08:30:27 2023 - ERROR - The case exit by code 4.
+Fri Apr  7 08:30:28 2023 - INFO  - End to run testcase:oe_test_firewalld_ip_camouflage.
+Fri Apr  7 08:30:29 2023 - INFO  - A total of 1 use cases were executed, with 0 successes and 1 failures.
+Fri Apr  7 08:30:34 2023 - INFO  - start to run testcase:oe_test_firewalld_list.
+Fri Apr  7 08:30:48 2023 - ERROR - The case exit by code 2.
+Fri Apr  7 08:30:49 2023 - INFO  - End to run testcase:oe_test_firewalld_list.
+Fri Apr  7 08:30:50 2023 - INFO  - A total of 1 use cases were executed, with 0 successes and 1 failures.
+Fri Apr  7 08:30:56 2023 - INFO  - start to run testcase:oe_test_firewalld_lockdown.
+Fri Apr  7 08:31:12 2023 - ERROR - The case exit by code 3.
+Fri Apr  7 08:31:13 2023 - INFO  - End to run testcase:oe_test_firewalld_lockdown.
+Fri Apr  7 08:31:14 2023 - INFO  - A total of 1 use cases were executed, with 0 successes and 1 failures.
+Fri Apr  7 08:31:20 2023 - INFO  - start to run testcase:oe_test_firewalld_log_denied.
+Fri Apr  7 08:33:35 2023 - ERROR - The case exit by code 3.
+Fri Apr  7 08:33:37 2023 - INFO  - End to run testcase:oe_test_firewalld_log_denied.
+Fri Apr  7 08:33:38 2023 - INFO  - A total of 1 use cases were executed, with 0 successes and 1 failures.
+Fri Apr  7 08:33:45 2023 - INFO  - start to run testcase:oe_test_firewalld_manage_icmp.
+Fri Apr  7 08:33:56 2023 - INFO  - The case exit by code 0.
+Fri Apr  7 08:33:57 2023 - INFO  - End to run testcase:oe_test_firewalld_manage_icmp.
+Fri Apr  7 08:33:58 2023 - INFO  - A total of 1 use cases were executed, with 1 successes and 0 failures.
+Fri Apr  7 08:34:04 2023 - INFO  - start to run testcase:oe_test_firewalld_new_zone.
+Fri Apr  7 08:34:20 2023 - ERROR - The case exit by code 3.
+Fri Apr  7 08:34:22 2023 - INFO  - End to run testcase:oe_test_firewalld_new_zone.
+Fri Apr  7 08:34:23 2023 - INFO  - A total of 1 use cases were executed, with 0 successes and 1 failures.
+Fri Apr  7 08:34:29 2023 - INFO  - start to run testcase:oe_test_firewalld_runtime_permanent.
+Fri Apr  7 08:34:45 2023 - ERROR - The case exit by code 2.
+Fri Apr  7 08:34:46 2023 - INFO  - End to run testcase:oe_test_firewalld_runtime_permanent.
+Fri Apr  7 08:34:47 2023 - INFO  - A total of 1 use cases were executed, with 0 successes and 1 failures.
+Fri Apr  7 08:34:53 2023 - INFO  - start to run testcase:oe_test_firewalld_set_priority.
+Fri Apr  7 08:35:05 2023 - INFO  - The case exit by code 0.
+Fri Apr  7 08:35:06 2023 - INFO  - End to run testcase:oe_test_firewalld_set_priority.
+Fri Apr  7 08:35:07 2023 - INFO  - A total of 1 use cases were executed, with 1 successes and 0 failures.
+Fri Apr  7 08:35:13 2023 - INFO  - start to run testcase:oe_test_firewalld_set_target.
+Fri Apr  7 08:35:30 2023 - ERROR - The case exit by code 3.
+Fri Apr  7 08:35:31 2023 - INFO  - End to run testcase:oe_test_firewalld_set_target.
+Fri Apr  7 08:35:32 2023 - INFO  - A total of 1 use cases were executed, with 0 successes and 1 failures.
+Fri Apr  7 08:35:37 2023 - INFO  - start to run testcase:oe_test_firewalld_start_check.
+Fri Apr  7 08:35:49 2023 - ERROR - The case exit by code 1.
+Fri Apr  7 08:35:51 2023 - INFO  - End to run testcase:oe_test_firewalld_start_check.
+Fri Apr  7 08:35:52 2023 - INFO  - A total of 1 use cases were executed, with 0 successes and 1 failures.
+Fri Apr  7 08:35:57 2023 - INFO  - start to run testcase:oe_test_firewalld_start_status.
+Fri Apr  7 08:36:12 2023 - ERROR - The case exit by code 3.
+Fri Apr  7 08:36:13 2023 - INFO  - End to run testcase:oe_test_firewalld_start_status.
+Fri Apr  7 08:36:14 2023 - INFO  - A total of 1 use cases were executed, with 0 successes and 1 failures.
+Fri Apr  7 08:36:20 2023 - INFO  - start to run testcase:oe_test_firewalld_start_stop.
+Fri Apr  7 08:37:03 2023 - ERROR - The case exit by code 3.
+Fri Apr  7 08:37:04 2023 - INFO  - End to run testcase:oe_test_firewalld_start_stop.
+Fri Apr  7 08:37:05 2023 - INFO  - A total of 1 use cases were executed, with 0 successes and 1 failures.
+Fri Apr  7 08:37:11 2023 - INFO  - start to run testcase:oe_test_firewalld_whitelist_command.
+Fri Apr  7 08:37:34 2023 - ERROR - The case exit by code 4.
+Fri Apr  7 08:37:35 2023 - INFO  - End to run testcase:oe_test_firewalld_whitelist_command.
+Fri Apr  7 08:37:36 2023 - INFO  - A total of 1 use cases were executed, with 0 successes and 1 failures.
+Fri Apr  7 08:37:42 2023 - INFO  - start to run testcase:oe_test_firewalld_whitelist_contexts.
+Fri Apr  7 08:37:56 2023 - ERROR - The case exit by code 1.
+Fri Apr  7 08:37:57 2023 - INFO  - End to run testcase:oe_test_firewalld_whitelist_contexts.
+Fri Apr  7 08:37:57 2023 - INFO  - A total of 1 use cases were executed, with 0 successes and 1 failures.
+Fri Apr  7 08:38:03 2023 - INFO  - start to run testcase:oe_test_firewalld_whitelist_uids.
+Fri Apr  7 08:38:19 2023 - ERROR - The case exit by code 2.
+Fri Apr  7 08:38:20 2023 - INFO  - End to run testcase:oe_test_firewalld_whitelist_uids.
+Fri Apr  7 08:38:20 2023 - INFO  - A total of 1 use cases were executed, with 0 successes and 1 failures.
+Fri Apr  7 08:38:26 2023 - INFO  - start to run testcase:oe_test_firewalld_whitelist_user.
+Fri Apr  7 08:38:43 2023 - ERROR - The case exit by code 4.
+Fri Apr  7 08:38:44 2023 - INFO  - End to run testcase:oe_test_firewalld_whitelist_user.
+Fri Apr  7 08:38:45 2023 - INFO  - A total of 1 use cases were executed, with 0 successes and 1 failures.
+Fri Apr  7 08:38:53 2023 - INFO  - start to run testcase:oe_test_firewalld_zone_add_service.
+Fri Apr  7 08:39:09 2023 - ERROR - The case exit by code 2.
+Fri Apr  7 08:39:11 2023 - INFO  - End to run testcase:oe_test_firewalld_zone_add_service.
+Fri Apr  7 08:39:12 2023 - INFO  - A total of 1 use cases were executed, with 0 successes and 1 failures.
+Fri Apr  7 08:39:18 2023 - INFO  - start to run testcase:oe_test_service_firewalld.
+Fri Apr  7 08:40:33 2023 - ERROR - The case exit by code 8.
+Fri Apr  7 08:40:35 2023 - INFO  - End to run testcase:oe_test_service_firewalld.
+Fri Apr  7 08:40:36 2023 - INFO  - A total of 1 use cases were executed, with 0 successes and 1 failures.
+Fri Apr  7 08:40:42 2023 - INFO  - start to run testcase:oe_test_firewalld_default_rules.
+Fri Apr  7 08:41:03 2023 - INFO  - The case exit by code 0.
+Fri Apr  7 08:41:05 2023 - INFO  - End to run testcase:oe_test_firewalld_default_rules.
+Fri Apr  7 08:41:06 2023 - INFO  - A total of 1 use cases were executed, with 1 successes and 0 failures.

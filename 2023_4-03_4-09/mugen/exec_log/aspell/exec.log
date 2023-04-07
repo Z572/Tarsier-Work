@@ -1,0 +1,40 @@
+Wed Apr  5 08:50:18 2023 - INFO  - start to run testcase:oe_test_aspell_01.
+Wed Apr  5 08:51:56 2023 - ERROR - The case exit by code 1.
+Wed Apr  5 08:51:58 2023 - INFO  - End to run testcase:oe_test_aspell_01.
+Wed Apr  5 08:51:59 2023 - INFO  - A total of 1 use cases were executed, with 0 successes and 1 failures.
+Wed Apr  5 08:52:05 2023 - INFO  - start to run testcase:oe_test_aspell_02.
+Wed Apr  5 08:53:48 2023 - INFO  - The case exit by code 0.
+Wed Apr  5 08:53:49 2023 - INFO  - End to run testcase:oe_test_aspell_02.
+Wed Apr  5 08:53:50 2023 - INFO  - A total of 1 use cases were executed, with 1 successes and 0 failures.
+Wed Apr  5 08:53:57 2023 - INFO  - start to run testcase:oe_test_aspell_precat_01.
+Wed Apr  5 08:55:39 2023 - INFO  - The case exit by code 0.
+Wed Apr  5 08:55:40 2023 - INFO  - End to run testcase:oe_test_aspell_precat_01.
+Wed Apr  5 08:55:42 2023 - INFO  - A total of 1 use cases were executed, with 1 successes and 0 failures.
+Wed Apr  5 08:55:48 2023 - INFO  - start to run testcase:oe_test_aspell_precat_02.
+Wed Apr  5 08:57:35 2023 - INFO  - The case exit by code 0.
+Wed Apr  5 08:57:36 2023 - INFO  - End to run testcase:oe_test_aspell_precat_02.
+Wed Apr  5 08:57:37 2023 - INFO  - A total of 1 use cases were executed, with 1 successes and 0 failures.
+Wed Apr  5 08:57:44 2023 - INFO  - start to run testcase:oe_test_aspell_preunzip_01.
+Wed Apr  5 08:59:32 2023 - INFO  - The case exit by code 0.
+Wed Apr  5 08:59:33 2023 - INFO  - End to run testcase:oe_test_aspell_preunzip_01.
+Wed Apr  5 08:59:35 2023 - INFO  - A total of 1 use cases were executed, with 1 successes and 0 failures.
+Wed Apr  5 08:59:41 2023 - INFO  - start to run testcase:oe_test_aspell_preunzip_02.
+Wed Apr  5 09:01:26 2023 - INFO  - The case exit by code 0.
+Wed Apr  5 09:01:27 2023 - INFO  - End to run testcase:oe_test_aspell_preunzip_02.
+Wed Apr  5 09:01:28 2023 - INFO  - A total of 1 use cases were executed, with 1 successes and 0 failures.
+Wed Apr  5 09:01:34 2023 - INFO  - start to run testcase:oe_test_aspell_prezip-bin.
+Wed Apr  5 09:03:06 2023 - INFO  - The case exit by code 0.
+Wed Apr  5 09:03:07 2023 - INFO  - End to run testcase:oe_test_aspell_prezip-bin.
+Wed Apr  5 09:03:08 2023 - INFO  - A total of 1 use cases were executed, with 1 successes and 0 failures.
+Wed Apr  5 09:03:14 2023 - INFO  - start to run testcase:oe_test_aspell_prezip_01.
+Wed Apr  5 09:04:51 2023 - INFO  - The case exit by code 0.
+Wed Apr  5 09:04:52 2023 - INFO  - End to run testcase:oe_test_aspell_prezip_01.
+Wed Apr  5 09:04:53 2023 - INFO  - A total of 1 use cases were executed, with 1 successes and 0 failures.
+Wed Apr  5 09:04:59 2023 - INFO  - start to run testcase:oe_test_aspell_prezip_02.
+Wed Apr  5 09:06:37 2023 - INFO  - The case exit by code 0.
+Wed Apr  5 09:06:38 2023 - INFO  - End to run testcase:oe_test_aspell_prezip_02.
+Wed Apr  5 09:06:39 2023 - INFO  - A total of 1 use cases were executed, with 1 successes and 0 failures.
+Wed Apr  5 09:06:46 2023 - INFO  - start to run testcase:oe_test_aspell_word-list-compress.
+Wed Apr  5 09:08:21 2023 - INFO  - The case exit by code 0.
+Wed Apr  5 09:08:22 2023 - INFO  - End to run testcase:oe_test_aspell_word-list-compress.
+Wed Apr  5 09:08:23 2023 - INFO  - A total of 1 use cases were executed, with 1 successes and 0 failures.

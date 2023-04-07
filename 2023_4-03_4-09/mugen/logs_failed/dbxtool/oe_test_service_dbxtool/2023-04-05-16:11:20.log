@@ -1,0 +1,309 @@
++ source ../common/common_lib.sh
+++ source /root/mugen/libs/locallibs/common_lib.sh
++++ python3 --version
++++ '[' 0 -eq 0 ']'
++++ source /root/mugen/libs/locallibs/common_lib_python.sh
++ main
+++ type -t post_test
++ '[' -n function ']'
++ trap post_test EXIT INT HUP TERM
++ rpm -qa
++ grep expect
+++ type -t config_params
++ '[' -n '' ']'
+++ type -t pre_test
++ '[' -n function ']'
++ pre_test
++ LOG_INFO 'Start environmental preparation.'
++ message='Start environmental preparation.'
++ python3 /root/mugen/libs/locallibs/mugen_log.py --level info --message 'Start environmental preparation.'
+Wed Apr  5 16:11:24 2023 - INFO  - Start environmental preparation.
++ DNF_INSTALL dbxtool
++ pkgs=dbxtool
++ node=1
++ '[' -z '' ']'
++ tmpfile=
+++ python3 /root/mugen/libs/locallibs/rpm_manage.py install --pkgs dbxtool --node 1 --tempfile ''
+Traceback (most recent call last):
+  File "/root/mugen/libs/locallibs/rpm_manage.py", line 176, in <module>
+    exitcode, output = rpm_install(args.pkgs, args.node, args.tempfile)
+  File "/root/mugen/libs/locallibs/rpm_manage.py", line 87, in rpm_install
+    repoCode, repoList = func(
+  File "/root/mugen/libs/locallibs/ssh_cmd.py", line 80, in pssh_cmd
+    stdin, stdout, stderr = conn.exec_command(cmd, timeout=None)
+  File "/usr/lib/python3.10/site-packages/paramiko/client.py", line 510, in exec_command
+    chan = self._transport.open_session(timeout=timeout)
+  File "/usr/lib/python3.10/site-packages/paramiko/transport.py", line 920, in open_session
+    return self.open_channel(
+  File "/usr/lib/python3.10/site-packages/paramiko/transport.py", line 1051, in open_channel
+    raise e
+paramiko.ssh_exception.SSHException: Unable to open channel.
++ tmpfile2=
++ '[' -z '' ']'
++ tmpfile=
++ LOG_INFO 'End of environmental preparation!'
++ message='End of environmental preparation!'
++ python3 /root/mugen/libs/locallibs/mugen_log.py --level info --message 'End of environmental preparation!'
+Wed Apr  5 16:11:46 2023 - INFO  - End of environmental preparation!
+++ type -t run_test
++ '[' -n function ']'
++ run_test
++ LOG_INFO 'Start testing...'
++ message='Start testing...'
++ python3 /root/mugen/libs/locallibs/mugen_log.py --level info --message 'Start testing...'
+Wed Apr  5 16:11:47 2023 - INFO  - Start testing...
++ test_execution dbxtool.service
++ service=dbxtool.service
+++ date '+%Y-%m-%d %T'
++ log_time='2023-04-05 16:11:47'
++ test_restart dbxtool.service
++ service=dbxtool.service
++ systemctl restart dbxtool.service
+Failed to restart dbxtool.service: Unit dbxtool.service not found.
++ CHECK_RESULT 5 0 0 'dbxtool.service restart failed'
++ actual_result=5
++ expect_result=0
++ mode=0
++ error_log='dbxtool.service restart failed'
++ exit_mode=0
++ '[' -z 5 ']'
++ '[' 0 -eq 0 ']'
++ test 5x '!=' 0x
++ test -n 'dbxtool.service restart failed'
++ LOG_ERROR 'dbxtool.service restart failed'
++ message='dbxtool.service restart failed'
++ python3 /root/mugen/libs/locallibs/mugen_log.py --level error --message 'dbxtool.service restart failed'
+Wed Apr  5 16:11:48 2023 - ERROR - dbxtool.service restart failed
++ (( exec_result++ ))
++ LOG_ERROR '../common/common_lib.sh line 34'
++ message='../common/common_lib.sh line 34'
++ python3 /root/mugen/libs/locallibs/mugen_log.py --level error --message '../common/common_lib.sh line 34'
+Wed Apr  5 16:11:49 2023 - ERROR - ../common/common_lib.sh line 34
++ '[' 0 -eq 1 ']'
++ return 0
++ SLEEP_WAIT 5
++ wait_time=5
++ cmd=
++ mode=1
++ python3 /root/mugen/libs/locallibs/sleep_wait.py --time 5 --cmd '' --mode 1
++ systemctl status dbxtool.service
++ grep 'Active: active'
+Unit dbxtool.service could not be found.
++ CHECK_RESULT 1 0 0 'dbxtool.service restart failed'
++ actual_result=1
++ expect_result=0
++ mode=0
++ error_log='dbxtool.service restart failed'
++ exit_mode=0
++ '[' -z 1 ']'
++ '[' 0 -eq 0 ']'
++ test 1x '!=' 0x
++ test -n 'dbxtool.service restart failed'
++ LOG_ERROR 'dbxtool.service restart failed'
++ message='dbxtool.service restart failed'
++ python3 /root/mugen/libs/locallibs/mugen_log.py --level error --message 'dbxtool.service restart failed'
+Wed Apr  5 16:11:56 2023 - ERROR - dbxtool.service restart failed
++ (( exec_result++ ))
++ LOG_ERROR '../common/common_lib.sh line 37'
++ message='../common/common_lib.sh line 37'
++ python3 /root/mugen/libs/locallibs/mugen_log.py --level error --message '../common/common_lib.sh line 37'
+Wed Apr  5 16:11:57 2023 - ERROR - ../common/common_lib.sh line 37
++ '[' 0 -eq 1 ']'
++ return 0
++ systemctl stop dbxtool.service
+Failed to stop dbxtool.service: Unit dbxtool.service not loaded.
++ CHECK_RESULT 5 0 0 'dbxtool.service stop failed'
++ actual_result=5
++ expect_result=0
++ mode=0
++ error_log='dbxtool.service stop failed'
++ exit_mode=0
++ '[' -z 5 ']'
++ '[' 0 -eq 0 ']'
++ test 5x '!=' 0x
++ test -n 'dbxtool.service stop failed'
++ LOG_ERROR 'dbxtool.service stop failed'
++ message='dbxtool.service stop failed'
++ python3 /root/mugen/libs/locallibs/mugen_log.py --level error --message 'dbxtool.service stop failed'
+Wed Apr  5 16:11:58 2023 - ERROR - dbxtool.service stop failed
++ (( exec_result++ ))
++ LOG_ERROR '../common/common_lib.sh line 39'
++ message='../common/common_lib.sh line 39'
++ python3 /root/mugen/libs/locallibs/mugen_log.py --level error --message '../common/common_lib.sh line 39'
+Wed Apr  5 16:11:59 2023 - ERROR - ../common/common_lib.sh line 39
++ '[' 0 -eq 1 ']'
++ return 0
++ SLEEP_WAIT 5
++ wait_time=5
++ cmd=
++ mode=1
++ python3 /root/mugen/libs/locallibs/sleep_wait.py --time 5 --cmd '' --mode 1
++ systemctl status dbxtool.service
++ grep 'Active: inactive'
+Unit dbxtool.service could not be found.
++ CHECK_RESULT 1 0 0 'dbxtool.service stop failed'
++ actual_result=1
++ expect_result=0
++ mode=0
++ error_log='dbxtool.service stop failed'
++ exit_mode=0
++ '[' -z 1 ']'
++ '[' 0 -eq 0 ']'
++ test 1x '!=' 0x
++ test -n 'dbxtool.service stop failed'
++ LOG_ERROR 'dbxtool.service stop failed'
++ message='dbxtool.service stop failed'
++ python3 /root/mugen/libs/locallibs/mugen_log.py --level error --message 'dbxtool.service stop failed'
+Wed Apr  5 16:12:06 2023 - ERROR - dbxtool.service stop failed
++ (( exec_result++ ))
++ LOG_ERROR '../common/common_lib.sh line 42'
++ message='../common/common_lib.sh line 42'
++ python3 /root/mugen/libs/locallibs/mugen_log.py --level error --message '../common/common_lib.sh line 42'
+Wed Apr  5 16:12:07 2023 - ERROR - ../common/common_lib.sh line 42
++ '[' 0 -eq 1 ']'
++ return 0
++ systemctl start dbxtool.service
+Failed to start dbxtool.service: Unit dbxtool.service not found.
++ CHECK_RESULT 5 0 0 'dbxtool.service start failed'
++ actual_result=5
++ expect_result=0
++ mode=0
++ error_log='dbxtool.service start failed'
++ exit_mode=0
++ '[' -z 5 ']'
++ '[' 0 -eq 0 ']'
++ test 5x '!=' 0x
++ test -n 'dbxtool.service start failed'
++ LOG_ERROR 'dbxtool.service start failed'
++ message='dbxtool.service start failed'
++ python3 /root/mugen/libs/locallibs/mugen_log.py --level error --message 'dbxtool.service start failed'
+Wed Apr  5 16:12:08 2023 - ERROR - dbxtool.service start failed
++ (( exec_result++ ))
++ LOG_ERROR '../common/common_lib.sh line 44'
++ message='../common/common_lib.sh line 44'
++ python3 /root/mugen/libs/locallibs/mugen_log.py --level error --message '../common/common_lib.sh line 44'
+Wed Apr  5 16:12:09 2023 - ERROR - ../common/common_lib.sh line 44
++ '[' 0 -eq 1 ']'
++ return 0
++ SLEEP_WAIT 5
++ wait_time=5
++ cmd=
++ mode=1
++ python3 /root/mugen/libs/locallibs/sleep_wait.py --time 5 --cmd '' --mode 1
++ systemctl status dbxtool.service
++ grep 'Active: active'
+Unit dbxtool.service could not be found.
++ CHECK_RESULT 1 0 0 'dbxtool.service start failed'
++ actual_result=1
++ expect_result=0
++ mode=0
++ error_log='dbxtool.service start failed'
++ exit_mode=0
++ '[' -z 1 ']'
++ '[' 0 -eq 0 ']'
++ test 1x '!=' 0x
++ test -n 'dbxtool.service start failed'
++ LOG_ERROR 'dbxtool.service start failed'
++ message='dbxtool.service start failed'
++ python3 /root/mugen/libs/locallibs/mugen_log.py --level error --message 'dbxtool.service start failed'
+Wed Apr  5 16:12:16 2023 - ERROR - dbxtool.service start failed
++ (( exec_result++ ))
++ LOG_ERROR '../common/common_lib.sh line 47'
++ message='../common/common_lib.sh line 47'
++ python3 /root/mugen/libs/locallibs/mugen_log.py --level error --message '../common/common_lib.sh line 47'
+Wed Apr  5 16:12:17 2023 - ERROR - ../common/common_lib.sh line 47
++ '[' 0 -eq 1 ']'
++ return 0
++ test_enabled dbxtool.service
++ service=dbxtool.service
+++ systemctl is-enabled dbxtool.service
+Failed to get unit file state for dbxtool.service: No such file or directory
++ state=
++ '[' '' == enabled ']'
++ '[' '' == disabled ']'
++ '[' '' == masked ']'
++ '[' '' == static ']'
++ LOG_INFO 'Unit is indirect, ignoring.'
++ message='Unit is indirect, ignoring.'
++ python3 /root/mugen/libs/locallibs/mugen_log.py --level info --message 'Unit is indirect, ignoring.'
+Wed Apr  5 16:12:18 2023 - INFO  - Unit is indirect, ignoring.
++ journalctl --since '2023-04-05 16:11:47' -u dbxtool.service
++ grep -i 'fail\|error'
++ grep -v -i 'DEBUG\|INFO\|WARNING'
++ CHECK_RESULT 1 0 1 'There is an error message for the log of dbxtool.service'
++ actual_result=1
++ expect_result=0
++ mode=1
++ error_log='There is an error message for the log of dbxtool.service'
++ exit_mode=0
++ '[' -z 1 ']'
++ '[' 1 -eq 0 ']'
++ test 1x == 0x
++ return 0
++ test_reload dbxtool.service
++ service=dbxtool.service
++ systemctl start dbxtool.service
+Failed to start dbxtool.service: Unit dbxtool.service not found.
++ systemctl reload dbxtool.service
++ grep 'Job type reload is not applicable'
++ CHECK_RESULT 1 0 0 'Job type reload is not applicable for unit dbxtool.service'
++ actual_result=1
++ expect_result=0
++ mode=0
++ error_log='Job type reload is not applicable for unit dbxtool.service'
++ exit_mode=0
++ '[' -z 1 ']'
++ '[' 0 -eq 0 ']'
++ test 1x '!=' 0x
++ test -n 'Job type reload is not applicable for unit dbxtool.service'
++ LOG_ERROR 'Job type reload is not applicable for unit dbxtool.service'
++ message='Job type reload is not applicable for unit dbxtool.service'
++ python3 /root/mugen/libs/locallibs/mugen_log.py --level error --message 'Job type reload is not applicable for unit dbxtool.service'
+Wed Apr  5 16:12:19 2023 - ERROR - Job type reload is not applicable for unit dbxtool.service
++ (( exec_result++ ))
++ LOG_ERROR '../common/common_lib.sh line 91'
++ message='../common/common_lib.sh line 91'
++ python3 /root/mugen/libs/locallibs/mugen_log.py --level error --message '../common/common_lib.sh line 91'
+Wed Apr  5 16:12:20 2023 - ERROR - ../common/common_lib.sh line 91
++ '[' 0 -eq 1 ']'
++ return 0
++ systemctl status dbxtool.service
++ grep 'Active: active'
+Unit dbxtool.service could not be found.
++ systemctl status dbxtool.service
++ grep 'inactive (dead)'
+Unit dbxtool.service could not be found.
++ return 1
++ LOG_INFO 'Finish test!'
++ message='Finish test!'
++ python3 /root/mugen/libs/locallibs/mugen_log.py --level info --message 'Finish test!'
+Wed Apr  5 16:12:21 2023 - INFO  - Finish test!
++ CASE_RESULT 0
++ case_re=0
++ test -z 7
++ test 7 -gt 0
++ LOG_ERROR 'failed to execute the case.'
++ message='failed to execute the case.'
++ python3 /root/mugen/libs/locallibs/mugen_log.py --level error --message 'failed to execute the case.'
+Wed Apr  5 16:12:22 2023 - ERROR - failed to execute the case.
++ exit 7
++ post_test
++ LOG_INFO 'start environment cleanup.'
++ message='start environment cleanup.'
++ python3 /root/mugen/libs/locallibs/mugen_log.py --level info --message 'start environment cleanup.'
+Wed Apr  5 16:12:23 2023 - INFO  - start environment cleanup.
++ DNF_REMOVE
++ node=1
++ pkg_list=
++ mode=0
++ [[ -z '' ]]
++ [[ -z '' ]]
++ LOG_WARN 'no thing to do.'
++ message='no thing to do.'
++ python3 /root/mugen/libs/locallibs/mugen_log.py --level warn --message 'no thing to do.'
+Wed Apr  5 16:12:24 2023 - WARN  - no thing to do.
++ return 0
++ LOG_INFO 'Finish environment cleanup!'
++ message='Finish environment cleanup!'
++ python3 /root/mugen/libs/locallibs/mugen_log.py --level info --message 'Finish environment cleanup!'
+Wed Apr  5 16:12:25 2023 - INFO  - Finish environment cleanup!

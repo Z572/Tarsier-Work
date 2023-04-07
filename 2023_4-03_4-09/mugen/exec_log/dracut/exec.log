@@ -1,0 +1,32 @@
+Wed Apr  5 18:38:07 2023 - INFO  - start to run testcase:oe_test_service_dracut-cmdline.
+Wed Apr  5 18:38:16 2023 - INFO  - The case exit by code 0.
+Wed Apr  5 18:38:17 2023 - INFO  - End to run testcase:oe_test_service_dracut-cmdline.
+Wed Apr  5 18:38:19 2023 - INFO  - A total of 1 use cases were executed, with 1 successes and 0 failures.
+Wed Apr  5 18:38:25 2023 - INFO  - start to run testcase:oe_test_service_dracut-initqueue.
+Wed Apr  5 18:38:35 2023 - INFO  - The case exit by code 0.
+Wed Apr  5 18:38:36 2023 - INFO  - End to run testcase:oe_test_service_dracut-initqueue.
+Wed Apr  5 18:38:37 2023 - INFO  - A total of 1 use cases were executed, with 1 successes and 0 failures.
+Wed Apr  5 18:38:42 2023 - INFO  - start to run testcase:oe_test_service_dracut-mount.
+Wed Apr  5 18:38:51 2023 - INFO  - The case exit by code 0.
+Wed Apr  5 18:38:52 2023 - INFO  - End to run testcase:oe_test_service_dracut-mount.
+Wed Apr  5 18:38:53 2023 - INFO  - A total of 1 use cases were executed, with 1 successes and 0 failures.
+Wed Apr  5 18:38:58 2023 - INFO  - start to run testcase:oe_test_service_dracut-pre-mount.
+Wed Apr  5 18:39:08 2023 - INFO  - The case exit by code 0.
+Wed Apr  5 18:39:09 2023 - INFO  - End to run testcase:oe_test_service_dracut-pre-mount.
+Wed Apr  5 18:39:09 2023 - INFO  - A total of 1 use cases were executed, with 1 successes and 0 failures.
+Wed Apr  5 18:39:14 2023 - INFO  - start to run testcase:oe_test_service_dracut-pre-pivot.
+Wed Apr  5 18:39:23 2023 - INFO  - The case exit by code 0.
+Wed Apr  5 18:39:24 2023 - INFO  - End to run testcase:oe_test_service_dracut-pre-pivot.
+Wed Apr  5 18:39:25 2023 - INFO  - A total of 1 use cases were executed, with 1 successes and 0 failures.
+Wed Apr  5 18:39:30 2023 - INFO  - start to run testcase:oe_test_service_dracut-pre-trigger.
+Wed Apr  5 18:39:39 2023 - INFO  - The case exit by code 0.
+Wed Apr  5 18:39:40 2023 - INFO  - End to run testcase:oe_test_service_dracut-pre-trigger.
+Wed Apr  5 18:39:41 2023 - INFO  - A total of 1 use cases were executed, with 1 successes and 0 failures.
+Wed Apr  5 18:39:46 2023 - INFO  - start to run testcase:oe_test_service_dracut-pre-udev.
+Wed Apr  5 18:39:56 2023 - INFO  - The case exit by code 0.
+Wed Apr  5 18:39:57 2023 - INFO  - End to run testcase:oe_test_service_dracut-pre-udev.
+Wed Apr  5 18:39:57 2023 - INFO  - A total of 1 use cases were executed, with 1 successes and 0 failures.
+Wed Apr  5 18:40:02 2023 - INFO  - start to run testcase:oe_test_service_dracut-shutdown.
+Wed Apr  5 18:40:45 2023 - ERROR - The case exit by code 7.
+Wed Apr  5 18:40:47 2023 - INFO  - End to run testcase:oe_test_service_dracut-shutdown.
+Wed Apr  5 18:40:47 2023 - INFO  - A total of 1 use cases were executed, with 0 successes and 1 failures.

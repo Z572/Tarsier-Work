@@ -1,0 +1,33 @@
+Wed Apr  5 20:03:04 2023 - INFO  - start to run testcase:oe_test_service_etcd.
+Wed Apr  5 20:04:08 2023 - ERROR - The case exit by code 7.
+Wed Apr  5 20:04:09 2023 - INFO  - End to run testcase:oe_test_service_etcd.
+Wed Apr  5 20:04:09 2023 - INFO  - A total of 1 use cases were executed, with 0 successes and 1 failures.
+Wed Apr  5 20:04:15 2023 - INFO  - start to run testcase:oe_test_etcd_01.
+Wed Apr  5 20:06:57 2023 - ERROR - The case exit by code 8.
+Wed Apr  5 20:06:58 2023 - INFO  - End to run testcase:oe_test_etcd_01.
+Wed Apr  5 20:06:59 2023 - INFO  - A total of 1 use cases were executed, with 0 successes and 1 failures.
+Wed Apr  5 20:07:04 2023 - INFO  - start to run testcase:oe_test_etcd_02.
+pgrep: pattern that searches for process name longer than 15 characters will result in zero matches
+Try `pgrep -f' option to match against the complete command line.
+Wed Apr  5 20:37:06 2023 - WARN  - The case execution timeout.
+Wed Apr  5 20:37:07 2023 - ERROR - The case exit by code 143.
+Wed Apr  5 20:37:08 2023 - INFO  - End to run testcase:oe_test_etcd_02.
+Wed Apr  5 20:37:09 2023 - INFO  - A total of 1 use cases were executed, with 0 successes and 1 failures.
+Wed Apr  5 20:37:14 2023 - INFO  - start to run testcase:oe_test_etcd_03.
+pgrep: pattern that searches for process name longer than 15 characters will result in zero matches
+Try `pgrep -f' option to match against the complete command line.
+Wed Apr  5 21:07:17 2023 - WARN  - The case execution timeout.
+Wed Apr  5 21:07:17 2023 - ERROR - The case exit by code 143.
+Wed Apr  5 21:07:18 2023 - INFO  - End to run testcase:oe_test_etcd_03.
+Wed Apr  5 21:07:19 2023 - INFO  - A total of 1 use cases were executed, with 0 successes and 1 failures.
+Wed Apr  5 21:07:24 2023 - INFO  - start to run testcase:oe_test_etcd_04.
+pgrep: pattern that searches for process name longer than 15 characters will result in zero matches
+Try `pgrep -f' option to match against the complete command line.
+Wed Apr  5 21:37:27 2023 - WARN  - The case execution timeout.
+Wed Apr  5 21:37:28 2023 - ERROR - The case exit by code 143.
+Wed Apr  5 21:37:29 2023 - INFO  - End to run testcase:oe_test_etcd_04.
+Wed Apr  5 21:37:30 2023 - INFO  - A total of 1 use cases were executed, with 0 successes and 1 failures.
+Wed Apr  5 21:37:35 2023 - INFO  - start to run testcase:oe_test_etcd_05.
+Wed Apr  5 21:38:41 2023 - ERROR - The case exit by code 7.
+Wed Apr  5 21:38:42 2023 - INFO  - End to run testcase:oe_test_etcd_05.
+Wed Apr  5 21:38:43 2023 - INFO  - A total of 1 use cases were executed, with 0 successes and 1 failures.
