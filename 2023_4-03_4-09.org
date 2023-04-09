@@ -1,0 +1,26 @@
+* 本周工作
+** issues
+- https://gitee.com/openeuler/RISC-V/issues/I6TI4U :: 23.03 licheePi rv dock 启动 chromium 无法显示
+- https://gitee.com/openeuler/RISC-V/issues/I6TGR9 :: 23.03 qemu ukui 桌面极为卡顿，无法启动任意gui 程序
+- https://gitee.com/openeuler/RISC-V/issues/I6STA0 ::  licheePI rv dock 无法启动 libreoffice
+- https://gitee.com/openeuler/RISC-V/issues/I6SPN6 :: 23.3 licheePI rv dock 无法启动 firefox: Illegal instruction
+
+** pr
+- https://gitee.com/yunxiangluo/openeuler-riscv-2303-test/pulls/46
+- https://gitee.com/yunxiangluo/openeuler-riscv-2303-test/pulls/45
+- https://gitee.com/yunxiangluo/openeuler-riscv-2303-test/pulls/43
+- https://gitee.com/yunxiangluo/openeuler-riscv-2303-test/pulls/34 :: opengauss gazelle
+- https://gitee.com/src-openeuler/guile/pulls/22 :: 修复 guile-tools 软链接命名
+
+** mugen
+https://github.com/Z572/Tarsier-Work/tree/main/2023_4-03_4-09/mugen
+
+** 尝试打包
+- https://build.openeuler.openatom.cn/package/show/home:Z572/guile-json
+- https://build.openeuler.openatom.cn/package/show/home:Z572/guile-ssh
+- https://build.openeuler.openatom.cn/package/show/home:Z572/guile-lib
+- https://build.openeuler.openatom.cn/package/show/home:Z572/guile-bytestructures
+
+* 下周工作
+
+继续测试表格中的软件
