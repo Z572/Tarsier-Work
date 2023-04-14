@@ -1,0 +1,454 @@
+#+title:      ros 学习
+#+date:       [2023-04-10 Mon 00:54]
+
+ROS 是一个用于在不同进程间匿名的发布、订阅、传递信息的中间件，主要用于机器人领域。 ROS 系统
+的核心部分是ROS网络(ROS Graph)。ROS网络是指在ROS系统中不同的节点间相互通信的连接关系。
+
+[[https://github.com/Z572/Tarsier-Work/blob/main/ros%E5%AD%A6%E4%B9%A0.org][本文章源文件]]
+
+* 主要历史
+2000s 斯坦福大学 机器人软件系统框架
+
+2007 年 ROS 正式发布，由柳树车库(willow garage)发起
+
+2010 年 ROS 1.0 发布
+
+2017 年 ROS 2.0 发布
+
+* 支持系统
+ROS1 主要安装在 linux
+ROS2 可以在 linux，windows macos，rtos 等操作系统之上
+* ROS 与 ROS2
+ROS1 缺点
+- ⽆实时性（real-time）
+- 嵌⼊式设备不友好
+- 对于⽹络通信的重依赖（需要⼤带宽且稳定的⽹络连接）
+- 多⽤于学术应⽤
+- 超⾼的灵活性带来的不规范的编程模式
+- 原⽣的ROS仅⽀持单机器⼈
+
+ROS2 优点
+- ⽀持多机器⼈
+- 对⼩型嵌⼊式设备和微控制器的⽀持
+- 实时系统：⽀持实时控制，包括进程间和机器间通信的实时性
+- ⽀持⾮理想⽹络环境：在低质量⾼延迟等⽹络环境下系统仍然能够⼯作
+- 对产品环境的⽀持的能力规范的编程模型以⽀持基于ROS的⼤规模⽬的构建、开发和部署
+
+* 构建系统
+** cmake
+裸 cmake
+** setuptools
+裸 python 安装工具
+** catkin
+ROS1 使用，建立在 CMake 与 python setuptools 之上
+** ament
+ROS2 新增
+* 构建工具
+** ~rosbuild~
+ROS1 的极旧版编译打包系统
+** ~catkin_make~
+ROS1 使用
+
+Catkin 包装了 CMake 与 python setuptools ,是用来完成整个编译过程的工具。
+相比 rosbuild， 支持外部构建，CMake配置文件的自动生成等。
+** ~catkin_make_isolated~
+ROS1 使用
+相比 ~catkin_make~ 解决了隔离问题，但不支持并行编译。
+** ~catkin-tools~
+https://catkin-tools.readthedocs.io/en/latest/index.html
+https://catkin-tools.readthedocs.io/en/latest/migration.html
+
+支持并行编译与隔离，能够单独构建每个包,防止构建串扰
+
+** ~ament~
+ROS2 新增，解决了 catkin 的许多问题，并且为了配合 ROS2 所以命名为 ament 与 catkin 区分。
+** ~colcon~
+ROS2 新增，支持编译 ROS1 与 ROS2，支持 纯python软件包，无清单的 CMake 软件包等许多特性，在
+* 包管理器
+** workspace 结构
+
+src build devel
+src 目录下面 以 package 为编译基本单元
+catkin 递归查找 package
+
+** package 结构
+package.xml
+CMakeLists.txt
+
+*** CMakeLists.txt
+#+begin_src cmake
+cmake_minimum_required()
+project
+find_package
+add_message_files()
+add_service_files()
+add_action_files()
+
+generate_messages()
+catkin_package()
+add_library()
+add_executable()
+
+target_link_libraries()
+catkin_add_gtest()
+install()
+#+end_src
+
+*** package.xml
+- https://www.ros.org/reps/rep-0149.html :: Package Manifest Format Three Specification
+常见的标签有 =name= =version= =description= =maintainer= =license= =buildtool_depend= =build_depend= =run_depend=
+*** manifest.xml(rosbuild 包信息清单)
+可以忽略
+** 文件夹
+| 文件夹  | 作用                                    |
+|---------+-----------------------------------------|
+| src     | 放置 cpp 源码 或 python module          |
+| include | 放置 cpp 头文件                         |
+| scripts | 放置脚本                                |
+| msg     | 放置消息                                |
+| srv     | 放置服务                                |
+| action  | 放置活动                                |
+| launch  | 放置 launch 文件 作用是一次执行多个节点 |
+| config  | 放置 配置文件 yaml 等格式               |
+** metapackage
+只写了 ~run_depend~ 方便安装一堆相应的包
+
+* 通信架构(计算图级)
+** 通信方式
+
+ROS1 依赖 tcp和udp协议
+ROS2 依赖更复杂，完善的 DDS 系统
+
+*** Topic
+以 publish-subscribe 机制发布
+
+node a 发布 /Topic, node b 订阅 /Topic
+/Topic 是一个字符串
+订阅 异步 多对多
+
+**** message 数据类型
+msg文件主要有如下数据类型：
+bool int8 int16 int32 int64 uint
+float32 float64
+string
+time duration header
+array[] array[C]
+**** 相关命令
+| ros1 命令                      | ros2 命令                        | 作用         |
+|--------------------------------+----------------------------------+--------------|
+| ~rostopic list~                | ~ros2 topic list~                | 列出 topic   |
+| ~rostopic info /topic_name~    | ~ros2 topic info /topic_name~    | 显示属性     |
+| ~rostopic echo /topic_name~    | ~ros2 topic echo /topic_name~    | 显示内容     |
+| ~rostopic pub /topic_name ...~ | ~ros2 topic pub /topic_name ...~ | 发布内容     |
+| ~rosmsg list~                  | ~ros2 interface list~            | 列出 msg     |
+| ~rosmsg show /msg_name~        | ~ros2 interface show /msg_name~  | 显示 msg 内容 |
+
+*** Service
+是一种同步通信方式 request-reply
+通常在偶尔需要调用的情况下使用。
+是多对一的形式
+
+**** srv
+srv 文件中可以引用 msg文件,但无法引用新的 srv
+
+~my_pkg/srv/DetectHuman.srv~
+#+begin_src srv
+bool start_detect
+--
+my_pkg/HumanPose[] pose_data
+#+end_src
+上面的 HumanPose 必须有对应的 msg 文件
+~my_pkg/msg/HumanPose.msg~
+#+begin_src msg
+  std_msgs/Header header
+  string uuid
+  int32 number_of_joints
+  my_pkg/JointPos[] joint_data
+#+end_src
+
+#+begin_src msg
+  string joint_name
+  geometry_msgs/Pose pose
+  floar32 confidence
+#+end_src
+
+
+
+当在项目中增加 msg 文件时须修改配置文件 =package.xml= 添加 =message_generation= 与 =message_runtime= 依赖。
+#+begin_src xml
+  <package>
+  ...
+  <build_depend>message_generation</build_depend>
+  <run_depend>message_runtime</run_depend>
+  ...
+  </package>
+#+end_src
+
+在 =CMakeList.txt= =find_package= 中添加 =std_msgs= =message_generation=,并使用 =add_message_files= =generate_messages= 来使其工作
+#+begin_src cmake
+find_package(... roscpp rospy std_msgs message_generation)
+catkin_package(
+...
+CATKIN_DEPENDS message_runtime ...
+...)
+add_message_files(
+ FILES
+ DetectHuman.srv
+ HumanPose.msg
+ JointPos.msg)
+generate_messages(DEPENDEDCIES std_msgs)
+#+end_src
+**** 相关命令
+| ros1 命令                             | ros2 命令                               | 作用                    |
+|---------------------------------------+-----------------------------------------+-------------------------|
+| ~rosservice list~                     | ~ros2 service list~                     | 列出活跃 service        |
+| ~rosservice info _service_name_~      | ~ros2 service info _service_name_~      | 列出某个 service 的属性 |
+| ~rosservice call _service_name_ args~ | ~ros2 service call _service_name_ args~ | 调用某个 service        |
+| ~rossrv list~                         |                                         | 列出系统上所有 srv      |
+| ~rossrv show _srv_name_~              |                                         | 显示某个 srv 内容       |
+
+
+*** Parameter Service 参数服务器
+维护参数字典,可用命令行 launch node api 读写
+主要用来储存数据，格式为 yaml 格式
+**** 相关命令
+| ros1 命令                                | ros2 命令                                | 作用             |
+|------------------------------------------+------------------------------------------+------------------|
+| ~rosparam list~                          | ~ros2 param list~                        | 列出所有参数     |
+| ~rosparam get _param_key_~               | ~ros2 param get _param_key_~             | 显示某个参数的值 |
+| ~rosparam set _param_key_ _param_value_~ | ~ros2 param set _param_key_ _param_value_~ | 设置某个参数的值 |
+| ~rosparam dump _file_name_~              | ~ros2 param dump _file_name_~            | 保存参数到文件   |
+| ~rosparam load _file_name_~              | ~ros2 param load _file_name_~            | 读取参数从文件   |
+| ~rosparam delete _param_key_~            | ~ros2 param delete _param_key_~          | 删除参数         |
+*** Action
+用于长时间,可抢占任务,带显示进度的 service
+底下是基于 topic 和 service。
+
+#+begin_example
+-> goal
+-> cancel
+
+<- status
+<- result
+<- feedback
+#+end_example
+**** action 文件
+
+这个文件分为三栏
+
+goal 第一次发送
+result 最后一次发回
+feedback 每次都会发回
+
+**** 相关命令
+| ROS1 命令 | ROS2 命令                                                         | 作用     |
+|-----------+-------------------------------------------------------------------+----------|
+|           | ~ros2 action list~                                                | 查看列表 |
+|           | ~ros2 action info _action_~                                       | 查看类型 |
+|           | ~ros2 action send_goal _action_name_ _action_type_ _action_data_~ | 发送请求 |
+
+** master
+只在 ROS1 版本中存在
+
+所有 node 在启动之后都会向 master 注册，它负责管理 node 通信，node 注册之后相关 node 之间会进行 p2p 通信， master 起中介作用
+
+使用 roscore 启动 ros master，会顺便启动 rosout 日志输出和 parameter server 参数服务器
+
+** 启动 node
+| ROS1 命令                                    | ROS2 命令                                      | 作用          |
+|----------------------------------------------+------------------------------------------------+---------------|
+| ~rosrun _pkg_name_ _node_name_ [参数:=xxx]*~ | ~ros2 run _pkg_name_ _node_name_ [参数:=xxx]*~ | 启动单个 node |
+
+** 查看 node
+| ROS1 命令      | ROS2 命令                                | 作用           |
+|----------------+------------------------------------------+----------------|
+| ~rosnode list~ | ~ros2 node list~                         | 列出 node      |
+| ~rosnode info~ | ~ros2 node info~                         | 查看 node 详情 |
+| ~rosnode kill~ | ~ros2 lifecycle set _nodename_ shutdown~ | 关闭 node      |
+
+* 分布式网络
+ROS2 新增，允许在同一个区域网之间的 node 相互通信。
+如果不希望不允许的 node 相互通信可设置环境变量 ~ROS_DOMAIN_ID~ 进行分组，处于同一个 DOMAIN 的 node 才会互相通信。
+* QoS Policy：Quality of Service 服务质量
+ROS2 新增,增加了适应场景的灵活性，可以通过调整来进行 可靠性或实时性的选择
+
+可参考 https://www.ros.org/reps/rep-2004.html
+
+| 策略            | 作用                                                                                                                   |
+|-----------------+------------------------------------------------------------------------------------------------------------------------|
+| DEADLINE策略    | 表示通信数据必须要在每次截止时间内完成一次通信                                                                         |
+| HISTORY策略     | 表示针对历史数据的一个缓存大小                                                                                         |
+| RELIABILITY策略 | 表示数据通信的模式，配置成 ~BEST_EFFORT~ ，就是尽力传输模式，网络情况不好的时候，也要保证数据流畅，此时可能会导致数据丢失，配置成RELIABLE，就是可信赖模式，可以在通信中尽量保证图像的完整性，我们可以根据应用功能场景选择合适的通信模式 |
+| DURABILITY策略  | 可以配置针对晚加入的节点，也保证有一定的历史数据发送过去，可以让新节点快速适应系统。                                   |
+
+可以使用 ~ros2 topic info _topic_names_ --verbose~ 查看 qos 策略
+
+* tf
+全称为 TransForm ，是坐标系数据维护工具,负责坐标变换的东西
+
+tf 也可能指的是 tf tree 的标准，topic，调试tf的工具，接口等
+
+urdf 文件定义 连杆和关节
+
+其中的部件叫做 link，frame 和 link 是绑定在一起的。
+
+tf tree 的维护是很多 node 向对应的 topic 发信息，整个tf tree 不能有断裂的地方，必须是同一颗树。
+每个 frame 之间的数据格式是 TransformStamped.msg
+msg 为 ~tf/tfMessage.msg~ ~tf2_msgs/TFMessage.msg~
+
+在机械臂形态的机器人中，安装的位置叫做基本坐标系 base Frame，机器人安装位置在外部环境下的参考系叫做世界坐标系World Frame，机器人末端夹爪的位置叫做工具坐标系，外部被操作物体的位置叫做工件坐标系
+移动机器人的中心是基坐标系Base Link，雷达所在的位置叫做雷达坐标系laser link，机器人要移动，里程计会累积位置，这个位置的参考系叫做里程计坐标系odom，里程计又会有累积误差和漂移，绝对位置的参考系叫做地图坐标系map。
+坐标系变换可以分解为平移和旋转，通过四元数进行描述.
+
+| 命令                                                 | 作用                          |
+|------------------------------------------------------+-------------------------------|
+| ~rosrun tf view_frames~                              | 根据当前 tf tree 创建 pdf 图  |
+| ~rosrun rqt_tf_tree rqt_tf_tree~                     | 查看当前 tf tree              |
+| ~rosrun tf tr_echo _reference_frame_ _target_frame_~ | 查看两个 frame 之间的变换关系 |
+
+* urdf 文件
+全称为 Unified Robot Description Format 统一机器人描述格式
+
+主要用于 可视化，仿真 等方向
+其中主要两个概念 link 是连杆，joint 是连接两个 link 之间的关节
+用来给相应的可视化，仿真软件读取并建立模型。
+** xacro 文件格式
+是 urdf 文件格式的升级版
+允许编程化编写 urdf 文件
+可参考 https://docs.ros.org/en/foxy/Tutorials/Intermediate/URDF/Using-Xacro-to-Clean-Up-a-URDF-File.html
+*** 定义常量
+#+begin_src xml
+  <xacro:property name="M_PI" value="3.14159" />
+  <origin xyz="0 0 0" rpy="${M_PI/2} 0 0" />
+#+end_src
+定义了常量 =M_PI= 可以在 ~${}~ 中使用
+*** 数学计算
+
+#+begin_src xml
+  <origin xyz="0 0 0" rpy="${(motor_length+wheel_length)/2} 0 0" />
+#+end_src
+
+* SLAM
+是 simutaneous localization and mapping 的缩写
+
+常用的软件包有： gmapping，karto，amcl，narigation
+* rmw
+ROS2 新增加 中间件接口
+DDS/RTPS提供发现、序列化和传输功能
+https://design.ros2.org/articles/ros_on_dds.html
+
+* 常用命令
+| ROS1 命令                          | ROS2 命令                                                  | 作用                |
+|------------------------------------+------------------------------------------------------------+---------------------|
+| ~rospack find _package_name_~      | ~ros2 pkg prefix _package_name_~                           | 查找 pkg 地址       |
+| ~rospack list~                     | ~ros2 pkg list~                                            | 列出本地所有 pkg    |
+| ~rosed _package_name_ _file_name_~ | ~colcon edit~ https://github.com/colcon/colcon-ed          | 编辑文件            |
+| ~catkin_create_pkg~                | ~ros2 pkg create --build-type _build-type_ _package_name_~ | 创建包              |
+| ~rosdep install~                   | ~rosdep install~                                           | 安装依赖            |
+| ~roscd _package_name_~             | ~colcon-cd~ https://github.com/colcon/colcon-cd            | 切换到 package 目录 |
+| ~rosls _package_name_~             | ~ls `ros2 pkg prefix --share _package_name_ `~             | 列出 package 文件   |
+
+* 常用工具
+** launch
+如果希望一次性启动好几个 node, 可以使用 roslaunch 启动 master 及多个 node
+在 ROS2 使用 ~ros2 launch~
+
+*** launch 文件
+具体参见 https://wiki.ros.org/roslaunch/XML
+
+param 标签设置单个值
+
+rosparam 标签设置多个值
+
+#+begin_src xml
+      <launch>
+        ...
+        <param name="abc" value="2" /> <!-- value = 2-->
+
+        <param name="xxx" command="echo 1" /> <!-- value = 1-->
+
+        <rosparam file="xxx.yaml" command="load"/> <!--load from xxx.yaml-->
+
+        <rosparam>
+          param3: 3
+          param4: 4
+        </rosparam>
+        ...
+      </launch>
+#+end_src
+
+** gazebo 模拟器
+由 osrf 开发
+
+是一款使用ODE物理引擎，用于动力学、导航、感知等任务的模拟器
+
+新一代 gazebo 叫做 Ignition。
+
+** Rviz 三维可视化平台
+The Robot Visualization tool
+可视化工具
+，方便监控，调试
+
+** rqt
+基于 qt 开发，主要用来可视化结构图
+
+*** 常用命令
+
+| 命令          | 作用         |
+|---------------+--------------|
+| ~rqt_graph~   | 显示通信架构 |
+| ~rqt_plot~    | 绘制曲线     |
+| ~rqt_console~ | 查看日志     |
+
+** rosbag
+记录和回放数据流
+文件格式为 .bag
+可以记录订阅的 topic 到文件之中，用来回放
+*** 常用命令
+| ROS1 命令                     | ros2 命令                        | 作用                         |
+|-------------------------------+----------------------------------+------------------------------|
+| ~rosbag record _topic_names_~ | ~ros2 bag record _topic_names_~  | 记录某些 topic 到 bag 文件中 |
+| ~rosbag record -a~            | ~ros2 bag record _topic_names_ -a~ | 记录所有 topic 到 bag 文件中 |
+| ~rosbag play _bag_files_~     | ~ros2 bag play _bag_files_~      | 回放 bag 文件                |
+
+** bloom
+http://wiki.ros.org/cn/bloom
+是一个自动化发布工具，用来发布 ros 软件包
+见 https://docs.ros.org/en/eloquent/Tutorials/Releasing-a-ROS-2-package-with-bloom.html
+* 语言
+
+ROS 软件包通常使用 cpp 或者 python 来进行编写
+
+** cpp
+*** roscpp
+ROS1 使用 https://docs.ros.org/api/roscpp/html
+*** rclcpp
+ROS2 使用 https://github.com/ros2/rclcpp
+** python
+*** rospy
+ROS1 使用 http://wiki.ros.org/rospy
+*** rclpy
+ROS2 使用 https://github.com/ros2/rclpy
+* 参考
+- http://dev.ros2.fishros.com/doc/index.html :: ROS2 中文翻译文档
+- https://book.guyuehome.com/ :: ROS2 教程
+- https://design.ros2.org/articles/build_tool.html :: 构建工具说明
+- https://doc.bwbot.org/zh-cn/books-online/ros2/ :: ROS2 教程
+- https://docs.ros.org/en/humble/Concepts/About-Different-Middleware-Vendors.html :: ros2 dds 介绍
+- https://docs.ros.org/en/humble/Tutorials/Tf2/Tf2-Main.html :: tf2 文档
+- https://www.bilibili.com/video/BV1PJ411D7mj/ :: ROS1 教程
+- https://www.guyuehome.com/34887 :: 使用colcon来构建packages
+- https://www.guyuehome.com/836 :: ament 编译系统介绍
+- https://zhuanlan.zhihu.com/p/446986825 :: 通用构建工具开发设计
+- https://zhuanlan.zhihu.com/p/466267968 :: 构建工具说明中文翻译
+- https://www.guyuehome.com/3750 :: ROS 历史介绍
+* 可用资源
+- http://dev.ros2.fishros.com/
+- https://build.ros2.org
+- https://discourse.ros.org/
+- https://docs.ros.org
+- https://guyuehome.com/
+- https://index.ros.org/
+- https://packages.ros.org/
+- https://repo.ros2.org/
+- https://wiki.ros.org/
