@@ -1,0 +1,26 @@
+* publish Flag 勾上
+
+#+DOWNLOADED: screenshot @ 2023-06-05 11:56:31
+[[file:2023-06-05_11-56-31_screenshot.png]]
+* 点击 repositorie 名字
+
+   #+DOWNLOADED: screenshot @ 2023-06-05 11:57:07
+   [[file:2023-06-05_11-57-07_screenshot.png]]
+
+* 点击 Go to download repository
+   #+DOWNLOADED: screenshot @ 2023-06-05 11:57:46
+   [[file:2023-06-05_11-57-46_screenshot.png]]
+
+* 新建/etc/yum.repos.d/ROS.repo
+内容为：
+#+begin_src conf
+[ROS]
+name=ROS
+baseurl=http://121.36.3.168:82/home:/Z572:/ros-630-test/standard_x86_64/
+enabled=1
+gpgcheck=0
+#+end_src
+* dnf update
+* 安装自己需要的ROS包
+
+
