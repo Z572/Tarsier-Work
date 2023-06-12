@@ -1,0 +1,56 @@
+* 克隆相关仓库
+#+begin_src bash
+  git clone https://github.com/Z572/rosdep
+  git clone https://github.com/Z572/rospkg
+  git clone https://github.com/Z572/rosdistro
+#+end_src
+
+* 使用 python venv 安装
+
+#+begin_src bash
+  mkdir env && python -m venv ./env
+#+end_src
+
+编辑 pyvenv.cfg
+
+把 =include-system-site-packages= 从 false 改为 true .
+
+#+begin_src
+  source env/bin/activate
+  pip install rospkg
+  pip install rosdep
+#+end_src
+
+这时 rosdep 会安装到 env/bin 目录下
+
+* 初始化并更新
+
+#+begin_src bash
+  rosdep init
+
+#+end_src
+
+编辑 /etc/ros/rosdep/sources.list.d/20.default.list 并把相关 https://raw.githubusercontent.com 开头的行改为之前克隆的 rosdistro 仓库下相应文件路径 file:///path/to
+
+然后 `rosdep update`
+
+fuerte.yaml 可能会报错，暂时不用管。
+
+
+#+begin_src bash
+# 提前安装好相关包
+source /opt/ros/humble/setup.bash
+# ros2 中没有 ROS_PACKAGE_PATH 定义, 见
+# https://github.com/ros2/ros2/issues/1102
+# https://github.com/ros2/ros_workspace/pull/21
+# 我们使用 设置 AMENT_PREFIX_PATH 为它的值
+ROS_PACKAGE_PATH=$AMENT_PREFIX_PATH rosdep what-needs tf2
+#+end_src
+
+
+
+如果正常应该会显示
+#+begin_src 
+tf2_py
+tf2_ros
+#+end_src
