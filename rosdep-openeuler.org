@@ -32,7 +32,7 @@
 
 编辑 /etc/ros/rosdep/sources.list.d/20.default.list 并把相关 https://raw.githubusercontent.com 开头的行改为之前克隆的 rosdistro 仓库下相应文件路径 file:///path/to
 
-然后 `rosdep update`
+然后 =rosdep update=
 
 fuerte.yaml 可能会报错，暂时不用管。
 
@@ -53,4 +53,10 @@ ROS_PACKAGE_PATH=$AMENT_PREFIX_PATH rosdep what-needs tf2
 #+begin_src 
 tf2_py
 tf2_ros
+#+end_src
+
+#+begin_src bash
+$ ROS_PACKAGE_PATH=$AMENT_PREFIX_PATH rosdep resolve cmake
+#dnf
+cmake
 #+end_src
