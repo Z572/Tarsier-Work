@@ -7,6 +7,7 @@ cmd: qemu-system-aarch64 -m 4096 -cpu cortex-a72 -smp 8 -M virt -bios qemu-uefi-
 qemu-uefi-aarch64.bin from opensuse
 
 OS 版本：openEuler-22.03-LTS-SP2 rc4
+
 镜像地址：http://121.36.84.172/dailybuild/EBS-openEuler-22.03-LTS-SP2/rc4_openeuler-2023-06-15-15-06-52/virtual_machine_img/aarch64/openEuler-22.03-LTS-SP2-aarch64.qcow2.xz
 [软件源](./openEuler.repo) 
 [ROS 软件源](./ROS.repo)
@@ -354,12 +355,14 @@ ros2 run tf2_ros tf2_monitor
 ### view_frames 保存 pdf
 
 在一个终端中输入
-
 `ros2 run tf2_ros static_transform_publisher 1 1 1 0 0 0 /base_link /odom`
 
+在另一个终端中输入
 `ros2 run tf2_tools view_frames.py`
 ![](./tf2_tools.png)
 
-![pdf 文件存在](./pdf.png "pdf")
+
+![pdf 文件存在](./pdf.png)
+
 检查当前目录，存在 pdf 文件，测试通过
 
