@@ -6,6 +6,7 @@ raspi 400
 ![](raspi400.jpg)
 
 OS 版本：openEuler-22.03-LTS-SP2 rc5 
+root 密码： openeuler
 
 镜像地址： http://121.36.84.172/dailybuild/EBS-openEuler-22.03-LTS-SP2/rc5_openeuler-2023-06-26-01-36-02/raspi_img/openEuler-22.03-LTS-SP2-raspi-aarch64.img
 
