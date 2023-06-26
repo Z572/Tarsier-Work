@@ -1,0 +1,57 @@
+#generic-repos is licensed under the Mulan PSL v2.
+#You can use this software according to the terms and conditions of the Mulan PSL v2.
+#You may obtain a copy of Mulan PSL v2 at:
+#    http://license.coscl.org.cn/MulanPSL2
+#THIS SOFTWARE IS PROVIDED ON AN "AS IS" BASIS, WITHOUT WARRANTIES OF ANY KIND, EITHER EXPRESS OR
+#IMPLIED, INCLUDING BUT NOT LIMITED TO NON-INFRINGEMENT, MERCHANTABILITY OR FIT FOR A PARTICULAR
+#PURPOSE.
+#See the Mulan PSL v2 for more details.
+
+[OS]
+name=OS
+baseurl=http://121.36.84.172/dailybuild/EBS-openEuler-22.03-LTS-SP2/rc5_openeuler-2023-06-26-01-36-02//OS/$basearch/
+enabled=1
+gpgcheck=1
+gpgkey=http://121.36.84.172/dailybuild/EBS-openEuler-22.03-LTS-SP2/rc5_openeuler-2023-06-26-01-36-02//OS/$basearch/RPM-GPG-KEY-openEuler
+
+[everything]
+name=everything
+baseurl=http://121.36.84.172/dailybuild/EBS-openEuler-22.03-LTS-SP2/rc5_openeuler-2023-06-26-01-36-02//everything/$basearch/
+enabled=1
+gpgcheck=1
+gpgkey=http://121.36.84.172/dailybuild/EBS-openEuler-22.03-LTS-SP2/rc5_openeuler-2023-06-26-01-36-02//everything/$basearch/RPM-GPG-KEY-openEuler
+
+[EPOL]
+name=EPOL
+baseurl=http://121.36.84.172/dailybuild/EBS-openEuler-22.03-LTS-SP2/rc5_openeuler-2023-06-26-01-36-02//EPOL/main/$basearch/
+enabled=1
+gpgcheck=1
+gpgkey=http://121.36.84.172/dailybuild/EBS-openEuler-22.03-LTS-SP2/rc5_openeuler-2023-06-26-01-36-02//OS/$basearch/RPM-GPG-KEY-openEuler
+
+[debuginfo]
+name=debuginfo
+baseurl=http://121.36.84.172/dailybuild/EBS-openEuler-22.03-LTS-SP2/rc5_openeuler-2023-06-26-01-36-02//debuginfo/$basearch/
+enabled=1
+gpgcheck=1
+gpgkey=http://121.36.84.172/dailybuild/EBS-openEuler-22.03-LTS-SP2/rc5_openeuler-2023-06-26-01-36-02//debuginfo/$basearch/RPM-GPG-KEY-openEuler
+
+[source]
+name=source
+baseurl=http://121.36.84.172/dailybuild/EBS-openEuler-22.03-LTS-SP2/rc5_openeuler-2023-06-26-01-36-02//source/
+enabled=1
+gpgcheck=1
+gpgkey=http://121.36.84.172/dailybuild/EBS-openEuler-22.03-LTS-SP2/rc5_openeuler-2023-06-26-01-36-02//source/RPM-GPG-KEY-openEuler
+
+[update]
+name=update
+baseurl=http://121.36.84.172/dailybuild/EBS-openEuler-22.03-LTS-SP2/rc5_openeuler-2023-06-26-01-36-02//update/$basearch/
+enabled=1
+gpgcheck=1
+gpgkey=http://121.36.84.172/dailybuild/EBS-openEuler-22.03-LTS-SP2/rc5_openeuler-2023-06-26-01-36-02//OS/$basearch/RPM-GPG-KEY-openEuler
+
+[update-source]
+name=update-source
+baseurl=http://121.36.84.172/dailybuild/EBS-openEuler-22.03-LTS-SP2/rc5_openeuler-2023-06-26-01-36-02//update/source/
+enabled=1
+gpgcheck=1
+gpgkey=http://121.36.84.172/dailybuild/EBS-openEuler-22.03-LTS-SP2/rc5_openeuler-2023-06-26-01-36-02//source/RPM-GPG-KEY-openEuler
