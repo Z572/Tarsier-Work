@@ -38,6 +38,27 @@ dnf remove -y `cat packages.list`
 
 成功
 
+# yum
+
+``` bash
+dnf install yum -y
+```
+![](./yum.png)
+``` bash
+yum install ros-humble-turtlesim
+```
+
+![](./yum-install.png)
+![](./yum-install-done.png)
+
+``` bash
+yum remove ros-humble-turtlesim
+```
+
+![](./yum-remove.png)
+![](./yum-remove-done.png)
+
+
 # colcon
 尚未打包, 使用 pip
 
