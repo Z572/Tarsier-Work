@@ -1,0 +1,12 @@
+[openEulerROS-humble]
+name=openEulerROS-humble
+baseurl=http://121.36.84.172/dailybuild/EBS-openEuler-22.03-LTS-SP2/openeuler-2023-06-29-20-25-36/EPOL/multi_version/ROS/humble/$basearch/
+enabled=1
+gpgcheck=0
+
+[openEulerROS-humble-source]
+name=openEulerROS-humble-source
+baseurl=http://121.36.84.172/dailybuild/EBS-openEuler-22.03-LTS-SP2/openeuler-2023-06-29-20-25-36/EPOL/multi_version/ROS/humble/source
+enabled=1
+gpgcheck=0
+
