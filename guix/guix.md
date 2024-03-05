@@ -1,33 +1,33 @@
 
 # &#30446;&#24405;
 
-1.  [概念介绍](#org4d164e6)
-2.  [优势](#org666140b)
-    1.  [nix开创的函数式包管理](#orgc2fa25f)
-    2.  [使用可复用的通用语言编写](#org5100370)
-3.  [软件包变换](#org5e5836f)
-    1.  [命令行修改软件包](#org4ae0735)
-    2.  [编程方式修改软件包](#org730ab24)
-    3.  [&#x2013;tune](#org6cc8eed)
-    4.  [glibc-hwcaps（未内置于 guix）](#org87393c1)
-    5.  [函数多版本化（未内置于 guix）](#orgbbf378a)
-4.  [方便的编译及交叉编译软件](#org915a2a7)
-    1.  [本地编译](#org88a2347)
-        1.  [qemu 模拟编译](#org533165e)
-        2.  [分派到 riscv 机器上](#org9eb2c3f)
-    2.  [交叉编译](#orgd845515)
-5.  [时光机](#org8c93b1f)
-    1.  [过去](#orgcfc96aa)
-    2.  [未来](#orga10f751)
-    3.  [平行世界](#orga71a2c5)
-6.  [还有更多&#x2026;](#orgd447d4a)
-7.  [guix 当前状况](#orgaca4566)
-8.  [下一步可能要做的事](#orgcef69e3)
-9.  [还有一些资料](#orga57ae81)
+1.  [概念介绍](#org430e41d)
+2.  [优势](#org9f1e748)
+    1.  [nix开创的函数式包管理](#orgb111976)
+    2.  [使用可复用的通用语言编写](#orgfade7c9)
+3.  [软件包变换](#org0cb5137)
+    1.  [命令行修改软件包](#org64376b5)
+    2.  [编程方式修改软件包](#org40967bb)
+    3.  [&#x2013;tune](#org11e0e91)
+    4.  [glibc-hwcaps（未内置于 guix）](#org36be9af)
+    5.  [函数多版本化（未内置于 guix）](#org345b03a)
+4.  [方便的编译及交叉编译软件](#orgb1966cb)
+    1.  [本地编译](#org7ea76ed)
+        1.  [qemu 模拟编译](#org7b41bee)
+        2.  [分派到 riscv 机器上](#orgfe3d8b3)
+    2.  [交叉编译](#org62c7465)
+5.  [时光机](#org3c3b9d8)
+    1.  [过去](#org0d03599)
+    2.  [未来](#org59f5dcf)
+    3.  [平行世界](#orgdc44ef5)
+6.  [还有更多&#x2026;](#orgd05047a)
+7.  [guix 当前状况](#orgac95dd4)
+8.  [下一步可能要做的事](#orga803c3a)
+9.  [还有一些资料](#orgb8b487b)
 
 
 
-<a id="org4d164e6"></a>
+<a id="org430e41d"></a>
 
 # 概念介绍
 
@@ -49,26 +49,26 @@ Spack 软件包定制、轻松创建容器镜像等等
 得到一个不同的文件夹名。
 
 
-<a id="org666140b"></a>
+<a id="org9f1e748"></a>
 
 # 优势
 
 
-<a id="orgc2fa25f"></a>
+<a id="orgb111976"></a>
 
 ## nix开创的函数式包管理
 
 这带来了许多高级功能，可复现性，回滚等特性
 
 
-<a id="org5100370"></a>
+<a id="orgfade7c9"></a>
 
 ## 使用可复用的通用语言编写
 
 可以复用及促进生态, 并且允许动态生成包，以及修改包
 
 
-<a id="org5e5836f"></a>
+<a id="org0cb5137"></a>
 
 # 软件包变换
 
@@ -79,7 +79,7 @@ FFTW，该怎么办？
 没关系，guix 支持软件包变换<sup><a id="fnr.2" class="footref" href="#fn.2" role="doc-backlink">2</a></sup>
 
 
-<a id="org4ae0735"></a>
+<a id="org64376b5"></a>
 
 ## 命令行修改软件包
 
@@ -92,7 +92,7 @@ FFTW，该怎么办？
 ![img](./help-transform.png)
 
 
-<a id="org730ab24"></a>
+<a id="org40967bb"></a>
 
 ## 编程方式修改软件包
 
@@ -141,7 +141,7 @@ FFTW，该怎么办？
 ![img](./naev.png)
 
 
-<a id="org6cc8eed"></a>
+<a id="org11e0e91"></a>
 
 ## &#x2013;tune
 
@@ -153,7 +153,7 @@ guix 内部会给 gcc/llvm 等设置相关 -march 参数,编译出来优化版�
 ![img](./tune.png)
 
 
-<a id="org87393c1"></a>
+<a id="org36be9af"></a>
 
 ## glibc-hwcaps<sup><a id="fnr.3" class="footref" href="#fn.3" role="doc-backlink">3</a></sup> （未内置于 guix）
 
@@ -225,7 +225,7 @@ glibc-hwcaps 工作
 我们自己就能够享受到 glibc-hwcaps 的功能。
 
 
-<a id="orgbbf378a"></a>
+<a id="org345b03a"></a>
 
 ## 函数多版本化（未内置于 guix）
 
@@ -253,7 +253,7 @@ FMV 是一种技术，编译器根据不同的指令集架构（ISA）扩展生�
     000000000009f1a0 l     F .text	0000000000000071              avl_t_copy.arch_skylake_avx512.1
 
 
-<a id="org915a2a7"></a>
+<a id="orgb1966cb"></a>
 
 # 方便的编译及交叉编译软件
 
@@ -316,19 +316,19 @@ FMV 是一种技术，编译器根据不同的指令集架构（ISA）扩展生�
 这是如何做到的呢？
 
 
-<a id="org88a2347"></a>
+<a id="org7ea76ed"></a>
 
 ## 本地编译
 
 
-<a id="org533165e"></a>
+<a id="org7b41bee"></a>
 
 ### qemu 模拟编译
 
 当我们设置了 binfmt 和 qemu(等 guix 支持了 binfmt<sub>misc</sub> namespace就无需用户设置了)，guix 能够检测到支持，并且自动使用 qemu-user 进行编译。
 
 
-<a id="org9eb2c3f"></a>
+<a id="orgfe3d8b3"></a>
 
 ### 分派到 riscv 机器上<sup><a id="fnr.4" class="footref" href="#fn.4" role="doc-backlink">4</a></sup>
 
@@ -346,7 +346,7 @@ riscv 机器上的 guix 进行编译，成功之后拉回来。
          (private-key "/path/to/private-key")))
 
 
-<a id="orgd845515"></a>
+<a id="org62c7465"></a>
 
 ## 交叉编译
 
@@ -358,7 +358,7 @@ guix的 build-system 能够区分交叉编译和本地编译的不同，在交�
 binfmt<sub>misc</sub> namespace 的支持<sup><a id="fnr.5" class="footref" href="#fn.5" role="doc-backlink">5</a></sup>，未来可以改进这一点）
 
 
-<a id="org8c93b1f"></a>
+<a id="org3c3b9d8"></a>
 
 # 时光机
 
@@ -366,7 +366,7 @@ binfmt<sub>misc</sub> namespace 的支持<sup><a id="fnr.5" class="footref" href
 只要当前的 guix 与目标的 guix 通信，让它去编译，就能还原环境。
 
 
-<a id="orgcfc96aa"></a>
+<a id="org0d03599"></a>
 
 ## 过去
 
@@ -395,7 +395,7 @@ guix!
 件包，别人就能轻松复现我的环境进行实验！
 
 
-<a id="orga10f751"></a>
+<a id="org59f5dcf"></a>
 
 ## 未来
 
@@ -404,7 +404,7 @@ guix!
 ![img](./guix-time.png)
 
 
-<a id="orga71a2c5"></a>
+<a id="orgdc44ef5"></a>
 
 ## 平行世界
 
@@ -417,7 +417,7 @@ guix!
 我们来到了具有 \`guix git log\` 命令的平行世界！
 
 
-<a id="orgd447d4a"></a>
+<a id="orgd05047a"></a>
 
 # 还有更多&#x2026;
 
@@ -433,18 +433,17 @@ guix!
 -   Full-Source Bootstrap<sup><a id="fnr.17" class="footref" href="#fn.17" role="doc-backlink">17</a></sup>(现在只支持 x86<sub>64</sub> 和 arm64，riscv64 版本<sup><a id="fnr.18" class="footref" href="#fn.18" role="doc-backlink">18</a></sup>的在做)
 
 
-<a id="orgaca4566"></a>
+<a id="orgac95dd4"></a>
 
 # guix 当前状况
 
 平均每个月 100 余人提交贡献，在 x86<sub>64</sub> 上拥有 29'000 多个包(如果加上
 guix-science<sup><a id="fnr.19" class="footref" href="#fn.19" role="doc-backlink">19</a></sup> 提供的一系列 channel 就超过 52,000 多个包)，全部为
-自由软件，但 riscv 支持不太行，虽然拥有 26'750 个软件 ，但系统只支持
-HiFive Unmatched，编译机只有一台 HiFive Unmatched。而且许多特性还没有
-支持 riscv
+自由软件，但 riscv 支持不太行，虽然拥有 26'750 (大部分都能在 riscv 上编译，但还有些包不行)个软件 ，但系统只支持
+HiFive Unmatched，编译机只有一台 HiFive Unmatched。而且许多特性还没有支持 riscv
 
 
-<a id="orgcef69e3"></a>
+<a id="orga803c3a"></a>
 
 # 下一步可能要做的事
 
@@ -457,7 +456,7 @@ HiFive Unmatched，编译机只有一台 HiFive Unmatched。而且许多特性�
 -   对 &#x2013;tune 选项增加riscv支持
 
 
-<a id="orga57ae81"></a>
+<a id="orgb8b487b"></a>
 
 # 还有一些资料
 

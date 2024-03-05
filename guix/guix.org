@@ -349,9 +349,8 @@ guix time-machine -q --branch=wip-guix-log -- git log --oneline|less
 
 平均每个月 100 余人提交贡献，在 x86_64 上拥有 29'000 多个包(如果加上
 guix-science[fn:19] 提供的一系列 channel 就超过 52,000 多个包)，全部为
-自由软件，但 riscv 支持不太行，虽然拥有 26'750 个软件 ，但系统只支持
-HiFive Unmatched，编译机只有一台 HiFive Unmatched。而且许多特性还没有
-支持 riscv
+自由软件，但 riscv 支持不太行，虽然拥有 26'750 (大部分都能在 riscv 上编译，但还有些包不行)个软件 ，但系统只支持
+HiFive Unmatched，编译机只有一台 HiFive Unmatched。而且许多特性还没有支持 riscv
 
 
 * 下一步可能要做的事
